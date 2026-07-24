@@ -1,0 +1,20 @@
+{
+  "source": "COGS Analysis F26 — Summary CSV",
+  "updated": "2026-07-24",
+  "assumptions": {
+    "amazon_fee_pct": 0.34,
+    "shopify_fee_pct": 0.07,
+    "inbound_per_unit": 0.30
+  },
+  "skus": {
+    "Dematter":        { "cogs": 3.36, "price_amz": 22.99, "margin_amz_pct": 50.1, "profit_amz": 11.51 },
+    "Detangling":      { "cogs": 3.30, "price_amz": 18.99, "margin_amz_pct": 47.0, "profit_amz": 8.93 },
+    "Shampoo":         { "cogs": 5.17, "price_amz": 19.99, "margin_amz_pct": 38.6, "profit_amz": 7.72 },
+    "Pin Brush":       { "cogs": 3.19, "price_amz": 19.99, "margin_amz_pct": 48.5, "profit_amz": 9.70 },
+    "Rake Brush":      { "cogs": 1.82, "price_amz": 14.99, "margin_amz_pct": 51.9, "profit_amz": 7.77 },
+    "Slicker Brush":   { "cogs": 4.97, "price_amz": 17.99, "margin_amz_pct": 36.7, "profit_amz": 6.60 },
+    "Allergy Chew":    { "cogs": 9.40, "price_amz": 32.99, "margin_amz_pct": 36.6, "profit_amz": 12.07 },
+    "Calm Chew":       { "cogs": 8.52, "price_amz": 32.99, "margin_amz_pct": 39.3, "profit_amz": 12.95 },
+    "SkinCoat Chew":   { "cogs": 7.58, "price_amz": 32.99, "margin_amz_pct": 42.1, "profit_amz": 13.89 }
+  }
+}
