@@ -191,8 +191,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     <div class="ttl">Live Morning Dashboard</div>
   </div>
   <div class="meta">
-    Updated: <span class="upd" id="meta-updated">—</span><br>
-    Auto-refresh in <span id="meta-countdown">—</span>
+    Last automatic refresh: <span class="upd" id="meta-updated">—</span><br>
+    <span style="font-size:10px;color:#7fd1c4;">Next run: 7:45 AM PT · auto-refreshes every 5 min</span>
   </div>
   <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
   <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
@@ -271,22 +271,40 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       </div>
 
       <div id="error-state" class="state-box" style="display:none;">
-        <h2>Couldn't load dashboard data</h2>
-        <p id="error-msg">—</p>
-        <p style="margin-top:10px;">Check that <b>data/connectors_data.json</b> exists on the <b>main</b> branch and the morning routine pushed successfully.</p>
+        <h2>Failed to load data/connectors_data.json</h2>
+        <p id="error-msg" style="font-family:monospace;font-size:11px;background:#f5f5f5;padding:8px 10px;border-radius:6px;margin-top:8px;word-break:break-all;">—</p>
+        <p style="margin-top:10px;text-align:left;font-size:12px;line-height:1.7;">
+          <b>Common causes:</b><br>
+          1. Morning routine pushed to a branch instead of <b>main</b> — check GitHub PRs<br>
+          2. File is missing on main — <a href="https://github.com/josh11100/STG/blob/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">view file on GitHub</a><br>
+          3. Routine failed mid-run and pushed broken JSON — check <a href="https://github.com/josh11100/STG/commits/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">commit history</a> and revert to last good commit<br>
+          4. JSON syntax error — paste the raw file into <a href="https://jsonlint.com" target="_blank" style="color:#F57E26;">jsonlint.com</a>
+        </p>
       </div>
 
       <div id="dashboard" style="display:none;">
 
         <!-- OVERVIEW -->
         <div class="section active" id="section-overview">
-          <div class="sec-head"><h2>Morning Overview</h2><span class="tag tag-info" id="ov-tag">ALL SOURCES</span><span class="when" id="ov-when"></span></div>
+          <div class="sec-head">
+            <h2>Morning Overview</h2>
+            <span class="tag tag-info" id="ov-tag">ALL SOURCES</span>
+            <span class="when" id="ov-when"></span>
+            <span style="margin-left:auto;font-size:11px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:3px 10px;" id="ov-completeness">— of — sources current</span>
+          </div>
           <div id="ov-alerts"></div>
           <div class="cards" id="ov-cards"></div>
-          <div class="tbl-wrap">
-            <div class="tbl-title">Source Status Board</div>
-            <table id="ov-table"><thead><tr><th>Source</th><th>Key Number</th><th>Notes</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
-          </div>
+          <!-- Source Status Board — collapsed by default, at bottom per Will's spec -->
+          <details id="source-status-details" style="margin-top:16px;">
+            <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:10px 0;list-style:none;display:flex;align-items:center;gap:8px;">
+              <span style="background:var(--border);border-radius:4px;padding:2px 6px;font-size:10px;" id="ov-status-summary">Data Source Health</span>
+              <span style="font-size:10px;color:var(--muted);">▾ click to expand</span>
+            </summary>
+            <div class="tbl-wrap" style="margin-top:6px;">
+              <div class="tbl-title">Source Status Board</div>
+              <table id="ov-table"><thead><tr><th>Source</th><th>Key Number</th><th>Notes</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
+            </div>
+          </details>
         </div>
 
         <!-- QUICKBOOKS -->
@@ -493,7 +511,12 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   <div id="sc-headline"></div>
   <div class="cards" id="ct-cards"></div>
 
-  <div class="sec-head"><h2>1 — Inventory Risk by SKU</h2><span class="tag tag-live" id="risk-tag">DAILY · LIVE</span><span class="when" id="risk-when"></span></div>
+  <!-- 1: Inventory Position — All Locations (moved to top per Will's spec) -->
+  <div class="sec-head" style="padding-top:14px;"><h2>1 — Inventory Position — All Locations</h2><span class="tag tag-live" id="pos-tag">—</span><span class="when" id="pos-when"></span></div>
+  <div class="cards" id="pos-cards"></div>
+
+  <!-- 2: Inventory Risk by SKU -->
+  <div class="sec-head" style="padding-top:14px;"><h2>2 — Inventory Risk by SKU</h2><span class="tag tag-live" id="risk-tag">DAILY · LIVE</span><span class="when" id="risk-when"></span></div>
   <div class="tbl-wrap">
     <table id="risk-table">
       <thead><tr><th>Product</th><th class="r">Amazon Sellable</th><th class="r">Amazon Recommended</th><th class="r">Fcst Units/Day</th><th class="r">Days to Recommended</th><th class="r">WSA Available</th><th>Next Inbound</th><th>Recommended Action</th><th>Status</th></tr></thead>
@@ -502,7 +525,12 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   </div>
   <div class="sc-note">⚠ SKUs below the Amazon recommended level are highlighted red. LIVE badge = this morning's FBA pull; PLAN badge = last manual snapshot.</div>
 
-  <div class="sec-head"><h2>2 — Lead-Time Master</h2><span class="tag tag-warn">PATRICK MAINTAINS</span></div>
+  <!-- 3: SKU Detail (immediately after Risk per Will's spec) -->
+  <div class="sec-head" style="padding-top:14px;"><h2>3 — SKU Detail</h2><span class="tag tag-live">LIVE + PLAN</span><span class="when" id="sd-when"></span></div>
+  <div id="sku-details"></div>
+
+  <!-- 4: Lead-Time Master -->
+  <div class="sec-head" style="padding-top:14px;"><h2>4 — Lead-Time Master</h2><span class="tag tag-warn">PATRICK MAINTAINS</span></div>
   <div class="tbl-wrap">
     <table id="lt-table">
       <thead><tr><th>Product</th><th>Production</th><th>Origin</th><th>Transit</th><th>Port</th><th>WSA</th><th>Amazon</th><th class="r">Total Lead Time</th><th class="r">Last Confirmed</th><th>Owner</th></tr></thead>
@@ -510,7 +538,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     </table>
   </div>
 
-  <div class="sec-head"><h2>3 — Open Purchase Orders</h2><span class="tag tag-info">EVENT-DRIVEN</span></div>
+  <!-- 5: Open Purchase Orders -->
+  <div class="sec-head" style="padding-top:14px;"><h2>5 — Open Purchase Orders</h2><span class="tag tag-info">EVENT-DRIVEN</span></div>
   <div class="tbl-wrap">
     <table id="po-table">
       <thead><tr><th>PO / Product</th><th>Supplier</th><th>Route</th><th class="r">Units</th><th>Deposit</th><th>Production</th><th>ETD</th><th>Port ETA</th><th class="r">Amazon Sellable ETA</th><th class="r">Last Verified</th><th>Next Action</th><th>Status</th></tr></thead>
@@ -518,19 +547,14 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     </table>
   </div>
 
-  <div class="sec-head" style="padding-top:14px;"><h2>Inventory Position — All Locations</h2><span class="tag tag-live" id="pos-tag">—</span><span class="when" id="pos-when"></span></div>
-  <div class="cards" id="pos-cards"></div>
-
-  <div class="sec-head"><h2>Forecasted Retail Value</h2><span class="tag tag-info">POTENTIAL</span></div>
+  <!-- 6: Forecasted Retail Value -->
+  <div class="sec-head" style="padding-top:14px;"><h2>6 — Forecasted Retail Value</h2><span class="tag tag-info">POTENTIAL</span></div>
   <div class="tbl-wrap">
     <table id="rv-table">
       <thead><tr><th>SKU</th><th class="r">Total Units</th><th class="r">MSRP</th><th class="r">COGS/Unit</th><th class="r">COGS in Inventory</th><th class="r">Retail Value at MSRP</th><th class="r">Gross Profit Potential</th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
-
-  <div class="sec-head"><h2>SKU Detail</h2><span class="tag tag-live">LIVE + PLAN</span><span class="when" id="sd-when"></span></div>
-  <div id="sku-details"></div>
 
   <div class="sec-head"><h2>SKU Detail — Chews (Sep 1 Launch)</h2><span class="tag tag-warn">IN PRODUCTION</span></div>
   <div class="three" id="chews"></div>
@@ -852,6 +876,21 @@ const fmtNum    = (n,d=2) => n == null ? null : Number(n).toFixed(d);
 const fmtPct    = n => n == null ? null : Number(n).toFixed(1) + '%';
 const fmtInt    = n => n == null ? null : Number(n).toLocaleString('en-US');
 
+// Safe percent — never returns "null%" even when value is null
+const safePct = (n, d=1, fallback='—') => n != null ? Number(n).toFixed(d) + '%' : fallback;
+// Safe dollar sub — used in card subtitles to avoid "null due now"
+const safeDollarSub = (n, suffix='', fallback='—') => n != null ? fmtDollar(n) + suffix : fallback;
+
+// Freshness badge — shows LIVE / MANUAL / STALE based on data date
+function freshnessBadge(dateStr, auto){
+  if (!dateStr) return '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#f0f2f5;color:#8a93a0;margin-left:4px;">NO DATE</span>';
+  const days = Math.floor((Date.now() - new Date(dateStr + 'T12:00:00')) / 86400000);
+  if (days <= 1 && auto)  return '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#e3f5ec;color:#1d7d4d;margin-left:4px;">🟢 LIVE</span>';
+  if (!auto)              return '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#fff3cd;color:#9a6c0a;margin-left:4px;">🟡 MANUAL · ' + dateStr + '</span>';
+  if (days <= 7)          return '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#fff3cd;color:#9a6c0a;margin-left:4px;">🟡 ' + days + 'd ago</span>';
+  return '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#fbe6e3;color:#a8352c;margin-left:4px;">🔴 STALE · ' + days + 'd</span>';
+}
+
 function card(label, value, sub, bdr, valCls){
   const v = value == null
     ? '<div class="c-val na">No data</div>'
@@ -909,7 +948,7 @@ function render(d){
   const mtdNeg = mtd.net_income != null && mtd.net_income < 0;
   $('qb-cards').innerHTML =
     card('Cash Balance (Chk + MM)', fmtDollar(qb.cash_balance), 'Checking + money market combined', qbLow?'bdr-red':qb.cash_balance!=null?'bdr-green':'bdr-grey', qbLow?'down':'') +
-    card('Weeks of Runway', fmtNum(qb.weeks_runway,1), 'Cash ÷ avg weekly burn (last 4 wks)', qb.weeks_runway!=null&&qb.weeks_runway<8?'bdr-amber':qb.weeks_runway!=null?'bdr-teal':'bdr-grey') +
+    card('Weeks of Runway', fmtNum(qb.weeks_runway,1), 'Cash ÷ avg weekly burn · formula pending Patrick confirmation', qb.weeks_runway!=null&&qb.weeks_runway<8?'bdr-amber':qb.weeks_runway!=null?'bdr-teal':'bdr-grey') +
     card('Accounts Payable', fmtDollar(qb.accounts_payable), 'Owed to vendors right now', qb.accounts_payable!=null&&qb.accounts_payable>50000?'bdr-amber':'bdr-grey') +
     card('Accounts Receivable', fmtDollar(qb.accounts_receivable), 'Owed to STG', 'bdr-teal');
   $('qb-alerts').innerHTML =
@@ -1135,10 +1174,12 @@ function render(d){
     card('SKUs Flagged', aa.flagged_skus ? String((aa.flagged_skus||[]).length) : null, 'Outside locked ROAS band', (aa.flagged_skus||[]).length?'bdr-red':'bdr-green');
   flagList($('amz-flags'), aa.flagged_skus, 'All SKUs inside their bands');
   const lowConv = asl.conversion_rate != null && asl.conversion_rate > 0 && asl.conversion_rate < 10;
+  const scDateSub = asl.data_date ? 'As of ' + asl.data_date + ' · 24-48h SC lag is normal' : 'Yesterday';
+  const scBadge = asl.data_date ? '<span style="display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:4px;background:#e8edf2;color:#2a3d50;margin-left:4px;">DELAYED</span>' : '';
   $('amz-sales-cards').innerHTML =
-    card('Sessions', fmtInt(asl.sessions), 'Yesterday', 'bdr-teal') +
-    card('Conversion Rate', fmtPct(asl.conversion_rate), 'Flag if below 10%', lowConv?'bdr-red':'bdr-green', lowConv?'down':'') +
-    card('Units Sold', fmtInt(asl.units_sold), 'Yesterday', 'bdr-purple');
+    card('Sessions' + scBadge, fmtInt(asl.sessions), scDateSub, asl.sessions!=null?'bdr-teal':'bdr-grey') +
+    card('Conversion Rate' + scBadge, fmtPct(asl.conversion_rate), lowConv ? 'Flag if below 10%' : scDateSub, lowConv?'bdr-red':asl.conversion_rate!=null?'bdr-green':'bdr-grey', lowConv?'down':'') +
+    card('Units Sold' + scBadge, fmtInt(asl.units_sold), scDateSub, asl.units_sold!=null?'bdr-purple':'bdr-grey');
   $('amz-alerts').innerHTML =
     (aa.spend==null && sm.status==='RED') ? alertBox('crit','<b>Supermetrics RED:</b> Amazon Ads query returned an error or no data on the last run — noted in #stg-ads-watchdog instead of guessing numbers.') : '';
 
@@ -1428,19 +1469,49 @@ function render(d){
     rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td class="r">${pillFor(r[3])}</td></tr>`).join('');
 
   const reds = rows.filter(r=>String(r[3]).toUpperCase()==='RED').map(r=>r[0]);
-  const overall = reds.length ? 'RED' : rows.some(r=>String(r[3]).toUpperCase()==='YELLOW') ? 'YELLOW' : 'GREEN';
+  const yellows = rows.filter(r=>String(r[3]).toUpperCase()==='YELLOW').map(r=>r[0]);
+  // Critical sources: page cannot be GREEN if these have no data
+  const CRITICAL = ['QuickBooks','Shopify','Amazon'];
+  const missingCritical = CRITICAL.filter(name => {
+    const r = rows.find(r=>r[0]===name);
+    return !r || r[3] == null;
+  });
+  // Completeness count
+  const liveSources = rows.filter(r=>r[3]!=null).length;
+  const totalSources = rows.length;
+  const overall = reds.length ? 'RED'
+    : yellows.length || missingCritical.length ? 'YELLOW'
+    : 'GREEN';
   dot('dot-overview', overall);
   statusTag($('ov-tag'), overall);
-  $('ov-alerts').innerHTML = reds.length
-    ? alertBox('crit', `<b>${reds.length} source(s) RED:</b> ${reds.map(esc).join(', ')}. Recommended actions are in Slack and need a human "approved" reply — nothing executes automatically.`)
-    : alertBox('ok','No RED flags this morning.');
+  // Completeness badge
+  const completenessEl = $('ov-completeness');
+  if (completenessEl) completenessEl.textContent = liveSources + ' of ' + totalSources + ' sources current';
+  $('ov-alerts').innerHTML =
+    (reds.length ? alertBox('crit', `<b>${reds.length} source(s) RED:</b> ${reds.map(esc).join(', ')}. Recommended actions are in Slack and need a human "approved" reply — nothing executes automatically.`) : '') +
+    (missingCritical.length && !reds.length ? alertBox('warn', `<b>Critical data missing:</b> ${missingCritical.map(esc).join(', ')} returned no data this run. Dashboard cannot show GREEN until these sources are current.`) : '') +
+    (reds.length === 0 && missingCritical.length === 0 ? alertBox('ok','No RED flags this morning.') : '');
+  // Reviews card for overview
+  const rvOverviewSub = rv.avg_rating_new_batch != null
+    ? 'Avg ' + fmtNum(rv.avg_rating_new_batch,1) + '★' + (rv.new_review_count > 0 ? ' · ' + fmtInt(rv.new_review_count) + ' new' : '')
+    : rvStale ? '⚠️ Sheet stale · ' + rvDaysAgo + 'd ago' : 'Angelo updates weekly';
   $('ov-cards').innerHTML =
     card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
     card('Daily TACOS', fmtPct(daasTacos), daasTacos != null ? 'Patrick confirmed · target <35%' : 'DAAS routine not yet live', tColorOv(daasTacos), tClsOv(daasTacos)) +
     card("Shopify Sales", fmtDollar(sh.yesterday_sales), 'Yesterday', 'bdr-teal') +
     card('Amazon Net Profit', hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit):fmtInt(asl.units_sold)!=null?fmtInt(asl.units_sold)+' units':null, hp.daily&&hp.daily.net_profit!=null?'Yesterday · '+(hp.daily.net_margin_pct!=null?fmtNum(hp.daily.net_margin_pct,1)+'% margin':''):'Amazon SC units', hp.daily&&(hp.daily.net_profit||0)<0?'bdr-red':hp.daily&&hp.daily.net_profit!=null?'bdr-green':'bdr-purple', hp.daily&&(hp.daily.net_profit||0)<0?'down':hp.daily&&hp.daily.net_profit!=null?'up':'') +
     card('True Net', daasTrueNet != null ? fmtDollar(daasTrueNet) : null, 'After all costs + ads · Patrick', daasTrueNet != null && daasTrueNet < 0 ? 'bdr-red' : daasTrueNet != null ? 'bdr-green' : 'bdr-grey', daasTrueNet != null && daasTrueNet < 0 ? 'down' : daasTrueNet != null ? 'up' : '') +
-    card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mtY.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mtY.spend||0)), 'Amazon + Google + Meta · yesterday', 'bdr-orange');
+    card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mtY.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mtY.spend||0)), 'Amazon + Google + Meta · yesterday', 'bdr-orange') +
+    card('New Reviews', rv.new_review_count != null ? fmtInt(rv.new_review_count) : null, rvOverviewSub, rvStale?'bdr-amber':rv.status==='RED'?'bdr-red':rv.avg_rating_new_batch!=null&&rv.avg_rating_new_batch>=4?'bdr-green':'bdr-teal');
+
+  // Update Source Status Board summary badge
+  const issueCount = reds.length + missingCritical.length + yellows.filter(y=>!missingCritical.includes(y)).length;
+  const summaryEl = $('ov-status-summary');
+  if (summaryEl) {
+    summaryEl.textContent = issueCount > 0 ? 'Data Source Health — ' + issueCount + ' issue(s)' : 'Data Source Health — All clear';
+    summaryEl.style.background = issueCount > 0 ? (reds.length ? '#fbe6e3' : '#fff3cd') : '#e3f5ec';
+    summaryEl.style.color = issueCount > 0 ? (reds.length ? '#a8352c' : '#9a6c0a') : '#1d7d4d';
+  }
 }
 
 // ─── LOAD + AUTO-REFRESH ─────────────────────────────────────────────────────
@@ -1467,25 +1538,32 @@ function renderBizHealth(bh){
   const k = bh.kpis || {}, skus = bh.skus || [], prod = bh.production_schedule || [], brand = bh.brand_health || {}, funnel = brand.funnel || {};
   const bhDays = bh.report_date ? Math.floor((Date.now() - new Date(bh.report_date + 'T00:00:00')) / 86400000) : null;
   const bhStale = bhDays != null && bhDays > 10;
-  statusTag($('bh-tag'), skus.length ? (bhStale ? 'YELLOW' : 'GREEN') : null);
-  dot('dot-bizhealth', skus.length ? (bhStale ? 'yellow' : 'green') : '');
+  const bhCriticalMissing = !k.lifetime_revenue || !k.inventory_cogs;
+  const bhStatus = !skus.length ? null : bhStale ? 'YELLOW' : bhCriticalMissing ? 'YELLOW' : 'GREEN';
+  statusTag($('bh-tag'), bhStatus);
+  dot('dot-bizhealth', bhStatus ? bhStatus.toLowerCase() : '');
   $('bh-when').textContent = bh.report_date ? 'As of ' + bh.report_date + (bhDays != null ? ' · ' + bhDays + ' day(s) old' : '') : '';
   const live = window.__LIVE || {};
   const lqb = (live.quickbooks || {}), lmtd = lqb.mtd || {}, lh10 = ((live.helium10_profits || {}).daily || {}), lsh = live.shopify || {};
   $('bh-alerts').innerHTML = bhStale
     ? alertBox('warn','<b>Strategic data is ' + bhDays + ' days old</b> (last update ' + esc(bh.report_date) + '). Lifetime revenue, inventory, and production numbers below are stale — Patrick\'s weekly update is overdue. Live row below is current as of this morning.')
     : '';
+  const bhFresh = (bh._meta && bh._meta.field_freshness) || {};
+  const fbLive = freshnessBadge(bh.last_updated, true);
+  const fbQG   = freshnessBadge((bhFresh.lifetime_revenue||{}).last_updated, true);
+  const fbSC   = freshnessBadge((bhFresh.inventory_cogs||{}).last_updated, false);
+  const fbSNS  = freshnessBadge((bhFresh.subscribe_and_save||{}).last_updated, false);
   $('bh-kpi-cards').innerHTML =
-    card('MTD Revenue', fmtDollar(lmtd.revenue), (lmtd.period || 'QuickBooks') + ' · LIVE', 'bdr-teal') +
-    card('MTD Net Income', fmtDollar(lmtd.net_income), 'QuickBooks · LIVE', (lmtd.net_income || 0) < 0 ? 'bdr-red' : 'bdr-green', (lmtd.net_income || 0) < 0 ? 'down' : 'up') +
-    card('AMZ Net Profit', fmtDollar(lh10.net_profit), 'Yesterday · LIVE', 'bdr-green') +
-    card('Shopify Sales', fmtDollar(lsh.yesterday_sales), 'Yesterday · LIVE', 'bdr-purple') +
-    card('Lifetime Revenue', fmtDollar(k.lifetime_revenue), fmtInt(k.lifetime_units)+' units · weekly file', 'bdr-teal', 'up') +
-    card('Est. Profit', fmtDollar(k.est_profit), 'Active SKUs · lifetime · weekly file', 'bdr-green', 'up') +
-    card('Cash in Inventory', fmtDollar(k.inventory_cogs), 'Landed COGS · '+fmtInt(k.inventory_units)+' units', 'bdr-orange') +
-    card('Total Customers', fmtInt(k.total_customers), fmtNum(k.top_tier_pct,1)+'% top-tier', 'bdr-purple') +
-    card('Return Rate', k.return_rate_pct!=null?fmtNum(k.return_rate_pct,2)+'%':null, 'Healthy · below norms', 'bdr-green') +
-    card('Owed Thru Dec', fmtDollar(k.owed_total_thru_dec), fmtDollar(k.owed_now)+' due now · rest planned', (k.owed_now||0)>50000?'bdr-red':'bdr-amber');
+    card('MTD Revenue' + fbLive, fmtDollar(lmtd.revenue), (lmtd.period || 'QuickBooks') + ' · LIVE', 'bdr-teal') +
+    card('MTD Net Income' + fbLive, fmtDollar(lmtd.net_income), 'QuickBooks · LIVE', (lmtd.net_income || 0) < 0 ? 'bdr-red' : 'bdr-green', (lmtd.net_income || 0) < 0 ? 'down' : 'up') +
+    card('AMZ Net Profit' + fbLive, fmtDollar(lh10.net_profit), 'Yesterday · LIVE', 'bdr-green') +
+    card('Shopify Sales' + fbLive, fmtDollar(lsh.yesterday_sales), 'Yesterday · LIVE', 'bdr-purple') +
+    card('Lifetime Revenue' + fbQG, fmtDollar(k.lifetime_revenue), fmtInt(k.lifetime_units)+' units', 'bdr-teal', 'up') +
+    card('Est. Profit' + fbSC, fmtDollar(k.est_profit), 'Active SKUs · gross profit potential', 'bdr-green', 'up') +
+    card('Cash in Inventory' + fbSC, fmtDollar(k.inventory_cogs), 'Landed COGS · '+(k.inventory_units!=null?fmtInt(k.inventory_units)+'  units':'FBA only'), 'bdr-orange') +
+    card('Total Customers', fmtInt(k.total_customers), safePct(k.top_tier_pct,1,'—')+' top-tier', 'bdr-purple') +
+    card('Return Rate' + fbSC, k.return_rate_pct!=null?fmtNum(k.return_rate_pct,2)+'%':null, 'Slicker only · near 10.2% threshold', k.return_rate_pct!=null&&k.return_rate_pct>=8?'bdr-amber':'bdr-green') +
+    card('Owed Thru Dec' + fbSC, fmtDollar(k.owed_total_thru_dec), safeDollarSub(k.owed_now,' due now · rest planned'), (k.owed_now||0)>50000?'bdr-red':'bdr-amber');
   const bhNote = '<div style="padding:8px 16px 0;font-size:10px;color:var(--muted);">Weekly file · as of '+esc(bh.report_date||'?')+(bhStale?' · <span class="pill pill-warn">STALE — not current</span>':'')+'</div>';
   const bhNoData = '<div style="padding:12px 16px;font-size:12px;color:var(--muted);">No data — Patrick\'s weekly file missing or empty.</div>';
   const totalRev = skus.reduce((s,x)=>s+(x.revenue_lifetime||0),0);
@@ -1505,15 +1583,15 @@ function renderBizHealth(bh){
   const maxR=Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0),12);
   $('bh-returns-section').innerHTML = '<div style="padding:8px 0;">'+skus.filter(s=>s.return_rate_pct!=null).map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
   const tT=brand.top_tier||{},pr=brand.promising||{},aR=brand.at_risk||{},totC=(tT.count||0)+(pr.count||0)+(aR.count||0),ttA=totC>0?(tT.count/totC*226):0,prA=totC>0?(pr.count/totC*226):0,arA=totC>0?(aR.count/totC*226):0;
-  const tierCard=(lbl,cnt,pct,desc,action,col)=>'<div class="card '+col+'" style="min-width:190px;margin-bottom:8px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div class="c-lbl">'+esc(lbl)+'</div><span style="font-size:10px;color:var(--muted);">'+fmtInt(cnt)+' · '+fmtNum(pct,1)+'%</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">'+esc(desc)+'</div><div style="font-size:10px;font-weight:700;margin-top:5px;color:var(--navy);">'+esc(action)+'</div></div>';
+  const tierCard=(lbl,cnt,pct,desc,action,col)=>'<div class="card '+col+'" style="min-width:190px;margin-bottom:8px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div class="c-lbl">'+esc(lbl)+'</div><span style="font-size:10px;color:var(--muted);">'+(cnt!=null?fmtInt(cnt):'—')+' · '+safePct(pct)+'</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">'+esc(desc)+'</div><div style="font-size:10px;font-weight:700;margin-top:5px;color:var(--navy);">'+esc(action)+'</div></div>';
   $('bh-brand-section').innerHTML = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;padding:8px 0;"><div style="text-align:center;min-width:120px;"><svg viewBox="0 0 100 100" width="110" height="110"><circle cx="50" cy="50" r="36" fill="none" stroke="#2faa6a" stroke-width="16" stroke-dasharray="'+ttA+' '+(226-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#15212E" stroke-width="16" stroke-dasharray="'+prA+' '+(226-prA)+'" stroke-dashoffset="'+(-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#e6a417" stroke-width="16" stroke-dasharray="'+arA+' '+(226-arA)+'" stroke-dashoffset="'+(-ttA-prA)+'" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" font-size="12" font-weight="800" fill="#1c2733">'+fmtInt(totC)+'</text><text x="50" y="59" text-anchor="middle" font-size="8" fill="#6b7886">CUSTOMERS</text></svg></div><div style="flex:1;min-width:220px;">'+tierCard('Top-Tier',tT.count,tT.pct,'Bought recently AND spend most — champions.','→ Cross-sell maintenance. Enroll S&S first.','bdr-green')+tierCard('Promising',pr.count,pr.pct,'Recent buyers, lower frequency — grow pool.','→ Win the 2nd purchase. Bundle Dematter + Rake.','bdr-grey')+tierCard('At-Risk',aR.count,aR.pct,'Haven\'t bought in a while — cooling off.'+(aR.wow_change_pct?' +'+aR.wow_change_pct+'% WoW ⚠️':''),'→ Win-back coupon. Replenishment reminder.',(aR.wow_change_pct||0)>100?'bdr-red':'bdr-amber')+'</div></div>'+
     '<div class="tbl-wrap" style="margin-top:10px;"><div class="tbl-title">Key metrics vs targets</div><table><thead><tr><th>Metric</th><th class="r">Current</th><th class="r">Target</th><th class="r">Status</th></tr></thead><tbody>'+
-    '<tr><td>Repeat purchase rate</td><td class="r"><b>'+fmtNum(brand.repeat_purchase_rate_pct,1)+'%</b></td><td class="r">10–15%</td><td class="r"><span class="pill pill-crit">Low</span></td></tr>'+
-    '<tr><td>Subscribe &amp; Save %</td><td class="r"><b>'+fmtNum(brand.sns_total_penetration_pct,1)+'%</b></td><td class="r">5–10%</td><td class="r"><span class="pill pill-warn">Underdeveloped</span></td></tr>'+
-    '<tr><td>Top-tier customer share</td><td class="r"><b>'+fmtNum(tT.pct,1)+'%</b></td><td class="r">12–18%</td><td class="r"><span class="pill pill-ok">Ahead of pace ✓</span></td></tr>'+
-    '<tr><td>At-risk customer share</td><td class="r"><b>'+fmtNum(aR.pct,1)+'%</b></td><td class="r">&lt;5%</td><td class="r"><span class="pill '+(aR.pct<5?'pill-ok':'pill-crit')+'">'+(aR.pct<5?'Healthy':'Over target')+'</span></td></tr>'+
-    '<tr><td>Brand search share</td><td class="r"><b>'+fmtNum(brand.brand_search_share_pct,1)+'%</b></td><td class="r">8–12%</td><td class="r"><span class="pill pill-warn">Under target</span></td></tr>'+
-    '<tr><td>Cart abandoner recovery</td><td class="r"><b>~0%</b></td><td class="r">5%+ achievable</td><td class="r"><span class="pill pill-crit">'+fmtInt(brand.cart_abandoners)+' carts</span></td></tr>'+
+    '<tr><td>Repeat purchase rate</td><td class="r"><b>'+safePct(brand.repeat_purchase_rate_pct)+'</b></td><td class="r">10–15%</td><td class="r">'+(brand.repeat_purchase_rate_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-crit">Low</span>')+'</td></tr>'+
+    '<tr><td>Subscribe &amp; Save %</td><td class="r"><b>'+safePct(brand.sns_total_penetration_pct)+'</b></td><td class="r">5–10%</td><td class="r">'+(brand.sns_total_penetration_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-warn">Underdeveloped</span>')+'</td></tr>'+
+    '<tr><td>Top-tier customer share</td><td class="r"><b>'+safePct(tT.pct)+'</b></td><td class="r">12–18%</td><td class="r">'+(tT.pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-ok">Ahead of pace ✓</span>')+'</td></tr>'+
+    '<tr><td>At-risk customer share</td><td class="r"><b>'+safePct(aR.pct)+'</b></td><td class="r">&lt;5%</td><td class="r">'+(aR.pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill '+(aR.pct<5?'pill-ok':'pill-crit')+'">'+(aR.pct<5?'Healthy':'Over target')+'</span>')+'</td></tr>'+
+    '<tr><td>Brand search share</td><td class="r"><b>'+safePct(brand.brand_search_share_pct)+'</b></td><td class="r">8–12%</td><td class="r">'+(brand.brand_search_share_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-warn">Under target</span>')+'</td></tr>'+
+    '<tr><td>Cart abandoner recovery</td><td class="r"><b>~0%</b></td><td class="r">5%+ achievable</td><td class="r"><span class="pill pill-crit">'+(brand.cart_abandoners!=null?fmtInt(brand.cart_abandoners)+' carts':'No data')+'</span></td></tr>'+
     '</tbody></table></div>'+
     (funnel.awareness?'<div class="tbl-wrap" style="margin-top:10px;"><div class="tbl-title">Customer journey funnel — week of '+esc(brand.week_of||'')+'</div><div style="display:flex;gap:8px;padding:10px;flex-wrap:wrap;">'+[['Awareness',funnel.awareness],['Consideration',funnel.consideration],['Intent (carted)',funnel.intent_carted],['Purchase (new)',funnel.purchase_new]].map(([lbl,f])=>f?'<div class="card" style="flex:1;min-width:110px;text-align:center;"><div class="c-lbl">'+esc(lbl)+'</div><div class="c-val">'+fmtInt(f.count)+'</div><div class="c-sub '+((f.wow_pct||0)<0?'down':'up')+'">'+((f.wow_pct||0)>0?'▲':'▼')+' '+Math.abs(f.wow_pct||0)+'% WoW</div></div>':'').join('')+'</div></div>':'');
 }
@@ -1527,7 +1605,7 @@ async function loadData(){
       }catch(e){}
     }
     const res = await fetch(DATA_URL + '?_=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText + ' loading ' + DATA_URL + ' — file may be missing on main branch or routine pushed to a branch instead of main');
     const data = await safeJson(res);
     // Fetch DAAS *before* render() so window.__DAAS is set when the
     // overview table builds its DAAS row (fixes "routine not yet live" bug)
@@ -1550,7 +1628,7 @@ async function loadData(){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
     $('error-state').style.display   = 'block';
-    $('error-msg').textContent = err.message;
+    $('error-msg').textContent = err.message || String(err);
   }
   loadReports(); // channel reports feed — independent of main data, never blocks
   loadAgentFlags();
@@ -1559,13 +1637,12 @@ async function loadData(){
 function startCountdown(){
   clearInterval(countdownId);
   secondsLeft = REFRESH_MS/1000;
-  const tick = () => {
-    const m = Math.floor(secondsLeft/60), s = String(secondsLeft%60).padStart(2,'0');
-    $('meta-countdown').textContent = `${m}:${s}`;
-    if (secondsLeft-- <= 0) loadData();
-  };
-  tick();
-  countdownId = setInterval(tick, 1000);
+  countdownId = setInterval(() => {
+    if (secondsLeft-- <= 0) {
+      loadData();
+      secondsLeft = REFRESH_MS/1000;
+    }
+  }, 1000);
 }
 loadData();
 
