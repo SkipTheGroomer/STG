@@ -1,0 +1,582 @@
+STG JARVIS Dashboard Revision and Missing-Data Requirements
+Initial developer handoff for Joshua | Prepared July 24, 2026
+Dashboard reviewed: Skip The Groomer JARVIS Live Morning Dashboard
+Purpose: Turn the dashboard into a reliable daily operating system that tells Will what happened, where it happened, whether the data is current, and what needs action. This document combines the requested layout changes, missing-data fixes, attribution requirements, advertising metrics, subscription reporting, inventory ordering, and acceptance criteria.
+P0 issue: The public dashboard currently reports that it cannot load data/connectors_data.json. Data loading and schema validation must be fixed before visual refinements are considered complete. A page may not display GREEN while critical cards show “No data,” “null%,” or missing sections.
+Priority Summary
+Priority
+Required Outcome
+Reason
+P0
+Fix connector loading, missing-data handling, freshness status, and false GREEN status.
+The dashboard cannot be trusted until the data state is accurate.
+P1
+Complete Morning Overview, Shopify, Amazon, Reviews, Inventory, and Business Health.
+These are the daily and weekly decision pages Will uses.
+P1
+Add clear Google Ads and Meta Ads operating dashboards.
+Spend without channel, campaign, creative, product, and profit context is not actionable.
+P2
+Improve automation dependencies, browser login documentation, and manual-data ownership.
+The system should not depend on one employee’s open browser.
+P2
+Add QA tests and acceptance checks for every scheduled update.
+Prevents silent breakage and old data appearing current.
+
+1. Global Dashboard Standards
+1.1 Data freshness and status labels
+Every page, section, card, table, and graph must show the actual data date and the last successful refresh date/time. A single page-level date is not enough when sections update on different schedules.
+Current: The source updated within its approved freshness window.
+Delayed: The source is inside a known platform processing lag, such as Amazon Seller Central’s normal 24–48-hour delay.
+Stale: The source missed its approved update window. Display the label prominently and show how old the data is.
+Missing: The required field or file is absent. Do not replace it with zero, a dash, or a healthy status.
+Manual: The value depends on a person updating a file. Show the owner and last confirmed date.
+Authentication required: A login, MFA challenge, expired session, or permission problem blocked the pull.
+Recommended wording: Use “STALE” rather than “Stagnate.” It is shorter, standard dashboard language, and clearly describes old data.
+1.2 Header refresh display
+Delete the “Auto-refresh in” countdown.
+At the top of the dashboard, display “Last automatic refresh: July 24, 2026, 7:04 AM PT.”
+Also display “Last successful full run” and “Last attempted run” when they differ.
+A failed run must show a red error banner with the failed source and error time.
+The manual Refresh button can remain, but it must not make old source data appear current.
+1.3 Missing-data behavior and health status
+Do not show GREEN when any critical KPI is missing. The Business Health screenshot shows GREEN while MTD Revenue, MTD Net Income, Amazon Net Profit, Shopify Sales, and Total Customers have no data.
+Eliminate null, undefined, NaN, and placeholder output. The “null% top-tier” text must never appear.
+When a value cannot be calculated, show “No data” plus the reason, source, owner, and last successful date.
+Calculate the page health status from the worst critical-source status, not from whichever fields happened to load.
+Add a completeness indicator such as “8 of 11 critical sources current.”
+1.4 Product master and new products
+Remove hard-coded references to “all 6 active SKUs.” All product-level sections must read from one product master so new products automatically appear everywhere that tracks individual products.
+Product to Add
+Channels/Identifiers Required
+Dashboard Areas
+Chamomile shampoo
+Shopify product/variant ID, SKU, UPC, Amazon ASIN when assigned
+Sales, ads, reviews, inventory, returns, profit, S&S
+Coconut Lime shampoo
+Shopify product/variant ID, SKU, UPC, Amazon ASIN when assigned
+Sales, ads, reviews, inventory, returns, profit, S&S
+Skin & Coat Omega chews
+Shopify product/variant ID, SKU, UPC, Amazon ASIN when assigned
+All product-level tracking
+Calm & Relax chews
+Shopify product/variant ID, SKU, UPC, Amazon ASIN when assigned
+All product-level tracking
+Allergy & Itch Relief chews
+Shopify product/variant ID, SKU, UPC, Amazon ASIN when assigned
+All product-level tracking
+
+The product master should include product name, canonical SKU, channel-specific SKU, ASIN, Shopify product ID, Shopify variant ID, UPC, category, launch date, active/inactive status, COGS, selling price, breakeven ROAS, TACOS target, supplier, and subscription eligibility.
+1.5 Source precedence and no double counting
+Sales channel and marketing source are different. Amazon and TikTok Shop are sales channels. Meta and Google are marketing sources that normally drive Shopify Online Store orders.
+For the requested Meta/TikTok Shop/Amazon graph, label Meta as “Shopify sales attributed to Meta.” Do not add all Shopify sales plus Meta-attributed Shopify sales, because that would double count the same orders.
+The combined company total must come from deduplicated orders by order ID and sales channel.
+Show platform-reported attribution and Shopify attribution in separate columns; never blend them into one unlabeled number.
+2. Morning Overview
+2.1 Move a DAAS summary into Morning Overview
+Keep the full DAAS page for detail, but place a condensed DAAS section in Morning Overview so Will can see channel performance without opening another page.
+Add a grouped bar graph with four labeled groups: Amazon, TikTok Shop, Shopify sales attributed to Meta, and Combined Company Total.
+Within each group show Revenue, Ad Spend, and True Net. Label the reporting period directly above the graph.
+Display TACOS for Amazon and TikTok where ad spend can be tied to channel revenue. Display ROAS and customer acquisition cost for Meta-attributed Shopify sales.
+The Combined group must use deduplicated sales and total ad spend. It must not add Meta-attributed revenue on top of Shopify revenue.
+Provide period selectors for Yesterday, Last 7 Days, Month to Date, and Year to Date.
+Show the data date and source under the graph: DAAS, Amazon, TikTok Shop, Shopify, Meta, or manual confirmation.
+2.2 Source Status Board
+Move the Source Status Board to the bottom of Morning Overview.
+Display it as a collapsed dropdown by default with a label such as “Data Source Health — 2 issues.”
+When expanded, show Source, Status, Data Through, Last Successful Pull, Age, Owner, and Error/Notes.
+Sort RED/MISSING/AUTH REQUIRED first, then STALE, then DELAYED, then CURRENT.
+2.3 New Reviews card at the top
+Add a top-row card titled “New Reviews — Last 30 Days.”
+Main number: total new reviews across Amazon and Shopify.
+Light-gray line at the bottom: “Average 4.6 stars · Amazon 18 · Shopify 7.”
+If either source is stale or missing, the card must say which source is incomplete.
+Clicking the card should jump to Product Reviews filtered to the last 30 days.
+2.4 Top overview cards
+The top cards should include MTD Revenue, MTD Net Income, Amazon Net Profit, Shopify Sales, Lifetime Revenue, Estimated Profit, Cash in Inventory, Total Customers, Return Rate, and Owed Through December. Add each card’s source, data date, and status. Any missing critical card must change the page status from GREEN.
+3. QuickBooks and Cash Runway
+3.1 Cash burn definition must be approved by Patrick
+The dashboard currently references a monthly budget of $484,001.80 and 39.8 weeks of runway with a GREEN status. Those figures should not be treated as final until Patrick defines the formula, accounts, exclusions, and forecast horizon.
+Item
+Required Definition
+Available cash
+Unrestricted operating cash that can actually pay obligations; exclude restricted balances and transfers between company accounts.
+Operating cash burn
+Trailing average cash operating outflows minus operating cash inflows. Patrick must define whether to use 4, 8, or 13 weeks.
+Inventory cash commitments
+Open PO deposits, balances due, freight, duties, and WSA/Amazon inbound costs must be shown separately or included in a committed-cash scenario.
+Runway formula
+Available cash divided by average weekly cash burn. If burn is zero or cash-positive, display “Cash-flow positive” rather than an infinite or invalid number.
+Forecast runway
+A 13-week cash forecast that includes known due dates is more useful than a simple trailing average for a company with large inventory payments.
+Status bands
+Patrick must approve GREEN/YELLOW/RED thresholds. The status may not be GREEN merely because a number exists.
+
+Recommended display: Current Cash, Monthly Budget, Trailing 13-Week Average Burn, Known 13-Week Commitments, Basic Runway, Committed Runway, Data Through, and Patrick Confirmed date.
+4. Klaviyo Dashboard
+The current public page does not display Klaviyo values. Joshua needs to confirm whether the connector is pulling data or failing before the page is considered complete.
+At the top show Connector Status, Last Successful Pull, Data Through, Number of Flows Returned, and any API error.
+Show Email Revenue, SMS Revenue, Total Klaviyo-Attributed Revenue, Revenue per Recipient, Sends, Deliveries, Open Rate, Click Rate, Conversion Rate, Unsubscribe Rate, Bounce Rate, and Spam Complaint Rate.
+Separate campaign performance from automated flow performance.
+List each flow with status, sends, revenue, revenue per recipient, open rate, click rate, conversion rate, and last edited date.
+Keep the current flags for low open/click rates, but add a minimum-send threshold so very small flows do not create misleading alerts.
+Show the Shopify revenue reconciliation difference between Klaviyo-attributed sales and Shopify-attributed email sales.
+5. Shopify Dashboard
+5.1 Immediate layout change
+Remove the text “vs 7-day average” from the Yesterday’s Sales card.
+Keep the comparison only if it is shown in a separate trend area with the actual prior-period number and percentage difference.
+5.2 Required Shopify performance report
+Create a Shopify report with Yesterday, Last 7 Days, Last 30 Days, Month to Date, and custom date ranges. The primary attribution model should be Shopify last non-direct click, with a selector for first click and last click.
+Metric/Dimension
+Required Display
+Orders
+Total orders and trend versus the comparable prior period
+Sales
+Gross sales, discounts, returns, net sales, shipping, tax, and total sales
+New customers
+Count, sales, AOV, and customer acquisition cost
+Repeat customers
+Count, sales, repeat-customer rate, and AOV
+Average order value
+Overall, new customer, repeat customer, and by source
+Source
+Order source and marketing source with paid/organic distinction
+Campaign
+UTM campaign, campaign ID/name, spend, orders, sales, CAC, and ROAS
+Product purchased
+Product/SKU, units, sales, new customers, source, and campaign
+Customer acquisition cost
+Ad spend divided by new customers attributed using the selected model
+Return on ad spend
+Attributed revenue divided by ad spend, with platform and Shopify values shown separately
+
+5.3 Source graph
+Place a source graph below the Shopify KPI cards.
+Default view: net sales by source. Add a selector for Orders, New Customers, AOV, CAC, and ROAS.
+Use readable bars with the full source name under each bar and the value clearly labeled. Do not use unexplained numbers or a crowded pie chart.
+Separate Facebook paid, Instagram paid, Google paid, Google organic, TikTok paid, email, influencer, organic social, direct, and unknown.
+Clicking a source must filter the campaign and product tables below it.
+5.4 UTM and order-source standard
+Source
+Recommended UTM Source
+Shopify Order Tag
+Facebook ad
+facebook
+SOURCE – Facebook Ad
+Instagram ad
+instagram
+SOURCE – Instagram Ad
+Google Ads
+google
+SOURCE – Google Paid
+Google organic search
+Automatically detected when available
+SOURCE – Google Organic
+TikTok ad
+tiktok
+SOURCE – TikTok Ad
+Email
+email or platform name
+SOURCE – Email
+Influencer
+Influencer name or code
+SOURCE – Influencer – Name
+Organic social
+facebook, instagram, or tiktok
+SOURCE – Organic Social
+Typed/bookmarked URL
+No referrer
+SOURCE – Direct
+Unable to determine
+Missing attribution
+SOURCE – Unknown
+
+Use available Shopify order UTM, referrer, customer journey, and sales-channel fields. If a field is not available to Shopify Flow, use a lightweight attribution/tagging app or custom function.
+Require utm_source, utm_medium, utm_campaign, and utm_content on every paid ad, email, influencer link, QR code, and campaign landing-page link.
+Store both first-touch and last-non-direct-touch where available. Do not overwrite original acquisition data when the customer returns later.
+Do not guess. Unattributable orders remain Unknown.
+Show Unknown attribution as a percentage and flag it when it exceeds an approved threshold.
+5.5 Shopify subscriptions dashboard
+Subscribe & Save is not only an Amazon metric. Add a separate Shopify Subscriptions section under the Shopify Dashboard. The Business Health page can show the combined company summary.
+Subscription revenue for the selected period.
+Active subscription contracts, including paused/skipped status clearly identified.
+New subscriptions, canceled subscriptions, paused subscriptions, skipped renewals, and reactivated subscriptions.
+Subscription penetration: subscription orders or revenue divided by eligible Shopify orders or revenue. Define the denominator on the page.
+Monthly recurring revenue or expected next-30-day recurring revenue.
+Churn rate, cancellation rate, failed payments, recovered payments, and upcoming renewals.
+Product/SKU breakdown for active subscriptions, revenue, new, canceled, churn, and average order value.
+Subscription versus one-time customer repeat rate and lifetime value when enough history exists.
+6. Amazon Dashboard
+6.1 Amazon Net Profit
+Fix the missing Last Week and Last Month reports.
+Show Yesterday, Last Week, Last Month, Month to Date, and Year to Date with the actual period dates.
+For each period show Revenue, Units, COGS, Amazon Fees, Ad Spend, Refunds, Other Costs, Net Profit, Net Margin, and data source.
+If the monthly report is not expected until the first few days of the next month, show “Pending scheduled monthly close” rather than “No data.”
+6.2 Keyword rankings and category rank
+Keep keyword organic and sponsored rank tracking by product and keyword.
+Add Amazon category rank by product, including the category and subcategory name. Example: Emergency Dematter in Dog Conditioners; brushes in the applicable Dog Brushes/Combs category.
+Display Current Rank, Previous Rank, 7-Day Change, 30-Day Change, Best Rank, Category, Data Date, and Status.
+Use the correct product-specific category. Do not compare a conditioner rank to a brush or supplement category.
+Replace hard-coded “6 active SKUs” language with the product master.
+6.3 Remove dependence on Marcelo’s browser
+The text stating that Amazon Campaign Manager is scraped from Marcelo’s browser must be replaced. Browser automation should use a dedicated STG JARVIS Chrome profile on Will’s computer until a stable API, scheduled report, or data connector replaces it.
+Preferred source order: official API or connector, scheduled platform export, emailed report ingestion, dedicated browser automation, then manual entry.
+If browser automation is required, show the machine/profile used, last successful authentication, last pull, and the specific page that failed.
+Do not store passwords or MFA codes in the dashboard repository. Use the authenticated browser session and display AUTHENTICATION REQUIRED when the session expires.
+Create a written login checklist for Will’s browser and a separate manual-data checklist.
+6.4 Accounts that should be logged into on Will’s dedicated browser profile
+Platform
+Access Needed
+Amazon Seller Central
+Business Reports, Brand Analytics, Inventory, Returns, Subscribe & Save, Account Health
+Amazon Ads Console
+Campaign Manager, search-term reports, campaign/ad group/ad performance
+Helium 10
+Profits, Keyword Tracker, Listing Analyzer, Market Tracker, Inventory tools
+Shopify Admin
+Orders, Analytics, Marketing attribution, products, subscription app
+Klaviyo
+Campaign, flow, email, SMS, and revenue reporting
+QuickBooks Online
+Cash, P&L, balance sheet, budget, and transaction reporting
+Meta Business Suite / Ads Manager
+Campaign, ad set, ad, creative, pixel/CAPI and account status
+Google Ads and GA4
+Campaign, conversion, attribution, product and website behavior data
+TikTok Shop / Seller Center / Ads Manager
+Orders, sales, products, campaigns, ad spend, and attribution
+Google Drive / Sheets
+Weekly Review sheet, Patrick files, inventory and supply-chain files
+Supermetrics
+Connector health, scheduled exports, and failed-query status
+
+6.5 Manual or owner-confirmed data checklist
+Data
+Owner/Frequency
+Required Handling
+Cash in inventory, owed amounts, production commitments, business-health assumptions
+Patrick, weekly
+Update business_health.json; show confirmed date and owner
+Open POs, supplier milestones, vessel/air details, WSA transfers
+Patrick/Marcelo, event-driven plus weekly confirmation
+Update supply_chain.json; flag when overdue or unconfirmed
+Amazon Subscribe & Save report if not available through connector
+Assigned owner, weekly
+Upload/export and stamp period date
+Helium 10 Listing Analyzer and Market Tracker
+Automated email/export preferred; otherwise weekly manual
+Show report period and expected next date
+Amazon category rank if no stable API
+Automated scrape or daily manual fallback
+Store category name and listing URL/date
+Weekly Review Google Sheet
+Angelo, weekly
+Dashboard lists individual last-30-day reviews and stale status
+Industry return benchmarks and KPI targets
+Patrick/Will approval, quarterly
+Store source, category, effective date, and target type
+
+6.6 Ad Performance — Spend & ROAS
+Fix missing account and per-SKU ad spend, attributed revenue, purchases, ROAS, TACOS, and status.
+Use product-specific breakeven bands and TACOS targets from the product master. Do not use one universal threshold for every product.
+Retain the 3-day learning window and the $75 cumulative-spend kill rule where approved.
+Show the source and attribution window used for every revenue number.
+Add a reconciliation line between Amazon Ads attributed sales and Seller Central ordered sales.
+6.7 Amazon Subscribe & Save
+Amazon Subscribe & Save belongs under the Amazon Dashboard. The combined company subscription view belongs in Morning Overview and Business Health. This document provides the required fields even though the earlier email specification was not available in the dashboard itself.
+Active subscribers or active S&S subscriptions by ASIN.
+S&S orders, units, and revenue by ASIN and total.
+S&S penetration by ASIN and total, with the denominator defined.
+New subscriptions, cancellations, churn, and net subscriber change.
+Discount tier and enrollment/eligibility status.
+Projected next-30-day S&S units and revenue if Amazon provides the field.
+Comparison to one-time purchase revenue, repeat rate, and returns.
+Data period, report source, and last successful pull.
+6.8 Seller Central — Traffic & Conversion
+Fix missing Sessions, Page Views, Units Ordered, Unit Session Percentage, Ordered Product Sales, Buy Box Percentage, and data date by ASIN.
+Label the expected Amazon processing lag. The section should say “Data through July 22” rather than pretending the values are yesterday’s.
+Add 7-day and 30-day trends and flag meaningful deterioration, not only a fixed conversion threshold.
+Show product-level status and an account total.
+6.9 Listing Analyzer
+Fix missing weekly Listing Analyzer data.
+List every active product with score, previous score, change, flags, report date, and expected next report date.
+When no report is expected that day, show “Next weekly report due [date]” rather than a blank section.
+Link each row to the stored report or source email/export when available.
+6.10 Market Tracker
+Fix missing Market Tracker data.
+Show STG and competitor review count, rating, BSR/category rank when available, price, review velocity, and 7-day/30-day change.
+Flag a competitor only when a defined change threshold is met and state the exact reason.
+Show the tracked competitor list and last confirmed date.
+7. Product Reviews Dashboard
+The dashboard should show the actual reviews being referenced, not only a summary from the Google Sheet. It must combine the Amazon/Google Sheet source and Shopify reviews for the most recent 30 days.
+7.1 Top summary
+Total new reviews in the last 30 days.
+Average rating in light gray beneath the total.
+Amazon review count and average.
+Shopify review count and average.
+Number of 1-star and 2-star reviews, plus the top complaint theme.
+7.2 Amazon review table
+Field
+Requirement
+Product / ASIN
+Product name and ASIN from the review sheet
+Review details
+Date, star rating, title, short excerpt, and verified-purchase status if available
+Classification
+Positive/neutral/negative plus complaint or praise theme
+Source
+Google Sheet row or Amazon review link when available
+Status
+New, acknowledged, needs response, product issue, listing issue, or no action
+
+7.3 Shopify review table
+Field
+Requirement
+Product / SKU
+Product name, Shopify product, and canonical SKU
+Review details
+Date, star rating, title, short excerpt, and reviewer first name/initial when allowed
+Source app
+The Shopify review app or imported source
+Classification
+Positive/neutral/negative plus complaint or praise theme
+Status
+New, acknowledged, needs response, product issue, site issue, or no action
+
+Default sort: newest first. Add filters for channel, product, ASIN/SKU, star rating, date, complaint theme, and status. The sheet’s 8-day stale rule can remain, but the dashboard must show the exact last sheet update date.
+8. Google Ads Dashboard — What to Track
+The existing Google section only states that no campaigns are currently running and uses a universal ROAS-below-2.0 flag. Build the section now so it is ready when campaigns begin. Use product-specific profit thresholds rather than one universal ROAS target.
+8.1 Headline cards
+Spend.
+Google Ads conversion value and Google-reported ROAS.
+Shopify-attributed revenue and Shopify-attributed ROAS.
+Purchases/orders and cost per purchase.
+New customers and new-customer CAC.
+Average order value and website conversion rate.
+Impressions, clicks, CTR, and average CPC.
+Search impression share, Search Lost IS due to budget, and Search Lost IS due to rank for applicable campaigns.
+8.2 Campaign table
+Show Campaign, Type, Status, Daily Budget, Spend, Impressions, Clicks, CTR, CPC, Purchases, Conversion Rate, Revenue/Conversion Value, CPA, ROAS, New Customers, New-Customer CAC, Impression Share, Lost IS Budget, Lost IS Rank, and last data date.
+8.3 Search term and keyword section
+Search term/keyword, match type, campaign, ad group, clicks, spend, purchases, revenue, CPA, and ROAS.
+Flag high-spend zero-purchase search terms for negative-keyword review.
+Show branded versus non-branded performance.
+Use Quality Score only as a diagnostic with expected CTR, ad relevance, and landing-page experience. Do not treat Quality Score as the primary KPI.
+8.4 Product and landing-page section
+Performance by product/SKU for Shopping or Performance Max.
+Landing page, sessions, bounce/engagement indicators, add-to-cart, checkout, purchase, conversion rate, revenue, CPA, and ROAS.
+Flag broken URLs, disapproved products/ads, tracking gaps, and products spending outside their approved breakeven band.
+8.5 Google alert rules
+No data is acceptable only when no campaigns are active; display “No active campaigns” rather than dashes.
+Flag campaigns limited by budget when they are profitable and losing meaningful impression share.
+Flag high Search Lost IS due to rank for important profitable keywords.
+Flag conversion tracking failure, sudden spend anomalies, disapprovals, and Shopify-versus-Google attribution gaps.
+Use the 3-day learning rule and product-specific profitability bands before pause recommendations.
+9. Meta Ads Dashboard — What to Track
+Meta should be evaluated at account, campaign, ad set, ad, creative, product, placement, and attribution level. The top number should not be only Meta-reported ROAS; show Shopify-attributed and blended results beside it.
+9.1 Headline cards
+Spend.
+Meta-attributed purchase value and Meta-reported ROAS.
+Shopify-attributed Meta revenue and Shopify-attributed ROAS.
+Purchases and cost per purchase.
+New customers and new-customer CAC.
+Average order value and Shopify website conversion rate.
+Reach, impressions, frequency, CPM, link CTR, and CPC.
+Landing-page views, add-to-cart, checkout initiated, purchases, and funnel conversion rates.
+9.2 Campaign, ad set, and ad tables
+Each level should show Status, Learning Phase, Budget, Spend, Reach, Impressions, Frequency, CPM, Link Clicks, Link CTR, CPC, Landing-Page Views, Add to Cart, Checkout Initiated, Purchases, Purchase Value, CPA, ROAS, Shopify Orders, Shopify Revenue, Product, Audience, Placement, Start Date, and Last Significant Edit.
+9.3 Creative performance
+Creative name/ID, thumbnail, format, product, hook/concept, creator, and launch date.
+Spend, purchases, CPA, ROAS, link CTR, CPM, and landing-page-view rate.
+For video: 3-second plays, ThruPlays, hook rate, hold rate, and average play time when available.
+Show Facebook versus Instagram placement performance so Will can see whether the order source is Facebook or Instagram.
+Flag creative fatigue when frequency rises while CTR and conversion rate decline; do not use frequency alone as an automatic kill rule.
+9.4 Tracking and data-quality section
+Pixel and Conversions API status.
+Purchase event volume and event deduplication status.
+Meta purchase count versus Shopify Meta-attributed order count.
+Attribution window used by Meta and attribution model used by Shopify.
+Any domain, event, catalog, payment, account, or ad rejection issue.
+9.5 Meta alert rules
+Retain the approved $75 cumulative-spend kill rule and 3-day learning window.
+Flag duplicate campaigns, unrecognized products/ASINs, Slicker Brush spend, and spend above two times the trailing 7-day average.
+Add flags for tracking failures, rejected ads, campaigns not delivering, profitable campaigns constrained by budget, and high-spend zero-purchase ads.
+Use product-specific ROAS floors and contribution margin, not one account-wide threshold.
+Every action recommendation must identify the campaign/ad, exact trigger, amount spent, evidence, and whether approval is required.
+10. Inventory and Supply Chain Dashboard
+10.1 Required section order
+Inventory Position — All Locations.
+Inventory Risk by SKU.
+SKU Detail.
+Lead-Time Master.
+Open Purchase Orders.
+Forecasted Retail Value.
+Supplier List.
+30/60/90-Day Cash Summary.
+Alert Logic and Core Formulas.
+Move “Inventory Position — All Locations” above “Inventory Risk by SKU.” Place “SKU Detail” immediately after Inventory Risk so Will can move from total position to risk to the product-level explanation.
+10.2 Inventory Position — All Locations
+Show each SKU across Amazon Sellable, Amazon Reserved, Amazon Inbound, WSA Available, WSA Reserved, Shopify/3PL, TikTok/Walmart-specific stock if separately held, Factory Finished, In Production, In Transit Air, In Transit Sea, Total Owned, and Total Available. Include the data date and source for every location.
+10.3 Inventory Risk by SKU
+Show daily unit velocity for 7, 14, 30, and 90 days.
+Show days of cover at Amazon, total available days of cover, next sellable inbound date, expected stockout date, and order-by date.
+Include launch products even when historical velocity is unavailable; label the forecast assumption and owner.
+Base risk on the complete lead time and confirmed inbound, not only current Amazon stock.
+Flag stale inventory feeds separately from actual inventory shortage.
+11. Business Health — Strategic Overview
+The current screenshot shows critical missing data while the page is marked GREEN. Fix the data and the health logic before treating this page as a reliable strategic summary.
+11.1 Top-row fixes
+Populate MTD Revenue and MTD Net Income from QuickBooks.
+Populate Amazon Net Profit from the latest approved Amazon/Helium 10 source.
+Populate Shopify Sales and Total Customers.
+Fix “null% top-tier.” If the top-tier calculation cannot be made, hide the subtext and show the reason.
+Show the data date and source on each card.
+Change the page from GREEN whenever a critical card is Missing or Stale.
+11.2 Subscribe & Save
+Keep Amazon S&S on the Amazon Dashboard and Shopify subscriptions on the Shopify Dashboard. Business Health should show a combined summary with a channel split.
+Combined Metric
+Requirement
+Active subscriptions
+Amazon active S&S plus Shopify active contracts; label this as contracts/subscriptions, not necessarily unique people
+Recurring revenue
+Amazon S&S revenue plus Shopify subscription revenue for the same period
+Penetration
+Display Amazon, Shopify, and combined penetration with each denominator defined
+New and canceled
+Channel-level and combined totals
+Net change
+New minus canceled for the period
+Product mix
+Active subscriptions and recurring revenue by SKU/product
+
+11.3 Returns versus industry by SKU/ASIN
+Show Product, SKU, ASIN, Channel, Units Ordered, Units Returned, Return Rate, Benchmark Rate, Variance, Top Return Reason, Period, and Status.
+Use category-specific benchmarks. Brushes, conditioner/dematter products, shampoos, and supplements should not share one benchmark.
+Store the benchmark source and effective date. If no defensible industry benchmark exists, label the comparison “Internal Target” rather than “Industry.”
+Show Amazon and Shopify separately plus a combined company return rate.
+Clicking a SKU should show the return reasons and related negative reviews.
+11.4 Key Metrics versus Targets
+Populate the missing Key Metrics versus Targets area. At minimum include Current, Target, Gap, Status, Period, Data Date, and Owner for the following metrics: Revenue Growth, Gross Margin, Net Margin, Amazon TACOS, Amazon ROAS, Meta ROAS, Google ROAS, Shopify Conversion Rate, AOV, New-Customer CAC, Repeat-Customer Rate, S&S Penetration, Return Rate, Inventory Weeks of Cover, and Cash Runway.
+12. Data Freshness Matrix
+Source/Section
+Expected Update
+Stale When
+Special Handling
+Shopify orders and sales
+Daily; preferably hourly
+>24 hours
+Show order data through time
+Meta Ads
+Daily
+>24 hours
+Show attribution window and pull time
+Google Ads
+Daily when active
+>24 hours
+Show “No active campaigns” when inactive
+TikTok Shop/Ads
+Daily
+>24 hours
+Separate sales channel from ad source
+QuickBooks
+Daily
+>24 hours
+Cash forecast may be weekly/manual
+Klaviyo
+Daily
+>24 hours
+Show connector error and flow count
+Amazon profit
+Daily
+>48 hours
+Weekly/monthly reports have separate due dates
+Amazon Seller Central traffic
+Daily with known lag
+>72 hours
+Label data-through date; normal 24–48h lag
+Amazon keyword/campaign data
+Daily
+>48 hours
+AUTH REQUIRED if browser/API fails
+Listing Analyzer
+Weekly
+>8 days
+Show next expected report date
+Market Tracker
+Weekly
+>8 days
+Show next expected report date
+Product Review sheet
+Weekly
+8+ days
+Owner: Angelo
+DAAS report
+Daily after 10:30 AM PT
+Missing after next business-day deadline
+Show Patrick Confirmed stamp
+Inventory FBA position
+Daily
+>48 hours
+Separate stale feed from low inventory
+Supply-chain plan
+Event-driven plus weekly confirmation
+>8 days without confirmation
+Owner and last verified date
+Business Health
+Weekly
+>8 days
+Top row live sources retain their own dates
+
+13. Technical Reliability Requirements
+Validate every JSON file against a schema before publishing. Reject malformed files rather than breaking the entire dashboard.
+Write files atomically so the page never reads a partially written JSON file.
+Add a post-run smoke test that loads the dashboard data and verifies required fields, dates, numeric types, and product coverage.
+Record each source pull in a run log with start time, end time, records returned, status, and error message.
+Keep the last known good file, but visibly label it STALE if the current run fails.
+Never convert missing values to zero. Zero means the source confirmed zero; Missing means the source did not provide the value.
+Use one product master and one channel/source mapping table rather than hard-coded product names in multiple scripts.
+Provide an owner-facing error message. “Couldn’t load dashboard data” is not enough; identify the missing file, invalid field, authentication issue, or failed job.
+14. Acceptance Criteria
+The dashboard loads without a connectors_data.json error and every menu page renders.
+No page displays null, undefined, NaN, unexplained dashes, or false zero values.
+No page can be GREEN when a critical KPI is Missing, Stale, or Authentication Required.
+Every displayed metric has a data-through date, last-refresh time, source, and status.
+The five new products appear in every applicable product-level report without editing separate page code.
+Morning Overview contains the DAAS channel graph, Reviews card, and bottom dropdown Source Status Board.
+Shopify provides order/source/campaign/product reporting, new versus repeat customers, CAC, ROAS, and a source graph.
+Amazon Last Week, Last Month, Ad Performance, S&S, Seller Central, Listing Analyzer, and Market Tracker contain data or a clear scheduled/pipeline status.
+Product Reviews lists individual Amazon and Shopify reviews for the last 30 days.
+Inventory Position is above Inventory Risk, followed by SKU Detail.
+Amazon and Shopify subscription dashboards are separate; Business Health provides the combined summary.
+Returns versus benchmark and Key Metrics versus Targets are populated by SKU/ASIN where applicable.
+Google and Meta dashboards include the metrics and drilldowns defined in this report.
+Will can understand why a value is missing without opening code, GitHub, or Slack.
+15. Recommended Delivery Sequence
+Phase
+Work
+1 — Data integrity
+Fix connectors_data.json, schema validation, run logging, stale/missing states, timestamps, and false GREEN logic.
+2 — Core operating pages
+Morning Overview, QuickBooks, Shopify, Amazon missing sections, Product Reviews, and Inventory order.
+3 — Business Health
+Populate missing cards, S&S split/combined view, returns by SKU/ASIN, and metrics versus targets.
+4 — Advertising dashboards
+Complete Meta and Google campaign, creative, attribution, product, and alert reporting.
+5 — Automation hardening
+Move away from employee-specific browser dependence, document Will browser logins, and automate scheduled reports.
+6 — QA and signoff
+Run source-by-source tests, compare totals to platform reports, and obtain Patrick/Will approval on formulas and targets.
+
+Appendix A — Current Business Health Screenshot
+The screenshot below is included as the reference for the missing MTD Revenue, MTD Net Income, Amazon Net Profit, Shopify Sales, Total Customers, “null% top-tier,” and false GREEN issues described above.
+
+Appendix B — Reference Sources
+STG JARVIS dashboard reviewed July 24, 2026: https://josh11100.github.io/STG/
+Shopify marketing reports and attribution models: https://help.shopify.com/manual/reports-and-analytics/shopify-reports/report-types/marketing-reports
+Shopify analytics fields, including UTM and new/returning customer dimensions: https://help.shopify.com/en/manual/reports-and-analytics/shopify-reports/report-types/analytics-fields
+Shopify campaign and UTM definitions: https://help.shopify.com/en/manual/promoting-marketing/create-marketing/campaigns/understanding-campaigns
+Shopify Subscriptions analytics: https://help.shopify.com/en/manual/products/purchase-options/subscriptions/shopify-subscriptions/analytics
+Google Ads impression share and lost impression share metrics: https://support.google.com/google-ads/answer/7103314
+Google Ads Quality Score guidance: https://support.google.com/google-ads/answer/6167118
+Meta Conversions API overview: https://www.facebook.com/business/help/AboutConversionsAPI
+Meta performance marketing and learning-phase guidance: https://www.facebook.com/business/ads/performance-marketing
