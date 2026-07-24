@@ -21,7 +21,7 @@
       "next_inbound": "1,350 air ~<b>Jul 29</b> · 300 air ~<b>Jul 31</b><br>3,350 ocean ~mid-Sep (Jul 20 vessel)<br>5,000 PO2 (Aug 17 vessel)",
       "action": "<b>Covered by air</b> — confirm vessel/booking + corrected-PI deposit. No new air needed.",
       "status": "BELOW REC", "pill": "crit", "header_class": "crit",
-      "cogs": 1.82, "msrp": 14.99, "net_per_unit": 7.77, "margin_pct": 51.9,
+      "cogs": 1.82, "msrp": 14.99, "net_per_unit": 7.77, "margin_pct": 51.9, "return_rate": null,
       "total_all_locations": 2369, "retail_value": 35511, "gross_profit_potential": 31199,
       "detail_sub": "Jiangsu Laoshu · 1,650 air (~Jul 29/31) + 3,350 ocean (Jul 20 vessel, direct Amazon, ~mid-Sep) + 5,000 PO2 (Aug 17 vessel)",
       "detail_pill": "BELOW RECOMMENDED · AIR INBOUND",
@@ -40,7 +40,7 @@
       "next_inbound": "— (Oct +25,000 on HOLD)",
       "action": "HOLD — ~50 wks Amazon supply. 6-wk accelerated run blocked until missing ingredient is in stock (awaiting Craig).",
       "status": "HOLD", "pill": "hold", "header_class": "hold",
-      "cogs": 3.36, "msrp": 22.99, "net_per_unit": 11.51, "margin_pct": 50.1,
+      "cogs": 3.36, "msrp": 22.99, "net_per_unit": 11.51, "margin_pct": 50.1, "return_rate": null,
       "total_all_locations": 32908, "retail_value": 756555, "gross_profit_potential": 645984,
       "detail_sub": "Hero SKU · JBK Wellness Labs",
       "detail_pill": "HOLD",
@@ -55,7 +55,7 @@
       "next_inbound": "— (Dec +10,000 scheduled)",
       "action": "Healthy — deep supply. Same ingredients as Dematter; accelerated run blocked until ingredient in stock (Craig). Confirm Dec run.",
       "status": "GREEN", "pill": "ok", "header_class": "ok",
-      "cogs": 3.30, "msrp": 18.99, "net_per_unit": 8.93, "margin_pct": 47.0,
+      "cogs": 3.30, "msrp": 18.99, "net_per_unit": 8.93, "margin_pct": 47.0, "return_rate": null,
       "total_all_locations": 11303, "retail_value": 214644, "gross_profit_potential": 177344,
       "detail_sub": "JBK Wellness Labs · same ingredients as Dematter",
       "detail_pill": "HEALTHY",
@@ -70,7 +70,7 @@
       "next_inbound": "None — no new liquid run",
       "action": "DO NOT REORDER — huge supply. Coconut Lime + Lavender Chamomile launch Aug is new labels only.",
       "status": "STOP", "pill": "stop", "header_class": "stop",
-      "cogs": 5.17, "msrp": 19.99, "net_per_unit": 7.72, "margin_pct": 38.6,
+      "cogs": 5.17, "msrp": 19.99, "net_per_unit": 7.72, "margin_pct": 38.6, "return_rate": null,
       "total_all_locations": 4052, "retail_value": 80999, "gross_profit_potential": 60050,
       "detail_sub": "JBK · Coconut Lime + Lavender Chamomile launch Aug (new labels only, no new liquid run)",
       "detail_pill": "DO NOT REORDER",
@@ -85,7 +85,7 @@
       "next_inbound": "3,000 ocean → <b>WSA</b> (Jul 20 vessel)",
       "action": "Overstocked (Amazon flags Excess). Do not reorder — 3,000 already inbound to WSA.",
       "status": "STOP", "pill": "stop", "header_class": "stop",
-      "cogs": 3.19, "msrp": 19.99, "net_per_unit": 9.70, "margin_pct": 48.5,
+      "cogs": 3.19, "msrp": 19.99, "net_per_unit": 9.70, "margin_pct": 48.5, "return_rate": null,
       "total_all_locations": 2380, "retail_value": 47576, "gross_profit_potential": 39984,
       "detail_sub": "Jiangsu Laoshu",
       "detail_pill": "DO NOT REORDER",
@@ -102,7 +102,7 @@
       "next_inbound": "None",
       "action": "DO NOT REORDER — huge supply. Liquidate WSA 98; bundle at Prime Day. Return rate 8.67% 🚨. Storage $1,010.79/mo.",
       "status": "STOP", "pill": "stop", "header_class": "stop",
-      "cogs": 4.97, "msrp": 17.99, "net_per_unit": 6.60, "margin_pct": 36.7,
+      "cogs": 4.97, "msrp": 17.99, "net_per_unit": 6.60, "margin_pct": 36.7, "return_rate": 8.67,
       "total_all_locations": 2690, "retail_value": 48393, "gross_profit_potential": 35024,
       "detail_sub": "Jiangsu Laoshu · Lowest margin + highest return rate · liquidation SKU",
       "detail_pill": "DO NOT REORDER · LIQUIDATE",
@@ -114,9 +114,30 @@
     }
   ],
   "launches": [
-    { "name": "Allergy & Itch Relief Chew", "cogs": 9.34, "msrp": 29.99, "units_ordered": 2500, "ready": "Aug 18", "launch": "Sep 1", "retail_potential": 74975, "gross_profit_potential": 51625, "route": "Domestic to Amazon + 12 cases to WSA" },
-    { "name": "Calm & Relax Chew", "cogs": 8.52, "msrp": 29.99, "units_ordered": 2500, "ready": "Aug 18", "launch": "Sep 1", "retail_potential": 74975, "gross_profit_potential": 53675, "route": "Domestic to Amazon + 12 cases to WSA" },
-    { "name": "Skin & Coat Omega Chew", "cogs": 7.58, "msrp": 29.99, "units_ordered": 2500, "ready": "Aug 18", "launch": "Sep 1", "retail_potential": 74975, "gross_profit_potential": 56025, "route": "Domestic to Amazon + 12 cases to WSA" }
+    {
+      "name": "Allergy & Itch Relief Chew",
+      "cogs": 9.34, "msrp": 32.99, "units_ordered": 2500,
+      "ready": "Aug 18", "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 59125,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    },
+    {
+      "name": "Calm & Relax Chew",
+      "cogs": 8.52, "msrp": 32.99, "units_ordered": 2500,
+      "ready": "Aug 18", "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 61175,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    },
+    {
+      "name": "Skin & Coat Omega Chew",
+      "cogs": 7.58, "msrp": 32.99, "units_ordered": 2500,
+      "ready": "Aug 18", "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 63525,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    }
   ],
   "position_summary": {
     "cards": [
