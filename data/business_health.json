@@ -14,7 +14,11 @@
     "return_rate_pct": 8.67,
     "sns_total_pct": 2.9,
     "total_customers": null,
-    "top_tier_pct": null
+    "top_tier_pct": null,
+    "cash_in_inventory": 194092.7,
+    "inventory_units_fba": 39428,
+    "inventory_units_wsa": 16274,
+    "inventory_note": "FBA + WSA combined. Source: supply_chain.json Jul 14."
   },
   "production_schedule": [
     {
@@ -45,7 +49,7 @@
   ],
   "subscribe_and_save": {
     "available": true,
-    "last_updated": "2026-07-23",
+    "last_updated": "2026-07-24",
     "source": "amazon_sc_manual_export",
     "report_period_start": "2026-04-22",
     "report_period_end": "2026-07-21",
@@ -57,7 +61,57 @@
       "monthly_avg_revenue": 1083.15,
       "monthly_avg_shipments": 50,
       "lost_sales_oos": 19.99
-    }
+    },
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream for Dogs \u2013 Dematting Crea",
+        "active_subscribers": 151,
+        "sns_shipped_units": 130,
+        "sns_sales": 2867.84,
+        "monthly_rev_avg": 955.95,
+        "sns_penetration_pct": 2.91,
+        "coupon_driven_pct": 63.4,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "Dog Shampoo & Conditioner for All Breeds \u2013 Goldend",
+        "active_subscribers": 19,
+        "sns_shipped_units": 11,
+        "sns_sales": 210.69,
+        "monthly_rev_avg": 70.23,
+        "sns_penetration_pct": 9.8,
+        "coupon_driven_pct": 55.6,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment for Dogs, Leave-in Conditione",
+        "active_subscribers": 8,
+        "sns_shipped_units": 10,
+        "sns_sales": 170.91,
+        "monthly_rev_avg": 56.97,
+        "sns_penetration_pct": 1.47,
+        "coupon_driven_pct": 0.0,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "Skip The Groomer Detangling Spray for Dogs, Unscen",
+        "active_subscribers": 0,
+        "sns_shipped_units": 0,
+        "sns_sales": 0.0,
+        "monthly_rev_avg": 0.0,
+        "sns_penetration_pct": 0.0,
+        "coupon_driven_pct": 0.0,
+        "oos_pct": 100.0,
+        "lost_sales_oos": 19.99
+      }
+    ]
   },
   "skus": [
     {
@@ -81,7 +135,14 @@
       "return_rate_pct": null,
       "sns_subs": 151,
       "sns_penetration_pct": 2.91,
-      "coupon_driven_pct": 63.4
+      "coupon_driven_pct": 63.4,
+      "cogs": 3.36,
+      "on_hand_fba": 22146,
+      "wsa_available": 10762,
+      "amazon_min": 3500,
+      "total_on_hand": 32908,
+      "cash_at_cost": 110570.88,
+      "monthly_rev_avg": 955.95
     },
     {
       "asin": "B0FQF2VTMJ",
@@ -102,9 +163,16 @@
       "cvr_pct": 30.25,
       "buy_box_pct": 99.47,
       "return_rate_pct": null,
-      "sns_subs": null,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null
+      "sns_subs": 0,
+      "sns_penetration_pct": 0.0,
+      "coupon_driven_pct": 0.0,
+      "cogs": 1.82,
+      "on_hand_fba": 692,
+      "wsa_available": 1677,
+      "amazon_min": 1400,
+      "total_on_hand": 2369,
+      "cash_at_cost": 4311.58,
+      "monthly_rev_avg": 0.0
     },
     {
       "asin": "B0GV5ZFLC2",
@@ -127,7 +195,14 @@
       "return_rate_pct": null,
       "sns_subs": 8,
       "sns_penetration_pct": 1.47,
-      "coupon_driven_pct": 0.0
+      "coupon_driven_pct": 0.0,
+      "cogs": 3.3,
+      "on_hand_fba": 8044,
+      "wsa_available": 3259,
+      "amazon_min": 800,
+      "total_on_hand": 11303,
+      "cash_at_cost": 37299.9,
+      "monthly_rev_avg": 56.97
     },
     {
       "asin": "B0FQL16GH4",
@@ -150,7 +225,14 @@
       "return_rate_pct": null,
       "sns_subs": 19,
       "sns_penetration_pct": 9.8,
-      "coupon_driven_pct": 55.6
+      "coupon_driven_pct": 55.6,
+      "cogs": 5.17,
+      "on_hand_fba": 3907,
+      "wsa_available": 145,
+      "amazon_min": 600,
+      "total_on_hand": 4052,
+      "cash_at_cost": 20948.84,
+      "monthly_rev_avg": 70.23
     },
     {
       "asin": "B0FQDHXSZ5",
@@ -171,9 +253,16 @@
       "cvr_pct": 13.51,
       "buy_box_pct": 99.46,
       "return_rate_pct": null,
-      "sns_subs": null,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null
+      "sns_subs": 0,
+      "sns_penetration_pct": 0.0,
+      "coupon_driven_pct": 0.0,
+      "cogs": 3.19,
+      "on_hand_fba": 2048,
+      "wsa_available": 332,
+      "amazon_min": 600,
+      "total_on_hand": 2380,
+      "cash_at_cost": 7592.2,
+      "monthly_rev_avg": 0.0
     },
     {
       "asin": "B0FQ628KCH",
@@ -196,9 +285,16 @@
       "return_rate_pct": 8.67,
       "category_avg_return_pct": 4.0,
       "return_vs_category": "above",
-      "sns_subs": null,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null
+      "sns_subs": 0,
+      "sns_penetration_pct": 0.0,
+      "coupon_driven_pct": 0.0,
+      "cogs": 4.97,
+      "on_hand_fba": 2591,
+      "wsa_available": 99,
+      "amazon_min": 0,
+      "total_on_hand": 2690,
+      "cash_at_cost": 13369.3,
+      "monthly_rev_avg": 0.0
     }
   ],
   "_meta": {
