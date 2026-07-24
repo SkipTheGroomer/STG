@@ -1567,9 +1567,44 @@ function renderBizHealth(bh){
   const bhNote = '<div style="padding:8px 16px 0;font-size:10px;color:var(--muted);">Weekly file · as of '+esc(bh.report_date||'?')+(bhStale?' · <span class="pill pill-warn">STALE — not current</span>':'')+'</div>';
   const bhNoData = '<div style="padding:12px 16px;font-size:12px;color:var(--muted);">No data — Patrick\'s weekly file missing or empty.</div>';
   const totalRev = skus.reduce((s,x)=>s+(x.revenue_lifetime||0),0);
-  $('bh-sku-revenue').innerHTML = !skus.length ? bhNoData : bhNote + '<table style="width:100%"><thead><tr><th>Product</th><th>Share</th><th class="r">Revenue</th><th class="r">%</th><th class="r">Units</th></tr></thead><tbody>' +
-    skus.map(s=>{ const pct=totalRev>0?(s.revenue_lifetime/totalRev*100):0; const bw=Math.round(pct); return '<tr><td><b>'+esc(s.name)+'</b></td><td style="min-width:140px;"><div style="background:#eef1f4;border-radius:4px;height:8px;"><div style="background:var(--green);width:'+bw+'%;height:8px;border-radius:4px;"></div></div></td><td class="r"><b>'+fmtDollar(s.revenue_lifetime)+'</b></td><td class="r" style="color:var(--green);font-weight:700;">'+fmtNum(s.revenue_share_pct||pct,1)+'%</td><td class="r">'+fmtInt(s.units_lifetime)+'</td></tr>'; }).join('') +
-    '<tr style="border-top:2px solid var(--border);"><td><b>TOTAL</b></td><td><div style="background:var(--green);border-radius:4px;height:8px;width:100%;"></div></td><td class="r"><b>'+fmtDollar(totalRev)+'</b></td><td class="r" style="color:var(--green);font-weight:700;">100%</td><td class="r"><b>'+fmtInt(skus.reduce((s,x)=>s+(x.units_lifetime||0),0))+'</b></td></tr></tbody></table>';
+  const lifetimeRev = k.lifetime_revenue || 0;
+  const gap = lifetimeRev > 0 ? lifetimeRev - totalRev : 0;
+  const gapSignificant = gap > 1;
+  // Build gap note — explains any difference between Lifetime Revenue card and active SKU total
+  const excludedSkus = bh.excluded_skus || [];
+  const gapNote = gapSignificant
+    ? '<div style="margin-top:8px;padding:10px 14px;background:#fff8f0;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;font-size:11px;line-height:1.6;">'
+      + '<b style="color:var(--navy);">Why this total differs from the Lifetime Revenue card ($'+Number(lifetimeRev).toLocaleString('en-US',{maximumFractionDigits:0})+'):</b><br>'
+      + 'Active SKU table: <b>'+fmtDollar(totalRev)+'</b> · '
+      + 'Lifetime Revenue card: <b>'+fmtDollar(lifetimeRev)+'</b> · '
+      + 'Difference: <b>'+fmtDollar(gap)+'</b><br>'
+      + (excludedSkus.length
+          ? 'Excluded from table: ' + excludedSkus.map(s=>'<b>'+esc(s.name)+'</b> ('+esc(s.reason||'inactive')+', '+fmtDollar(s.revenue_lifetime)+')').join(' · ')
+          : 'The difference comes from discontinued or inactive SKUs that have lifetime Amazon sales but are not tracked as active products. The Lifetime Revenue card includes all ASINs from Amazon Seller Central; this table shows active SKUs only.')
+      + '</div>'
+    : '';
+  $('bh-sku-revenue').innerHTML = !skus.length ? bhNoData : bhNote
+    + '<div style="font-size:10px;color:var(--muted);padding:4px 2px 6px;">Active SKUs only — ' + skus.length + ' products · share of ' + fmtDollar(lifetimeRev || totalRev) + ' lifetime total</div>'
+    + '<table style="width:100%"><thead><tr><th>Product</th><th>Share of lifetime</th><th class="r">Revenue</th><th class="r">%</th><th class="r">Units</th></tr></thead><tbody>'
+    + skus.map(s=>{
+        const pct = lifetimeRev > 0 ? (s.revenue_lifetime / lifetimeRev * 100) : totalRev > 0 ? (s.revenue_lifetime / totalRev * 100) : 0;
+        const bw = Math.round(pct);
+        return '<tr><td><b>'+esc(s.name)+'</b></td>'
+          + '<td style="min-width:140px;"><div style="background:#eef1f4;border-radius:4px;height:8px;"><div style="background:var(--green);width:'+bw+'%;height:8px;border-radius:4px;"></div></div></td>'
+          + '<td class="r"><b>'+fmtDollar(s.revenue_lifetime)+'</b></td>'
+          + '<td class="r" style="color:var(--green);font-weight:700;">'+fmtNum(s.revenue_share_pct||pct,1)+'%</td>'
+          + '<td class="r">'+fmtInt(s.units_lifetime)+'</td></tr>';
+      }).join('')
+    + '<tr style="border-top:2px solid var(--border);background:var(--card2);"><td><b>Active SKUs Total</b>'
+      + (gapSignificant ? ' <span style="font-size:9px;font-weight:600;color:var(--muted);background:#fff3cd;padding:1px 5px;border-radius:4px;margin-left:4px;">see note ↓</span>' : '')
+      + '</td><td><div style="background:var(--green);border-radius:4px;height:8px;width:100%;"></div></td>'
+      + '<td class="r"><b>'+fmtDollar(totalRev)+'</b></td>'
+      + '<td class="r" style="color:var(--green);font-weight:700;">'+(lifetimeRev>0?fmtNum(totalRev/lifetimeRev*100,1)+'%':'100%')+'</td>'
+      + '<td class="r"><b>'+fmtInt(skus.reduce((s,x)=>s+(x.units_lifetime||0),0))+'</b></td></tr>'
+    + (gapSignificant
+        ? '<tr><td colspan="5" style="padding:0;border:none;">'+gapNote+'</td></tr>'
+        : '')
+    + '</tbody></table>';
   const mC = m=>m>=40?'bdr-green':m>=25?'bdr-amber':'bdr-red', mP = m=>m>=40?'pill-ok':m>=25?'pill-warn':'pill-crit';
   $('bh-margin-cards').innerHTML = !skus.length ? bhNoData : bhNote + skus.map(s=>'<div class="card '+mC(s.margin_pct)+'" style="min-width:160px;"><div class="c-lbl">'+esc(s.name)+'</div><div class="c-val '+(s.margin_pct>=40?'up':s.margin_pct>=25?'warn':'down')+'">'+fmtDollar(s.profit_per_unit)+'</div><div style="margin-top:6px;"><span class="pill '+mP(s.margin_pct)+'">'+s.margin_pct+'% margin</span></div><div class="c-sub">on '+fmtDollar(s.price)+' price</div></div>').join('');
   const maxLP = Math.max(...skus.map(s=>(s.profit_per_unit||0)*(s.units_lifetime||0)));
