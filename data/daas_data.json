@@ -3,25 +3,25 @@
   "parse_source": "body_only",
   "patrick_confirmed": true,
   "routine_version": "v1.3",
-  "collected_at": "2026-07-22T10:30:00-07:00",
-  "report_date": "2026-07-21",
+  "collected_at": "2026-07-24T10:30:00-07:00",
+  "report_date": "2026-07-23",
   "daily": {
     "gross_revenue": null,
-    "ad_spend": 504.15,
-    "daily_tacos_pct": 26.0,
+    "ad_spend": 503.62,
+    "daily_tacos_pct": 40.0,
     "expenses_fba": null,
     "net_profit_h10": null,
-    "true_net": 176.02,
+    "true_net": -186.74,
     "units_sold": null
   },
   "mtd": {
     "revenue": null,
     "ad_spend": null,
-    "tacos_pct": 36.7,
+    "tacos_pct": 36.3,
     "days_confirmed": null
   },
   "sku_table": [],
   "inventory_flags": [],
   "ytd_table": [],
-  "flags": ["mtd_tacos_elevated", "parse_incomplete"]
+  "flags": ["daily_tacos_red", "mtd_tacos_elevated", "true_net_negative", "parse_incomplete"]
 }
