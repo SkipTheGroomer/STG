@@ -1,11 +1,11 @@
 {
   "available": true,
-  "last_updated": "2026-07-23",
+  "last_updated": "2026-07-25",
   "report_date": "2026-07-23",
-  "patched_by": "JARVIS session Jul 23 \u2014 Query G Jul 23 + supply_chain Jul 14 + S&S Jul 23",
+  "patched_by": "JARVIS session Jul 25 — Query G Jul 24",
   "kpis": {
-    "lifetime_revenue": 312314.36,
-    "lifetime_units": 15184,
+    "lifetime_revenue": 313478.14,
+    "lifetime_units": 15246,
     "est_profit": 989585,
     "inventory_cogs": 194093,
     "inventory_units": 55702,
@@ -21,31 +21,11 @@
     "inventory_note": "FBA + WSA combined. Source: supply_chain.json Jul 14."
   },
   "production_schedule": [
-    {
-      "month": "Jun",
-      "amount": 108886,
-      "type": "owed_now"
-    },
-    {
-      "month": "Jul",
-      "amount": 40073,
-      "type": "planned"
-    },
-    {
-      "month": "Aug",
-      "amount": 38651,
-      "type": "planned"
-    },
-    {
-      "month": "Oct",
-      "amount": 85500,
-      "type": "planned"
-    },
-    {
-      "month": "Dec",
-      "amount": 33100,
-      "type": "planned"
-    }
+    {"month": "Jun", "amount": 108886, "type": "owed_now"},
+    {"month": "Jul", "amount": 40073, "type": "planned"},
+    {"month": "Aug", "amount": 38651, "type": "planned"},
+    {"month": "Oct", "amount": 85500, "type": "planned"},
+    {"month": "Dec", "amount": 33100, "type": "planned"}
   ],
   "subscribe_and_save": {
     "available": true,
@@ -65,7 +45,7 @@
     "skus": [
       {
         "asin": "B0FQL56V99",
-        "name": "Emergency Dematter Cream for Dogs \u2013 Dematting Crea",
+        "name": "Emergency Dematter Cream for Dogs – Dematting Crea",
         "active_subscribers": 151,
         "sns_shipped_units": 130,
         "sns_sales": 2867.84,
@@ -77,7 +57,7 @@
       },
       {
         "asin": "B0FQL16GH4",
-        "name": "Dog Shampoo & Conditioner for All Breeds \u2013 Goldend",
+        "name": "Dog Shampoo & Conditioner for All Breeds – Goldend",
         "active_subscribers": 19,
         "sns_shipped_units": 11,
         "sns_sales": 210.69,
@@ -125,12 +105,12 @@
       "inventory_cogs": 110571,
       "inventory_status": "fresh",
       "units_all_locs": 32908,
-      "revenue_lifetime": 239284.6,
-      "units_lifetime": 10700,
+      "revenue_lifetime": 240176.58,
+      "units_lifetime": 10742,
       "revenue_share_pct": 76.6,
       "avg_selling_price": 22.36,
-      "sessions": 57077,
-      "cvr_pct": 18.75,
+      "sessions": 57258,
+      "cvr_pct": 18.76,
       "buy_box_pct": 99.56,
       "return_rate_pct": null,
       "sns_subs": 151,
@@ -155,13 +135,13 @@
       "inventory_cogs": 4312,
       "inventory_status": "low",
       "units_all_locs": 2369,
-      "revenue_lifetime": 30496.35,
-      "units_lifetime": 2200,
+      "revenue_lifetime": 30688.19,
+      "units_lifetime": 2216,
       "revenue_share_pct": 9.8,
       "avg_selling_price": 13.86,
-      "sessions": 7272,
-      "cvr_pct": 30.25,
-      "buy_box_pct": 99.47,
+      "sessions": 7291,
+      "cvr_pct": 30.39,
+      "buy_box_pct": 99.46,
       "return_rate_pct": null,
       "sns_subs": 0,
       "sns_penetration_pct": 0.0,
@@ -189,8 +169,8 @@
       "units_lifetime": 696,
       "revenue_share_pct": 3.9,
       "avg_selling_price": 17.71,
-      "sessions": 4578,
-      "cvr_pct": 15.2,
+      "sessions": 4592,
+      "cvr_pct": 15.16,
       "buy_box_pct": 99.27,
       "return_rate_pct": null,
       "sns_subs": 8,
@@ -215,11 +195,11 @@
       "inventory_cogs": 20949,
       "inventory_status": "high",
       "units_all_locs": 4052,
-      "revenue_lifetime": 9103.82,
-      "units_lifetime": 466,
+      "revenue_lifetime": 9123.81,
+      "units_lifetime": 467,
       "revenue_share_pct": 2.9,
       "avg_selling_price": 19.54,
-      "sessions": 4774,
+      "sessions": 4787,
       "cvr_pct": 9.76,
       "buy_box_pct": 99.33,
       "return_rate_pct": null,
@@ -245,12 +225,12 @@
       "inventory_cogs": 7592,
       "inventory_status": "high",
       "units_all_locs": 2380,
-      "revenue_lifetime": 9939.69,
-      "units_lifetime": 530,
+      "revenue_lifetime": 9979.67,
+      "units_lifetime": 532,
       "revenue_share_pct": 3.2,
       "avg_selling_price": 18.75,
-      "sessions": 3924,
-      "cvr_pct": 13.51,
+      "sessions": 3943,
+      "cvr_pct": 13.49,
       "buy_box_pct": 99.46,
       "return_rate_pct": null,
       "sns_subs": 0,
@@ -275,12 +255,12 @@
       "inventory_cogs": 13369,
       "inventory_status": "high",
       "units_all_locs": 2690,
-      "revenue_lifetime": 3859.33,
-      "units_lifetime": 224,
+      "revenue_lifetime": 3879.32,
+      "units_lifetime": 225,
       "revenue_share_pct": 1.2,
       "avg_selling_price": 17.23,
-      "sessions": 2350,
-      "cvr_pct": 9.53,
+      "sessions": 2356,
+      "cvr_pct": 9.55,
       "buy_box_pct": 99.02,
       "return_rate_pct": 8.67,
       "category_avg_return_pct": 4.0,
@@ -298,76 +278,28 @@
     }
   ],
   "_meta": {
-    "last_patched": "2026-07-23",
-    "query_g_date": "2026-07-23",
+    "last_patched": "2026-07-25",
+    "query_g_date": "2026-07-24",
     "field_freshness": {
-      "lifetime_revenue": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "lifetime_units": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "revenue_lifetime": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "units_lifetime": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "sessions": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "cvr_pct": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "buy_box_pct": {
-        "last_updated": "2026-07-23",
-        "source": "supermetrics_query_g",
-        "auto": true
-      },
-      "est_profit": {
-        "last_updated": "2026-07-14",
-        "source": "supply_chain_json",
-        "auto": false
-      },
-      "inventory_cogs": {
-        "last_updated": "2026-07-14",
-        "source": "supply_chain_json",
-        "auto": false
-      },
-      "subscribe_and_save": {
-        "last_updated": "2026-07-23",
-        "source": "amazon_sc_manual",
-        "auto": false
-      },
-      "return_rate_pct": {
-        "last_updated": "2026-07-14",
-        "source": "supply_chain_json",
-        "auto": false
-      },
-      "total_customers": {
-        "last_updated": null,
-        "source": "sp_api_pending",
-        "auto": false
-      }
+      "lifetime_revenue": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "lifetime_units": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "revenue_lifetime": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "units_lifetime": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "sessions": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "cvr_pct": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "buy_box_pct": {"last_updated": "2026-07-25", "source": "supermetrics_query_g", "auto": true},
+      "est_profit": {"last_updated": "2026-07-14", "source": "supply_chain_json", "auto": false},
+      "inventory_cogs": {"last_updated": "2026-07-14", "source": "supply_chain_json", "auto": false},
+      "subscribe_and_save": {"last_updated": "2026-07-23", "source": "amazon_sc_manual", "auto": false},
+      "return_rate_pct": {"last_updated": "2026-07-14", "source": "supply_chain_json", "auto": false},
+      "total_customers": {"last_updated": null, "source": "sp_api_pending", "auto": false}
     }
   },
   "excluded_skus": [
     {
       "asin": "B0FQ4PY573",
       "name": "Detangling Spray",
-      "reason": "discontinued \u2014 100% OOS, 0 active S&S subscribers",
+      "reason": "discontinued — 100% OOS, 0 active S&S subscribers",
       "revenue_lifetime": 7303.78,
       "units_lifetime": 368,
       "status": "DISCONTINUED"
