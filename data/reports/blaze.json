@@ -1,34 +1,82 @@
 {
-  "generated_at": "2026-07-22T08:10:00-07:00",
-  "date": "2026-07-22",
+  "generated_at": "2026-07-25T08:10:00-07:00",
+  "date": "2026-07-25",
   "run_path": "FULL_DAILY",
-  "routine_version": "v1.8",
-
+  "routine_version": "v2.0",
+  "authority": "CLASS_A_ACTIVE",
+  "supermetrics": {
+    "status": "FRESH",
+    "age_hours": 9,
+    "file_generated": "2026-07-24T23:11:13-07:00",
+    "query_date_yesterday": "2026-07-23",
+    "query_date_sc": "2026-07-22"
+  },
   "summary": {
     "authority": "CLASS_A_ACTIVE",
     "kills_executed": 0,
-    "kills_staged": 2,
+    "kills_staged": 3,
     "anomalies": 0,
-    "advisor_solutions": 4,
-    "advisor_gaps": 7
+    "advisor_solutions": 5,
+    "advisor_gaps": 0
   },
-
   "flags": [
     {
-      "brief_id": "BLZ-20260722-001",
+      "brief_id": "BLZ-20260725-KILL-001",
       "status": "RED",
       "platform": "amazon",
       "phase": "KILL",
-      "title": "Save the Shave Bundle (B0GT1H84JM) — $129.59 Jul 20 / $0 attributed — Day 12+ KILL",
-      "problem": "Save the Shave Bundle spent $129.59 on Jul 20 (Supermetrics Query B) with $0 14d same-SKU attributed sales. Kill floor 1.32 (breakeven unconfirmed). 7d cumulative spend $1,302.88 with $0 7d attributed sales. No Amazon write connector — auto-kill not possible. Manual pause directive has been staged for 12+ consecutive daily runs without being actioned.",
+      "title": "Save the Shave Bundle (B0GT1H84JM) — $152.72 Jul 23 / $0 attributed — Day 34 KILL BREACH",
+      "problem": "Save the Shave Bundle spent $152.72 on Jul 23 (Supermetrics Query B) with $0 14d attributed sales. Kill floor 1.32 (est). 14d cumulative spend $1,158.43 with $0 attributed sales. Day 34 — flag unresolved since Jun 21. No Amazon write connector — auto-kill not possible. Manual pause directive staged for 34 consecutive daily runs without being actioned.",
       "deadline": "Immediate",
       "approver": "@will",
       "slack_status": "STAGED",
       "solutions": [
         {
           "rank": 1,
-          "recommendation": "Pause ALL Save the Shave Bundle (B0GT1H84JM) campaigns in Amazon Ads Console immediately. Every day delayed is ~$130 in zero-return spend.",
-          "action": "Amazon Ads → Campaigns → filter by SKU C8-VG2F-6714 / ASIN B0GT1H84JM → pause all active campaigns. Confirm $0 daily spend thereafter.",
+          "recommendation": "Pause ALL Save the Shave Bundle (B0GT1H84JM) campaigns in Amazon Ads Console immediately. Day 34 — every day of delay is ~$150 in zero-return spend.",
+          "action": "Amazon Ads → Campaigns → filter by ASIN B0GT1H84JM → pause all active campaigns. Confirm $0 daily spend thereafter.",
+          "learning_id": "L-2026-07-10-001",
+          "confidence": "DOCTRINE",
+          "data_points": 11
+        }
+      ]
+    },
+    {
+      "brief_id": "BLZ-20260725-KILL-002",
+      "status": "RED",
+      "platform": "amazon",
+      "phase": "VIOLATION",
+      "title": "Slicker Brush (B0FQ628KCH) — $19.16 Jul 23, 14d $34.79 — liquidation violation Day 34",
+      "problem": "Slicker Brush (liquidate=true in roas_bands.json) spent $19.16 on Jul 23 and $34.79 cumulatively over 14 days. Policy explicit: any ad spend > $0 = immediate flag. Violation ongoing since Jul 11 (Day 14+). L-2026-07-14-001 DOCTRINE: organic rank damage accelerating. No Amazon write connector — manual pause required.",
+      "deadline": "Immediate",
+      "approver": "@will",
+      "slack_status": "STAGED",
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Pause all Slicker Brush campaigns in Amazon Ads Console immediately. Organic rank damage accelerating per DOCTRINE learning.",
+          "action": "Amazon Ads → Campaigns → filter by B0FQ628KCH → pause all active campaigns. Confirm $0 daily spend for 7 consecutive days before clearing flag.",
+          "learning_id": "L-2026-07-14-001",
+          "confidence": "DOCTRINE",
+          "data_points": 7
+        }
+      ]
+    },
+    {
+      "brief_id": "BLZ-20260725-KILL-003",
+      "status": "RED",
+      "platform": "amazon",
+      "phase": "KILL",
+      "title": "Detangling Treatment (B0GV5ZFLC2) — 14d ROAS 0.280 vs floor 1.51 — kill staged",
+      "problem": "Treatment 14d cumulative spend crossed $75 threshold (confirmed $75.03 on Jul 24 run, window Jul 9-22). Current 14d window (Jul 10-23) shows $67.88 due to window shift, but kill validity stands: 14d ROAS ~0.280 vs kill floor 1.51. Kill staged per STANDING_AUTHORITY_v1.1 — Amazon = staged RED (not auto-executed). Manual pause required.",
+      "deadline": "Today",
+      "approver": "@will",
+      "slack_status": "STAGED",
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Pause Treatment Amazon PPC campaigns. 14d ROAS 0.280 is 81% below kill floor 1.51 — not a borderline call.",
+          "action": "Amazon Ads → Campaigns → filter by B0GV5ZFLC2 → pause all active campaigns. Re-evaluate in 14 days once organic baseline is established.",
           "learning_id": null,
           "confidence": null,
           "data_points": null
@@ -36,49 +84,20 @@
       ]
     },
     {
-      "brief_id": "BLZ-20260722-002",
-      "status": "RED",
-      "platform": "amazon",
-      "phase": "VIOLATION",
-      "title": "Slicker Brush (B0FQ628KCH) — $1.37 Jul 20, 7d $5.48 — liquidation violation",
-      "problem": "Slicker Brush (liquidate=true in roas_bands.json) spent $1.37 on Jul 20 and $5.48 cumulatively over 7 days. Policy explicit: any ad spend > $0 = immediate flag. Violation ongoing since approximately Jul 8. No Amazon write connector — manual pause required.",
-      "deadline": "Immediate",
-      "approver": "@will",
-      "slack_status": "STAGED",
-      "solutions": [
-        {
-          "rank": 1,
-          "recommendation": "Manually pause all Slicker Brush campaigns in Amazon Ads Console. Confirm $0 daily spend for 7 consecutive days before clearing flag.",
-          "action": "Amazon Ads → Campaigns → filter by B0FQ628KCH (SKU 6H-JCY0-JARS) → pause all active campaigns.",
-          "learning_id": "L-2026-07-14-001",
-          "confidence": "DOCTRINE",
-          "data_points": 6
-        }
-      ]
-    },
-    {
-      "brief_id": "P-2026-07-22-001",
-      "status": "RED",
-      "platform": "amazon",
+      "brief_id": "P-2026-07-25-001",
+      "status": "YELLOW",
+      "platform": "meta",
       "phase": "ADVISOR",
-      "title": "Dematter TACOS 92.3% — 2.6x target (7d: $1,381 spend / $1,496 SC sales)",
-      "problem": "Emergency Dematter 7d TACOS = $1,381.60 / $1,496.59 = 92.3% vs 35% target. Jul 20 single-day ROAS 1.823 (YELLOW band, breakeven 2.07). Both organic keywords TOP_10. Paid spend consuming ~92% of every SC revenue dollar — unsustainable margin trajectory despite YELLOW ROAS signal.",
-      "deadline": "Today",
+      "title": "BLZ-20260721-001 (Detangle TOF) — found PAUSED in live Meta pull Jul 25",
+      "problem": "Live Meta pull Jul 25 shows campaign 120249252887330118 PAUSED. Status was ACTIVE as of Jul 24 morning — Will manually paused during Jul 24. Last spend $5.09 on Jul 24. active_ads.json updated to PAUSED this run. Confirm: intentional pause? Relaunch or kill?",
+      "deadline": "This week",
       "approver": "@will",
       "slack_status": "OPEN",
       "solutions": [
         {
           "rank": 1,
-          "recommendation": "Reduce keyword bids 10-15% on highest-spend B0FQL56V99 campaigns to compress TACOS. Organic TOP_10 — paid does not need to dominate; allow organic to carry rank while paid converts at lower cost.",
-          "action": "Amazon Ads → B0FQL56V99 campaigns → active keyword bids → apply -10% to -15% reduction on keywords where organic rank is TOP_10 ('detangler for dogs', 'dematting comb for dogs'). Do NOT pause. Monitor TACOS daily 3 days.",
-          "learning_id": "L-2026-07-08-001",
-          "confidence": "DOCTRINE",
-          "data_points": 10
-        },
-        {
-          "rank": 2,
-          "recommendation": "Before any new Dematter creative launch, audit emergency-dematter-cream landing page on mobile for price clarity, CTA visibility, and checkout friction.",
-          "action": "Visit skipthegroomer.com/products/emergency-dematter-cream on mobile. Verify: page loads fast, price visible above fold, CTA clear, product matches ad. Per L-2026-07-16-001: CTR strong; drop-off is post-click.",
+          "recommendation": "Confirm whether pause is intentional. Early CTR was 6.39% — positive creative signal. If landing page is fixed, relaunch via B-1 flow. If not, kill permanently.",
+          "action": "Will to reply in #stg-ads-watchdog: 'relaunch' or 'kill BLZ-20260721-001'. If relaunch: Blaze will check landing page and re-queue for B-1 approval.",
           "learning_id": "L-2026-07-16-001",
           "confidence": "DOCTRINE",
           "data_points": 3
@@ -86,65 +105,86 @@
       ]
     },
     {
-      "brief_id": "P-2026-07-22-002",
-      "status": "RED",
-      "platform": "ads",
-      "phase": "ADVISOR",
-      "title": "Klaviyo — 0 sends across all flows, 3rd consecutive week. Browse Abandonment: DRAFT",
-      "problem": "All 5 Klaviyo flows show zero recipients for the 3rd consecutive week (Welcome Series, Abandoned Cart, Warranty, Registration all live but 0 sends; Browse Abandonment DRAFT). Email revenue 7d: $0. Zero recipients across ALL live flows indicates a Shopify-Klaviyo integration break, not just a draft-status issue.",
-      "deadline": "Today",
-      "approver": "@will",
-      "slack_status": "OPEN",
-      "solutions": [
-        {
-          "rank": 1,
-          "recommendation": "Activate Browse Abandonment immediately AND diagnose Shopify-Klaviyo sync break. Zero across all live flows = connector issue.",
-          "action": "1) Klaviyo → Flows → Browse Abandonment (ID: Rn6AGa) → set to Live. 2) Klaviyo → Integrations → Shopify → verify sync active, last-synced within 24h. If broken: reconnect. 3) Test with dummy session, confirm event in Klaviyo within 15 min.",
-          "learning_id": "L-2026-07-11-001",
-          "confidence": "DOCTRINE",
-          "data_points": 7
-        }
-      ]
-    },
-    {
-      "brief_id": "P-2026-07-22-003",
-      "status": "RED",
-      "platform": "inventory",
-      "phase": "ADVISOR",
-      "title": "FurFix De-Shed Brush (B0FQFP2S9F) STRANDED — Day 9+, deadline missed (was Jul 20)",
-      "problem": "FurFix STRANDED in FBA. LIF ≤ 0, LTSF ≥ 181 days, 60 units. Prior deadline (Jul 20) missed. Zero revenue. LTSF storage fees compounding daily. No paid ads running.",
-      "deadline": "Today",
-      "approver": "@will",
-      "slack_status": "OPEN",
-      "solutions": [
-        {
-          "rank": 1,
-          "recommendation": "Fix FurFix stranded listing in SC today. Route to Anchor if copy/compliance issue. LTSF fees accumulating on 60 idle units.",
-          "action": "SC → Manage Inventory → Stranded Inventory tab → B0FQFP2S9F → identify reason (pricing, suppression, compliance) → fix or escalate to Anchor. Confirm listing active and buyable within 24h.",
-          "learning_id": "L-2026-07-13-001",
-          "confidence": "DOCTRINE",
-          "data_points": 3
-        }
-      ]
-    },
-    {
-      "brief_id": "P-2026-07-22-004",
+      "brief_id": "P-2026-07-25-002",
       "status": "YELLOW",
-      "platform": "margin",
+      "platform": "meta",
       "phase": "ADVISOR",
-      "title": "QB MTD net income -$21,595 — sync artifact, not real loss",
-      "problem": "QB MTD (Jul 1-20) shows -$21,595 net income due to revenue/COGS sync frozen since Jul 12 (Day 10). H10 Jul 20: $434 net/day is authoritative. Weekly net Jul 13-19: $2,659. Checking $28,185 — GREEN (above $25k floor).",
+      "title": "Save the Shave campaign (120248769281270118) — campaign-level PAUSED Day 34",
+      "problem": "Save the Shave UGC Bill campaign now fully PAUSED at campaign level (previously ACTIVE shell with PAUSED ad after A-1 kill Jul 21). Will took manual action. Creative CTR 6.15% DOCTRINE (L-2026-07-16-001 — creative works, post-click failure). Day 34 — decision required: new landing page + relaunch vs kill permanently.",
       "deadline": "This week",
       "approver": "@will",
       "slack_status": "OPEN",
       "solutions": [
         {
           "rank": 1,
-          "recommendation": "Disregard QB MTD. Use H10 ($434 net/day Jul 20, $2,659 weekly net Jul 13-19) as authoritative. Schedule QB reconciliation with Angelo/accountant for Jul 12+ frozen data.",
-          "action": "Contact Angelo/accountant to import Jul 12+ transactions into QB. Do not make budget/cash decisions based on QB MTD until sync restored. Daily P&L: use H10 Profits dashboard.",
-          "learning_id": "L-2026-07-14-002",
+          "recommendation": "Kill permanently or relaunch with landing page fix. Creative CTR 6%+ = creative is not the problem. Landing page/checkout is.",
+          "action": "Option A: Audit skipthegroomer.com/products/shampoo-conditioner on mobile, fix CTA/price clarity, relaunch via B-1. Option B: Kill campaign permanently in Meta Ads Manager.",
+          "learning_id": "L-2026-07-16-001",
           "confidence": "DOCTRINE",
-          "data_points": 5
+          "data_points": 3
+        }
+      ]
+    },
+    {
+      "brief_id": "P-2026-07-25-003",
+      "status": "YELLOW",
+      "platform": "amazon",
+      "phase": "ADVISOR",
+      "title": "Dematter TACOS ~53.2% — 1.5x target. Execute 033 bid reduction 10-15%.",
+      "problem": "Emergency Dematter 14d TACOS ~53.2% vs 35% target. 14d SC sales $1,410.40 = 79.7% of total SC sales (above 70% revenue concentration flag). Yesterday single-day ROAS 2.124 GREEN, 14d spend $1,443.63. L-2026-07-08-001 DOCTRINE (conf 8): execute 033 bid reduction 10-15% while both organic keywords remain TOP_10.",
+      "deadline": "Today",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Reduce Dematter keyword bids 10-15% on highest-spend campaigns. TACOS 53.2% = paid consuming 53 cents of every SC revenue dollar with TOP_10 organic defending rank.",
+          "action": "Amazon Ads → B0FQL56V99 campaigns → active keyword bids → apply -10% to -15% on TOP_10 organic keywords. Do NOT pause. Monitor TACOS daily 7 days.",
+          "learning_id": "L-2026-07-08-001",
+          "confidence": "DOCTRINE",
+          "data_points": 8
+        }
+      ]
+    },
+    {
+      "brief_id": "P-2026-07-25-004",
+      "status": "YELLOW",
+      "platform": "email",
+      "phase": "ADVISOR",
+      "title": "Klaviyo Week 6 — $0 revenue, 4 recipients/7d. Browse Abandonment still DRAFT.",
+      "problem": "Klaviyo: $0 revenue Week 6, 4 recipients/7d. Browse Abandonment flow remains DRAFT — not live. Per L-2026-07-11-001 DOCTRINE: audience too small is root cause; flows ARE sending (not a sync break). Wren fired this run to trigger Klaviyo diagnostic routine.",
+      "deadline": "This week",
+      "approver": "@marcelo",
+      "slack_status": "OPEN",
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Publish Browse Abandonment flow (ID: Rn6AGa) immediately. Add list-building pop-up to Shopify store. Target 500+ subscribers within 30 days.",
+          "action": "Marcelo: Klaviyo → Flows → Browse Abandonment (Rn6AGa) → set to Live. Add Privy or Klaviyo pop-up to Shopify with 10% off first order for email sign-up.",
+          "learning_id": "L-2026-07-11-001",
+          "confidence": "DOCTRINE",
+          "data_points": 11
+        }
+      ]
+    },
+    {
+      "brief_id": "P-2026-07-25-005",
+      "status": "YELLOW",
+      "platform": "finance",
+      "phase": "ADVISOR",
+      "title": "AP overdue $48,504.75 — Primo $25,575 largest. Cash $484K available.",
+      "problem": "Accounts payable overdue: Primo $25,575 (largest), Jiangsu Bosen Jucheng $13,076, Will Dryden Vendor $9,000, WSA $854. Total $48,504.75 100% overdue. Cash $484,001.80 available. Runway 39.8 weeks GREEN.",
+      "deadline": "This week",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Schedule payments this week: WSA $854 immediate, Will Vendor $9,000 this week, Jiangsu $13,076 this week, Primo $25,575 payment plan.",
+          "action": "Will + Angelo: contact Primo to arrange payment schedule. Process WSA, Will Vendor, Jiangsu from operating account. Confirm all AP cleared or scheduled by Jul 31.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
         }
       ]
     }
@@ -154,284 +194,171 @@
 
   "advisor": {
     "ran": true,
-    "run_date": "2026-07-22",
+    "run_date": "2026-07-25",
     "domains_scanned": ["ads", "inventory", "margin", "cash", "reviews"],
-    "problems_found": 11,
-    "solutions_found": 4,
-    "gaps_found": 7,
-    "advisor_solutions": [
-      {
-        "problem_id": "P-2026-07-22-001",
-        "domain": "ads",
-        "severity": "RED",
-        "problem": "Emergency Dematter TACOS 92.3% vs 35% target (7d)",
-        "data": "$1,381.60 7d spend / $1,496.59 7d SC sales = 92.3% TACOS. Single-day ROAS 1.823 YELLOW band (breakeven 2.07).",
-        "solutions": [
-          {
-            "rank": 1,
-            "recommendation": "Reduce keyword bids 10-15% on highest-spend B0FQL56V99 campaigns to compress TACOS while organic remains TOP_10.",
-            "rationale": "Both organic keywords TOP_10 — rank defended without full paid aggression. Bid reduction compresses TACOS without sacrificing rank. Per L-2026-07-08-001: check organic rank before scaling paid; TACOS was 140%+ when learning captured.",
-            "action": "Amazon Ads → B0FQL56V99 campaigns → active keyword bids → -10% to -15% on TOP_10 organic keywords. Monitor TACOS daily 3 days.",
-            "learning_id": "L-2026-07-08-001",
-            "confidence": "DOCTRINE",
-            "data_points": 10
-          },
-          {
-            "rank": 2,
-            "recommendation": "Audit Dematter landing page on mobile before any new creative launch.",
-            "rationale": "Per L-2026-07-16-001 DOCTRINE: CTR strong but ROAS below breakeven on prior campaigns — post-click conversion chain is the failure point. Same risk applies if TACOS pressure drives creative changes.",
-            "action": "Visit emergency-dematter-cream page on mobile. Check load speed, price above fold, CTA clarity, product-ad alignment.",
-            "learning_id": "L-2026-07-16-001",
-            "confidence": "DOCTRINE",
-            "data_points": 3
-          }
-        ]
-      },
-      {
-        "problem_id": "P-2026-07-22-002",
-        "domain": "ads",
-        "severity": "RED",
-        "problem": "Klaviyo flows 0 sends across all flows — 3rd consecutive week",
-        "data": "All 5 flows: 0 recipients 7d. Browse Abandonment: DRAFT. Email revenue 7d: $0.",
-        "solutions": [
-          {
-            "rank": 1,
-            "recommendation": "Activate Browse Abandonment (Rn6AGa) immediately and check Shopify-Klaviyo connector for integration break.",
-            "rationale": "Per L-2026-07-11-001 DOCTRINE: zero recipients across ALL live flows (not just DRAFT) = integration break. Activating Browse Abandonment alone will not fix Welcome/Cart/Registration flows.",
-            "action": "1) Klaviyo Flows → Rn6AGa → Live. 2) Klaviyo Integrations → Shopify → verify sync active. 3) Test integration with dummy session.",
-            "learning_id": "L-2026-07-11-001",
-            "confidence": "DOCTRINE",
-            "data_points": 7
-          }
-        ]
-      },
-      {
-        "problem_id": "P-2026-07-22-003",
-        "domain": "inventory",
-        "severity": "RED",
-        "problem": "FurFix De-Shed Brush (B0FQFP2S9F) STRANDED — Day 9+",
-        "data": "60 units STRANDED. LIF ≤ 0, LTSF ≥ 181 days. $0 revenue. Deadline Jul 20 missed.",
-        "solutions": [
-          {
-            "rank": 1,
-            "recommendation": "Fix stranded listing in SC today. Route to Anchor if compliance issue.",
-            "rationale": "Per L-2026-07-13-001 DOCTRINE: FurFix STRANDED = no buyable offer = $0 sales + accumulating LTSF fees on 60 units.",
-            "action": "SC → Manage Inventory → Stranded Inventory → B0FQFP2S9F → diagnose → fix. Confirm active within 24h.",
-            "learning_id": "L-2026-07-13-001",
-            "confidence": "DOCTRINE",
-            "data_points": 3
-          }
-        ]
-      },
-      {
-        "problem_id": "P-2026-07-22-004",
-        "domain": "margin",
-        "severity": "YELLOW",
-        "problem": "QB MTD net income -$21,595 (sync artifact)",
-        "data": "QB frozen since Jul 12 (Day 10). H10 Jul 20 authoritative: $434 net/day, $2,659 weekly net (Jul 13-19). Checking $28,185 GREEN.",
-        "solutions": [
-          {
-            "rank": 1,
-            "recommendation": "Disregard QB MTD. Use H10 for Amazon P&L. Schedule reconciliation with Angelo.",
-            "rationale": "Per L-2026-07-14-002 DOCTRINE: QB revenue/COGS frozen 10 days. Cash healthy — no immediate crisis, but reconciliation overdue.",
-            "action": "Contact Angelo/accountant to import Jul 12+ data into QB. Use H10 Profits for daily P&L until resolved.",
-            "learning_id": "L-2026-07-14-002",
-            "confidence": "DOCTRINE",
-            "data_points": 5
-          }
-        ]
-      }
-    ],
-    "advisor_gaps": [
-      {
-        "problem_id": "G-2026-07-22-001",
-        "domain": "ads",
-        "problem": "BLZ-20260717-002 Shampoo rising spend: $26.82 L30D, $11.15 yesterday, CPM $75.34, 0 purchases (OUTCOME_SALES)",
-        "gap_note": "No proven playbook — Meta Shampoo OUTCOME_SALES campaigns never validated. CPM 1.4x account average. Log if spend reaches $75 kill threshold."
-      },
-      {
-        "problem_id": "G-2026-07-22-002",
-        "domain": "ads",
-        "problem": "'Save the Shave UGC Bill - Copy' campaign ACTIVE / $0 spend — hygiene",
-        "gap_note": "No proven playbook. No spend risk. Will to decide: pause or use as test vehicle."
-      },
-      {
-        "problem_id": "G-2026-07-22-003",
-        "domain": "inventory",
-        "problem": "Detangling Spray (B0FQ4PY573) — 322 FBA units idle, listing CLOSED since Feb 2026",
-        "gap_note": "No proven playbook for reactivating a closed listing with idle FBA inventory. LTSF risk. Will + Angelo to decide: relist or FBA removal."
-      },
-      {
-        "problem_id": "G-2026-07-22-004",
-        "domain": "inventory",
-        "problem": "Rake Brush (B0FQF2VTMJ) — LOW STOCK ~26 DoS remaining, 1,650 inbound, reorder pending with Graham",
-        "gap_note": "No proven playbook for reorder trigger timing. 1,650 inbound likely covers gap. Monitor ETA with Graham — stock-out risk if inbound delayed during ROAS recovery."
-      },
-      {
-        "problem_id": "G-2026-07-22-005",
-        "domain": "cash",
-        "problem": "AP $48,504.75 — 100% overdue (31-90d). Will Dryden Vendor $9,000 in 61-90d bucket.",
-        "gap_note": "No agent playbook for AP management. If paid from checking ($28,185), balance falls below $25k floor. Will + Angelo to plan payment from MM or set schedule."
-      },
-      {
-        "problem_id": "G-2026-07-22-006",
-        "domain": "reviews",
-        "problem": "Reviews RED: 15 new reviews, 4 negative, avg 3.8. Sheet last modified Jul 16 (6 days stale).",
-        "gap_note": "No agent response playbook for negative reviews. Will/Kathy to review negatives and consider response strategy. Sheet needs manual update."
-      },
-      {
-        "problem_id": "G-2026-07-22-007",
-        "domain": "ads",
-        "problem": "Detangling Treatment (B0GV5ZFLC2) volatile ROAS: Jul 20 single-day 3.61 after multi-day KILL band",
-        "gap_note": "Only HYPOTHESIS learning available (L-2026-07-08-002 — not usable by advisor). Attribution guard active ($5.26 < $75). Needs 3+ consistent data points before grounded recommendation."
-      }
-    ]
+    "problems_found": 5,
+    "solutions_found": 5,
+    "gaps_found": 0
   },
 
   "meta": {
     "account_id": "2158768751536031",
-    "data_source": "Meta MCP live pull — Jul 22 2026",
-    "period": "L30D (Jun 22 – Jul 21, 2026)",
-    "account_l30d": {
-      "spend": 481.79,
-      "purchase_roas": 0.66,
-      "impressions": 8955,
-      "clicks": 540,
-      "cpm": 53.80,
-      "frequency": 1.61
-    },
-    "yesterday_estimated_spend": 26.23,
-    "campaigns_l30d": [
+    "data_source": "Meta MCP live pull — Jul 25 2026",
+    "active_ads_monitored": [
       {
+        "brief_id": "BLZ-20260721-001",
         "campaign_id": "120249252887330118",
-        "name": "BLZ-20260721-001 -- Detangle the Tangle TOF -- 2026-07-21",
-        "status": "ACTIVE",
-        "spend": 7.80,
-        "purchase_roas": null,
-        "impressions": 861,
-        "clicks": 55,
-        "ctr": 6.39,
-        "cpm": 9.06,
-        "frequency": 1.07,
-        "objective": "LINK_CLICKS",
-        "note": "New campaign Jul 21. CTR 6.39% positive early signal. Below $75 kill threshold."
+        "name": "Detangle the Tangle TOF",
+        "status_registry_prior": "ACTIVE",
+        "status_live": "PAUSED",
+        "registry_updated": "PAUSED",
+        "note": "Found PAUSED in live Meta pull Jul 25 — manual pause by Will during Jul 24. Last spend $5.09 Jul 24."
       },
       {
+        "brief_id": "BLZ-20260717-002",
         "campaign_id": "120249184178260118",
-        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
-        "status": "ACTIVE",
-        "spend": 26.82,
-        "yesterday_spend": 11.15,
-        "purchase_roas": null,
-        "impressions": 356,
-        "clicks": 9,
-        "ctr": 2.53,
-        "cpm": 75.34,
-        "frequency": 1.37,
-        "objective": "OUTCOME_SALES",
-        "note": "MONITORING — CPM $75 is 1.4x account avg. No purchases. $11.15 yesterday. Kill threshold: $75 (~5 days at current rate)."
-      },
-      {
-        "campaign_id": "120249157571500118",
-        "name": "Save the Shave UGC Bill _UGC_070326 - Copy",
-        "status": "ACTIVE",
-        "spend": 0.0,
-        "objective": "OUTCOME_SALES",
-        "note": "HYGIENE — Active campaign, $0 spend, no active ads. Will to decide: pause or use as test vehicle."
-      },
+        "name": "Shampoo 50OFF UGC",
+        "status_registry": "ACTIVE",
+        "status_live": "ACTIVE",
+        "note": "ACTIVE — monitoring spend approach to $75 kill threshold."
+      }
+    ],
+    "campaign_notes": [
       {
         "campaign_id": "120248769281270118",
         "name": "Save the Shave UGC Bill _UGC_070326",
-        "status": "ACTIVE",
-        "spend_l30d": 447.17,
-        "yesterday_spend": 7.28,
-        "purchase_roas": 0.714,
-        "impressions": 7738,
-        "clicks": 476,
-        "ctr": 6.15,
-        "frequency": 1.70,
-        "objective": "OUTCOME_SALES",
-        "note": "A-1 KILL CONFIRMED — ad 'New Sales Ad' (120248769281250118) PAUSED as of Jul 21 08:20 PT. Campaign still ACTIVE shell. Yesterday $7.28 = pre-kill spend. No further spend expected."
-      }
-    ],
-    "ads_kills": [
-      {
-        "ad_id": "120248769281250118",
-        "ad_name": "New Sales Ad",
-        "campaign_id": "120248769281270118",
         "status": "PAUSED",
-        "kill_date": "2026-07-21",
-        "spend_at_kill": 447.17,
-        "roas_at_kill": 0.714,
-        "kill_type": "A-1",
-        "confirmed_this_run": true
+        "note": "Campaign-level PAUSED as of Jul 25 live pull. Previously ACTIVE shell with PAUSED ad (A-1 kill Jul 21). Will took manual action during Jul 24. Day 34 — kill/revise decision required."
       }
-    ],
-    "fatigue_flags": [],
-    "hygiene_notes": [
-      "Campaign 'Save the Shave UGC Bill - Copy' (120249157571500118) ACTIVE with $0 spend — consider pausing."
     ]
   },
 
   "amazon": {
-    "data_source": "Supermetrics Jul 20 (generated 2026-07-21T23:10-07:00, FRESH)",
-    "query_date": "2026-07-20",
+    "data_source": "Supermetrics (generated 2026-07-24T23:11:13-07:00, FRESH 9h)",
+    "query_date": "2026-07-23",
     "account": {
-      "spend": 323.50,
-      "roas": 1.9477,
-      "sessions": 567,
-      "conversion_rate_pct": 18.34,
-      "units_ordered": 104
+      "spend": 369.17,
+      "roas": 2.0148,
+      "sessions": 427,
+      "conversion_rate_pct": 21.31,
+      "units_ordered": 91
     },
     "skus": [
-      {"asin": "B0FQL56V99", "name": "Emergency Dematter", "spend_daily": 176.67, "sales_daily": 321.86, "roas_daily": 1.821, "spend_7d": 1381.60, "sales_7d_sc": 1496.59, "tacos_7d_pct": 92.3, "band": "YELLOW", "flag": "TACOS 92.3% — 2.6x target. Bid reduction recommended."},
-      {"asin": "B0GT1H84JM", "name": "Save the Shave Bundle", "spend_daily": 129.59, "sales_daily": 0.0, "roas_daily": 0.0, "spend_7d": 1302.88, "band": "KILL", "kill_day": "12+", "flag": "KILL BREACH — $129.59/$0. Action overdue. STAGED."},
-      {"asin": "B0GV5ZFLC2", "name": "Detangling Treatment", "spend_daily": 5.26, "sales_daily": 18.99, "roas_daily": 3.61, "spend_7d": 94.00, "sales_7d_sc": 37.98, "band": "MONITOR", "note": "Attribution guard active. Single-day ROAS positive."},
-      {"asin": "B0FQF2VTMJ", "name": "Rake Brush", "spend_daily": 4.42, "sales_daily": 14.99, "roas_daily": 3.39, "spend_7d": 28.54, "sales_7d_sc": 362.70, "tacos_7d_pct": 7.9, "band": "GREEN", "inventory_fba": 679, "flag": "LOW STOCK ~26 DoS. 1,650 inbound."},
-      {"asin": "B0FQDHXSZ5", "name": "Pin Brush", "spend_daily": 3.25, "sales_daily": 0.0, "roas_daily": 0.0, "spend_7d": 50.12, "band": "MONITOR", "note": "Attribution guard active."},
-      {"asin": "B0FQL16GH4", "name": "4-in-1 Shampoo", "spend_daily": 2.10, "sales_daily": 0.0, "roas_daily": 0.0, "spend_7d": 20.24, "band": "MONITOR", "note": "Attribution guard active. TACOS 33.7% 7d within target."},
-      {"asin": "B0FQ628KCH", "name": "Slicker Brush", "spend_daily": 1.37, "spend_7d": 5.48, "band": "VIOLATION", "flag": "LIQUIDATION VIOLATION ongoing. STAGED."},
-      {"asin": "B0GY9WZWKH", "name": "Full Coat Care System", "spend_daily": 0.0, "spend_7d": 2.31, "band": "MONITOR"},
-      {"asin": "B0GXLPJS4C", "name": "Tangle Mat Bundle", "spend_daily": 0.21, "spend_7d": 1.05, "band": "MONITOR"},
-      {"asin": "B0GT5YFVB8", "name": "Daily Coat Care System 4pc", "spend_daily": 0.21, "spend_7d": 0.21, "band": "MONITOR"}
+      {
+        "asin": "B0FQL56V99", "name": "Emergency Dematter",
+        "spend_daily": 171.04, "sales_14d_attributed": 363.24, "roas_daily": 2.124,
+        "spend_14d": 1443.63, "sc_sales_14d": 1410.40, "tacos_14d_pct": 53.2,
+        "band": "GREEN",
+        "flag": "TACOS 53.2% — 1.5x target. Bid reduction recommended (DOCTRINE L-2026-07-08-001). Revenue concentration 79.7% of total SC."
+      },
+      {
+        "asin": "B0GT1H84JM", "name": "Save the Shave Bundle",
+        "spend_daily": 152.72, "sales_daily": 0.0, "roas_daily": 0.0,
+        "spend_14d": 1158.43,
+        "band": "KILL", "kill_day": 34,
+        "flag": "KILL BREACH Day 34 — $152.72/$0. STAGED. Action urgently overdue."
+      },
+      {
+        "asin": "B0GV5ZFLC2", "name": "Detangling Treatment",
+        "spend_daily": 3.59, "sales_daily_single": 37.98, "roas_daily_single": 10.579,
+        "spend_14d": 67.88, "sc_sales_14d": 18.99, "roas_14d": 0.280, "floor": 1.51,
+        "band": "KILL",
+        "flag": "KILL STAGED — 14d ROAS 0.280 vs floor 1.51. Threshold crossed Jul 22. Manual pause required."
+      },
+      {
+        "asin": "B0FQDHXSZ5", "name": "Pin Brush",
+        "spend_daily": 11.70, "sales_daily": 19.99, "roas_daily": 1.709,
+        "spend_14d": 53.04, "sc_sales_14d": 59.97, "floor": 1.43,
+        "band": "YELLOW",
+        "flag": "YELLOW — ROAS 1.709 above floor 1.43. Monitor 7d."
+      },
+      {
+        "asin": "B0FQL16GH4", "name": "4-in-1 Shampoo",
+        "spend_daily": 5.54, "sales_daily": 39.98, "roas_daily": 7.217,
+        "spend_14d": 39.55, "sc_sales_14d": 19.99,
+        "band": "GREEN"
+      },
+      {
+        "asin": "B0FQ628KCH", "name": "Slicker Brush",
+        "spend_daily": 19.16, "spend_14d": 34.79,
+        "band": "VIOLATION", "kill_day": 34,
+        "flag": "LIQUIDATION VIOLATION Day 34 — liquidate=true. STAGED."
+      },
+      {
+        "asin": "B0FQF2VTMJ", "name": "Rake Brush",
+        "spend_daily": 2.92, "sales_daily": 0.0,
+        "spend_14d": 23.12, "sc_sales_14d": 260.79,
+        "band": "LOW_VOL"
+      }
     ],
     "kill_records": [
-      {"asin": "B0GT1H84JM", "brief_id": "BLZ-20260722-001", "type": "KILL_BREACH", "spend": 129.59, "action": "STAGED"},
-      {"asin": "B0FQ628KCH", "brief_id": "BLZ-20260722-002", "type": "VIOLATION", "spend": 1.37, "action": "STAGED"}
+      {"asin": "B0GT1H84JM", "brief_id": "BLZ-20260725-KILL-001", "type": "KILL_BREACH", "day": 34, "spend_daily": 152.72, "action": "STAGED"},
+      {"asin": "B0FQ628KCH", "brief_id": "BLZ-20260725-KILL-002", "type": "VIOLATION", "day": 34, "spend_daily": 19.16, "action": "STAGED"},
+      {"asin": "B0GV5ZFLC2", "brief_id": "BLZ-20260725-KILL-003", "type": "KILL_14D_ROAS", "roas_14d": 0.280, "floor": 1.51, "action": "STAGED"}
     ]
   },
 
-  "google": {"spend": 0.0, "roas": null, "note": "$0 spend as expected."},
+  "google": {"spend": 0.0, "roas": null, "note": "$0 spend — no active Google campaigns."},
 
   "tiktok": {"note": "No connector — manual visibility only."},
 
   "anomalies": [],
 
+  "inventory": {
+    "data_source": "connectors_data.json (updated 2026-07-23)",
+    "h10_net_revenue_daily": 799.62,
+    "h10_units_daily": 92,
+    "h10_margin_pct": 42.2,
+    "shopify": {
+      "date": "2026-07-22",
+      "revenue": 74.96,
+      "orders": 4,
+      "aov": 18.74
+    }
+  },
+
+  "cash": {
+    "balance": 484001.80,
+    "runway_weeks": 39.8,
+    "ap_overdue": 48504.75,
+    "ap_detail": {
+      "Primo": 25575.0,
+      "Jiangsu_Bosen_Jucheng": 13076.0,
+      "Will_Dryden_Vendor": 9000.0,
+      "WSA": 854.0
+    }
+  },
+
   "close_out": {
     "kills_executed_this_run": 0,
-    "kills_staged_this_run": 2,
+    "kills_staged_this_run": 3,
     "kills_confirmed_prior": 1,
     "anomalies_this_run": 0,
-    "fatigue_flags": 0,
     "directives_processed": 0,
     "launches_executed": 0,
     "active_ads_monitored": 2,
     "active_ads_registry_updated": true,
     "wren_fired": true,
     "advisor_ran": true,
-    "advisor_solutions": 4,
-    "advisor_gaps": 7,
+    "advisor_solutions": 5,
+    "advisor_gaps": 0,
     "notes": [
-      "active_ads.json was empty — BLZ-20260721-001 and BLZ-20260717-002 added to registry this run",
-      "Kill sweep used live Meta MCP pull due to empty registry — no kills missed",
-      "BLZ-20260721-001: CTR 6.39% on 861 impressions — positive early signal",
-      "BLZ-20260717-002: $11.15 yesterday, CPM $75.34, no purchases — monitoring",
-      "Wren fired for Klaviyo flags (Browse Abandonment DRAFT + all flows 0 sends — 3rd week)"
+      "BLZ-20260721-001 found PAUSED in live Meta pull — status updated in active_ads.json",
+      "Save the Shave campaign 120248769281270118 now campaign-level PAUSED — Will manual action Jul 24",
+      "Treatment kill staged from Jul 24 run — 14d ROAS 0.280 vs floor 1.51, threshold crossed Jul 22",
+      "Bundle Day 34 unresolved — $152.72 Jul 23 in zero-return spend",
+      "Slicker Day 34 unresolved — liquidate=true, organic rank damage accelerating",
+      "Wren fired for Klaviyo flags (Browse Abandonment DRAFT, $0 revenue Week 6)"
     ]
   },
 
   "slack_posts": {
-    "watchdog": {"channel": "#stg-ads-watchdog", "ts": "1784733785.395759", "link": "https://will-j8b8676.slack.com/archives/C0BDU52NV61/p1784733785395759"},
-    "advisor": {"channel": "#stg-ads-watchdog", "ts": "1784733810.860219", "link": "https://will-j8b8676.slack.com/archives/C0BDU52NV61/p1784733810860219"}
+    "watchdog": {
+      "channel": "#stg-ads-watchdog",
+      "channel_id": "C0BDU52NV61",
+      "ts": "1784993013.227299",
+      "link": "https://will-j8b8676.slack.com/archives/C0BDU52NV61/p1784993013227299",
+      "type": "DAILY_WATCHDOG"
+    }
   }
 }
