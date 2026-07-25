@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "note": "Maintained by Blaze v1.8. Every ad launched via B-1 is added here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds.",
+  "note": "Maintained by Blaze v2.0. Every ad launched via B-1 is added here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds.",
   "ads": [
     {
       "ad_id": "120249254385700118",
@@ -12,11 +12,13 @@
       "daily_budget": 10,
       "roas_target": null,
       "kill_threshold": 75,
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "approved_by": "Will Dryden",
       "approved_ts": "2026-07-21T11:08:00-07:00",
       "launched_by": "Blaze",
-      "notes": "Detangle the Tangle TOF — Detangling Treatment + Pin Brush bundle. LINK_CLICKS objective. Lookalike 1% STG Customer Emails. Added to registry retroactively Jul 22 (missing from Jul 21 launch run)."
+      "paused_at": "2026-07-24",
+      "paused_by": "Will (manual — detected by Blaze 2026-07-25)",
+      "notes": "Detangle the Tangle TOF — Detangling Treatment + Pin Brush bundle. LINK_CLICKS objective. Lookalike 1% STG Customer Emails. Added to registry retroactively Jul 22 (missing from Jul 21 launch run). Found PAUSED in live Meta pull 2026-07-25 — likely manual pause by Will during Jul 24. Last known spend $5.09 on Jul 24."
     },
     {
       "ad_id": "120249184178250118",
@@ -32,7 +34,7 @@
       "approved_by": "Will Dryden",
       "approved_ts": null,
       "launched_by": "Blaze",
-      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22."
+      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22. Monitoring — approaching $75 kill threshold."
     }
   ]
 }
