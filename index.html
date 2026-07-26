@@ -200,11 +200,16 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
 <div class="layout">
   <div class="sidebar" id="sidebar">
-    <div class="sb-label">Data Sources</div>
+    <div class="sb-label">Overview</div>
     <button class="nav-card active" id="nav-overview" onclick="show('overview')">
       <span class="nav-num">◎<span class="nav-dot" id="dot-overview"></span></span>
       <span class="nav-text"><span class="nav-title">Morning Overview</span><span class="nav-desc">All sources at a glance + active RED flags</span></span>
     </button>
+    <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
+      <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
+      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Revenue &middot; margins &middot; inventory &middot; brand &middot; S&amp;S</span></span>
+    </button>
+    <div class="sb-label" style="margin-top:8px;">Data Sources</div>
     <button class="nav-card" id="nav-quickbooks" onclick="show('quickbooks')">
       <span class="nav-num">01<span class="nav-dot" id="dot-quickbooks"></span></span>
       <span class="nav-text"><span class="nav-title">QuickBooks</span><span class="nav-desc">Cash position, runway, P&amp;L status</span></span>
@@ -254,11 +259,6 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-text"><span class="nav-title">Inventory + Supply Chain</span><span class="nav-desc">Live FBA position · POs · lead times · cash plan</span></span>
     </button>
 
-    <div class="sb-label" style="margin-top:8px;">Strategic</div>
-    <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
-      <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
-      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Revenue &middot; margins &middot; inventory &middot; brand &middot; S&amp;S</span></span>
-    </button>
   </div>
 
   <div class="content">
@@ -1071,8 +1071,9 @@ function render(d){
   const shBreak  = sh.order_breakdown || {};
   const shBreakEl = $('sh-breakdown');
   if (shBreakEl) {
-    if (!shProds.length && !shBreak.total_orders) {
-      shBreakEl.innerHTML = alertBox('info', 'Order breakdown will appear after the next routine run — Step 3B needs to be added to Collect v10.13.');
+    if (!shBreak.total_orders && !shProds.length) {
+      const obNote = shBreak.note || 'No orders yesterday — order detail will populate on next active sales day.';
+      shBreakEl.innerHTML = alertBox('info', obNote);
     } else {
       const sio = shBreak.single_item_orders || 0;
       const mio = shBreak.multi_item_orders  || 0;
