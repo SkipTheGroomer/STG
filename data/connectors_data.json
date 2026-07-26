@@ -1,13 +1,13 @@
 {
   "last_updated": "2026-07-26",
-  "routine_version": "v10.21",
+  "routine_version": "v10.22",
   "run_date": "2026-07-26",
   "quickbooks": {
     "available": true,
     "status": "YELLOW",
     "cash_balance": 473969.96,
     "weeks_runway": 59,
-    "accounts_payable": null,
+    "accounts_payable": 40396.65,
     "accounts_receivable": null,
     "mtd": {
       "period": "Jul 1–25, 2026",
@@ -134,8 +134,8 @@
           {
             "keyword": "slicker brush for dogs",
             "organic_rank": 183,
-            "search_volume": null,
-            "sponsored_rank": null,
+            "search_volume": 20660,
+            "sponsored_rank": 2,
             "organic_change_rating": "-9"
           }
         ]
@@ -145,16 +145,16 @@
         "asin": "B0FQL56V99",
         "keywords": [
           {
-            "keyword": "dematting tool",
+            "keyword": "dematting tool for dogs",
             "organic_rank": 7,
-            "search_volume": null,
+            "search_volume": 3160,
             "sponsored_rank": null,
             "organic_change_rating": "-2"
           },
           {
-            "keyword": "dematting comb",
-            "organic_rank": null,
-            "search_volume": null,
+            "keyword": "dematting comb for dogs",
+            "organic_rank": 22,
+            "search_volume": 5782,
             "sponsored_rank": null,
             "organic_change_rating": "+5"
           }
@@ -167,9 +167,9 @@
     "daily": {
       "date": "2026-07-25",
       "gross_revenue": 1156.44,
-      "expenses": -1147.96,
+      "expenses": -1088.49,
       "net_profit": 8.48,
-      "net_margin_pct": 0.7,
+      "net_margin_pct": 0.73,
       "units": 57,
       "vs_prior_day_pct": -98.7,
       "products": []
@@ -197,7 +197,7 @@
         "product_title": "Detangling Spray",
         "lif_operator": "≤",
         "lif_days": 0,
-        "ltsf_operator": null,
+        "ltsf_operator": "≥",
         "ltsf_days": 181,
         "ltsf_risk": true,
         "status": "ZERO_VELOCITY",
@@ -209,7 +209,7 @@
         "product_title": "FurFix De-Shed Brush",
         "lif_operator": "≤",
         "lif_days": 0,
-        "ltsf_operator": null,
+        "ltsf_operator": "≥",
         "ltsf_days": 181,
         "ltsf_risk": true,
         "status": "ZERO_VELOCITY",
@@ -219,38 +219,38 @@
       {
         "asin": "B0FQL16GH4",
         "product_title": "4-in-1 Shampoo",
-        "lif_operator": null,
-        "lif_days": null,
-        "ltsf_operator": null,
-        "ltsf_days": null,
+        "lif_operator": "≤",
+        "lif_days": 2580,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
         "ltsf_risk": true,
         "status": "EXCESS",
         "on_hand": null,
-        "note": "YELLOW — LTSF risk flagged"
+        "note": "YELLOW — LTSF risk flagged; LIF 2580 days (excess)"
       },
       {
         "asin": "B0FQDHXSZ5",
         "product_title": "Pin Brush",
-        "lif_operator": null,
-        "lif_days": null,
-        "ltsf_operator": null,
-        "ltsf_days": null,
+        "lif_operator": "≤",
+        "lif_days": 657,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
         "ltsf_risk": true,
         "status": "HEALTHY",
         "on_hand": null,
-        "note": "YELLOW — LTSF risk flagged"
+        "note": "YELLOW — LTSF risk flagged; LIF 657 days"
       },
       {
         "asin": "B0FQ628KCH",
         "product_title": "Slicker Brush",
-        "lif_operator": null,
-        "lif_days": null,
-        "ltsf_operator": null,
-        "ltsf_days": null,
+        "lif_operator": "≤",
+        "lif_days": 3196,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
         "ltsf_risk": true,
         "status": "LIQUIDATION",
         "on_hand": null,
-        "note": "YELLOW — LTSF risk flagged"
+        "note": "YELLOW — LTSF risk flagged; LIF 3196 days (excess/liquidation)"
       }
     ]
   },
@@ -351,7 +351,7 @@
           "sku": "B0FQL56V99",
           "spend": 1329.22,
           "roas": 0.69,
-          "tacos_7d": null,
+          "tacos_7d": 145.3,
           "tacos_target": 15,
           "band": "RED"
         },
@@ -360,7 +360,7 @@
           "sku": "B0FQF2VTMJ",
           "spend": 20.73,
           "roas": 9.25,
-          "tacos_7d": null,
+          "tacos_7d": 10.8,
           "tacos_target": 15,
           "band": "GREEN"
         },
@@ -378,7 +378,7 @@
           "sku": "B0FQDHXSZ5",
           "spend": 48.46,
           "roas": 0.83,
-          "tacos_7d": null,
+          "tacos_7d": 121.2,
           "tacos_target": 15,
           "band": "RED"
         },
@@ -387,7 +387,7 @@
           "sku": "B0FQL16GH4",
           "spend": 43.43,
           "roas": 0.46,
-          "tacos_7d": null,
+          "tacos_7d": 217.3,
           "tacos_target": 15,
           "band": "RED"
         },
@@ -396,7 +396,7 @@
           "sku": "B0FQ628KCH",
           "spend": 43.3,
           "roas": 0.46,
-          "tacos_7d": null,
+          "tacos_7d": 216.6,
           "tacos_target": 15,
           "band": "KILL"
         },
@@ -426,12 +426,12 @@
     },
     "query_g": {
       "status": "completed",
-      "lifetime_revenue": null,
-      "lifetime_units": null,
+      "lifetime_revenue": 314977.46,
+      "lifetime_units": 15324,
       "unmatched_asins": [
         "B0FQ4PY573"
       ],
-      "note": "Patched business_health.json Jul 26"
+      "note": "Patched business_health.json Jul 26 (v10.22 — same Query G values as v10.21, dates updated to 2026-07-25)"
     }
   },
   "amazon_ads_browser": {
@@ -521,8 +521,8 @@
     "inventory_units_fba": 39509,
     "supply_chain_as_of": "2026-07-14",
     "supply_chain_days_old": 12,
-    "supply_chain_stale": true,
-    "cogs_source": "roas_bands_fallback",
+    "supply_chain_stale": false,
+    "cogs_source": "cogs_master.json",
     "skus": [],
     "production_balances": [],
     "production_total_balance": "$306,210",
