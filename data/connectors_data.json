@@ -1,407 +1,533 @@
 {
-  "last_updated": "2026-07-25 PT",
+  "last_updated": "2026-07-26",
   "routine_version": "v10.21",
-  "run_date": "2026-07-25",
-  "sections": {
-    "quickbooks": {
-      "available": true,
+  "run_date": "2026-07-26",
+  "quickbooks": {
+    "available": true,
+    "status": "YELLOW",
+    "cash_balance": 473969.96,
+    "weeks_runway": 59,
+    "accounts_payable": null,
+    "accounts_receivable": null,
+    "mtd": {
       "period": "Jul 1–25, 2026",
-      "mtd_revenue": 24681.70,
-      "mtd_cogs": 11155.47,
-      "mtd_gross_profit": 13526.23,
-      "mtd_gross_margin_pct": 54.8,
-      "mtd_operating_expenses": 42665.10,
-      "mtd_net_income": -29138.87,
-      "mtd_net_margin_pct": -118.1,
-      "cash": 473969.96,
-      "total_assets": 834002.77,
-      "total_liabilities": 923151.30,
-      "equity": -89148.53,
-      "monthly_burn_estimate": 34967,
-      "weeks_runway": 59,
-      "sync_lag_flag": true,
-      "flags": [
-        "SYNC LAG (L-2026-07-14-002) — MTD revenue $24,681.70 unchanged vs Jul 25 run. Use H10 Daily Profit for Amazon revenue cross-check.",
-        "Cash $473,969.96 is reliable — use for cash runway. Expenses reliable.",
-        "MTD net -$29,138.87 may include one-time Legal/Professional fees ($10,070 MTD).",
-        "Weeks runway: ~59 weeks ($473,969.96 / ~$34,967/mo burn)"
-      ]
-    },
-    "klaviyo": {
-      "available": true,
-      "report_window_days": 7,
-      "flows": [
-        {
-          "name": "Abandoned Cart",
-          "recipients": 1,
-          "open_rate_pct": 100.0,
-          "click_rate_pct": 0.0,
-          "conversions": 0,
-          "revenue": 0.00
-        },
-        {
-          "name": "Warranty",
-          "recipients": 2,
-          "open_rate_pct": 50.0,
-          "click_rate_pct": 0.0,
-          "conversions": 0,
-          "revenue": 0.00
-        },
-        {
-          "name": "Welcome Series",
-          "recipients": 3,
-          "open_rate_pct": 0.0,
-          "click_rate_pct": 0.0,
-          "conversions": 0,
-          "revenue": 0.00
-        }
-      ],
-      "total_recipients_7d": 6,
-      "total_revenue_7d": 0.00,
-      "flags": [
-        "YELLOW — Only 6 total recipients across all flows (very low list volume)",
-        "All flows: $0 revenue 7d",
-        "Browse Abandonment still DRAFT — not sending"
-      ]
-    },
-    "shopify": {
-      "available": true,
+      "revenue": 24681.7,
+      "cogs": 11155.47,
+      "gross_profit": 13526.23,
+      "gross_margin_pct": 54.8,
+      "operating_expenses": 42665.1,
+      "net_income": -29138.87,
+      "net_margin_pct": -118.1
+    }
+  },
+  "klaviyo": {
+    "available": true,
+    "avg_open_rate": 33.3,
+    "avg_click_rate": 0.0,
+    "total_email_revenue_7d": 0.0,
+    "flows_flagged": [
+      "YELLOW — Only 6 total recipients across all flows (very low list volume)",
+      "All flows: $0 revenue 7d",
+      "Browse Abandonment still DRAFT — not sending"
+    ],
+    "flows": [
+      {
+        "name": "Abandoned Cart",
+        "recipients": 1,
+        "open_rate_pct": 100.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
+      },
+      {
+        "name": "Warranty",
+        "recipients": 2,
+        "open_rate_pct": 50.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
+      },
+      {
+        "name": "Welcome Series",
+        "recipients": 3,
+        "open_rate_pct": 0.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
+      }
+    ]
+  },
+  "shopify": {
+    "available": true,
+    "report_date": "2026-07-25",
+    "yesterday_sales": 0.0,
+    "aov": null,
+    "vs_7day_avg_pct": -100.0,
+    "yesterday": {
       "date": "2026-07-25",
-      "sales": 0.00,
+      "revenue": 0.0,
       "orders": 0,
-      "seven_day_avg": 70.00,
-      "vs_7day_avg_pct": -100.0,
-      "daily_7d": [
-        {"date": "2026-07-18", "sales": 0.00},
-        {"date": "2026-07-19", "sales": 119.03},
-        {"date": "2026-07-20", "sales": 213.04},
-        {"date": "2026-07-21", "sales": 27.98},
-        {"date": "2026-07-22", "sales": 74.96},
-        {"date": "2026-07-23", "sales": 18.99},
-        {"date": "2026-07-24", "sales": 35.99}
-      ],
-      "flags": [
-        "RED — Jul 25 $0 revenue / 0 orders (-100% vs 7-day avg $70/day)",
-        "D2C channel structurally low-volume (L-2026-07-11-001 DOCTRINE)"
-      ]
+      "aov": null,
+      "items_per_order": null
     },
-    "helium10": {
-      "available": true,
-      "report_date": "2026-07-25",
-      "source": "H10 Daily Keyword Tracker Email (Step 4a)",
-      "keywords": [
-        {
-          "asin": "B0FQ628KCH",
-          "product": "Slicker Brush",
-          "keyword": "slicker brush for dogs",
-          "rank_prev": 174,
-          "rank_curr": 183,
-          "change": -9,
-          "flag": "RED — 9-spot drop (>= 3-spot alert threshold). Liquidation SKU organic rank damage ongoing (L-2026-07-14-001 active)."
-        },
-        {
-          "asin": "B0FQL56V99",
-          "product": "Emergency Dematter",
-          "keyword": "dematting tool",
-          "rank_prev": 5,
-          "rank_curr": 7,
-          "change": -2,
-          "flag": null
-        },
-        {
-          "asin": "B0FQL56V99",
-          "product": "Emergency Dematter",
-          "keyword": "dematting comb",
-          "change": 5,
-          "direction": "improved",
-          "flag": null
-        }
-      ],
-      "flags": [
-        "RED — 'slicker brush for dogs' dropped 9 spots (174→183). Active violation: Slicker campaign still spending (L-2026-07-14-001)."
-      ]
-    },
-    "helium10_profits": {
-      "available": true,
-      "report_date": "2026-07-25",
-      "source": "H10 Daily Profit Email (Step 4b)",
-      "gross": 1156.44,
-      "net": 8.48,
+    "daily_7d": [
+      {
+        "date": "2026-07-18",
+        "sales": 0.0
+      },
+      {
+        "date": "2026-07-19",
+        "sales": 119.03
+      },
+      {
+        "date": "2026-07-20",
+        "sales": 213.04
+      },
+      {
+        "date": "2026-07-21",
+        "sales": 27.98
+      },
+      {
+        "date": "2026-07-22",
+        "sales": 74.96
+      },
+      {
+        "date": "2026-07-23",
+        "sales": 18.99
+      },
+      {
+        "date": "2026-07-24",
+        "sales": 35.99
+      }
+    ],
+    "top_products": [],
+    "order_breakdown": {
+      "date": "2026-07-25",
+      "total_orders": 0,
+      "single_item_orders": 0,
+      "multi_item_orders": 0,
+      "avg_items_per_order": null,
+      "orders": [],
+      "combos": [],
+      "note": "$0 revenue / 0 orders on Jul 25 — Shopify structurally low-volume (L-2026-07-11-001)"
+    }
+  },
+  "helium10": {
+    "available": true,
+    "report_found": true,
+    "report_date": "2026-07-25",
+    "data_readable": true,
+    "flags": [
+      "RED — 'slicker brush for dogs' dropped 9 spots (174→183). Active violation: Slicker campaign still spending (L-2026-07-14-001)."
+    ],
+    "products": [
+      {
+        "name": "Slicker Brush",
+        "asin": "B0FQ628KCH",
+        "keywords": [
+          {
+            "keyword": "slicker brush for dogs",
+            "organic_rank": 183,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "-9"
+          }
+        ]
+      },
+      {
+        "name": "Emergency Dematter",
+        "asin": "B0FQL56V99",
+        "keywords": [
+          {
+            "keyword": "dematting tool",
+            "organic_rank": 7,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "-2"
+          },
+          {
+            "keyword": "dematting comb",
+            "organic_rank": null,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "+5"
+          }
+        ]
+      }
+    ]
+  },
+  "helium10_profits": {
+    "available": true,
+    "daily": {
+      "date": "2026-07-25",
+      "gross_revenue": 1156.44,
+      "expenses": -1147.96,
+      "net_profit": 8.48,
+      "net_margin_pct": 0.7,
       "units": 57,
-      "flags": [
-        "RED — Amazon net profit $8.48 on Jul 25 (vs prior day $629.28, -98.7%)",
-        "Gross $1,156.44 / 57 units is within normal range; net compressed by ad spend + fees"
-      ]
+      "vs_prior_day_pct": -98.7,
+      "products": []
     },
-    "helium10_listing_analyzer": {
-      "available": true,
-      "report_date": "2026-07-20",
-      "source": "H10 Listing Analyzer Email (Step 4e)",
-      "listings": [
+    "weekly": null,
+    "monthly": null
+  },
+  "helium10_listing_analyzer": {
+    "available": false,
+    "report_found": false,
+    "listings": []
+  },
+  "helium10_market_tracker": {
+    "available": false,
+    "report_found": false,
+    "review_changes": []
+  },
+  "helium10_inventory": {
+    "available": true,
+    "source": "helium10_email",
+    "report_date": "2026-07-25",
+    "skus": [
+      {
+        "asin": "B0FQ4PY573",
+        "product_title": "Detangling Spray",
+        "lif_operator": "≤",
+        "lif_days": 0,
+        "ltsf_operator": null,
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "ZERO_VELOCITY",
+        "on_hand": null,
+        "note": "RED — LIF <= 0 Days (OOS/stockout — immediate reorder review)"
+      },
+      {
+        "asin": "B0FQFP2S9F",
+        "product_title": "FurFix De-Shed Brush",
+        "lif_operator": "≤",
+        "lif_days": 0,
+        "ltsf_operator": null,
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "ZERO_VELOCITY",
+        "on_hand": null,
+        "note": "RED — LIF <= 0 Days (OOS/stranded — SC action required, L-2026-07-13-001 active 3+ weeks)"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "product_title": "4-in-1 Shampoo",
+        "lif_operator": null,
+        "lif_days": null,
+        "ltsf_operator": null,
+        "ltsf_days": null,
+        "ltsf_risk": true,
+        "status": "EXCESS",
+        "on_hand": null,
+        "note": "YELLOW — LTSF risk flagged"
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "product_title": "Pin Brush",
+        "lif_operator": null,
+        "lif_days": null,
+        "ltsf_operator": null,
+        "ltsf_days": null,
+        "ltsf_risk": true,
+        "status": "HEALTHY",
+        "on_hand": null,
+        "note": "YELLOW — LTSF risk flagged"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "product_title": "Slicker Brush",
+        "lif_operator": null,
+        "lif_days": null,
+        "ltsf_operator": null,
+        "ltsf_days": null,
+        "ltsf_risk": true,
+        "status": "LIQUIDATION",
+        "on_hand": null,
+        "note": "YELLOW — LTSF risk flagged"
+      }
+    ]
+  },
+  "inventory": {
+    "available": true,
+    "source": "inventory_data.json",
+    "data_date": "2026-07-23",
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "B0FQL56V99",
+        "on_hand": 21738,
+        "dos": null,
+        "status": "HEALTHY",
+        "note": ""
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "B0FQF2VTMJ",
+        "on_hand": 479,
+        "dos": null,
+        "status": "HEALTHY",
+        "note": ""
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "B0GV5ZFLC2",
+        "on_hand": 8319,
+        "dos": null,
+        "status": "HEALTHY",
+        "note": ""
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "B0FQL16GH4",
+        "on_hand": 4026,
+        "dos": null,
+        "status": "EXCESS",
+        "note": ""
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "B0FQDHXSZ5",
+        "on_hand": 2019,
+        "dos": null,
+        "status": "HEALTHY",
+        "note": ""
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "B0FQ628KCH",
+        "on_hand": 2580,
+        "dos": null,
+        "status": "LIQUIDATION",
+        "note": ""
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "B0FQ4PY573",
+        "on_hand": 288,
+        "dos": null,
+        "status": "ZERO_VELOCITY",
+        "note": ""
+      },
+      {
+        "asin": "B0FQFP2S9F",
+        "name": "B0FQFP2S9F",
+        "on_hand": 60,
+        "dos": null,
+        "status": "ZERO_VELOCITY",
+        "note": ""
+      }
+    ],
+    "summary": {
+      "total": 8,
+      "healthy": 4,
+      "low_stock": 0,
+      "excess": 2,
+      "stranded": 0,
+      "zero_velocity": 2,
+      "data_source": "inventory_data.json",
+      "note": "inventory_data.json is 3 days old — @josh"
+    }
+  },
+  "supermetrics": {
+    "available": true,
+    "status": "RED",
+    "amazon_ads": {
+      "spend": 337.07,
+      "roas": 1.38,
+      "flagged_skus": [
+        "B0FQ628KCH liquidate=true: 7d spend $43.30 (any spend = immediate flag, L-2026-07-14-001 Day 40+)",
+        "B0GT1H84JM: 7d spend $1,092.18 / $0 attributed sales (>= $75 threshold with $0 sales)"
+      ],
+      "skus": [
         {
           "asin": "B0FQL56V99",
-          "product": "Emergency Dematter",
-          "lqs": 9.5,
-          "sessions_change_pct": -29.29,
-          "uosr_change_pct": 37.41
+          "sku": "B0FQL56V99",
+          "spend": 1329.22,
+          "roas": 0.69,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "RED"
         },
         {
           "asin": "B0FQF2VTMJ",
-          "product": "Rake Brush",
-          "lqs": 9.5,
-          "sessions_change_pct": null,
-          "uosr_change_pct": null
+          "sku": "B0FQF2VTMJ",
+          "spend": 20.73,
+          "roas": 9.25,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "GREEN"
         },
         {
           "asin": "B0GV5ZFLC2",
-          "product": "Detangling Treatment",
-          "lqs": 9.5,
-          "sessions_change_pct": null,
-          "uosr_change_pct": null
+          "sku": "B0GV5ZFLC2",
+          "spend": 51.42,
+          "roas": 0.0,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "KILL"
         },
         {
           "asin": "B0FQDHXSZ5",
-          "product": "Pin Brush",
-          "lqs": 8.5,
-          "sessions_change_pct": 22.33,
-          "uosr_change_pct": null
+          "sku": "B0FQDHXSZ5",
+          "spend": 48.46,
+          "roas": 0.83,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "RED"
         },
         {
           "asin": "B0FQL16GH4",
-          "product": "4-in-1 Shampoo",
-          "lqs": 9.5,
-          "sessions_change_pct": null,
-          "uosr_change_pct": null
-        }
-      ],
-      "flags": [
-        "WATCH — B0FQL56V99 sessions -29.29% (significant session decline; UOSR +37.41% is positive)",
-        "POSITIVE — B0FQDHXSZ5 sessions +22.33%"
-      ]
-    },
-    "helium10_market_tracker": {
-      "available": true,
-      "report_date": "2026-07-21",
-      "source": "H10 Market Tracker Email (Step 4f)",
-      "segment": "We Love Doodles",
-      "competitors": [
-        {"asin": "B0CXDL42B4", "market_share_change_pct": 0.7},
-        {"asin": "B09Q837KK1", "market_share_change_pct": 0.7},
-        {"asin": "B0BFZ4C4Z9", "market_share_change_pct": 0.4}
-      ],
-      "flags": []
-    },
-    "helium10_inventory": {
-      "available": true,
-      "report_date": "2026-07-25",
-      "source": "H10 Inventory Insights (Step 4g — reuses Step 4b email)",
-      "inventory_insights": [
-        {
-          "asin": "B0FQ4PY573",
-          "product": "Detangling Spray",
-          "lif_days": 0,
-          "ltsf_days_min": 181,
-          "flag": "RED — LIF <= 0 Days (OOS/stockout — immediate reorder review)"
-        },
-        {
-          "asin": "B0FQFP2S9F",
-          "product": "FurFix De-Shed Brush",
-          "lif_days": 0,
-          "ltsf_days_min": 181,
-          "flag": "RED — LIF <= 0 Days (OOS/stranded — SC action required, L-2026-07-13-001 active 3+ weeks)"
-        },
-        {
-          "asin": "B0FQL16GH4",
-          "product": "4-in-1 Shampoo",
-          "lif_days": null,
-          "ltsf_days_min": null,
-          "flag": "YELLOW — LTSF risk flagged"
-        },
-        {
-          "asin": "B0FQDHXSZ5",
-          "product": "Pin Brush",
-          "lif_days": null,
-          "ltsf_days_min": null,
-          "flag": "YELLOW — LTSF risk flagged"
+          "sku": "B0FQL16GH4",
+          "spend": 43.43,
+          "roas": 0.46,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "RED"
         },
         {
           "asin": "B0FQ628KCH",
-          "product": "Slicker Brush",
-          "lif_days": null,
-          "ltsf_days_min": null,
-          "flag": "YELLOW — LTSF risk flagged"
-        }
-      ],
-      "flags": [
-        "RED — B0FQ4PY573 LIF <= 0 Days (Detangling Spray stockout — reorder needed)",
-        "RED — B0FQFP2S9F LIF <= 0 Days (FurFix stranded in FBA — SC action overdue)"
-      ]
-    },
-    "inventory": {
-      "available": true,
-      "as_of": "2026-07-23",
-      "staleness_days": 3,
-      "staleness_flag": "YELLOW",
-      "live_cash_in_inventory": 141441.79,
-      "live_inventory_units": 39509,
-      "on_hand_map": {
-        "B0FQL56V99": 21738,
-        "B0FQF2VTMJ": 479,
-        "B0GV5ZFLC2": 8319,
-        "B0FQL16GH4": 4026,
-        "B0FQDHXSZ5": 2019,
-        "B0FQ628KCH": 2580,
-        "B0FQ4PY573": 288,
-        "B0FQFP2S9F": 60
-      },
-      "supply_chain": {
-        "as_of": "2026-07-14",
-        "staleness_days": 12,
-        "slicker_return_rate_pct": 8.67,
-        "slicker_return_rate_threshold_pct": 8.0,
-        "slicker_return_rate_emergency_pct": 10.2,
-        "slicker_return_rate_flag": "RED"
-      },
-      "flags": [
-        "YELLOW — inventory_data.json is 3 days old (as_of 2026-07-23)",
-        "RED — Slicker Brush return_rate 8.67% (>= 8% threshold, < 10.2% emergency)"
-      ]
-    },
-    "supermetrics": {
-      "available": true,
-      "source": "data/supermetrics_data.json (read-only — NEVER call live Supermetrics tools)",
-      "generated_at": "2026-07-25T23:07:46-07:00",
-      "staleness_hours": 9,
-      "query_a": {
-        "label": "Account-level yesterday",
-        "date": "2026-07-24",
-        "account_spend": 337.07,
-        "account_roas": 1.3818,
-        "roas_band": "RED"
-      },
-      "query_b_daily": [
-        {
-          "asin": "B0FQL56V99",
-          "product": "Emergency Dematter",
-          "cost": 164.36,
-          "attributed_sales": 271.28,
-          "roas": 1.65,
-          "roas_band": "RED",
-          "breakeven": 2.07
+          "sku": "B0FQ628KCH",
+          "spend": 43.3,
+          "roas": 0.46,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "KILL"
         },
         {
           "asin": "B0GT1H84JM",
-          "product": "Save the Shave Bundle",
-          "cost": 146.16,
-          "attributed_sales": 0.00,
-          "roas": 0.00,
-          "roas_band": "KILL",
-          "breakeven": 2.40
-        },
-        {
-          "asin": "B0FQ628KCH",
-          "product": "Slicker Brush",
-          "cost": 9.88,
-          "attributed_sales": 0.00,
-          "roas": 0.00,
-          "roas_band": "KILL",
-          "breakeven": 6.92,
-          "liquidate": true
+          "sku": "B0GT1H84JM",
+          "spend": 1092.18,
+          "roas": 0.0,
+          "tacos_7d": null,
+          "tacos_target": 15,
+          "band": "KILL"
         }
       ],
-      "query_c_7d_spend": {
-        "B0FQL56V99": 1329.22,
-        "B0GT1H84JM": 1092.18,
-        "B0GV5ZFLC2": 51.42,
-        "B0FQDHXSZ5": 48.46,
-        "B0FQL16GH4": 43.43,
-        "B0FQ628KCH": 43.30,
-        "B0FQF2VTMJ": 20.73,
-        "total": 2628.74
-      },
-      "query_d_7d_attributed_sales": {
-        "B0FQL56V99": 914.97,
-        "B0FQF2VTMJ": 191.84,
-        "B0FQDHXSZ5": 39.98,
-        "B0FQ628KCH": 19.99,
-        "B0FQL16GH4": 19.99,
-        "total": 1186.77
-      },
-      "query_e": {
-        "label": "Seller Central sessions",
-        "date": "2026-07-23",
-        "sessions": 403,
-        "unit_session_percentage": 15.63,
-        "units_ordered": 63
-      },
-      "tacos_7d_pct": 221.5,
-      "tacos_note": "Query D is attribution-windowed attributed sales, not total ordered revenue — TACOS figure is inflated vs true TACOS",
-      "sku_7d_roas": {
-        "B0FQL56V99": {"spend": 1329.22, "sales": 914.97, "roas": 0.69, "band": "RED", "breakeven": 2.07},
-        "B0FQF2VTMJ": {"spend": 20.73, "sales": 191.84, "roas": 9.25, "band": "GREEN", "breakeven": 3.12},
-        "B0GV5ZFLC2": {"spend": 51.42, "sales": 0.00, "roas": 0.00, "band": "KILL", "breakeven": 2.74},
-        "B0FQDHXSZ5": {"spend": 48.46, "sales": 39.98, "roas": 0.83, "band": "RED", "breakeven": 2.61},
-        "B0FQL16GH4": {"spend": 43.43, "sales": 19.99, "roas": 0.46, "band": "RED", "breakeven": 3.75},
-        "B0FQ628KCH": {"spend": 43.30, "sales": 19.99, "roas": 0.46, "band": "KILL", "breakeven": 6.92, "liquidate": true},
-        "B0GT1H84JM": {"spend": 1092.18, "sales": 0.00, "roas": 0.00, "band": "KILL", "breakeven": 2.40}
-      },
-      "attribution_flags": [
-        "CRITICAL — B0FQ628KCH liquidate=true: 7d spend $43.30 (any spend = immediate flag, L-2026-07-14-001 Day 40+)",
-        "CRITICAL — B0GT1H84JM: 7d spend $1,092.18 / $0 attributed sales (>= $75 threshold with $0 sales)"
-      ]
+      "sku_data_pending": false
     },
-    "amazon_ads_browser": {
-      "available": false,
-      "reason": "Chrome unavailable in remote cloud execution environment — Step 5b/5c permanently degraded (L-2026-07-15-001 DOCTRINE)",
-      "degraded": true
+    "amazon_sales": {
+      "sessions": 403,
+      "conversion_rate": 15.63,
+      "units_sold": 63,
+      "data_date": "2026-07-23",
+      "note": "SC data reflects 2026-07-23 — 24-48h lag is normal."
     },
-    "meta_ads": {
-      "available": true,
-      "account_id": "2158768751536031",
-      "l30d": {
-        "spend": 549.99,
-        "roas": 0.58,
-        "purchase_value": 319.35,
-        "roas_band": "KILL"
-      },
-      "yesterday": {
-        "date": "2026-07-25",
-        "spend": 9.02,
-        "purchases": 0,
-        "purchase_value": 0.00
-      },
-      "campaigns": [
-        {
-          "name": "Shampoo 50OFF",
-          "status": "ACTIVE",
-          "l30d_spend": 68.74,
-          "l30d_roas": null
-        },
-        {
-          "name": "Save the Shave UGC Bill",
-          "status": "PAUSED",
-          "l30d_spend": 447.17,
-          "l30d_roas": 0.714158
-        },
-        {
-          "name": "Detangle TOF",
-          "status": "PAUSED",
-          "l30d_spend": 34.08,
-          "l30d_roas": null
-        }
+    "google_ads": {
+      "spend": null,
+      "roas": null,
+      "top_campaigns": []
+    },
+    "query_g": {
+      "status": "completed",
+      "lifetime_revenue": null,
+      "lifetime_units": null,
+      "unmatched_asins": [
+        "B0FQ4PY573"
       ],
-      "flags": [
-        "YELLOW — Meta L30D ROAS 0.58 (KILL band — account-wide underperformance)",
-        "Save the Shave UGC Bill PAUSED — L30D spend $447.17 still accumulating (Day 35+ no action, L-2026-07-10-001)",
-        "Yesterday Jul 25: $9.02 spend / 0 purchases (Shampoo 50OFF ACTIVE only)"
-      ]
-    },
-    "reviews": {
-      "available": true,
-      "avg_rating": 3.8,
-      "recent_reviews_checked": 15,
-      "one_two_star_count": 4,
-      "flag": "RED — 4 one/two-star reviews in most recent 15 (>= 3 threshold)"
+      "note": "Patched business_health.json Jul 26"
     }
+  },
+  "amazon_ads_browser": {
+    "available": false,
+    "account_summary": {
+      "account_roas": null,
+      "total_spend": null,
+      "total_sales": null,
+      "date_range": null
+    },
+    "campaigns_out_of_budget_count": null,
+    "campaigns_delivering_count": null,
+    "campaigns_total": null,
+    "campaigns_out_of_budget_list": [],
+    "campaigns_paused_high_roas": [],
+    "flags": [],
+    "note": "Chrome unavailable — permanent degraded mode (L-2026-07-15-001)"
+  },
+  "meta_ads": {
+    "available": true,
+    "account_id": "2158768751536031",
+    "period": "Last 30 days (trailing)",
+    "l30d": {
+      "spend": 549.99,
+      "roas": 0.58,
+      "purchase_value": 319.35
+    },
+    "yesterday": {
+      "date": "2026-07-25",
+      "spend": 9.02,
+      "purchases": 0,
+      "purchase_value": 0.0
+    },
+    "campaigns_l30d": [
+      {
+        "name": "Shampoo 50OFF",
+        "status": "ACTIVE",
+        "spend": 68.74,
+        "roas": null,
+        "results": null
+      },
+      {
+        "name": "Save the Shave UGC Bill",
+        "status": "PAUSED",
+        "spend": 447.17,
+        "roas": 0.714158,
+        "results": null
+      },
+      {
+        "name": "Detangle TOF",
+        "status": "PAUSED",
+        "spend": 34.08,
+        "roas": null,
+        "results": null
+      }
+    ],
+    "flags": [
+      "YELLOW — Meta L30D ROAS 0.58 (KILL band — account-wide underperformance)",
+      "Save the Shave UGC Bill PAUSED — L30D spend $447.17 still accumulating (Day 35+ no action, L-2026-07-10-001)",
+      "Yesterday Jul 25: $9.02 spend / 0 purchases (Shampoo 50OFF ACTIVE only)"
+    ]
+  },
+  "reviews": {
+    "available": true,
+    "status": "RED",
+    "last_reviews_check": "2026-07-26",
+    "new_review_count": 0,
+    "avg_rating_new_batch": 3.8,
+    "sheet_last_modified": "2026-07-26",
+    "recent": []
+  },
+  "brand_analytics": {
+    "available": false,
+    "week_of": null,
+    "funnel_extracted": false,
+    "repeat_purchase_extracted": false,
+    "brand_search_extracted": false,
+    "note": "runs Mondays only — next pull 2026-07-28"
+  },
+  "business_health": {
+    "available": true,
+    "cash_in_inventory": 141441.79,
+    "cash_in_inventory_source": "inventory_data_live",
+    "cash_in_inventory_date": "2026-07-23",
+    "cash_in_inventory_fresh": false,
+    "cash_in_inventory_note": "FBA only — inventory_data.json 3 days old. WSA excluded.",
+    "inventory_units_fba": 39509,
+    "supply_chain_as_of": "2026-07-14",
+    "supply_chain_days_old": 12,
+    "supply_chain_stale": true,
+    "cogs_source": "roas_bands_fallback",
+    "skus": [],
+    "production_balances": [],
+    "production_total_balance": "$306,210",
+    "return_flags": [
+      "🚨 Slicker Brush return rate 8.67% — near 10.2% Amazon fee threshold"
+    ]
   }
 }
