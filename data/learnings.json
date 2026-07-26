@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-23T00:00:00Z",
+  "last_updated": "2026-07-26T00:00:00Z",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -200,11 +200,12 @@
         "2026-07-13 run: MTD period noted as 'Jul 1-12 (connector returned figures identical to yesterday's Jul 1-11 report - likely sync lag)', revenue $3,248.82",
         "2026-07-14 run: MTD period Jul 1-13 still shows revenue $3,248.82 and COGS $1,441.47 - identical to the 2026-07-13 run's Jul 1-12 figures - despite Shopify and H10 reporting real revenue in that window. Operating expenses DID change day over day, so the lag is isolated to revenue/COGS.",
         "2026-07-15 through 2026-07-19: 7th consecutive day of confirmed sync lag. QB MTD revenue $3,387.50 (Jul 1-19). H10 Jul 18: net $1,291 on 121 units — none posting to QB.",
-        "2026-07-23 run: QB MTD revenue $24,553.71 (Jul 1-22) — frozen since Jul 12 (sync lag Day 12). Cash $484,001.80 combined (checking split unconfirmed)."
+        "2026-07-23 run: QB MTD revenue $24,553.71 (Jul 1-22) — frozen since Jul 12 (sync lag Day 12). Cash $484,001.80 combined (checking split unconfirmed).",
+        "2026-07-26 run: QB MTD revenue $24,681.70 (Jul 1-25) — same as Jul 25 run, confirming ongoing lag. Cash $473,969.96 (reliable). Use H10 Daily Profit for Amazon revenue cross-check."
       ],
       "status": "DOCTRINE",
-      "confirmations": 6,
-      "last_confirmed": "2026-07-23",
+      "confirmations": 7,
+      "last_confirmed": "2026-07-26",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14_red",
       "action_implication": "Do not use QB MTD revenue as a same-day-accurate figure — cross-check against H10 Daily Profit for Amazon revenue and Shopify for D2C. The sync lag is now confirmed on Day 12 with no resolution. Use QB for cash balance (balance sheet) and expenses only; use H10 + Shopify for revenue. Verify checking vs MM split when cash approaches $25k alert threshold.",
