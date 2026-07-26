@@ -78,10 +78,6 @@
     },
     "daily_7d": [
       {
-        "date": "2026-07-18",
-        "sales": 0.0
-      },
-      {
         "date": "2026-07-19",
         "sales": 119.03
       },
@@ -104,6 +100,10 @@
       {
         "date": "2026-07-24",
         "sales": 35.99
+      },
+      {
+        "date": "2026-07-25",
+        "sales": 0.0
       }
     ],
     "top_products": [],
@@ -115,7 +115,7 @@
       "avg_items_per_order": null,
       "orders": [],
       "combos": [],
-      "note": "$0 revenue / 0 orders on Jul 25 — Shopify structurally low-volume (L-2026-07-11-001)"
+      "note": "$0 / 0 orders on Jul 25 (Saturday) — Shopify structurally low-volume"
     }
   },
   "helium10": {
