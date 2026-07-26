@@ -1,9 +1,9 @@
 {
   "available": true,
-  "last_updated": "2026-07-25",
-  "report_date": "2026-07-25",
-  "patched_by": "JARVIS COLLECT v10.21 — Query G 2026-07-24",
-  "query_g_date": "2026-07-24",
+  "last_updated": "2026-07-26",
+  "report_date": "2026-07-26",
+  "patched_by": "JARVIS COLLECT v10.22 — Query G 2026-07-25",
+  "query_g_date": "2026-07-25",
   "kpis": {
     "lifetime_revenue": 314977.46,
     "lifetime_units": 15324,
@@ -280,7 +280,7 @@
   ],
   "_meta": {
     "last_patched": "2026-07-26",
-    "query_g_date": "2026-07-24",
+    "query_g_date": "2026-07-25",
     "field_freshness": {
       "lifetime_revenue": {"last_updated": "2026-07-26", "source": "supermetrics_query_g", "auto": true},
       "lifetime_units": {"last_updated": "2026-07-26", "source": "supermetrics_query_g", "auto": true},
