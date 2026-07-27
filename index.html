@@ -1540,6 +1540,7 @@ function render(d){
 const DATA_URL  = './data/connectors_data.json';
 const BANDS_URL = './data/roas_bands.json';
 const BH_URL    = './data/business_health.json';
+const BA_URL    = './data/brand_analytics.json';
 const DAAS_URL  = './data/daas_data.json';
 const REFRESH_MS = 5 * 60 * 1000;
 let BANDS = null;
@@ -1721,8 +1722,35 @@ async function loadData(){
     // BH after render() — needs window.__LIVE (set inside render)
     try{
       const bhres = await fetch(BH_URL + '?_=' + Date.now());
-      if (bhres.ok) renderBizHealth(await safeJson(bhres));
-      else renderBizHealth(null);
+      let bh = bhres.ok ? await safeJson(bhres) : null;
+      // Merge brand_analytics.json into bh (Sections 6 + 7)
+      try{
+        const baRes = await fetch(BA_URL + '?_=' + Date.now());
+        if (baRes.ok){
+          const ba = await safeJson(baRes);
+          if (ba && bh){
+            // Merge brand_health — only overwrite nulls, preserve existing values
+            if (ba.brand_health){
+              bh.brand_health = bh.brand_health || {};
+              const baBH = ba.brand_health;
+              if (baBH.total_customers != null)        bh.brand_health.total_customers        = baBH.total_customers;
+              if (baBH.repeat_purchase_rate_pct != null) bh.brand_health.repeat_purchase_rate_pct = baBH.repeat_purchase_rate_pct;
+              if (baBH.brand_search_share_pct != null) bh.brand_health.brand_search_share_pct = baBH.brand_search_share_pct;
+              if (baBH.top_tier?.count != null)        bh.brand_health.top_tier               = baBH.top_tier;
+              if (baBH.promising?.count != null)       bh.brand_health.promising              = baBH.promising;
+              if (baBH.at_risk?.count != null)         bh.brand_health.at_risk                = baBH.at_risk;
+              if (baBH.funnel?.awareness != null)      bh.brand_health.funnel                 = baBH.funnel;
+              if (baBH.week_of)                        bh.brand_health.week_of                = baBH.week_of;
+            }
+            // Merge return_rates into bh for Section 6
+            if (ba.return_rates) bh.return_rates = ba.return_rates;
+          } else if (ba && !bh){
+            // No business_health.json but brand_analytics exists — build minimal bh
+            bh = { brand_health: ba.brand_health, return_rates: ba.return_rates };
+          }
+        }
+      }catch(e){}
+      renderBizHealth(bh);
     }catch(e){ renderBizHealth(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
