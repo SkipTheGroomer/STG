@@ -675,7 +675,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
           <!-- ── DAAS CHANNEL SUMMARY ── -->
           <div class="sec-head" style="padding-top:14px;"><h2>Channel Summary</h2><span class="tag tag-info" id="daas-channel-tag">Amazon · TikTok · Shopify</span><span class="when" id="daas-when"></span></div>
-          <div class="sec-desc" style="font-size:11px;">Amazon · TikTok Shop · Shopify &mdash; Combined company total (Meta labeled as Shopify/Meta and not double-counted). Patrick-confirmed daily.</div>
+          <div class="sec-desc" style="font-size:11px;">Amazon · TikTok Shop · Shopify &mdash; Combined company total (Meta labeled as Shopify/Meta and not double-counted). <b>Manual pull — Patrick runs DAAS Intake each morning and pushes daas_data.json to main.</b></div>
           <div class="cards" id="daas-cards"></div>
           <div class="cards" id="daas-mtd-cards" style="margin-top:6px;"></div>
 
@@ -1561,7 +1561,18 @@ function renderBizHealth(bh){
   const bhDays = bh.report_date ? Math.floor((Date.now() - new Date(bh.report_date + 'T00:00:00')) / 86400000) : null;
   const bhStale = bhDays != null && bhDays > 10;
   const bhCriticalMissing = !k.lifetime_revenue || !k.inventory_cogs;
-  const bhStatus = !skus.length ? null : bhStale ? 'YELLOW' : bhCriticalMissing ? 'YELLOW' : 'GREEN';
+  // False-GREEN prevention: only GREEN if data is fresh, critical fields present,
+  // AND the live connectors_data loaded successfully this run
+  const liveAvail = window.__LIVE && window.__LIVE.last_updated === new Date().toISOString().slice(0,10);
+  const anyRedFlag = window.__LIVE && (
+    (window.__LIVE.quickbooks || {}).status === 'RED' ||
+    (window.__LIVE.reviews    || {}).status === 'RED'
+  );
+  const bhStatus = !skus.length ? null
+    : bhStale           ? 'YELLOW'
+    : bhCriticalMissing ? 'YELLOW'
+    : anyRedFlag        ? 'RED'
+    : 'GREEN';
   statusTag($('bh-tag'), bhStatus);
   dot('dot-bizhealth', bhStatus ? bhStatus.toLowerCase() : '');
   $('bh-when').textContent = bh.report_date ? 'As of ' + bh.report_date + (bhDays != null ? ' · ' + bhDays + ' day(s) old' : '') : '';
@@ -1631,8 +1642,53 @@ function renderBizHealth(bh){
   $('bh-margin-cards').innerHTML = !skus.length ? bhNoData : bhNote + skus.map(s=>'<div class="card '+mC(s.margin_pct)+'" style="min-width:160px;"><div class="c-lbl">'+esc(s.name)+'</div><div class="c-val '+(s.margin_pct>=40?'up':s.margin_pct>=25?'warn':'down')+'">'+fmtDollar(s.profit_per_unit)+'</div><div style="margin-top:6px;"><span class="pill '+mP(s.margin_pct)+'">'+s.margin_pct+'% margin</span></div><div class="c-sub">on '+fmtDollar(s.price)+' price</div></div>').join('');
   const maxLP = Math.max(...skus.map(s=>(s.profit_per_unit||0)*(s.units_lifetime||0)));
   $('bh-profit-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;">'+skus.map(s=>{ const lp=(s.profit_per_unit||0)*(s.units_lifetime||0),w=maxLP>0?Math.round(lp/maxLP*100):0; return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><div style="width:100px;font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:var(--green);width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(lp)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(lp)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
-  const maxIC = Math.max(...skus.map(s=>s.inventory_cogs||0)), iSC = st=>st==='fresh'?'var(--green)':st==='high'?'var(--amber)':'var(--red)';
-  $('bh-inventory-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total: '+fmtDollar(k.inventory_cogs)+' · '+fmtInt(k.inventory_units)+' units</div>'+skus.map(s=>{ const w=maxIC>0?Math.round((s.inventory_cogs||0)/maxIC*100):0,col=iSC(s.inventory_status); return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:100px;"><div style="font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="font-size:10px;color:'+col+';font-weight:600;">'+esc(s.inventory_status||'')+'</div></div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
+  // Price lookup for retail value bars (from cogs_master.json — update when new SKUs launch)
+  const priceLookup = {
+    'B0FQL56V99': 22.99,  // Emergency Dematter
+    'B0FQF2VTMJ': 14.99,  // Rake Brush
+    'B0GV5ZFLC2': 18.99,  // Detangling Treatment
+    'B0FQL16GH4': 19.99,  // 4-in-1 Shampoo
+    'B0FQDHXSZ5': 19.99,  // Pin Brush
+    'B0FQ628KCH': 17.99,  // Slicker Brush
+    'B0HB6NDVHP': 32.99,  // Skin & Coat Chew
+  };
+  const getRetailVal = s => (priceLookup[s.asin] || 0) * (s.total_all_locations || 0);
+  skus.forEach(s => { s._retail_val = getRetailVal(s); s._cogs_val = s.inventory_cogs || ((s.cogs||0)*(s.total_all_locations||0)); });
+  const maxRetail = Math.max(...skus.map(s=>s._retail_val||0));
+  const maxIC = Math.max(...skus.map(s=>s._cogs_val||0));
+  const iSC = st=>st==='fresh'?'var(--green)':st==='high'?'var(--amber)':'var(--red)';
+  $('bh-inventory-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;">'
+  + '<div style="display:flex;gap:16px;font-size:10px;font-weight:700;margin-bottom:10px;color:var(--muted);">'
+  + '<span style="display:flex;align-items:center;gap:4px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--orange);"></span>LANDED COGS VALUE</span>'
+  + '<span style="display:flex;align-items:center;gap:4px;"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--green);"></span>RETAIL VALUE @ MSRP</span>'
+  + '</div>'
+  + '<div style="font-size:11px;color:var(--muted);margin-bottom:10px;">COGS total: <b>'+fmtDollar(k.inventory_cogs||skus.reduce((a,s)=>a+(s._cogs_val||0),0))+'</b>'
+  + ' · Retail total: <b>'+fmtDollar(skus.reduce((a,s)=>a+(s._retail_val||0),0))+'</b>'
+  + ' · '+fmtInt(k.inventory_units||0)+' units all locations</div>'
+  + skus.map(function(s){
+    const wC = maxIC>0 ? Math.round((s._cogs_val||0)/maxIC*100) : 0;
+    const wR = maxRetail>0 ? Math.round((s._retail_val||0)/maxRetail*100) : 0;
+    const col = iSC(s.inventory_status);
+    const nameLabel = '<div style="width:110px;"><div style="font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="font-size:10px;color:'+col+';font-weight:600;">'+esc(s.inventory_status||'')+'</div></div>';
+    const cogsBar = '<div style="flex:1;margin-bottom:4px;">'
+      +'<div style="font-size:9px;color:var(--muted);margin-bottom:2px;">COGS</div>'
+      +'<div style="background:#eef1f4;border-radius:3px;height:16px;position:relative;">'
+      +'<div style="background:var(--orange);width:'+wC+'%;height:16px;border-radius:3px;display:flex;align-items:center;padding-left:4px;">'
+      +(wC>25?'<span style="font-size:10px;font-weight:700;color:#fff;">'+fmtDollar(s._cogs_val)+'</span>':'')
+      +'</div>'+(wC<=25?'<span style="position:absolute;left:'+(wC+2)+'%;top:1px;font-size:10px;font-weight:700;color:var(--navy);">'+fmtDollar(s._cogs_val)+'</span>':'')
+      +'</div></div>';
+    const retailBar = '<div style="flex:1;">'
+      +'<div style="font-size:9px;color:var(--muted);margin-bottom:2px;">RETAIL @ MSRP</div>'
+      +'<div style="background:#eef1f4;border-radius:3px;height:16px;position:relative;">'
+      +'<div style="background:var(--green);width:'+wR+'%;height:16px;border-radius:3px;display:flex;align-items:center;padding-left:4px;">'
+      +(wR>25?'<span style="font-size:10px;font-weight:700;color:#fff;">'+fmtDollar(s._retail_val)+'</span>':'')
+      +'</div>'+(wR<=25?'<span style="position:absolute;left:'+(wR+2)+'%;top:1px;font-size:10px;font-weight:700;color:var(--navy);">'+fmtDollar(s._retail_val)+'</span>':'')
+      +'</div></div>';
+    return '<div style="display:flex;gap:10px;margin-bottom:14px;align-items:flex-start;">'
+      +nameLabel
+      +'<div style="flex:1;"><div style="display:flex;gap:10px;">'+cogsBar+retailBar+'</div></div>'
+      +'</div>';
+  }).join('')+'</div>';
   const maxP = Math.max(...prod.map(p=>p.amount||0),1);
   $('bh-production-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total owed through Dec: '+fmtDollar(k.owed_total_thru_dec)+'</div><div style="display:flex;align-items:flex-end;gap:8px;height:100px;">'+prod.map(p=>{ const h=maxP>0?Math.round((p.amount||0)/maxP*80):0,col=p.type==='owed_now'?'var(--green)':'var(--amber)'; return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:10px;font-weight:600;color:var(--navy);">'+(p.amount>0?fmtDollar(p.amount):'')+'</div><div style="background:'+col+';width:100%;height:'+h+'px;border-radius:4px 4px 0 0;min-height:'+(p.amount>0?3:1)+'px;"></div><div style="font-size:10px;color:var(--muted);">'+esc(p.month)+'</div></div>'; }).join('')+'</div><div style="display:flex;gap:12px;margin-top:6px;font-size:10px;"><span><span style="display:inline-block;width:8px;height:8px;background:var(--green);border-radius:2px;margin-right:3px;"></span>owed now</span><span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:2px;margin-right:3px;"></span>planned</span></div></div>';
   const totSns=skus.reduce((s,x)=>s+(x.sns_subs||0),0), snsP=bh.kpis?.sns_total_pct||0, snsA=Math.min(100,snsP||0);
@@ -1743,7 +1799,22 @@ async function loadData(){
               if (baBH.week_of)                        bh.brand_health.week_of                = baBH.week_of;
             }
             // Merge return_rates into bh for Section 6
-            if (ba.return_rates) bh.return_rates = ba.return_rates;
+            if (ba.return_rates) {
+              bh.return_rates = ba.return_rates;
+              // Also merge into bh.skus so the Returns vs Industry bars render
+              if (bh.skus) {
+                bh.skus = bh.skus.map(function(s){
+                  const rr = ba.return_rates[s.asin];
+                  if (rr && rr.return_rate_pct != null){
+                    s.return_rate_pct        = rr.return_rate_pct;
+                    s.category_avg_return_pct = rr.category_avg_return_pct || null;
+                    s.return_vs_category      = rr.return_rate_pct > (rr.category_avg_return_pct || 999)
+                                                ? 'above' : 'below';
+                  }
+                  return s;
+                });
+              }
+            }
           } else if (ba && !bh){
             // No business_health.json but brand_analytics exists — build minimal bh
             bh = { brand_health: ba.brand_health, return_rates: ba.return_rates };
