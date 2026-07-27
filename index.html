@@ -1652,8 +1652,12 @@ function renderBizHealth(bh){
     'B0FQ628KCH': 17.99,  // Slicker Brush
     'B0HB6NDVHP': 32.99,  // Skin & Coat Chew
   };
-  const getRetailVal = s => (priceLookup[s.asin] || 0) * (s.total_all_locations || 0);
-  skus.forEach(s => { s._retail_val = getRetailVal(s); s._cogs_val = s.inventory_cogs || ((s.cogs||0)*(s.total_all_locations||0)); });
+  // Use s.price (from bh.json) with fallback to priceLookup; use units_all_locs (bh.json field name)
+  const getRetailVal = s => (s.price || priceLookup[s.asin] || 0) * (s.units_all_locs || s.total_all_locations || 0);
+  skus.forEach(s => {
+    s._retail_val = getRetailVal(s);
+    s._cogs_val = s.inventory_cogs || ((s.cogs||0)*(s.units_all_locs || s.total_all_locations||0));
+  });
   const maxRetail = Math.max(...skus.map(s=>s._retail_val||0));
   const maxIC = Math.max(...skus.map(s=>s._cogs_val||0));
   const iSC = st=>st==='fresh'?'var(--green)':st==='high'?'var(--amber)':'var(--red)';
