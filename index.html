@@ -1151,7 +1151,7 @@ function render(d){
   statusTag($('sh-tag'), shStatus); dot('dot-shopify', shStatus);
   $('sh-cards').innerHTML =
     card("Yesterday's Sales", fmtDollar(sh.yesterday_sales), 'vs 7-day average', 'bdr-teal') +
-    card('AOV', fmtDollar(sh.aov), 'Target: $35+', shBadAov?'bdr-red':'bdr-green', shBadAov?'down':'') +
+    card('AOV', sh.yesterday_sales === 0 ? 'No sales' : fmtDollar(sh.aov), sh.yesterday_sales === 0 ? 'No orders yesterday' : 'Target: $35+', sh.yesterday_sales === 0 ? 'bdr-grey' : shBadAov?'bdr-red':'bdr-green', sh.yesterday_sales === 0 ? '' : shBadAov?'down':'') +
     card('vs 7-Day Avg', sh.vs_7day_avg_pct==null?null:(sh.vs_7day_avg_pct>0?'+':'')+fmtPct(sh.vs_7day_avg_pct), 'Flag if drop >20%', shDrop?'bdr-red':'bdr-teal', shDrop?'down':sh.vs_7day_avg_pct>0?'up':'');
   $('sh-alerts').innerHTML = sh.yesterday_sales==null ? naAlert('Shopify') :
     shDrop ? alertBox('warn','<b>Sales dropped more than 20%</b> vs the 7-day average — flagged in #stg-morning-brief.') : '';
@@ -1486,8 +1486,11 @@ function render(d){
   };
 
   $('hp-daily').innerHTML   = hpCards(hp.daily,   'vs Prior Day',   'vs_prior_day_pct') + hpProdTable((hp.daily||{}).products, (hp.daily||{}).date || 'Yesterday');
-  $('hp-weekly').innerHTML  = hpCards(hp.weekly,  'vs Prior Week',  'vs_prior_week_pct') + hpProdTable((hp.weekly||{}).products, (hp.weekly||{}).period || 'Last week');
-  $('hp-monthly').innerHTML = hpCards(hp.monthly, 'vs Prior Month', 'vs_prior_month_pct') + hpProdTable((hp.monthly||{}).products, (hp.monthly||{}).period || 'Last month');
+  const hpNoDataMsg = '<div style="color:var(--muted);font-size:12px;padding:12px 4px;font-style:italic;">';
+  $('hp-weekly').innerHTML  = hp.weekly  ? hpCards(hp.weekly,  'vs Prior Week',  'vs_prior_week_pct') + hpProdTable((hp.weekly||{}).products, (hp.weekly||{}).period || 'Last week')
+    : hpNoDataMsg + '⏱ Weekly report arrives Monday morning from Helium 10.</div>';
+  $('hp-monthly').innerHTML = hp.monthly ? hpCards(hp.monthly, 'vs Prior Month', 'vs_prior_month_pct') + hpProdTable((hp.monthly||{}).products, (hp.monthly||{}).period || 'Last month')
+    : hpNoDataMsg + '⏱ Monthly report arrives the 1st of each month from Helium 10.</div>';
 
   const hpMoNeg = hp.monthly && (hp.monthly.net_profit||0) < 0;
   const hpWkNeg = hp.weekly  && (hp.weekly.net_profit||0)  < 0;
@@ -1972,32 +1975,9 @@ function renderBizHealth(bh){
     if (mt.note) mtTbody.innerHTML += '<tr><td colspan="4" style="font-size:10px;color:var(--amber);padding:6px 8px;">' + esc(mt.note) + '</td></tr>';
   }
 
-  // ── AMAZON: SUBSCRIBE & SAVE DETAIL ─────────────────────────────────────────
-  const amzSns = $('amz-sns-cards'), amzSnsTag = $('amz-sns-tag');
-  // Read S&S from business_health if available
-  const bhSns = bhLive.subscribe_and_save || {};
-  if (amzSnsTag) statusTag(amzSnsTag, bhSns.active_subscriptions != null ? 'GREEN' : 'YELLOW');
-  if (amzSns) amzSns.innerHTML =
-    card('Active Subscribers', fmtInt(bhSns.active_subscriptions || (d.business_health||{}).subscribe_and_save?.active_subscriptions), '178 confirmed', 'bdr-green') +
-    card('Monthly Revenue', fmtDollar(bhSns.monthly_rev_avg || (d.business_health||{}).subscribe_and_save?.monthly_rev_avg), 'Estimated monthly avg', 'bdr-teal') +
-    card('S&S Penetration', bhSns.penetration_pct != null ? fmtNum(bhSns.penetration_pct,1)+'%' : null, 'Target: 5–10%', 'bdr-amber');
-  const amzSnsTbody = $('amz-sns-sku-table') ? $('amz-sns-sku-table').querySelector('tbody') : null;
-  if (amzSnsTbody && bhSkus.length) {
-    const snsSkus = bhSkus.filter(s => s.sns_subs != null);
-    if (snsSkus.length) {
-      amzSnsTbody.innerHTML = snsSkus.map(s => '<tr>'
-        + '<td>' + esc(s.short || s.name) + '</td>'
-        + '<td class="r">' + fmtInt(s.sns_subs) + '</td>'
-        + '<td class="r">' + (s.sns_penetration_pct != null ? fmtNum(s.sns_penetration_pct,1)+'%' : '—') + '</td>'
-        + '<td class="r" style="color:var(--green);font-weight:700;">' + (s.monthly_rev_avg != null ? fmtDollar(s.monthly_rev_avg) : '—') + '</td>'
-        + '<td class="r" style="color:var(--red);">—</td>'
-        + '</tr>').join('');
-    } else {
-      amzSnsTbody.innerHTML = '<tr><td colspan="5" style="color:var(--muted);font-style:italic;">S&S SKU detail in data/amazon_subscribe_save.json</td></tr>';
-    }
-  }
+  // Amazon S&S now rendered by renderBizHealth() — has correct bh.skus with sns_subs
 
-  // ── SHOPIFY: CHANNEL ROAS & ATTRIBUTION ─────────────────────────────────────
+    // ── SHOPIFY: CHANNEL ROAS & ATTRIBUTION ─────────────────────────────────────
   const shRoasTag = $('sh-roas-tag'), shRoasCards = $('sh-roas-cards');
   const metaL30 = (d.meta_ads || {}).l30d || {};
   const gadsL30 = (d.google_ads || {});
@@ -2139,6 +2119,35 @@ async function loadData(){
   loadReports(); // channel reports feed — independent of main data, never blocks
   loadAgentFlags();
   updateRefreshBar();
+  // ── AMAZON S&S SECTION (uses bh.skus which has sns_subs — not connectors_data) ──
+  const amzSnsTag = $('amz-sns-tag'), amzSnsCards = $('amz-sns-cards'), amzSnsWhen = $('amz-sns-when');
+  const snsSkus = skus.filter(s => s.sns_subs != null);
+  if (amzSnsTag) statusTag(amzSnsTag, snsSkus.length ? 'GREEN' : 'YELLOW');
+  if (amzSnsWhen && bh.report_date) amzSnsWhen.textContent = 'as of ' + bh.report_date;
+  const totalSnsSubs = snsSkus.reduce((a,s) => a + (s.sns_subs||0), 0);
+  const totalSnsRev  = snsSkus.reduce((a,s) => a + (s.monthly_rev_avg||0), 0);
+  const totalSnsPct  = snsSkus.length ? (snsSkus.reduce((a,s) => a + (s.sns_penetration_pct||0), 0) / snsSkus.length) : null;
+  if (amzSnsCards) amzSnsCards.innerHTML =
+    card('Active Subscribers', fmtInt(totalSnsSubs)||null, 'Across all SKUs', totalSnsSubs > 0 ? 'bdr-green' : 'bdr-grey') +
+    card('Monthly Revenue', totalSnsRev > 0 ? fmtDollar(totalSnsRev) : null, 'Estimated monthly average', 'bdr-teal') +
+    card('S&S Penetration', totalSnsPct != null ? fmtNum(totalSnsPct,1)+'%' : null, 'Target: 5–10%',
+      totalSnsPct == null ? 'bdr-grey' : totalSnsPct >= 5 ? 'bdr-green' : 'bdr-amber');
+  const amzSnsTbody2 = $('amz-sns-sku-table') ? $('amz-sns-sku-table').querySelector('tbody') : null;
+  if (amzSnsTbody2 && snsSkus.length) {
+    amzSnsTbody2.innerHTML = snsSkus.map(s => '<tr>'
+      + '<td><b>' + esc(s.short||s.name) + '</b></td>'
+      + '<td class="r">' + fmtInt(s.sns_subs) + '</td>'
+      + '<td class="r" style="color:' + ((s.sns_penetration_pct||0) >= 5 ? 'var(--green)' : 'var(--amber)') + ';font-weight:600;">'
+      + (s.sns_penetration_pct != null ? fmtNum(s.sns_penetration_pct,1)+'%' : '—') + '</td>'
+      + '<td class="r" style="color:var(--green);font-weight:700;">'
+      + (s.monthly_rev_avg > 0 ? fmtDollar(s.monthly_rev_avg) : '—') + '</td>'
+      + '<td class="r" style="color:var(--red);">—</td>'
+      + '</tr>').join('');
+  } else if (amzSnsTbody2) {
+    amzSnsTbody2.innerHTML = '<tr><td colspan="5" style="color:var(--muted);font-style:italic;">S&S data will appear after first monthly JARVIS RETURNS run.</td></tr>';
+  }
+
+
 }
 
 function updateRefreshBar(){
