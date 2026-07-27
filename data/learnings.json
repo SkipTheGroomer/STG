@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-26T00:00:00Z",
+  "last_updated": "2026-07-27T08:10:00-07:00",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -20,14 +20,15 @@
         "2026-07-14: both keywords reappear in today's report. 'detangler for dogs' r8 (no change shown), 'dog detangler' r7 (no change shown) - ranks stable, volatility appears to have settled. Supermetrics back online: Dematter ROAS 1.33 on $325.03 7d spend - still RED vs 2.07 breakeven. Pattern holds: rank stabilized but ROAS not recovered.",
         "2026-07-21: 'dematting tool for dogs' r9 (-2), 'dematting comb for dogs' r22 (+5 - not in top 50 previously, improvement). Both Dematter and Detangler keywords stable vs prior day. Pattern update: original 'detangler for dogs' volatility resolved; current tracking keywords now 'dematting tool for dogs' and 'dematting comb for dogs'.",
         "2026-07-23: 'dematting tool for dogs' r9 (no change) per H10 Jul 22 report. 7d ROAS 0.69 on $1,329.22 spend - RED band persists. Pattern unchanged.",
-        "2026-07-26: 'dematting tool for dogs' r7 (-2), 'dematting comb for dogs' r22 (+5). 7d ROAS 0.69 (RED band). TACOS 145.3% vs 15% target."
+        "2026-07-26: 'dematting tool for dogs' r7 (-2), 'dematting comb for dogs' r22 (+5). 7d ROAS 0.69 (RED band). TACOS 145.3% vs 15% target.",
+        "2026-07-27: 'dematting tool for dogs' r7 (stable). 14d ROAS 1.29 on $214.14 spend - RED vs 2.07 breakeven. 14d total organic+paid sales $1,075.90 (Supermetrics Query D FRESH). TACOS 19.9% on 14d window. Per DOCTRINE: organic carrying performance; hold bids while organic rank stable at r7."
       ],
       "status": "DOCTRINE",
-      "confirmations": 8,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 9,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-08_red",
-      "action_implication": "Monitor paid ROAS vs organic rank weekly. Dematter ROAS still RED at 0.69 (breakeven 2.07). TACOS 145.3% vs 15% target - paid spend far exceeds Amazon revenue attribution.",
+      "action_implication": "Monitor paid ROAS vs organic rank weekly. Dematter 14d ad ROAS 1.29 RED (breakeven 2.07). TACOS 19.9% on 14d window - organic carrying performance. Hold bids while rank r7 stable; do not scale paid until ad ROAS crosses yellow band 1.66.",
       "retired_reason": null
     },
     {
@@ -39,14 +40,15 @@
       "learning": "Save the Shave UGC Bill campaign paused with $447.17 L30D spend and ROAS 0.714 - no action taken for 35+ days despite underperformance.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-26: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 35+ with no action taken."
+        "2026-07-26: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 35+ with no action taken.",
+        "2026-07-27: Campaign still PAUSED. No resolution. Day 36+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 7,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 8,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-10",
-      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 35+ with no resolution.",
+      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 36+ with no resolution.",
       "retired_reason": null
     },
     {
@@ -60,14 +62,15 @@
       "evidence": [
         "2026-07-16: FurFix in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - STRANDED in FBA per Jul 15 SC data.",
         "2026-07-19 and 2026-07-23: FurFix again in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - status unchanged.",
-        "2026-07-26: LIF <= 0, LTSF >= 181. Status unchanged after 3+ weeks."
+        "2026-07-26: LIF <= 0, LTSF >= 181. Status unchanged after 3+ weeks.",
+        "2026-07-27: LIF <= 0, LTSF >= 181. Status unchanged. Day 22+ of stranded status. No resolution in sight without manual SC action."
       ],
       "status": "DOCTRINE",
-      "confirmations": 4,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 5,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-13_red",
-      "action_implication": "Add B0FQFP2S9F to Step 4 H10 tracked-SKU list. Angelo/Will should confirm stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action overdue.",
+      "action_implication": "Add B0FQFP2S9F to Step 4 H10 tracked-SKU list. Angelo/Will should confirm stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action overdue Day 22+.",
       "retired_reason": null
     },
     {
@@ -83,14 +86,15 @@
         "2026-07-15 through 2026-07-19: spend confirmed $1.37/day. 7d spend $7.37. Organic rank damage observed.",
         "2026-07-21: Slicker spend $1.37. 7d spend $5.48. H10: 'slicker brush for dogs' r166->r177 (-11 spots). Organic rank damage accelerating.",
         "2026-07-23: 7d spend $43.30. 'slicker brush for dogs' r174 (H10 Jul 22).",
-        "2026-07-26: 7d spend $43.30 / ROAS 0.46 / TACOS 216.6%. Organic rank 183 (-9 spots Jul 25). Day 40+. @will: pause ALL campaigns targeting B0FQ628KCH immediately."
+        "2026-07-26: 7d spend $43.30 / ROAS 0.46 / TACOS 216.6%. Organic rank 183 (-9 spots Jul 25). Day 40+. @will: pause ALL campaigns targeting B0FQ628KCH immediately.",
+        "2026-07-27: 14d spend $11.75 / $0 attributed sales (Supermetrics Query B FRESH). Organic rank r183. Violation Day 41+. Class B kill staged (blaze.json flag SL-001). @will must pause ALL campaigns via Ad Console."
       ],
       "status": "DOCTRINE",
-      "confirmations": 8,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 9,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 40+. Organic rank damage continuing (r183, -9 spots Jul 25). Policy enforcement - not a performance call.",
+      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 41+. Organic rank damage continuing (r183). Class B kill staged in blaze.json SL-001. Policy enforcement - not a performance call.",
       "retired_reason": null
     },
     {
@@ -102,11 +106,12 @@
       "learning": "QuickBooks MTD revenue has not updated since Jul 14 - sync lag confirmed. Cash balance and expense data remain reliable. Use H10 Daily Profit for Amazon revenue cross-check.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-26: MTD revenue $24,681.70 unchanged. Sync lag persists."
+        "2026-07-26: MTD revenue $24,681.70 unchanged. Sync lag persists.",
+        "2026-07-27: MTD revenue $24,681.70 unchanged. Sync lag Day 13+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 12,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 13,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14",
       "action_implication": "Josh to investigate QuickBooks sync connection. MTD revenue unreliable - use H10 Daily Profit for Amazon revenue until resolved.",
@@ -122,14 +127,54 @@
       "driver_type": "INFRASTRUCTURE",
       "evidence": [
         "2026-07-15: Chrome unavailable in cloud environment. Permanent degraded mode confirmed.",
-        "2026-07-26: Still unavailable - permanent degraded mode (v10.22)."
+        "2026-07-26: Still unavailable - permanent degraded mode (v10.22).",
+        "2026-07-27: Still unavailable - permanent degraded mode."
       ],
       "status": "DOCTRINE",
-      "confirmations": 12,
-      "last_confirmed": "2026-07-26",
+      "confirmations": 13,
+      "last_confirmed": "2026-07-27",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-07-15",
       "action_implication": "No action - permanent infrastructure limitation. Dashboard shows amazon_ads_browser.available=false by design.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-001",
+      "date_observed": "2026-07-16",
+      "subject": "CTR > 2% with zero purchases = post-click failure, not creative",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "When a Meta ad shows CTR > 2% (clicks are happening) but zero purchases result, the failure is post-click (landing page, checkout, product page) not creative. Applying CPM reduction Levers 1-3 to a post-click failure wastes spend. Lever 4 (CTR push) is also skipped when CTR > 3% since engagement is not the bottleneck. Diagnose: pull landing page bounce rate and checkout abandonment before changing creative or targeting.",
+      "driver_type": "DIAGNOSTIC",
+      "evidence": [
+        "2026-07-16: Established as diagnostic framework for Blaze CPM Reduction Playbook v2.0.",
+        "2026-07-27: Shampoo 50OFF (ad 120217XXXX) CTR 3.41%, $81.26 14d spend, $0 confirmed purchases (threshold breach). Post-click diagnosis confirmed: CTR exceeds 2% threshold so creative is not the problem; Lever 4 skipped per rule. Lever 3 (LINK_CLICKS objective) queued for relaunch after kill + pixel warmup."
+      ],
+      "status": "VALIDATED",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-27",
+      "contradictions": 0,
+      "source_brief_id": "blaze_cpm_playbook_v2_2026-07-16",
+      "action_implication": "Before adjusting creative or targeting on any ad with CTR > 2%: check landing page analytics and checkout funnel first. Skip Lever 4 when CTR > 3%. Apply post-click fix before relaunching.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-27-001",
+      "date_observed": "2026-07-27",
+      "subject": "Detangling Treatment (B0FQL4BWKQ) first confirmed above-breakeven paid ROAS",
+      "asin": "B0FQL4BWKQ",
+      "scope": "amazon_ads",
+      "learning": "Detangling Treatment achieved 14d paid ROAS 3.26x on $5.82 spend vs 2.74x breakeven - first confirmed green-band performance for this SKU. Low absolute spend means it is a scale candidate: incremental bid increases or budget expansion should be tested to determine if ROAS holds at higher volume.",
+      "driver_type": "OPPORTUNITY",
+      "evidence": [
+        "2026-07-27: 14d spend $5.82, 14d attributed sales $18.99, ROAS 3.26x (GREEN vs 2.74x breakeven). Supermetrics Query B FRESH (9h old). First above-breakeven data point for this SKU."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-27",
+      "contradictions": 0,
+      "source_brief_id": "blaze_daily_2026-07-27",
+      "action_implication": "Test incremental bid increase (+20%) on Detangling Treatment in Ad Console. Monitor 14d ROAS on next run - if ROAS holds above 2.74x at higher spend, treat as second paid pillar alongside Rake Brush organic. Do not scale more than 2x current daily budget in one step.",
       "retired_reason": null
     }
   ]
