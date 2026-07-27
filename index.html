@@ -192,7 +192,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   </div>
   <div class="meta">
     Last automatic refresh: <span class="upd" id="meta-updated">—</span><br>
-    <span style="font-size:10px;color:#7fd1c4;">Next run: 7:45 AM PT · auto-refreshes every 5 min</span>
+    <span style="font-size:10px;color:#7fd1c4;" id="topbar-refresh-status">Last run: <span id="topbar-last-run">—</span></span>
   </div>
   <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
   <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
@@ -200,16 +200,11 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
 <div class="layout">
   <div class="sidebar" id="sidebar">
-    <div class="sb-label">Overview</div>
-    <button class="nav-card active" id="nav-overview" onclick="show('overview')">
-      <span class="nav-num">◎<span class="nav-dot" id="dot-overview"></span></span>
-      <span class="nav-text"><span class="nav-title">Morning Overview</span><span class="nav-desc">All sources at a glance + active RED flags</span></span>
-    </button>
-    <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
+    <button class="nav-card active" id="nav-bizhealth" onclick="show('bizhealth')">
       <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
-      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Revenue &middot; margins &middot; inventory &middot; brand &middot; S&amp;S</span></span>
+      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Executive view &middot; live KPIs &middot; channel summary &middot; flags</span></span>
     </button>
-    <div class="sb-label" style="margin-top:8px;">Data Sources</div>
+    <div class="sb-label" style="margin-top:8px;">Platform Data</div>
     <button class="nav-card" id="nav-quickbooks" onclick="show('quickbooks')">
       <span class="nav-num">01<span class="nav-dot" id="dot-quickbooks"></span></span>
       <span class="nav-text"><span class="nav-title">QuickBooks</span><span class="nav-desc">Cash position, runway, P&amp;L status</span></span>
@@ -237,11 +232,6 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
       <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
-    </button>
-
-        <button class="nav-card" id="nav-daas" onclick="show('daas')">
-      <span class="nav-num" style="font-size:8px;">DAAS<span class="nav-dot" id="dot-daas"></span></span>
-      <span class="nav-text"><span class="nav-title">DAAS Report</span><span class="nav-desc">Patrick's TACOS &middot; true net &middot; SKU P&amp;L</span></span>
     </button>
 
     <div class="sb-label" style="margin-top:8px;">Agent Reports</div>
@@ -285,29 +275,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <div id="dashboard" style="display:none;">
 
         <!-- OVERVIEW -->
-        <div class="section active" id="section-overview">
-          <div class="sec-head">
-            <h2>Morning Overview</h2>
-            <span class="tag tag-info" id="ov-tag">ALL SOURCES</span>
-            <span class="when" id="ov-when"></span>
-            <span style="margin-left:auto;font-size:11px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:3px 10px;" id="ov-completeness">— of — sources current</span>
-          </div>
-          <div id="ov-alerts"></div>
-          <div class="cards" id="ov-cards"></div>
-          <!-- Source Status Board — collapsed by default, at bottom per Will's spec -->
-          <details id="source-status-details" style="margin-top:16px;">
-            <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:10px 0;list-style:none;display:flex;align-items:center;gap:8px;">
-              <span style="background:var(--border);border-radius:4px;padding:2px 6px;font-size:10px;" id="ov-status-summary">Data Source Health</span>
-              <span style="font-size:10px;color:var(--muted);">▾ click to expand</span>
-            </summary>
-            <div class="tbl-wrap" style="margin-top:6px;">
-              <div class="tbl-title">Source Status Board</div>
-              <table id="ov-table"><thead><tr><th>Source</th><th>Key Number</th><th>Notes</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
-            </div>
-          </details>
-        </div>
-
-        <!-- QUICKBOOKS -->
+        <div class="section" id="section-overview"><!-- Morning Overview merged into Business Health --></div>
+<!-- QUICKBOOKS -->
         <div class="section" id="section-quickbooks">
           <div class="sec-head"><h2>QuickBooks — Finance</h2><span class="tag" id="qb-tag">—</span></div>
           <div class="cards" id="qb-cards"></div>
@@ -682,9 +651,43 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         </div>
 
                 <!-- BUSINESS HEALTH -->
-        <div class="section" id="section-bizhealth">
-          <div class="sec-head"><h2>Business Health — Strategic Overview</h2><span class="tag" id="bh-tag">—</span><span class="when" id="bh-when"></span></div>
-          <div class="sec-desc">The weekly zoom-out Will reviews &mdash; lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. <b>Top row is LIVE</b> (auto, from this morning's JARVIS run). Lifetime/inventory numbers come from <b>data/business_health.json</b> (Patrick, weekly) &mdash; flagged yellow when stale.</div>
+        <div class="section active" id="section-bizhealth">
+          <!-- ── EXECUTIVE HEADER ── -->
+          <div class="sec-head">
+            <h2>Business Health</h2>
+            <span class="tag" id="ov-tag">—</span>
+            <span class="tag" id="bh-tag" style="margin-left:4px;">—</span>
+            <span class="when" id="bh-when"></span>
+            <span style="margin-left:auto;font-size:11px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:3px 10px;" id="ov-completeness">— of — sources current</span>
+          </div>
+
+          <!-- ── LAST REFRESH (replaces auto-refresh countdown) ── -->
+          <div style="font-size:11px;color:var(--muted);padding:4px 0 8px;display:flex;gap:16px;flex-wrap:wrap;" id="bh-refresh-bar">
+            <span>Last run: <b id="bh-last-run">—</b></span>
+            <span>Data through: <b id="bh-data-through">—</b></span>
+          </div>
+
+          <!-- ── LIVE EXECUTIVE FLAGS ── -->
+          <div id="ov-alerts"></div>
+
+          <!-- ── LIVE TOP-ROW CARDS (Cash, TACOS, Shopify, Amazon, True Net, Ad Spend, Reviews) ── -->
+          <div class="cards" id="ov-cards"></div>
+
+          <!-- ── DAAS CHANNEL SUMMARY ── -->
+          <div class="sec-head" style="padding-top:14px;"><h2>Channel Summary</h2><span class="tag tag-info" id="daas-channel-tag">Amazon · TikTok · Shopify</span><span class="when" id="daas-when"></span></div>
+          <div class="sec-desc" style="font-size:11px;">Amazon · TikTok Shop · Shopify &mdash; Combined company total (Meta labeled as Shopify/Meta and not double-counted). Patrick-confirmed daily.</div>
+          <div class="cards" id="daas-cards"></div>
+          <div class="cards" id="daas-mtd-cards" style="margin-top:6px;"></div>
+
+          <!-- ── DAAS SKU PERFORMANCE TABLE ── -->
+          <div class="tbl-wrap" style="margin-top:8px;">
+            <div class="tbl-title">SKU Performance &mdash; Revenue · Units · Net Profit</div>
+            <table id="daas-sku-table">
+              <thead><tr><th>SKU</th><th class="r">Revenue</th><th class="r">Units</th><th class="r">Net Profit</th><th class="r">TACOS</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
           <div id="bh-alerts"></div>
           <div class="cards" id="bh-kpi-cards"></div>
           <div class="sec-head" style="padding-top:14px;"><h2>1 — Sales by SKU</h2><span class="tag tag-info">LIFETIME</span></div>
@@ -701,6 +704,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="bh-returns-section"></div>
           <div class="sec-head" style="padding-top:14px;"><h2>7 — Brand Health &amp; Customer Loyalty</h2><span class="tag tag-info">BRAND ANALYTICS</span></div>
           <div id="bh-brand-section"></div>
+
+          <!-- Source Status Board — collapsed, at bottom of Business Health per Will spec -->
+          <!-- Source Status Board — collapsed by default, at bottom per Will's spec -->
+          <details id="source-status-details" style="margin-top:16px;">
+            <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:10px 0;list-style:none;display:flex;align-items:center;gap:8px;">
+              <span style="background:var(--border);border-radius:4px;padding:2px 6px;font-size:10px;" id="ov-status-summary">Data Source Health</span>
+              <span style="font-size:10px;color:var(--muted);">▾ click to expand</span>
+            </summary>
+            <div class="tbl-wrap" style="margin-top:6px;">
+              <div class="tbl-title">Source Status Board</div>
+              <table id="ov-table"><thead><tr><th>Source</th><th>Key Number</th><th>Notes</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
+            </div>
+          </details>
+
         </div>
 
       </div>
@@ -938,6 +955,9 @@ function toggleSidebar(){ $('sidebar').classList.toggle('hidden'); }
 function render(d){
   window.__LIVE = d;
   $('meta-updated').textContent = d.last_updated || 'unknown';
+  const tlr = $('topbar-last-run'); if (tlr) tlr.textContent = d.last_updated || '—';
+  const bdt = $('bh-data-through'); if (bdt) bdt.textContent = d.last_updated || '—';
+  const blr = $('bh-last-run'); if (blr) blr.textContent = d.last_updated || '—';
 
   // — QuickBooks —
   const qb = d.quickbooks || {};
@@ -1438,6 +1458,7 @@ function render(d){
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
+  if ($('bh-when')) $('bh-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
   // amzStatus computed HERE — all sub-statuses defined by this point
   const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
   const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
@@ -1521,7 +1542,6 @@ const BANDS_URL = './data/roas_bands.json';
 const BH_URL    = './data/business_health.json';
 const DAAS_URL  = './data/daas_data.json';
 const REFRESH_MS = 5 * 60 * 1000;
-let countdownId, secondsLeft;
 let BANDS = null;
 
 // Strip CDATA / markdown fences that a bad routine write might leave
@@ -1712,18 +1732,20 @@ async function loadData(){
   }
   loadReports(); // channel reports feed — independent of main data, never blocks
   loadAgentFlags();
-  startCountdown();
+  updateRefreshBar();
 }
-function startCountdown(){
-  clearInterval(countdownId);
-  secondsLeft = REFRESH_MS/1000;
-  countdownId = setInterval(() => {
-    if (secondsLeft-- <= 0) {
-      loadData();
-      secondsLeft = REFRESH_MS/1000;
-    }
-  }, 1000);
+
+function updateRefreshBar(){
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const timeStr = pad(now.getHours())+':'+pad(now.getMinutes())+' PT';
+  const el = $('bh-last-run');
+  if (el) el.textContent = now.toISOString().slice(0,10) + ' ' + timeStr;
+  // data-through from last_updated field
+  const dtEl = $('bh-data-through');
+  if (dtEl && window.__LIVE) dtEl.textContent = window.__LIVE.last_updated || '—';
 }
+
 loadData();
 
 
