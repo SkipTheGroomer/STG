@@ -1,83 +1,95 @@
 {
-  "_notes": {
-    "owner": "Patrick — update weekly after pulling Brand Analytics + FBA Returns from Seller Central",
-    "push": "Commit to data/brand_analytics.json on main — dashboard reads it automatically",
-    "return_rates": "Seller Central → Reports → Fulfillment → FBA Customer Returns → last 365 days → pivot by ASIN → returns ÷ units_shipped",
-    "repeat_purchase": "Brand Analytics → Repeat Purchase Behavior report → select last 90 days → export",
-    "brand_search": "Brand Analytics → Search Terms → filter your brand name → Impression Share column",
-    "cart_abandoners": "Klaviyo → Flows → Browse Abandonment → Triggered (last 30 days) OR Brand Analytics → Market Basket"
-  },
-  "as_of": "2026-07-24",
-  "period": "2025-07-24 → 2026-07-24",
-  "return_rates": {
-    "B0FQL56V99": {
-      "name": "Emergency Dematter",
-      "return_rate_pct": null,
-      "category_avg_return_pct": 3.5,
-      "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL56V99"
+    "_notes": {
+          "owner": "Patrick — update weekly after pulling Brand Analytics + FBA Returns from Seller Central",
+          "push": "Commit to data/brand_analytics.json on main — dashboard reads it automatically",
+          "return_rates": "Seller Central → Reports → Fulfillment → FBA Customer Returns → last 365 days → pivot by ASIN → returns ÷ units_shipped",
+          "repeat_purchase": "Brand Analytics → Repeat Purchase Behavior report → select last 90 days → export",
+          "brand_search": "Brand Analytics → Search Terms → filter your brand name → Impression Share column",
+          "cart_abandoners": "Klaviyo → Flows → Browse Abandonment → Triggered (last 30 days) OR Brand Analytics → Market Basket"
     },
-    "B0FQF2VTMJ": {
-      "name": "Rake Brush",
-      "return_rate_pct": null,
-      "category_avg_return_pct": 5.0,
-      "note": "Pull from FBA Customer Returns report — filter ASIN B0FQF2VTMJ"
+    "as_of": "2026-07-27",
+    "period": "2025-07-24 → 2026-07-24",
+    "return_rates": {
+          "B0FQL56V99": {
+                  "name": "Emergency Dematter",
+                  "return_rate_pct": null,
+                  "category_avg_return_pct": 3.5,
+                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL56V99"
+          },
+          "B0FQF2VTMJ": {
+                  "name": "Rake Brush",
+                  "return_rate_pct": null,
+                  "category_avg_return_pct": 5.0,
+                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQF2VTMJ"
+          },
+          "B0GV5ZFLC2": {
+                  "name": "Detangling Treatment",
+                  "return_rate_pct": null,
+                  "category_avg_return_pct": 3.5,
+                  "note": "Pull from FBA Customer Returns report — filter ASIN B0GV5ZFLC2"
+          },
+          "B0FQL16GH4": {
+                  "name": "4-in-1 Shampoo",
+                  "return_rate_pct": null,
+                  "category_avg_return_pct": 3.5,
+                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL16GH4"
+          },
+          "B0FQDHXSZ5": {
+                  "name": "Pin Brush",
+                  "return_rate_pct": null,
+                  "category_avg_return_pct": 5.0,
+                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQDHXSZ5"
+          },
+          "B0FQ628KCH": {
+                  "name": "Slicker Brush",
+                  "return_rate_pct": 8.67,
+                  "category_avg_return_pct": 4.0,
+                  "note": "Already confirmed — from supply_chain.json Jul 14"
+          }
     },
-    "B0GV5ZFLC2": {
-      "name": "Detangling Treatment",
-      "return_rate_pct": null,
-      "category_avg_return_pct": 3.5,
-      "note": "Pull from FBA Customer Returns report — filter ASIN B0GV5ZFLC2"
-    },
-    "B0FQL16GH4": {
-      "name": "4-in-1 Shampoo",
-      "return_rate_pct": null,
-      "category_avg_return_pct": 3.5,
-      "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL16GH4"
-    },
-    "B0FQDHXSZ5": {
-      "name": "Pin Brush",
-      "return_rate_pct": null,
-      "category_avg_return_pct": 5.0,
-      "note": "Pull from FBA Customer Returns report — filter ASIN B0FQDHXSZ5"
-    },
-    "B0FQ628KCH": {
-      "name": "Slicker Brush",
-      "return_rate_pct": 8.67,
-      "category_avg_return_pct": 4.0,
-      "note": "Already confirmed — from supply_chain.json Jul 14"
+    "brand_health": {
+          "_pull_from": "Brand Analytics → Repeat Purchase Behavior → last 90 days → all ASINs combined",
+          "report_date": "2026-07-20",
+          "week_of": "2026-07-20",
+          "total_customers": 12888,
+          "repeat_purchase_rate_pct": 9.87,
+          "brand_search_share_pct": 51.2,
+          "sns_total_penetration_pct": 2.9,
+          "cart_abandoners": null,
+          "top_tier": {
+                  "_note": "Repeat Purchase Behavior → 'Repeat Purchase Customers' column → top spenders",
+                  "count": 723,
+                  "pct": 5.61
+          },
+          "promising": {
+                  "_note": "Repeat Purchase Behavior → customers with 2+ orders in period",
+                  "count": 10179,
+                  "pct": 78.98
+          },
+          "at_risk": {
+                  "_note": "Customers who ordered 6–12 months ago but not since",
+                  "count": 1986,
+                  "pct": 15.41,
+                  "wow_change_pct": null
+          },
+          "funnel": {
+                  "_note": "Brand Analytics → Market Basket or leave null until SP-API live",
+                  "awareness": {
+                            "count": 12041,
+                            "wow_pct": -25.48
+                  },
+                  "consideration": {
+                            "count": 1228,
+                            "wow_pct": 36.75
+                  },
+                  "intent_carted": {
+                            "count": 173,
+                            "wow_pct": -2.26
+                  },
+                  "purchase_new": {
+                            "count": 217,
+                            "wow_pct": 10.71
+                  }
+          }
     }
-  },
-  "brand_health": {
-    "_pull_from": "Brand Analytics → Repeat Purchase Behavior → last 90 days → all ASINs combined",
-    "report_date": "2026-07-24",
-    "week_of": null,
-    "total_customers": null,
-    "repeat_purchase_rate_pct": null,
-    "brand_search_share_pct": null,
-    "sns_total_penetration_pct": 2.9,
-    "cart_abandoners": null,
-    "top_tier": {
-      "_note": "Repeat Purchase Behavior → 'Repeat Purchase Customers' column → top spenders",
-      "count": null,
-      "pct": null
-    },
-    "promising": {
-      "_note": "Repeat Purchase Behavior → customers with 2+ orders in period",
-      "count": null,
-      "pct": null
-    },
-    "at_risk": {
-      "_note": "Customers who ordered 6–12 months ago but not since",
-      "count": null,
-      "pct": null,
-      "wow_change_pct": null
-    },
-    "funnel": {
-      "_note": "Brand Analytics → Market Basket or leave null until SP-API live",
-      "awareness": null,
-      "consideration": null,
-      "intent_carted": null,
-      "purchase_new": null
-    }
-  }
 }
