@@ -1991,7 +1991,8 @@ function renderBizHealth(bh){
   if (gadSpend != null) shRoasChannels.push({name:'Google Ads', spend: gadSpend, roas: gadsL30.roas, revenue: null, status: 'bdr-grey'});
   if (shRoasTag) statusTag(shRoasTag, shRoasChannels.length ? 'GREEN' : 'YELLOW');
   const totalAdSpend = (metaL30.spend || 0) + (gadSpend || 0);
-  const totalOrders = sh.orders || (sh.yesterday || {}).orders || 0;
+  const _shRBH = d.shopify || {};  // sh is render-scoped; use d.shopify here
+  const totalOrders = _shRBH.orders || (_shRBH.yesterday || {}).orders || 0;
   const cacEstimate = totalOrders > 0 ? totalAdSpend / totalOrders : null;
   if (shRoasCards) shRoasCards.innerHTML =
     card('Meta L30D ROAS', metaL30.roas != null ? metaL30.roas.toFixed(2) + 'x' : null, 'Target: 2.0+', (metaL30.roas||0) < 1 ? 'bdr-red' : (metaL30.roas||0) < 2 ? 'bdr-amber' : 'bdr-green', (metaL30.roas||0) < 1 ? 'down' : 'up') +
