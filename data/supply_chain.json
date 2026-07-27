@@ -1,379 +1,966 @@
 {
-  "_meta": {
-    "source_file": "STG_-_Estimted_Production_-_F26_07_v1.xlsx",
-    "source_date": "2026-05-29",
-    "imported_at": "2026-07-27",
-    "imported_by": "Jeffrey / JARVIS session",
-    "patrick_verified": false,
-    "patrick_verified_date": null,
-    "flags_requiring_patrick_review": [
-      "FLAG-1: Chew monthly dollar amounts use FACTORY cost ($7.72/$6.85/$5.98), not landed COGS ($9.40/$8.53/$7.66). Confirm whether cogs_master.json should store landed or factory cost for margin math.",
-      "FLAG-2: Rake Brush $21,613 August balance represents ~47.2% remaining after deposit ($19,337 already paid). Confirm deposit date and corrected PI amount per handoff note.",
-      "FLAG-3: Shampoo TBD (10,000 units / $4.94) shows $28,152 in October = 57% of full $49,400 order. Confirm whether this is a deposit amount or a partial quantity commitment.",
-      "FLAG-4: Detangling Treatment has two different production dates — units section says 2026-08-14, dollar section says 2026-06-15. Confirm which is order date vs production completion date.",
-      "FLAG-5: Production schedule dated May 29, 2026 — 59 days old. Rake Brush production date (July 15) has passed. Patrick should confirm current status of all in-flight POs before Josh commits this file."
+  "as_of": "2026-07-27",
+  "owner": "Daisy (report) \u00b7 Josh (build) \u00b7 Patrick (lead times, POs, WSA)",
+  "control_tower": {
+    "status": "YELLOW",
+    "headline": "<b>Rake Brush is below Amazon's recommended level \u2014 692 on-hand vs 942 recommended</b> \u2014 but <b>1,650 air units are already inbound</b> (1,350 sellable ~Jul 29 \u00b7 300 more ~Jul 31), so there is no stockout: projected ~1,742 units by Jul 29. A further ~3,350 ocean units (Jul 20 vessel, direct to Amazon) and a new 5,000-unit PO (Aug 17 vessel) follow. Separately: <b>$194,093 COGS is tied up in inventory</b>; Pin, Shampoo and Slicker remain heavily overstocked \u2014 do not reorder.",
+    "headline_level": "warn",
+    "cards": [
+      {
+        "label": "SKUs Below Amazon Recommended",
+        "value": "1",
+        "sub": "Rake \u2014 air inbound covers it",
+        "border": "red",
+        "vclass": "down"
+      },
+      {
+        "label": "Open / In-Transit POs",
+        "value": "5",
+        "sub": "Rake air + ocean + PO2 \u00b7 Pin \u00b7 Chews",
+        "border": "amber",
+        "vclass": "warn"
+      },
+      {
+        "label": "Next Inventory Risk",
+        "value": "Covered",
+        "sub": "Rake air lands ~Jul 29 (1,350u)",
+        "border": "green",
+        "vclass": "up"
+      },
+      {
+        "label": "Accelerated Run Blocked",
+        "value": "2",
+        "sub": "Dematter + Detangling \u2014 missing ingredient (awaiting Craig)",
+        "border": "amber",
+        "vclass": "warn"
+      },
+      {
+        "label": "Forecast Horizon",
+        "value": "26 wks",
+        "sub": "Daily forecast, summarized weekly",
+        "border": "teal",
+        "vclass": ""
+      }
     ]
   },
-
-  "as_of": "2026-07-27",
-
+  "skus": [
+    {
+      "name": "Rake Brush",
+      "asin": "B0FQF2VTMJ",
+      "star": true,
+      "supplier": "Jiangsu Laoshu",
+      "amazon_recommended": 942,
+      "fcst_units_day": 20.0,
+      "wsa_available": 0,
+      "manual_sellable": 692,
+      "reserved": null,
+      "inbound_units": 1650,
+      "next_inbound": "1,350 air ~<b>Jul 29</b> \u00b7 300 air ~<b>Jul 31</b><br>3,350 ocean ~mid-Sep (Jul 20 vessel)<br>5,000 PO2 (Aug 17 vessel)",
+      "action": "<b>Covered by air</b> \u2014 confirm vessel/booking + corrected-PI deposit. No new air needed.",
+      "status": "BELOW REC",
+      "pill": "crit",
+      "header_class": "crit",
+      "cogs": 1.82,
+      "msrp": 14.99,
+      "net_per_unit": 7.77,
+      "margin_pct": 51.9,
+      "return_rate": null,
+      "total_all_locations": 2369,
+      "retail_value": 35511,
+      "gross_profit_potential": 31199,
+      "detail_sub": "Jiangsu Laoshu \u00b7 1,650 air (~Jul 29/31) + 3,350 ocean (Jul 20 vessel, direct Amazon, ~mid-Sep) + 5,000 PO2 (Aug 17 vessel)",
+      "detail_pill": "BELOW RECOMMENDED \u00b7 AIR INBOUND",
+      "detail_stats": [
+        {
+          "label": "Air Inbound",
+          "value": "+1,650",
+          "vclass": "up",
+          "sub": "1,350 ~Jul 29 \u00b7 300 ~Jul 31 \u2192 proj. ~1,742"
+        },
+        {
+          "label": "Ocean Inbound (PO1)",
+          "value": "+3,350",
+          "vclass": "",
+          "sub": "Jul 20 vessel \u2192 Amazon ~mid-Sep"
+        },
+        {
+          "label": "PO2 (new)",
+          "value": "+5,000",
+          "vclass": "",
+          "sub": "Aug 17 vessel \u00b7 4,000 Amazon + 1,000 WSA"
+        }
+      ],
+      "reorder_box": "\ud83d\udea8 <b>BELOW RECOMMENDED (COVERED BY AIR):</b> on-hand below the Amazon-recommended level, but 1,650 air units land Jul 29\u201331 (proj. ~1,742 then ~2,002) \u2014 no stockout and no new air needed. Ocean balance (~3,350, PO1) sails Jul 20 direct to Amazon; PO2 (5,000) is ready Aug 17 (4,000 Amazon + 1,000 WSA). Patrick: confirm the Jul 20 vessel + booking and pay the corrected-PI deposit for PO2.",
+      "reorder_class": "rb-crit"
+    },
+    {
+      "name": "Emergency Dematter",
+      "asin": "B0FQL56V99",
+      "star": false,
+      "supplier": "JBK Wellness Labs",
+      "amazon_recommended": 1379,
+      "fcst_units_day": 62.7,
+      "wsa_available": 10459,
+      "manual_sellable": 22146,
+      "reserved": 252,
+      "inbound_units": 51,
+      "next_inbound": "\u2014 (Oct +25,000 on HOLD)",
+      "action": "HOLD \u2014 ~50 wks Amazon supply. 6-wk accelerated run blocked until missing ingredient is in stock (awaiting Craig).",
+      "status": "HOLD",
+      "pill": "hold",
+      "header_class": "hold",
+      "cogs": 3.36,
+      "msrp": 22.99,
+      "net_per_unit": 11.51,
+      "margin_pct": 50.1,
+      "return_rate": null,
+      "total_all_locations": 32908,
+      "retail_value": 756555,
+      "gross_profit_potential": 645984,
+      "detail_sub": "Hero SKU \u00b7 JBK Wellness Labs",
+      "detail_pill": "HOLD",
+      "detail_stats": [],
+      "reorder_box": "\u23f8 <b>HOLD:</b> deep supply across Amazon + WSA. 6-wk accelerated run is blocked until the missing ingredient is back in stock (awaiting Craig). Oct +25,000 run in schedule \u2014 <b>confirm keep or defer</b>.",
+      "reorder_class": "rb-hold"
+    },
+    {
+      "name": "Detangling Treatment",
+      "asin": "B0GV5ZFLC2",
+      "star": false,
+      "supplier": "JBK Wellness Labs",
+      "amazon_recommended": 287,
+      "fcst_units_day": 5.2,
+      "wsa_available": 2902,
+      "manual_sellable": 8044,
+      "reserved": 355,
+      "inbound_units": 2,
+      "next_inbound": "\u2014 (Dec +10,000 scheduled)",
+      "action": "Healthy \u2014 deep supply. Same ingredients as Dematter; accelerated run blocked until ingredient in stock (Craig). Confirm Dec run.",
+      "status": "GREEN",
+      "pill": "ok",
+      "header_class": "ok",
+      "cogs": 3.3,
+      "msrp": 18.99,
+      "net_per_unit": 8.93,
+      "margin_pct": 47.0,
+      "return_rate": null,
+      "total_all_locations": 11303,
+      "retail_value": 214644,
+      "gross_profit_potential": 177344,
+      "detail_sub": "JBK Wellness Labs \u00b7 same ingredients as Dematter",
+      "detail_pill": "HEALTHY",
+      "detail_stats": [],
+      "reorder_box": "\u2713 <b>HEALTHY:</b> deep supply. Dec +10,000 run in schedule \u2014 confirm proceed. Shares ingredients with Dematter, so the 6-wk accelerated option is likewise blocked until the ingredient is in stock (Craig).",
+      "reorder_class": "rb-ok"
+    },
+    {
+      "name": "4-in-1 Shampoo",
+      "asin": "B0FQL16GH4",
+      "star": false,
+      "supplier": "JBK Wellness Labs",
+      "amazon_recommended": 66,
+      "fcst_units_day": 0.9,
+      "wsa_available": 0,
+      "manual_sellable": 3907,
+      "reserved": 145,
+      "inbound_units": 0,
+      "next_inbound": "None \u2014 no new liquid run",
+      "action": "DO NOT REORDER \u2014 huge supply. Coconut Lime + Lavender Chamomile launch Aug is new labels only.",
+      "status": "STOP",
+      "pill": "stop",
+      "header_class": "stop",
+      "cogs": 5.17,
+      "msrp": 19.99,
+      "net_per_unit": 7.72,
+      "margin_pct": 38.6,
+      "return_rate": null,
+      "total_all_locations": 4052,
+      "retail_value": 80999,
+      "gross_profit_potential": 60050,
+      "detail_sub": "JBK \u00b7 Coconut Lime + Lavender Chamomile launch Aug (new labels only, no new liquid run)",
+      "detail_pill": "DO NOT REORDER",
+      "detail_stats": [],
+      "reorder_box": "\ud83d\udeab <b>DO NOT REORDER:</b> years of supply. New-scent launch is labels only \u2014 no new liquid run. Monitor velocity post-launch.",
+      "reorder_class": "rb-stop"
+    },
+    {
+      "name": "Pin Brush",
+      "asin": "B0FQDHXSZ5",
+      "star": false,
+      "supplier": "Jiangsu Laoshu",
+      "amazon_recommended": 127,
+      "fcst_units_day": 2.3,
+      "wsa_available": 329,
+      "manual_sellable": 2048,
+      "reserved": null,
+      "inbound_units": 3000,
+      "next_inbound": "3,000 ocean \u2192 <b>WSA</b> (Jul 20 vessel)",
+      "action": "Overstocked (Amazon flags Excess). Do not reorder \u2014 3,000 already inbound to WSA.",
+      "status": "STOP",
+      "pill": "stop",
+      "header_class": "stop",
+      "cogs": 3.19,
+      "msrp": 19.99,
+      "net_per_unit": 9.7,
+      "margin_pct": 48.5,
+      "return_rate": null,
+      "total_all_locations": 2380,
+      "retail_value": 47576,
+      "gross_profit_potential": 39984,
+      "detail_sub": "Jiangsu Laoshu",
+      "detail_pill": "DO NOT REORDER",
+      "detail_stats": [
+        {
+          "label": "Inbound",
+          "value": "+3,000",
+          "vclass": "",
+          "sub": "ocean \u2192 WSA (Jul 20 vessel)"
+        }
+      ],
+      "reorder_box": "\ud83d\udeab <b>DO NOT REORDER:</b> Amazon flags Excess and 3,000 more are already inbound to WSA (Jul 20 vessel). Hold at WSA; do not push to Amazon until velocity supports it.",
+      "reorder_class": "rb-stop"
+    },
+    {
+      "name": "Slicker Brush",
+      "asin": "B0FQ628KCH",
+      "star": false,
+      "supplier": "Jiangsu Laoshu",
+      "amazon_recommended": 28,
+      "fcst_units_day": 0.4,
+      "wsa_available": 98,
+      "manual_sellable": 2591,
+      "reserved": null,
+      "inbound_units": 0,
+      "next_inbound": "None",
+      "action": "DO NOT REORDER \u2014 huge supply. Liquidate WSA 98; bundle at Prime Day. Return rate 8.67% \ud83d\udea8. Storage $1,010.79/mo.",
+      "status": "STOP",
+      "pill": "stop",
+      "header_class": "stop",
+      "cogs": 4.97,
+      "msrp": 17.99,
+      "net_per_unit": 6.6,
+      "margin_pct": 36.7,
+      "return_rate": 8.67,
+      "total_all_locations": 2690,
+      "retail_value": 48393,
+      "gross_profit_potential": 35024,
+      "detail_sub": "Jiangsu Laoshu \u00b7 Lowest margin + highest return rate \u00b7 liquidation SKU",
+      "detail_pill": "DO NOT REORDER \u00b7 LIQUIDATE",
+      "detail_stats": [
+        {
+          "label": "Return Rate",
+          "value": "8.67% \ud83d\udea8",
+          "vclass": "down",
+          "sub": "Near 10.2% Amazon fee threshold"
+        }
+      ],
+      "reorder_box": "\ud83d\udeab <b>DO NOT REORDER.</b> Liquidate WSA 98 units. Bundle with Dematter at Prime Day. Storage $1,010.79/mo (~$249/mo aging surcharge from Jul 15). Monitor return rate weekly.",
+      "reorder_class": "rb-stop"
+    }
+  ],
+  "launches": [
+    {
+      "name": "Allergy & Itch Relief Chew",
+      "cogs": 9.34,
+      "msrp": 32.99,
+      "units_ordered": 2500,
+      "ready": "Aug 18",
+      "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 59125,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    },
+    {
+      "name": "Calm & Relax Chew",
+      "cogs": 8.52,
+      "msrp": 32.99,
+      "units_ordered": 2500,
+      "ready": "Aug 18",
+      "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 61175,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    },
+    {
+      "name": "Skin & Coat Omega Chew",
+      "cogs": 7.58,
+      "msrp": 32.99,
+      "units_ordered": 2500,
+      "ready": "Aug 18",
+      "launch": "Sep 1",
+      "retail_potential": 82475,
+      "gross_profit_potential": 63525,
+      "route": "Domestic to Amazon + 12 cases to WSA"
+    }
+  ],
+  "position_summary": {
+    "cards": [
+      {
+        "label": "Total Units (All Locations)",
+        "value": "55,702",
+        "sub": "Amazon 41,914 (incl. 1,650 Rake air inbound) + WSA 13,788",
+        "border": "teal",
+        "vclass": ""
+      },
+      {
+        "label": "Total COGS in Inventory",
+        "value": "$194,093",
+        "sub": "Cash tied up at landed cost",
+        "border": "orange",
+        "vclass": ""
+      },
+      {
+        "label": "Forecasted Retail Value",
+        "value": "$1,183,678",
+        "sub": "All 55,702 units \u00d7 MSRP \u2014 if sold at full price",
+        "border": "green",
+        "vclass": ""
+      },
+      {
+        "label": "Units 181+ Days Old",
+        "value": "8,664",
+        "sub": "Slicker 2,569 \u00b7 Shampoo 4,050 \u00b7 Pin 2,045",
+        "border": "red",
+        "vclass": "down"
+      },
+      {
+        "label": "Est. Storage Cost (30 days)",
+        "value": "$1,900",
+        "sub": "Slicker $1,011 is the biggest (~$249/mo aging surcharge from Jul 15)",
+        "border": "grey",
+        "vclass": ""
+      }
+    ],
+    "subtotal": {
+      "units": 55702,
+      "cogs": 194093,
+      "retail": 1183678,
+      "gross_profit": 989585
+    }
+  },
+  "lead_times": [
+    {
+      "product": "Rake Brush",
+      "sub": "Jiangsu Laoshu \u00b7 via WSA",
+      "production": "5 wks after wire",
+      "origin": "1 wk to vessel",
+      "transit": "~35 days ocean",
+      "port": "~1 wk LB \u2192 WSA",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "~14 wks",
+      "total_sub": "~13 wks if direct to Amazon",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Pin Brush",
+      "sub": "Jiangsu Laoshu \u00b7 via WSA",
+      "production": "5 wks after wire",
+      "origin": "1 wk to vessel",
+      "transit": "~35 days ocean",
+      "port": "~1 wk LB \u2192 WSA",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "~14 wks",
+      "total_sub": "",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Slicker Brush",
+      "sub": "Jiangsu Laoshu \u00b7 via WSA",
+      "production": "5 wks after wire",
+      "origin": "1 wk to vessel",
+      "transit": "~35 days ocean",
+      "port": "~1 wk LB \u2192 WSA",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "~14 wks",
+      "total_sub": "",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Emergency Dematter Cream",
+      "sub": "JBK \u00b7 domestic",
+      "production": "~16 wks (no stage breakdown)",
+      "origin": "\u2014",
+      "transit": "domestic",
+      "port": "\u2014",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "18 wks",
+      "total_sub": "from order",
+      "confirmed": "Jul 14",
+      "owner": "Patrick / Craig",
+      "highlight": "amber"
+    },
+    {
+      "product": "Detangling Treatment",
+      "sub": "JBK \u00b7 same ingredients as Dematter",
+      "production": "~16 wks (no stage breakdown)",
+      "origin": "\u2014",
+      "transit": "domestic",
+      "port": "\u2014",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "18 wks",
+      "total_sub": "from order",
+      "confirmed": "Jul 14",
+      "owner": "Patrick / Craig",
+      "highlight": "amber"
+    },
+    {
+      "product": "4-in-1 Shampoo",
+      "sub": "JBK \u00b7 all scents",
+      "production": "~6 wks",
+      "origin": "\u2014",
+      "transit": "domestic",
+      "port": "\u2014",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "8 wks \u26a0\ufe0f VERIFY",
+      "total_sub": "",
+      "confirmed": "6/19",
+      "owner": "Patrick",
+      "highlight": "amber"
+    },
+    {
+      "product": "Dog Chews \u00d73",
+      "sub": "Primo \u00b7 Allergy \u00b7 Calm \u00b7 Skin & Coat",
+      "production": "~10 wks (Primo, all-inclusive)",
+      "origin": "\u2014",
+      "transit": "domestic",
+      "port": "\u2014",
+      "wsa": "~1 wk",
+      "amazon": "~1 wk",
+      "total": "12 wks",
+      "total_sub": "",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Bottles (8oz / 12oz / 16oz)",
+      "sub": "Container & Packaging",
+      "production": "~3 wks",
+      "origin": "\u2014",
+      "transit": "\u2014",
+      "port": "\u2014",
+      "wsa": "n/a",
+      "amazon": "n/a",
+      "total": "3 wks* (no MOQ)",
+      "total_sub": "*up to 120 days if no stock",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Lids / Applicator Tips",
+      "sub": "Container & Packaging",
+      "production": "~3 wks",
+      "origin": "\u2014",
+      "transit": "\u2014",
+      "port": "\u2014",
+      "wsa": "n/a",
+      "amazon": "n/a",
+      "total": "3 wks* (no MOQ)",
+      "total_sub": "",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    },
+    {
+      "product": "Labels",
+      "sub": "Century Label",
+      "production": "~3 wks",
+      "origin": "\u2014",
+      "transit": "\u2014",
+      "port": "\u2014",
+      "wsa": "n/a",
+      "amazon": "n/a",
+      "total": "3 wks (no MOQ)",
+      "total_sub": "",
+      "confirmed": "Jul 14",
+      "owner": "Patrick",
+      "highlight": ""
+    }
+  ],
   "purchase_orders": [
     {
-      "po_id": "PO-DET-001",
-      "product_name": "12oz Detangling Treatment",
-      "canonical_sku": "8O-J63E-NJBR",
-      "asin": "B0GV5ZFLC2",
-      "vendor": "JBK Wellness Labs",
-      "qty_ordered": 10000,
-      "production_date": "2026-08-14",
-      "production_date_note": "Units section date. Dollar section shows 2026-06-15 — likely order placement date. FLAG-4.",
-      "delivery_month": "September",
-      "delivery_units": 7500,
-      "remaining_units": 2500,
-      "remaining_units_note": "10,000 ordered. 7,500 allocated September. 2,500 not allocated — excess or later delivery.",
-      "cogs_factory": null,
-      "cogs_landed": 3.71,
-      "total_payment": 27825.00,
-      "payment_month": "September",
-      "payment_type": "full",
-      "status": "IN_PRODUCTION",
-      "notes": "Excess inventory on hand. Production date pushed out per supplier request."
+      "po": "Rake Brush \u2014 Air (PO1)",
+      "supplier": "Jiangsu Laoshu",
+      "route": "Factory \u2192 Air \u2192 Amazon",
+      "units": "1,650 (11 cases \u00d7150)",
+      "deposit": "Confirmed",
+      "production": "Confirmed",
+      "etd": "9 cases Jul 15 \u00b7 2 cases ~Jul 17",
+      "port_eta": "\u2014",
+      "sellable_eta": "~Jul 29 (1,350) \u00b7 ~Jul 31 (300)",
+      "verified": "Jul 14",
+      "next_action": "Track receipt into Amazon \u00b7 Patrick",
+      "status": "IN TRANSIT",
+      "pill": "ok",
+      "highlight": ""
     },
     {
-      "po_id": "PO-SHAMP-001",
-      "product_name": "16oz Shampoo — Lavender + Coconut Lime (2 scents)",
-      "canonical_sku": "6U-XVW9-2WBJ",
-      "asin": "B0FQL16GH4",
-      "vendor": "JBK Wellness Labs",
-      "qty_ordered": 2500,
-      "production_date": "2026-08-07",
-      "production_date_note": "Estimated mid-August. Formula not yet finalized — date may slip.",
-      "delivery_month": "August",
-      "delivery_units": 2500,
-      "cogs_factory": null,
-      "cogs_landed": 5.26,
-      "total_payment": 13150.00,
-      "payment_month": "August",
-      "payment_type": "full",
-      "status": "PENDING_FORMULA",
-      "notes": "Waiting for final formula. Covers Lavender and Coconut Lime scents. Estimated production mid-August."
+      "po": "Rake Brush \u2014 Ocean (PO1 balance)",
+      "supplier": "Jiangsu Laoshu",
+      "route": "Factory \u2192 Long Beach \u2192 Amazon (direct)",
+      "units": "~3,350",
+      "deposit": "Confirmed",
+      "production": "Confirmed",
+      "etd": "Vessel Jul 20",
+      "port_eta": "~late Aug",
+      "sellable_eta": "~mid-Sep",
+      "verified": "Jul 14",
+      "next_action": "Confirm vessel + booking # \u00b7 Patrick",
+      "status": "VESSEL JUL 20",
+      "pill": "warn",
+      "highlight": "amber"
     },
     {
-      "po_id": "PO-DEM-001",
-      "product_name": "8oz Emergency Dematter Cream",
-      "canonical_sku": "3I-97VO-78X4",
-      "asin": "B0FQL56V99",
-      "vendor": "JBK Wellness Labs",
-      "qty_ordered": 25000,
-      "production_date": "2026-10-20",
-      "delivery_month": "October",
-      "delivery_units": 25000,
-      "cogs_factory": null,
-      "cogs_landed": 3.42,
-      "total_payment": 85500.00,
-      "payment_month": "October",
-      "payment_type": "full",
-      "status": "PENDING",
-      "notes": "No known issues. Should be as ordered."
+      "po": "Rake Brush \u2014 PO2 (new 5,000)",
+      "supplier": "Jiangsu Laoshu",
+      "route": "Factory \u2192 Long Beach \u2192 4,000 Amazon + 1,000 WSA",
+      "units": "5,000",
+      "deposit": "Deposit pending (corrected PI)",
+      "production": "Ready Aug 17",
+      "etd": "Vessel Aug 17",
+      "port_eta": "~late Sep",
+      "sellable_eta": "~late Sep / Oct",
+      "verified": "Jul 14",
+      "next_action": "Pay corrected-PI deposit \u00b7 Will/Patrick",
+      "status": "DEPOSIT PENDING",
+      "pill": "crit",
+      "highlight": "red",
+      "cogs_landed": 2.73,
+      "total_po_value": 40950.0,
+      "deposit_implied": 19337.0,
+      "balance_due": 21613.0
     },
     {
-      "po_id": "PO-DET-002",
-      "product_name": "12oz Detangling Treatment — Run 2",
-      "canonical_sku": "8O-J63E-NJBR",
-      "asin": "B0GV5ZFLC2",
-      "vendor": "JBK Wellness Labs",
-      "qty_ordered": 10000,
-      "production_date": "2026-12-01",
-      "delivery_month": "December",
-      "delivery_units": 10000,
-      "cogs_factory": null,
-      "cogs_landed": 3.31,
-      "total_payment": 33100.00,
-      "payment_month": "December",
-      "payment_type": "full",
-      "status": "PENDING",
-      "notes": "No known issues. Should be as ordered. Note lower COGS vs Run 1 ($3.31 vs $3.71) — confirm with Patrick."
+      "po": "Pin Brush \u2014 Ocean",
+      "supplier": "Jiangsu Laoshu",
+      "route": "Factory \u2192 Long Beach \u2192 WSA",
+      "units": "3,000",
+      "deposit": "In PO 10344 \u00b7 ~$13,076 balance (Aug)",
+      "production": "Confirmed",
+      "etd": "Vessel Jul 20",
+      "port_eta": "~late Aug",
+      "sellable_eta": "WSA ~early Sep (held \u2014 overstock)",
+      "verified": "Jul 14",
+      "next_action": "Confirm vessel/booking \u00b7 Patrick",
+      "status": "VESSEL JUL 20",
+      "pill": "warn",
+      "highlight": "",
+      "cogs_landed": 3.1855,
+      "total_factory_cost": 9556.5
     },
     {
-      "po_id": "PO-SHAMP-002",
-      "product_name": "16oz Shampoo — Scent TBD (Run 2)",
-      "canonical_sku": "6U-XVW9-2WBJ",
-      "asin": "B0FQL16GH4",
-      "vendor": "JBK Wellness Labs",
-      "qty_ordered": 10000,
-      "production_date": null,
-      "production_date_note": "No date set. Awaiting final formula decision.",
-      "delivery_month": "October",
-      "delivery_units": 10000,
-      "cogs_factory": null,
-      "cogs_landed": 4.94,
-      "total_payment": 28152.00,
-      "total_payment_note": "FLAG-3: $28,152 = 57% of full order value ($49,400). Confirm if this is a deposit or partial quantity commitment.",
-      "payment_month": "October",
-      "payment_type": "deposit_or_partial",
-      "status": "PENDING_FORMULA",
-      "notes": "Scent to be determined. No production date. Waiting for final formula."
-    },
-    {
-      "po_id": "PO-RAKE-001",
-      "product_name": "Rake Brush",
-      "canonical_sku": null,
-      "asin": "B0FQF2VTMJ",
-      "vendor": "Jiangsu Laoshu Pet Products Co",
-      "qty_ordered": 15000,
-      "production_date": "2026-07-15",
-      "production_date_note": "Production date has PASSED (July 15). Vessel departure August 17.",
-      "delivery_month_batch_1": "July",
-      "delivery_units_batch_1": 5000,
-      "delivery_month_batch_2": "August",
-      "delivery_units_batch_2": 10000,
-      "vessel_date": "2026-08-17",
-      "cogs_per_unit": 2.73,
-      "total_cogs_full_order": 40950.00,
-      "deposit_paid": 19337.00,
-      "deposit_paid_note": "FLAG-2: $19,337 implied deposit (47.2% of $40,950). Confirm corrected PI deposit amount with Patrick/Marcelo.",
-      "balance_due": 21613.00,
-      "balance_due_month": "August",
-      "total_payment": 40950.00,
-      "payment_type": "deposit_balance",
-      "status": "IN_TRANSIT",
-      "notes": "Production date July 15 has passed. Vessel Aug 17. 5,000 units July batch — confirm receipt/transit status."
-    },
-    {
-      "po_id": "PO-PIN-001",
-      "product_name": "Pin Brush",
-      "canonical_sku": null,
-      "asin": "B0FQDHXSZ5",
-      "vendor": "Jiangsu Laoshu Pet Products Co",
-      "qty_ordered": 3000,
-      "production_date": "2026-08-15",
-      "delivery_month": "August",
-      "delivery_units": 3000,
-      "cogs_per_unit": 3.1855,
-      "total_payment": 9556.50,
-      "payment_month": "August",
-      "payment_type": "full",
-      "status": "IN_PRODUCTION",
-      "notes": "Math verified: 3,000 x $3.1855 = $9,556.50."
-    },
-    {
-      "po_id": "PO-CHW-SKIN-001",
-      "product_name": "Primo Chews 90 — Skin & Coat Omega",
-      "canonical_sku": null,
-      "asin": null,
-      "vendor": "Primo Animal Health",
-      "qty_ordered": 2500,
-      "production_date": "2026-08-14",
-      "production_date_note": "Estimated 10-12 weeks lead time. Mid-to-late August estimate.",
-      "delivery_month": "August",
-      "delivery_units": 2500,
-      "cogs_factory": 7.72,
-      "cogs_landed": 9.40,
-      "freight_per_unit": 1.68,
-      "total_payment_factory": 19300.00,
-      "total_payment_landed": 23500.00,
-      "payment_month": "August",
-      "payment_type": "full",
-      "status": "IN_PRODUCTION",
-      "notes": "FLAG-1: Monthly payment ($19,300) uses factory cost ($7.72/unit). Landed COGS for margin math = $9.40/unit. $1.68/unit freight consistent across all 3 chew SKUs. Confirm with Patrick."
-    },
-    {
-      "po_id": "PO-CHW-CALM-001",
-      "product_name": "Primo Chews 90 — Calm & Relaxed",
-      "canonical_sku": null,
-      "asin": null,
-      "vendor": "Primo Animal Health",
-      "qty_ordered": 2500,
-      "production_date": "2026-08-14",
-      "production_date_note": "Estimated 10-12 weeks lead time. Mid-to-late August estimate.",
-      "delivery_month": "August",
-      "delivery_units": 2500,
-      "cogs_factory": 6.85,
-      "cogs_landed": 8.53,
-      "freight_per_unit": 1.68,
-      "total_payment_factory": 17125.00,
-      "total_payment_landed": 21325.00,
-      "payment_month": "August",
-      "payment_type": "full",
-      "status": "IN_PRODUCTION",
-      "notes": "FLAG-1: Monthly payment ($17,125) uses factory cost. Landed COGS = $8.53/unit."
-    },
-    {
-      "po_id": "PO-CHW-IMM-001",
-      "product_name": "Primo Chews 90 — Allergy & Immune Relief",
-      "canonical_sku": null,
-      "asin": null,
-      "vendor": "Primo Animal Health",
-      "qty_ordered": 2500,
-      "production_date": "2026-08-14",
-      "production_date_note": "Estimated 10-12 weeks lead time. Mid-to-late August estimate.",
-      "delivery_month": "August",
-      "delivery_units": 2500,
+      "po": "Allergy & Itch Relief Chew",
+      "supplier": "Primo Health",
+      "route": "Factory \u2192 Amazon (direct) + 12 cases \u2192 WSA",
+      "units": "2,500",
+      "deposit": "$25,000 dep. 6/5 (all 3)",
+      "production": "Ready Aug 18 (domestic)",
+      "etd": "\u2014",
+      "port_eta": "\u2014",
+      "sellable_eta": "Sep 1 launch",
+      "verified": "Jul 14",
+      "next_action": "Confirm balance + split \u00b7 Patrick",
+      "status": "IN PRODUCTION",
+      "pill": "warn",
+      "highlight": "",
       "cogs_factory": 5.98,
       "cogs_landed": 7.66,
-      "freight_per_unit": 1.68,
-      "total_payment_factory": 14950.00,
-      "total_payment_landed": 19150.00,
-      "payment_month": "August",
-      "payment_type": "full",
-      "status": "IN_PRODUCTION",
-      "notes": "FLAG-1: Monthly payment ($14,950) uses factory cost. Landed COGS = $7.66/unit."
-    }
-  ],
-
-  "lead_time_master": [
-    {
-      "vendor": "JBK Wellness Labs",
-      "vendor_type": "contract_manufacturer",
-      "location": "USA",
-      "products": ["Emergency Dematter Cream", "Detangling Treatment", "Shampoo (all scents)"],
-      "lead_time_production_weeks": 10,
-      "lead_time_production_weeks_note": "Estimated from order placement (Jun 15 per dollar section) to production completion (Aug 14 per units section) = ~8-9 weeks. Using 10 as conservative figure.",
-      "lead_time_shipping_days": null,
-      "lead_time_shipping_note": "Domestic US supplier — exact transit time to FBA not captured in this schedule. Confirm with Patrick.",
-      "lead_time_total_weeks": 12,
-      "lead_time_total_weeks_note": "Production 10 wks + FBA receiving buffer ~2 wks. Confirm with Patrick.",
-      "deposit_pct": null,
-      "deposit_pct_note": "Deposit structure not visible in this spreadsheet for JBK orders.",
-      "reorder_trigger_weeks": 16,
-      "notes": "Formula-dependent products (Shampoo) may add 2-4 weeks for approval cycle."
+      "freight_per_unit": 1.68
     },
     {
-      "vendor": "Jiangsu Laoshu Pet Products Co",
-      "vendor_type": "manufacturer",
-      "location": "China (Jiangsu Province)",
-      "products": ["Rake Brush", "Pin Brush", "Slicker Brush"],
-      "lead_time_production_weeks": 5,
-      "lead_time_production_weeks_note": "Rake Brush: production date Jul 15, vessel Aug 17 = 33 days production-to-vessel departure.",
-      "lead_time_shipping_days": 30,
-      "lead_time_shipping_note": "Estimated China-to-US sea freight. Confirm actual transit time with Marcelo.",
-      "lead_time_fba_receiving_days": 14,
-      "lead_time_total_weeks": 14,
-      "lead_time_total_weeks_note": "~5 wks production + ~4-5 wks transit + ~2 wks FBA receiving. Confirm with Marcelo.",
-      "deposit_pct": 47.2,
-      "deposit_pct_note": "Implied from Rake Brush: $19,337 deposit / $40,950 total. Confirm with Marcelo — 'Corrected PI deposit pending' per Jul 26 handoff.",
-      "reorder_trigger_weeks": 18,
-      "notes": "Vessel schedule drives delivery window. Confirm all in-transit ETAs with Marcelo."
+      "po": "Calm & Relax Chew",
+      "supplier": "Primo Health",
+      "route": "Factory \u2192 Amazon (direct) + 12 cases \u2192 WSA",
+      "units": "2,500",
+      "deposit": "incl. $25k dep.",
+      "production": "Ready Aug 18 (domestic)",
+      "etd": "\u2014",
+      "port_eta": "\u2014",
+      "sellable_eta": "Sep 1 launch",
+      "verified": "Jul 14",
+      "next_action": "Confirm balance + split \u00b7 Patrick",
+      "status": "IN PRODUCTION",
+      "pill": "warn",
+      "highlight": "",
+      "cogs_factory": 6.85,
+      "cogs_landed": 8.53,
+      "freight_per_unit": 1.68
     },
     {
-      "vendor": "Primo Animal Health",
-      "vendor_type": "contract_manufacturer",
-      "location": "USA",
-      "products": ["Skin & Coat Omega Chews", "Calm & Relaxed Chews", "Allergy & Immune Chews"],
-      "lead_time_production_weeks": 11,
-      "lead_time_production_weeks_note": "Stated in spreadsheet: 10-12 weeks. Using midpoint 11 weeks.",
-      "lead_time_shipping_days": null,
-      "lead_time_shipping_note": "Domestic US supplier — transit time to FBA not captured. Confirm with Patrick.",
-      "lead_time_total_weeks": 13,
-      "lead_time_total_weeks_note": "Production 11 wks + FBA receiving buffer ~2 wks. Confirm with Patrick.",
-      "deposit_pct": null,
-      "deposit_pct_note": "Deposit structure not visible in this spreadsheet for Primo orders.",
-      "reorder_trigger_weeks": 16,
-      "notes": "New vendor relationship for STG. All 3 chew SKUs are initial production run (2,500 units each). ASINs not yet assigned."
+      "po": "Skin & Coat Omega Chew",
+      "supplier": "Primo Health",
+      "route": "Factory \u2192 Amazon (direct) + 12 cases \u2192 WSA",
+      "units": "2,500",
+      "deposit": "incl. $25k dep.",
+      "production": "Ready Aug 18 (domestic)",
+      "etd": "\u2014",
+      "port_eta": "\u2014",
+      "sellable_eta": "Sep 1 launch",
+      "verified": "Jul 14",
+      "next_action": "Confirm balance + split \u00b7 Patrick",
+      "status": "IN PRODUCTION",
+      "pill": "warn",
+      "highlight": "",
+      "cogs_factory": 7.72,
+      "cogs_landed": 9.4,
+      "freight_per_unit": 1.68
+    },
+    {
+      "po": "Dematter +25,000 (PO 10344)",
+      "supplier": "JBK Wellness Labs",
+      "route": "Factory \u2192 WSA \u2192 Amazon",
+      "units": "25,000",
+      "deposit": "$74,831 dep. \u00b7 $118,600 bal.",
+      "production": "Oct 2026 target",
+      "etd": "\u2014",
+      "port_eta": "\u2014",
+      "sellable_eta": "TBD",
+      "verified": "6/19",
+      "next_action": "Confirm keep or defer \u00b7 Will",
+      "status": "HOLD",
+      "pill": "hold",
+      "highlight": "",
+      "cogs_landed": 3.42,
+      "total_factory_cost": 85500
+    },
+    {
+      "po": "Detangling +10,000 (PO 10344)",
+      "supplier": "JBK Wellness Labs",
+      "route": "Factory \u2192 WSA \u2192 Amazon",
+      "units": "10,000",
+      "deposit": "In PO 10344",
+      "production": "Dec 2026 target",
+      "etd": "\u2014",
+      "port_eta": "\u2014",
+      "sellable_eta": "TBD",
+      "verified": "6/19",
+      "next_action": "Confirm proceed (ingredient gating) \u00b7 Will",
+      "status": "SCHEDULED",
+      "pill": "ok",
+      "highlight": "",
+      "cogs_landed": 3.31,
+      "total_factory_cost": 33100
     }
   ],
-
+  "suppliers": [
+    {
+      "name": "JBK Wellness Labs",
+      "sub": "Liquids",
+      "products": "Emergency Dematter \u00b7 Detangling Treatment \u00b7 4-in-1 Shampoo (all scents)",
+      "lead": "18 wks from order (no stage breakdown)<br>6-wk accelerated blocked until ingredient in stock",
+      "deposit": "$74,831 (PO 10344)",
+      "balance": "$118,600",
+      "ordered": "Dematter 25k Oct \u00b7 Detangling 10k Dec",
+      "delivery": "Oct 2026 \u00b7 Dec 2026",
+      "trigger": "Dematter: Amazon sellable <15 wks (accelerated only once ingredient restocked)",
+      "status": "HOLD \u2014 Awaiting Craig on ingredient",
+      "pill": "hold",
+      "highlight": ""
+    },
+    {
+      "name": "Jiangsu Laoshu",
+      "sub": "Brushes & Tools",
+      "products": "Pin Brush \u00b7 Rake Brush \u00b7 Slicker Brush",
+      "lead": "<b>14 wks total via WSA</b><br>~13 wks direct to Amazon",
+      "deposit": "PO1 in PO 10344 \u00b7 PO2 deposit pending",
+      "balance": "~$13,076 Pin (Aug) \u00b7 PO2 per corrected PI",
+      "ordered": "Rake PO1: 1,650 air + 3,350 ocean \u00b7 Rake PO2: 5,000 \u00b7 Pin 3,000",
+      "delivery": "Rake air Jul 29/31 \u00b7 Rake ocean + Pin on Jul 20 vessel \u00b7 Rake PO2 Aug 17 vessel",
+      "trigger": "Brushes overstocked \u2014 no reorder except Rake replenishment already placed",
+      "status": "Confirm vessels + PO2 deposit",
+      "pill": "warn",
+      "highlight": "red"
+    },
+    {
+      "name": "Primo Health",
+      "sub": "Chews / Supplements",
+      "products": "Allergy & Itch Relief \u00b7 Calm & Relax \u00b7 Skin & Coat Omega",
+      "lead": "12 wks (plan) \u00b7 supplier range 10\u201312",
+      "deposit": "$25,000 (paid 6/5)",
+      "balance": "TBD \u2014 confirm",
+      "ordered": "2,500 each \u00d7 3 = 7,500 (ready Aug 18)",
+      "delivery": "Domestic to Amazon + 12 cases/flavor to WSA \u00b7 Sep 1 launch",
+      "trigger": "Set after Sep 1 velocity established",
+      "status": "In production",
+      "pill": "warn",
+      "highlight": ""
+    },
+    {
+      "name": "Century Label",
+      "sub": "Labels",
+      "products": "All liquid SKU labels \u00b7 new scent labels (Aug)",
+      "lead": "<b>~3 wks</b> \u00b7 no MOQ",
+      "deposit": "N/A",
+      "balance": "N/A",
+      "ordered": "30k Rosemary Mint in hand \u00b7 Coconut Lime + Lavender Chamomile for Aug",
+      "delivery": "Aug 2026",
+      "trigger": "Must precede liquid production by ~3-wk label lead time",
+      "status": "Confirm new-scent status",
+      "pill": "warn",
+      "highlight": ""
+    },
+    {
+      "name": "Container & Packaging",
+      "sub": "Bottles / Lids",
+      "products": "All liquid bottles \u00b7 lids \u00b7 applicator tips",
+      "lead": "<b>~3 wks</b>* \u00b7 no MOQ",
+      "deposit": "N/A",
+      "balance": "N/A",
+      "ordered": "Order to match liquid runs",
+      "delivery": "~3 wks from order",
+      "trigger": "Must precede liquid production; *special run up to 120 days if no stock",
+      "status": "Lead time confirmed 3 wks",
+      "pill": "ok",
+      "highlight": ""
+    }
+  ],
   "cash_plan": {
-    "production_schedule_total": 270271.50,
-    "production_schedule_note": "Total from May 29 production schedule. Represents factory/supplier payments only. Does NOT include freight, duties, FBA inbound, or WSA fees. Patrick to confirm full landed cost plan.",
-    "monthly_production_payments": [
+    "d30": {
+      "title": "Next 30 Days",
+      "rows": [
+        [
+          "Rake air 1,650 (11 cases)",
+          "Freight per PI/quote"
+        ],
+        [
+          "<b>Rake PO2 deposit (5,000)</b>",
+          "<b>Per corrected PI \u2014 pending (FLAG-2)</b>"
+        ],
+        [
+          "Shampoo Lavender+Coconut",
+          "$13,150"
+        ],
+        [
+          "Pin Brush 3,000 (factory)",
+          "$9,557"
+        ],
+        [
+          "3\u00d7 Chews factory payments",
+          "$51,375 ($19,300 + $17,125 + $14,950)"
+        ],
+        [
+          "Dematter / Detangling",
+          "HOLD / ingredient-gated"
+        ]
+      ],
+      "total": [
+        "<b>30-Day Factory Payments (excl. Rake PO2 deposit)</b>",
+        "<b>$74,082 confirmed + PO2 deposit TBD</b>"
+      ]
+    },
+    "d60": {
+      "title": "30\u201360 Days",
+      "rows": [
+        [
+          "Rake PO2 balance (on ship Aug 17)",
+          "Per corrected PI (FLAG-2)"
+        ],
+        [
+          "Detangling Treatment Run 1 (7,500 units)",
+          "$27,825"
+        ]
+      ],
+      "total": [
+        "<b>60-Day Add</b>",
+        "<b>$27,825 + Rake PO2 balance</b>"
+      ]
+    },
+    "d90": {
+      "title": "60\u201390 Days",
+      "rows": [
+        [
+          "Emergency Dematter 25k (Oct \u2014 confirm keep/defer)",
+          "$85,500"
+        ],
+        [
+          "Shampoo TBD Run 2 (Oct)",
+          "$28,152 (FLAG-3)"
+        ]
+      ],
+      "total": [
+        "<b>90-Day Add (if confirmed)</b>",
+        "<b>$113,652</b>"
+      ]
+    },
+    "balances": {
+      "title": "Production Balances \u2014 as of 2026-07-27 (Patrick to reconfirm Rake PO2 corrected PI)",
+      "rows": [
+        [
+          "June balance (JBK)",
+          "$108,886"
+        ],
+        [
+          "July balance (revised \u2014 no shampoo)",
+          "$40,073"
+        ],
+        [
+          "August \u2014 factory payments due",
+          "$95,694.50"
+        ],
+        [
+          "August \u2014 balance amounts only (after deposits)",
+          "$38,651"
+        ],
+        [
+          "September (Detangling Run 1)",
+          "$27,825"
+        ],
+        [
+          "October (Dematter 25k HOLD + Shampoo TBD)",
+          "$113,652"
+        ],
+        [
+          "December (Detangling 10k)",
+          "$33,100"
+        ],
+        [
+          "Rake PO2 (5,000 \u2014 corrected PI)",
+          "TBD (FLAG-2)"
+        ]
+      ],
+      "total": [
+        "Total Factory Payments Aug\u2013Dec",
+        "$270,271.50"
+      ],
+      "note": "August shows BOTH total factory payments ($95,694.50) and balance-due amount ($38,651 after deposits). Use balance-due row for cash-flow planning."
+    }
+  },
+  "_meta": {
+    "production_schedule_source": "STG_-_Estimted_Production_-_F26_07_v1.xlsx",
+    "production_schedule_date": "2026-05-29",
+    "production_schedule_imported": "2026-07-27",
+    "patrick_verified": false,
+    "patrick_verified_date": null,
+    "flags": [
+      "FLAG-1: Chew monthly dollar amounts use FACTORY cost (Skin $7.72 / Calm $6.85 / Immune $5.98). Landed COGS (Skin $9.40 / Calm $8.53 / Immune $7.66) includes $1.68/unit freight. Confirm which cogs_master.json should store.",
+      "FLAG-2: Rake Brush \u2014 $21,613 August is the BALANCE due. Implied deposit already paid: ~$19,337 (47.2% of $40,950 total). Confirm corrected PI deposit amount.",
+      "FLAG-3: Shampoo TBD Run 2 \u2014 $28,152 October = 57% of full $49,400 order. Confirm deposit structure or partial quantity commitment.",
+      "FLAG-4: Detangling Treatment date discrepancy \u2014 units section 2026-08-14 vs dollar section 2026-06-15. Likely order date vs production completion date. Confirm.",
+      "FLAG-5: Production schedule is 59 days old (May 29). Rake Brush production date July 15 has passed. Patrick to confirm current status of all in-flight POs."
+    ]
+  },
+  "production_schedule": {
+    "source_file": "STG_-_Estimted_Production_-_F26_07_v1.xlsx",
+    "source_date": "2026-05-29",
+    "note": "Monthly amounts are FACTORY/SUPPLIER PAYMENTS. Exclude freight, duties, FBA inbound, WSA fees. See cash_plan.balances for remaining balance-due amounts (after deposits).",
+    "total_factory_payments": 270271.5,
+    "monthly": [
       {
         "month": "2026-06",
-        "month_label": "June 2026",
-        "amount": 0.00,
+        "label": "June 2026",
+        "factory_payments": 0.0,
         "pos": []
       },
       {
         "month": "2026-07",
-        "month_label": "July 2026",
-        "amount": 0.00,
-        "pos": [],
-        "note": "Rake Brush deposit already paid prior to this schedule (not captured as July outflow here)."
+        "label": "July 2026",
+        "factory_payments": 0.0,
+        "pos": [
+          "Rake Brush deposit already paid \u2014 not captured as July outflow in this schedule"
+        ]
       },
       {
         "month": "2026-08",
-        "month_label": "August 2026",
-        "amount": 95694.50,
+        "label": "August 2026",
+        "factory_payments": 95694.5,
         "pos": [
-          { "po_id": "PO-SHAMP-001", "product": "Shampoo Lavender+Coconut", "amount": 13150.00 },
-          { "po_id": "PO-RAKE-001",  "product": "Rake Brush (balance due)", "amount": 21613.00 },
-          { "po_id": "PO-PIN-001",   "product": "Pin Brush", "amount": 9556.50 },
-          { "po_id": "PO-CHW-SKIN-001", "product": "Chews - Skin & Coat (factory)", "amount": 19300.00 },
-          { "po_id": "PO-CHW-CALM-001", "product": "Chews - Calm & Relaxed (factory)", "amount": 17125.00 },
-          { "po_id": "PO-CHW-IMM-001",  "product": "Chews - Allergy & Immune (factory)", "amount": 14950.00 }
+          {
+            "item": "Shampoo Lavender+Coconut (2,500 units)",
+            "amount": 13150.0,
+            "cogs_per_unit": 5.26
+          },
+          {
+            "item": "Rake Brush balance due (vessel Aug 17)",
+            "amount": 21613.0,
+            "cogs_per_unit": 2.73,
+            "note": "Balance only \u2014 ~$19,337 deposit already paid"
+          },
+          {
+            "item": "Pin Brush (3,000 units)",
+            "amount": 9556.5,
+            "cogs_per_unit": 3.1855
+          },
+          {
+            "item": "Chews \u2014 Skin & Coat (2,500 units)",
+            "amount": 19300.0,
+            "cogs_factory_per_unit": 7.72,
+            "cogs_landed_per_unit": 9.4
+          },
+          {
+            "item": "Chews \u2014 Calm & Relax (2,500 units)",
+            "amount": 17125.0,
+            "cogs_factory_per_unit": 6.85,
+            "cogs_landed_per_unit": 8.53
+          },
+          {
+            "item": "Chews \u2014 Allergy & Immune (2,500 units)",
+            "amount": 14950.0,
+            "cogs_factory_per_unit": 5.98,
+            "cogs_landed_per_unit": 7.66
+          }
         ]
       },
       {
         "month": "2026-09",
-        "month_label": "September 2026",
-        "amount": 27825.00,
+        "label": "September 2026",
+        "factory_payments": 27825.0,
         "pos": [
-          { "po_id": "PO-DET-001", "product": "Detangling Treatment Run 1 (7,500 units)", "amount": 27825.00 }
+          {
+            "item": "Detangling Treatment Run 1 (7,500 of 10,000 units)",
+            "amount": 27825.0,
+            "cogs_per_unit": 3.71
+          }
         ]
       },
       {
         "month": "2026-10",
-        "month_label": "October 2026",
-        "amount": 113652.00,
+        "label": "October 2026",
+        "factory_payments": 113652.0,
         "pos": [
-          { "po_id": "PO-DEM-001",    "product": "Emergency Dematter 25,000 units", "amount": 85500.00 },
-          { "po_id": "PO-SHAMP-002",  "product": "Shampoo TBD Run 2 (deposit or partial)", "amount": 28152.00 }
+          {
+            "item": "Emergency Dematter 25,000 units",
+            "amount": 85500.0,
+            "cogs_per_unit": 3.42
+          },
+          {
+            "item": "Shampoo TBD Run 2 (deposit or partial)",
+            "amount": 28152.0,
+            "cogs_per_unit": 4.94,
+            "note": "FLAG-3: 57% of full $49,400 \u2014 confirm deposit vs partial qty"
+          }
         ]
       },
       {
         "month": "2026-11",
-        "month_label": "November 2026",
-        "amount": 0.00,
+        "label": "November 2026",
+        "factory_payments": 0.0,
         "pos": []
       },
       {
         "month": "2026-12",
-        "month_label": "December 2026",
-        "amount": 33100.00,
+        "label": "December 2026",
+        "factory_payments": 33100.0,
         "pos": [
-          { "po_id": "PO-DET-002", "product": "Detangling Treatment Run 2 (10,000 units)", "amount": 33100.00 }
+          {
+            "item": "Detangling Treatment Run 2 (10,000 units)",
+            "amount": 33100.0,
+            "cogs_per_unit": 3.31
+          }
         ]
       }
-    ],
-    "d30": {
-      "label": "Next 30 days (Jul 27 – Aug 26)",
-      "production_payments_due": 95694.50,
-      "largest_item": "Rake Brush balance $21,613 + 3 chew SKUs $51,375 + Shampoo+Pin $22,707",
-      "note": "All August POs due. Rake Brush vessel departs Aug 17 — balance likely due on or before vessel departure."
-    },
-    "d60": {
-      "label": "31–60 days (Aug 27 – Sep 25)",
-      "production_payments_due": 27825.00,
-      "largest_item": "Detangling Treatment Run 1 — $27,825"
-    },
-    "d90": {
-      "label": "61–90 days (Sep 26 – Oct 25)",
-      "production_payments_due": 113652.00,
-      "largest_item": "Emergency Dematter 25k units — $85,500"
-    }
-  },
-
-  "vendor_list": [
-    {
-      "vendor_name": "JBK Wellness Labs",
-      "vendor_type": "Contract Manufacturer — Liquids & Creams",
-      "products": ["Emergency Dematter", "Detangling Treatment", "Shampoo (all scents)"],
-      "country": "USA",
-      "active": true
-    },
-    {
-      "vendor_name": "Jiangsu Laoshu Pet Products Co",
-      "vendor_type": "Manufacturer — Brushes & Grooming Tools",
-      "products": ["Rake Brush", "Pin Brush", "Slicker Brush"],
-      "country": "China",
-      "active": true
-    },
-    {
-      "vendor_name": "Primo Animal Health",
-      "vendor_type": "Contract Manufacturer — Supplements",
-      "products": ["Skin & Coat Omega Chews", "Calm & Relaxed Chews", "Allergy & Immune Chews"],
-      "country": "USA",
-      "active": true
-    }
-  ]
+    ]
+  }
 }
