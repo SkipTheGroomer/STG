@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-23",
+  "as_of": "2026-07-26",
   "available": true,
   "source": "seller_central_manual",
   "note": "Live read of Seller Central 'Manage Inventory Health' page on 2026-07-23 (automated SC scrape still flagged unavailable per L-2026-07-15-001 DOCTRINE; this update was pulled manually from the on-screen table).",
