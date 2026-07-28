@@ -180,6 +180,57 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 .pill-hold{background:#e8f0fe;color:#1a4896;}.pill-stop{background:#f3eeff;color:#4a2070;}
 .live-badge{display:inline-block;font-size:8px;font-weight:800;padding:1px 5px;border-radius:6px;background:#e3f5ec;color:#1d7d4d;vertical-align:middle;margin-left:4px;letter-spacing:.5px;}
 .manual-badge{display:inline-block;font-size:8px;font-weight:800;padding:1px 5px;border-radius:6px;background:#f0f2f5;color:#8a93a0;vertical-align:middle;margin-left:4px;letter-spacing:.5px;}
+
+/* ── STANDARD PAGE HEADER ── */
+.page-header{padding:20px 0 0;}
+.page-header-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px;}
+.page-title-block{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.page-title{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.3px;}
+.page-meta-bar{display:flex;gap:16px;font-size:11px;color:var(--muted);padding:4px 0 12px;border-bottom:2px solid var(--border);flex-wrap:wrap;}
+.page-meta-bar span b{color:var(--navy);}
+.source-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;letter-spacing:.5px;}
+.source-live{background:#e3f5ec;color:#1d7d4d;}
+.source-stale{background:#fff3cd;color:#9a6c0a;}
+.source-manual{background:#e8edf2;color:#2a3d50;}
+.source-nc{background:#f0f2f5;color:#8a93a0;}
+.alert-strip{margin:10px 0;padding:11px 15px;border-radius:8px;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.alert-strip.crit{background:#fbe6e3;border-left:4px solid var(--red);color:#7a2b24;}
+.alert-strip.warn{background:#fff3cd;border-left:4px solid var(--amber);color:#7a5c00;}
+.alert-strip.ok{background:#e3f5ec;border-left:4px solid var(--green);color:#1d6e46;}
+.alert-strip.info{background:#edf1f5;border-left:4px solid var(--navy);color:#2a3d50;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:12px 0 4px;}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:10px 0 0 10px;}
+.kpi-card.kpi-green::before{background:var(--green);}
+.kpi-card.kpi-red::before{background:var(--red);}
+.kpi-card.kpi-amber::before{background:var(--amber);}
+.kpi-card.kpi-teal::before{background:var(--teal);}
+.kpi-card.kpi-orange::before{background:var(--orange);}
+.kpi-card.kpi-purple::before{background:var(--purple);}
+.kpi-card.kpi-grey::before{background:#c9d2db;}
+.kpi-card.kpi-navy::before{background:var(--navy);}
+.kpi-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);}
+.kpi-val{font-size:24px;font-weight:800;line-height:1.1;margin:6px 0 3px;color:var(--navy);font-variant-numeric:tabular-nums;}
+.kpi-val.kpi-up{color:var(--green);}
+.kpi-val.kpi-down{color:var(--red);}
+.kpi-val.kpi-warn{color:var(--amber);}
+.kpi-val.kpi-na{font-size:13px;font-weight:600;color:#8a93a0;margin-top:8px;}
+.kpi-period{font-size:10px;color:var(--muted);line-height:1.4;}
+.kpi-delta{font-size:11px;font-weight:700;margin-top:3px;}
+.kpi-delta.up{color:var(--green);}
+.kpi-delta.down{color:var(--red);}
+.kpi-missing{font-size:10px;font-weight:700;color:#8a93a0;background:#f0f2f5;border-radius:4px;padding:2px 7px;display:inline-block;margin-top:4px;}
+
+/* ── PLACEHOLDER PAGES ── */
+.placeholder-page{padding:32px 0;}
+.placeholder-hero{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;text-align:center;margin-bottom:16px;}
+.placeholder-hero h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.placeholder-hero p{font-size:12px;color:var(--muted);line-height:1.6;max-width:480px;margin:0 auto;}
+.placeholder-sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;}
+.placeholder-section{background:var(--card);border:1px dashed var(--border);border-radius:8px;padding:16px;}
+.placeholder-section h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px;}
+.placeholder-section p{font-size:11px;color:var(--muted);line-height:1.5;}
+.na-box{padding:16px;font-size:12px;color:var(--muted);font-style:italic;}
 </style>
 </head>
 <body>
@@ -200,53 +251,79 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
 <div class="layout">
   <div class="sidebar" id="sidebar">
+
+    <!-- 01 Business Health -->
     <button class="nav-card active" id="nav-bizhealth" onclick="show('bizhealth')">
-      <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
-      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Executive view &middot; live KPIs &middot; channel summary &middot; flags</span></span>
+      <span class="nav-num" style="font-size:9px;">01<span class="nav-dot" id="dot-bizhealth"></span></span>
+      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">All-channel executive view · cash · true net · alerts</span></span>
     </button>
-    <div class="sb-label" style="margin-top:8px;">Platform Data</div>
-    <button class="nav-card" id="nav-quickbooks" onclick="show('quickbooks')">
-      <span class="nav-num">01<span class="nav-dot" id="dot-quickbooks"></span></span>
-      <span class="nav-text"><span class="nav-title">QuickBooks</span><span class="nav-desc">Cash position, runway, P&amp;L status</span></span>
+
+    <!-- 02 Inventory + Supply Chain -->
+    <button class="nav-card" id="nav-inventory" onclick="show('inventory')">
+      <span class="nav-num" style="font-size:9px;">02<span class="nav-dot" id="dot-inventory"></span></span>
+      <span class="nav-text"><span class="nav-title">Inventory + Supply Chain</span><span class="nav-desc">Live FBA · POs · lead times · cash plan</span></span>
     </button>
-    <button class="nav-card" id="nav-klaviyo" onclick="show('klaviyo')">
-      <span class="nav-num">02<span class="nav-dot" id="dot-klaviyo"></span></span>
-      <span class="nav-text"><span class="nav-title">Klaviyo</span><span class="nav-desc">Email + SMS flow performance, 7-day</span></span>
-    </button>
-    <button class="nav-card" id="nav-shopify" onclick="show('shopify')">
-      <span class="nav-num">03<span class="nav-dot" id="dot-shopify"></span></span>
-      <span class="nav-text"><span class="nav-title">Shopify</span><span class="nav-desc">Yesterday's sales, AOV vs $35 target</span></span>
-    </button>
+
+    <!-- 03 Amazon -->
     <button class="nav-card" id="nav-amazon" onclick="show('amazon')">
-      <span class="nav-num" style="font-size:9px;">AMZ<span class="nav-dot" id="dot-amazon"></span></span>
-      <span class="nav-text"><span class="nav-title">Amazon</span><span class="nav-desc">Profit · keywords · campaigns · ads · SKUs · SC</span></span>
+      <span class="nav-num">03<span class="nav-dot" id="dot-amazon"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon</span><span class="nav-desc">Sales · profit · ads · keywords · SC traffic</span></span>
     </button>
+
+    <!-- 04 Shopify -->
+    <button class="nav-card" id="nav-shopify" onclick="show('shopify')">
+      <span class="nav-num">04<span class="nav-dot" id="dot-shopify"></span></span>
+      <span class="nav-text"><span class="nav-title">Shopify</span><span class="nav-desc">DTC sales · AOV · attribution · subscriptions</span></span>
+    </button>
+
+    <!-- 05 TikTok Shop -->
+    <button class="nav-card" id="nav-tiktok" onclick="show('tiktok')">
+      <span class="nav-num">05<span class="nav-dot" id="dot-tiktok"></span></span>
+      <span class="nav-text"><span class="nav-title">TikTok Shop + Ads</span><span class="nav-desc">Shop · GMV Max · affiliates · shoppable content</span></span>
+    </button>
+
+    <!-- 06 Meta Ads -->
+    <button class="nav-card" id="nav-metaads" onclick="show('metaads')">
+      <span class="nav-num">06<span class="nav-dot" id="dot-metaads"></span></span>
+      <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Spend · ROAS · campaigns · kill flags</span></span>
+    </button>
+
+    <!-- 07 Google Ads -->
     <button class="nav-card" id="nav-googleads" onclick="show('googleads')">
       <span class="nav-num">07<span class="nav-dot" id="dot-googleads"></span></span>
-      <span class="nav-text"><span class="nav-title">Google Ads</span><span class="nav-desc">Spend, ROAS, top campaigns</span></span>
+      <span class="nav-text"><span class="nav-title">Google Ads</span><span class="nav-desc">Search · Shopping · PMax · attribution</span></span>
     </button>
-    <button class="nav-card" id="nav-metaads" onclick="show('metaads')">
-      <span class="nav-num">08<span class="nav-dot" id="dot-metaads"></span></span>
-      <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Spend &middot; ROAS &middot; campaigns &middot; flags</span></span>
+
+    <!-- 08 Klaviyo -->
+    <button class="nav-card" id="nav-klaviyo" onclick="show('klaviyo')">
+      <span class="nav-num">08<span class="nav-dot" id="dot-klaviyo"></span></span>
+      <span class="nav-text"><span class="nav-title">Klaviyo</span><span class="nav-desc">Email + SMS · flows · campaigns · deliverability</span></span>
     </button>
-    <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
-      <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
-      <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
+
+    <!-- 09 Social Media -->
+    <button class="nav-card" id="nav-social" onclick="show('social')">
+      <span class="nav-num">09<span class="nav-dot" id="dot-social"></span></span>
+      <span class="nav-text"><span class="nav-title">Social Media</span><span class="nav-desc">Organic FB · IG · TikTok · YouTube</span></span>
+    </button>
+
+    <!-- 10 Customer Experience -->
+    <button class="nav-card" id="nav-cx" onclick="show('cx')">
+      <span class="nav-num">10<span class="nav-dot" id="dot-cx"></span></span>
+      <span class="nav-text"><span class="nav-title">Customer Experience</span><span class="nav-desc">Returns · reviews · complaints · defects</span></span>
     </button>
 
     <div class="sb-label" style="margin-top:8px;">Agent Reports</div>
+
+    <!-- 11 Agent Flags -->
     <button class="nav-card" id="nav-agentflags" onclick="show('agentflags')">
-      <span class="nav-num" style="font-size:9px;">🚩<span class="nav-dot" id="dot-agentflags"></span></span>
-      <span class="nav-text"><span class="nav-title">Agent Flags</span><span class="nav-desc">Problems + solutions — structured cards</span></span>
-    </button>
-    <button class="nav-card" id="nav-reports" onclick="show('reports')">
-      <span class="nav-num" style="font-size:9px;">💬<span class="nav-dot" id="dot-reports"></span></span>
-      <span class="nav-text"><span class="nav-title">Channel Reports</span><span class="nav-desc">Today's Slack posts — all agents, all channels</span></span>
+      <span class="nav-num">11<span class="nav-dot" id="dot-agentflags"></span></span>
+      <span class="nav-text"><span class="nav-title">Agent Flags</span><span class="nav-desc">Problems + solutions · approvals · inaction cost</span></span>
     </button>
 
-    <button class="nav-card" id="nav-inventory" onclick="show('inventory')">
-      <span class="nav-num" style="font-size:9px;">SC<span class="nav-dot" id="dot-inventory"></span></span>
-      <span class="nav-text"><span class="nav-title">Inventory + Supply Chain</span><span class="nav-desc">Live FBA position · POs · lead times · cash plan</span></span>
+    <!-- 12 Channel Reports -->
+    <button class="nav-card" id="nav-reports" onclick="show('reports')">
+      <span class="nav-num">12<span class="nav-dot" id="dot-reports"></span></span>
+      <span class="nav-text"><span class="nav-title">Channel Reports</span><span class="nav-desc">Today's Slack posts — all agents, all channels</span></span>
     </button>
 
   </div>
@@ -285,7 +362,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         <!-- KLAVIYO -->
         <div class="section" id="section-klaviyo">
-          <div class="sec-head"><h2>Klaviyo — Email + SMS Flows (Last 7 Days)</h2><span class="tag" id="kl-tag">—</span></div>
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Klaviyo</div>
+                <span class="tag" id="kl-tag">—</span>
+                <span class="source-badge source-live">KLAVIYO API</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="kl-last-run">—</b></span>
+              <span>Data through: <b id="kl-data-through">—</b></span>
+              <span>Source: <b>Klaviyo · last 7 days</b></span>
+            </div>
+          </div>
           <div class="cards" id="kl-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Flagged flows (open &lt;15% or click &lt;2%)</div>
           <ul class="flag-list" id="kl-flags"></ul>
@@ -293,7 +383,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         <!-- SHOPIFY -->
         <div class="section" id="section-shopify">
-          <div class="sec-head"><h2>Shopify — Yesterday</h2><span class="tag" id="sh-tag">—</span></div>
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Shopify</div>
+                <span class="tag" id="sh-tag">—</span>
+                <span class="source-badge source-live">SHOPIFY API</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="sh-last-run">—</b></span>
+              <span>Data through: <b id="sh-data-through">—</b></span>
+              <span>Source: <b>Shopify · Supermetrics (attribution)</b></span>
+            </div>
+          </div>
           <div class="cards" id="sh-cards"></div>
           <div id="sh-alerts"></div>
           <div id="sh-chart"></div>
@@ -334,7 +437,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         </div><!-- AMAZON (consolidated) -->
         <div class="section" id="section-amazon">
-
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Amazon</div>
+                <span class="tag" id="amz-page-tag">—</span>
+                <span class="source-badge source-live">HELIUM 10 · SC · ADS</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="amz-last-run">—</b></span>
+              <span>Data through: <b id="amz-data-through">—</b></span>
+              <span>Source: <b>Helium 10 · Seller Central · Amazon Ads · Supermetrics</b></span>
+            </div>
+          </div>
           <!-- A: Amazon Net Profit -->
           <div class="sec-head">
             <h2>Amazon — Net Profit</h2>
@@ -561,7 +677,21 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- INVENTORY RUNWAY -->
         <!-- INVENTORY + SUPPLY CHAIN -->
 <div class="section" id="section-inventory">
-  <div class="sec-head"><h2>Inventory + Supply Chain — Replenishment Control Tower</h2><span class="tag" id="ct-tag">—</span><span class="tag tag-live" id="sc-live-tag">LOADING</span><span class="when" id="ct-when"></span></div>
+  <div class="page-header">
+    <div class="page-header-top">
+      <div class="page-title-block">
+        <div class="page-title">Inventory + Supply Chain</div>
+        <span class="tag" id="ct-tag">—</span>
+        <span class="tag tag-live" id="sc-live-tag">LOADING</span>
+      </div>
+      <span class="when" id="ct-when"></span>
+    </div>
+    <div class="page-meta-bar">
+      <span>Last run: <b id="inv-last-run">—</b></span>
+      <span>Data through: <b id="inv-data-through">—</b></span>
+      <span>Source: <b>inventory_data.json (daily FBA) · supply_chain.json (Patrick/Marcelo)</b></span>
+    </div>
+  </div>
   <div class="sec-desc">Live Amazon FBA position (daily, from <b>data/inventory_data.json</b>) merged with the supply-chain plan in <b>data/supply_chain.json</b> (Patrick/Marcelo — POs, vessels, lead times, WSA, cash).</div>
   <div id="sc-banners"></div>
   <div id="sc-headline"></div>
@@ -673,7 +803,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
 </div>
         <div class="section" id="section-googleads">
-          <div class="sec-head"><h2>Google Ads &mdash; Yesterday</h2><span class="tag" id="ga-tag">--</span></div>
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Google Ads</div>
+                <span class="tag" id="ga-tag">—</span>
+                <span class="source-badge source-manual">$0 SPEND — EXPECTED</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="ga-last-run">—</b></span>
+              <span>Data through: <b id="ga-data-through">—</b></span>
+              <span>Source: <b>Supermetrics · Google Ads</b></span>
+            </div>
+          </div>
           <div class="sec-desc">Yesterday via Supermetrics. <b>Locked rule:</b> ROAS below 2.0 = flag. STG is not currently running Google campaigns &mdash; $0 / no data is expected, not an error.</div>
           <div class="cards" id="ga-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
@@ -683,7 +826,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         <!-- META ADS -->
         <div class="section" id="section-metaads">
-          <div class="sec-head"><h2>Meta Ads &mdash; Last 30 Days</h2><span class="tag" id="mt-tag">--</span></div>
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Meta Ads</div>
+                <span class="tag" id="mt-tag">—</span>
+                <span class="source-badge source-live">META MCP</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="mt-last-run">—</b></span>
+              <span>Data through: <b id="mt-data-through">—</b></span>
+              <span>Source: <b>Meta MCP Connector · Acct 2158768751536031 · L30D trailing</b></span>
+            </div>
+          </div>
           <div class="sec-desc">Live via the Meta MCP connector &mdash; ad account <b>2158768751536031</b>. <b>Trailing 30-day window</b> (rolling — today minus 30 days; matches Meta Ads Manager default) &mdash; L30D ROAS is the headline metric. Flags fire on the $75 cumulative kill threshold and duplicate campaigns.</div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
@@ -704,6 +860,134 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="rv-recent"></div>
         </div>
 
+
+        <!-- TIKTOK SHOP + ADS -->
+        <div class="section" id="section-tiktok">
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">TikTok Shop + Ads</div>
+                <span class="tag tag-na" id="tt-tag">NOT CONNECTED</span>
+                <span class="source-badge source-nc">NO DATA</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="tt-last-run">—</b></span>
+              <span>Data through: <b id="tt-data-through">—</b></span>
+              <span>Source: <b>TikTok Shop API · TikTok Ads</b></span>
+            </div>
+          </div>
+          <div class="alert-strip info">ℹ️ TikTok Shop connector not yet configured — data will populate once the TikTok MCP or export pipeline is connected.</div>
+          <div class="kpi-grid">
+            <div class="kpi-card kpi-teal"><div class="kpi-lbl">Net Shop Sales</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">TikTok Shop</div></div>
+            <div class="kpi-card kpi-green"><div class="kpi-lbl">Contribution Profit</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">After COGS + fees</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Orders</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Completed</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">AOV</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Average order value</div></div>
+            <div class="kpi-card kpi-orange"><div class="kpi-lbl">GMV Max Spend</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">TikTok paid</div></div>
+            <div class="kpi-card kpi-purple"><div class="kpi-lbl">Affiliate GMV %</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Affiliate share of sales</div></div>
+            <div class="kpi-card kpi-navy"><div class="kpi-lbl">Internal MER</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Shopify-attributed / spend</div></div>
+          </div>
+          <div class="placeholder-page">
+            <div class="placeholder-sections">
+              <div class="placeholder-section"><h4>Shop Performance</h4><p>Daily/weekly net sales, orders, AOV, contribution profit, and settlement data from TikTok Shop seller center.</p></div>
+              <div class="placeholder-section"><h4>GMV Max Campaigns</h4><p>Paid TikTok advertising spend, ROAS, cost per purchase, and campaign-level breakdown.</p></div>
+              <div class="placeholder-section"><h4>Affiliate Program</h4><p>Affiliate GMV, commission cost, top creators, affiliate vs. paid split.</p></div>
+              <div class="placeholder-section"><h4>Shoppable Content</h4><p>Video performance, product link clicks, add-to-cart, and purchase conversion by content piece.</p></div>
+              <div class="placeholder-section"><h4>Shop Health</h4><p>Account standing, policy violations, fulfillment rate, return rate, and shop score.</p></div>
+              <div class="placeholder-section"><h4>Fulfillment Status</h4><p>Short inventory warning and link to Inventory + Supply Chain for TikTok fulfillment position.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOCIAL MEDIA (ORGANIC) -->
+        <div class="section" id="section-social">
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Social Media</div>
+                <span class="tag tag-na" id="sm-tag">NOT CONNECTED</span>
+                <span class="source-badge source-nc">NO DATA</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="sm-last-run">—</b></span>
+              <span>Data through: <b id="sm-data-through">—</b></span>
+              <span>Source: <b>Instagram · Facebook · TikTok · YouTube (organic)</b></span>
+            </div>
+          </div>
+          <div class="alert-strip info">ℹ️ Organic social connector not yet configured — data will populate once Instagram, TikTok, and YouTube analytics are connected via Supermetrics or native API.</div>
+          <div class="kpi-grid">
+            <div class="kpi-card kpi-teal"><div class="kpi-lbl">Total Views</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">All platforms · last 7 days</div></div>
+            <div class="kpi-card kpi-green"><div class="kpi-lbl">Total Engagements</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Likes + comments + shares</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Net Follower Growth</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">All platforms</div></div>
+            <div class="kpi-card kpi-purple"><div class="kpi-lbl">Profile / Link Actions</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Bio link clicks</div></div>
+            <div class="kpi-card kpi-orange"><div class="kpi-lbl">Top Content</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Best performing piece</div></div>
+            <div class="kpi-card kpi-navy"><div class="kpi-lbl">Posting Consistency</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Posts this week vs target</div></div>
+          </div>
+          <div class="placeholder-page">
+            <div class="placeholder-sections">
+              <div class="placeholder-section"><h4>Platform Summary</h4><p>Instagram, Facebook, TikTok, YouTube — followers, views, engagements, engagement rate, profile visits, link clicks by platform.</p></div>
+              <div class="placeholder-section"><h4>Follower Growth Trend</h4><p>7-day rolling follower growth chart across all platforms vs prior period.</p></div>
+              <div class="placeholder-section"><h4>Top Performing Content</h4><p>Best 5 pieces by views with engagement rate and link clicks.</p></div>
+              <div class="placeholder-section"><h4>Content Type Mix</h4><p>Educational vs entertainment vs product demo vs other — share of views and engagements.</p></div>
+              <div class="placeholder-section"><h4>Posting Consistency</h4><p>Posts per platform this week vs target, gaps, and scheduling recommendations.</p></div>
+              <div class="placeholder-section"><h4>YouTube</h4><p>Views, watch time, subscribers, and top video performance.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOMER EXPERIENCE + PRODUCT ISSUES -->
+        <div class="section" id="section-cx">
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Customer Experience + Product Issues</div>
+                <span class="tag" id="cx-tag">—</span>
+                <span class="source-badge source-manual" id="cx-source-badge">MANUAL</span>
+              </div>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="cx-last-run">—</b></span>
+              <span>Data through: <b id="cx-data-through">—</b></span>
+              <span>Source: <b>Amazon Returns · Shopify Refunds · Google Sheet (reviews)</b></span>
+            </div>
+          </div>
+          <div class="alert-strip info" id="cx-alert-strip">Monitoring returns, reviews, and complaints across all channels. Full cross-channel view requires all source connectors.</div>
+          <div class="kpi-grid" id="cx-kpi-grid">
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Returns / Refunds</div><div class="kpi-val kpi-na" id="cx-returns">—</div><div class="kpi-period">Cross-channel · last 30 days</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Refund Dollars</div><div class="kpi-val kpi-na" id="cx-refund-dollars">—</div><div class="kpi-period">Estimated value returned</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Return Rate</div><div class="kpi-val kpi-na" id="cx-return-rate">—</div><div class="kpi-period">Refunded / shipped units</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">New Reviews</div><div class="kpi-val kpi-na" id="cx-new-reviews">—</div><div class="kpi-period">Amazon + Shopify · last check</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Avg Rating</div><div class="kpi-val kpi-na" id="cx-avg-rating">—</div><div class="kpi-period">New batch rating</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">1–2 Star Reviews</div><div class="kpi-val kpi-na" id="cx-low-stars">—</div><div class="kpi-period">Needs response</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Open Critical Issues</div><div class="kpi-val kpi-na" id="cx-open-issues">—</div><div class="kpi-period">Unresolved flags</div></div>
+          </div>
+
+          <!-- Reviews migrated from standalone page -->
+          <div class="sec-head" style="padding-top:16px;">
+            <h2>Product Reviews — Amazon</h2>
+            <span class="tag" id="rv-tag">—</span>
+            <button onclick="window.open('https://docs.google.com/spreadsheets/d/1noefqPyotb3G-10YWo5c_jtew7u14IsU2lUYW4AZ37I/edit','_blank')" style="margin-left:auto;font-size:11px;color:var(--teal);background:transparent;border:1px solid var(--teal);border-radius:6px;padding:4px 10px;cursor:pointer;font-weight:600;font-family:var(--font);">↗ Open Full Sheet</button>
+          </div>
+          <div class="sec-desc">Angelo updates the STG Weekly Review Update sheet every week. RED if avg rating below 3.5 or 3+ one/two-star reviews. YELLOW if sheet stale 8+ days.</div>
+          <div class="cards" id="rv-cards"></div>
+          <div id="rv-alerts"></div>
+          <div id="rv-status-note" style="margin:8px 0;font-size:11px;color:var(--muted);"></div>
+          <div id="rv-recent"></div>
+
+          <!-- Returns by SKU (from brand_analytics) -->
+          <div class="sec-head" style="padding-top:16px;"><h2>Returns vs Industry — Amazon</h2><span class="tag tag-info">365-DAY</span></div>
+          <div id="bh-returns-section-cx"></div>
+
+          <div class="placeholder-page" style="padding-top:8px;">
+            <div class="placeholder-sections">
+              <div class="placeholder-section"><h4>Shopify Refunds</h4><p>Refund rate, refund dollars, top refund reasons by product. Requires Shopify refund report connector.</p></div>
+              <div class="placeholder-section"><h4>Amazon FBA Returns</h4><p>Return rate by ASIN vs category benchmark. Runs first Monday monthly via JARVIS RETURNS.</p></div>
+              <div class="placeholder-section"><h4>Complaint Themes</h4><p>AI-classified complaint categories from reviews and support tickets — product defect, sizing, shipping, expectations.</p></div>
+              <div class="placeholder-section"><h4>Unresolved Issues</h4><p>Open product quality or service issues requiring owner action and deadline.</p></div>
+            </div>
+          </div>
+        </div>
 
         <!-- AGENT FLAGS (structured problem/solution cards) -->
         <div class="section" id="section-agentflags">
@@ -765,19 +1049,21 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
                 <!-- BUSINESS HEALTH -->
         <div class="section active" id="section-bizhealth">
-          <!-- ── EXECUTIVE HEADER ── -->
-          <div class="sec-head">
-            <h2>Business Health</h2>
-            <span class="tag" id="ov-tag">—</span>
-            <span class="tag" id="bh-tag" style="margin-left:4px;">—</span>
-            <span class="when" id="ov-when"></span><span class="when" id="bh-when" style="margin-left:8px;"></span>
-            <span style="margin-left:auto;font-size:11px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:3px 10px;" id="ov-completeness">— of — sources current</span>
-          </div>
-
-          <!-- ── LAST REFRESH (replaces auto-refresh countdown) ── -->
-          <div style="font-size:11px;color:var(--muted);padding:4px 0 8px;display:flex;gap:16px;flex-wrap:wrap;" id="bh-refresh-bar">
-            <span>Last run: <b id="bh-last-run">—</b></span>
-            <span>Data through: <b id="bh-data-through">—</b></span>
+          <div class="page-header">
+            <div class="page-header-top">
+              <div class="page-title-block">
+                <div class="page-title">Business Health</div>
+                <span class="tag" id="ov-tag">—</span>
+                <span class="tag" id="bh-tag" style="margin-left:4px;">—</span>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:3px 10px;" id="ov-completeness">— of — sources current</span>
+            </div>
+            <div class="page-meta-bar">
+              <span>Last run: <b id="bh-last-run">—</b></span>
+              <span>Data through: <b id="bh-data-through">—</b></span>
+              <span id="ov-when"></span>
+              <span id="bh-when"></span>
+            </div>
           </div>
 
           <!-- ── LIVE EXECUTIVE FLAGS ── -->
@@ -1062,6 +1348,8 @@ function show(key){
   if (nav) nav.classList.add('active');
   if (window.innerWidth <= 860) $('sidebar').classList.add('hidden');
 }
+// Alias show for new page IDs that map to existing sections
+const _showOrig = show;
 function toggleSidebar(){ $('sidebar').classList.toggle('hidden'); }
 
 // ─── RENDER ──────────────────────────────────────────────────────────────────
@@ -1071,6 +1359,14 @@ function render(d){
   const tlr = $('topbar-last-run'); if (tlr) tlr.textContent = d.last_updated || '—';
   const bdt = $('bh-data-through'); if (bdt) bdt.textContent = d.last_updated || '—';
   const blr = $('bh-last-run'); if (blr) blr.textContent = d.last_updated || '—';
+
+  // Populate all page meta bars with last_updated
+  ['sh-last-run','amz-last-run','mt-last-run','ga-last-run','kl-last-run','inv-last-run','cx-last-run'].forEach(id => {
+    const el = $(id); if (el) el.textContent = d.last_updated || '—';
+  });
+  ['sh-data-through','amz-data-through','mt-data-through','ga-data-through','kl-data-through','inv-data-through','cx-data-through'].forEach(id => {
+    const el = $(id); if (el) el.textContent = d.last_updated || '—';
+  });
 
   // — QuickBooks —
   const qb = d.quickbooks || {};
@@ -1671,6 +1967,27 @@ function render(d){
     </div>` :
     alertBox('info','Review detail not yet in data — use <b>↗ Open Full Sheet</b> above to see all reviews. To display them here automatically, the routine needs to read Angelo\'s sheet rows and store them in <b>reviews.recent[]</b>.');
 
+  // — Customer Experience page — populate KPI cards from reviews data —
+  const cxRv = d.reviews || {};
+  const cxTag = $('cx-tag');
+  const cxNewRev = cxRv.new_review_count;
+  const cxAvgRat = cxRv.avg_rating_new_batch;
+  const cxLowStar = cxRv.recent ? cxRv.recent.filter(r => (r.rating||5) <= 2).length : null;
+  const cxStatus = cxRv.status === 'RED' ? 'RED' : cxRv.status === 'YELLOW' ? 'YELLOW' : cxRv.status === 'GREEN' ? 'GREEN' : null;
+  if (cxTag) statusTag(cxTag, cxStatus);
+  dot('dot-cx', cxStatus);
+  const cxAlertEl = $('cx-alert-strip');
+  if (cxAlertEl) {
+    if (cxStatus === 'RED') { cxAlertEl.className = 'alert-strip crit'; cxAlertEl.textContent = '🔴 RED alert — review batch below 3.5 stars or 3+ negative reviews. See details below.'; }
+    else if (cxStatus === 'YELLOW') { cxAlertEl.className = 'alert-strip warn'; cxAlertEl.textContent = '⚠️ Review sheet stale or concerns flagged — Angelo needs to update the Google Sheet.'; }
+    else if (cxStatus === 'GREEN') { cxAlertEl.className = 'alert-strip ok'; cxAlertEl.textContent = '✅ No critical customer experience issues this run.'; }
+    else { cxAlertEl.className = 'alert-strip info'; cxAlertEl.textContent = 'ℹ️ Monitoring returns, reviews, and complaints across all channels.'; }
+  }
+  const _cxEl = id => $(id);
+  if (_cxEl('cx-new-reviews')) _cxEl('cx-new-reviews').innerHTML = cxNewRev != null ? `<span class="kpi-val">${fmtInt(cxNewRev)}</span>` : '<span class="kpi-val kpi-na">—</span>';
+  if (_cxEl('cx-avg-rating')) _cxEl('cx-avg-rating').innerHTML = cxAvgRat != null ? `<span class="kpi-val ${cxAvgRat < 3.5 ? 'kpi-down' : 'kpi-up'}">${fmtNum(cxAvgRat,1)}★</span>` : '<span class="kpi-val kpi-na">—</span>';
+  if (_cxEl('cx-low-stars')) _cxEl('cx-low-stars').innerHTML = cxLowStar != null ? `<span class="kpi-val ${cxLowStar >= 3 ? 'kpi-down' : ''}">${cxLowStar}</span>` : '<span class="kpi-val kpi-na">—</span>';
+
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
   if ($('bh-when')) $('bh-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
@@ -1957,7 +2274,9 @@ function renderBizHealth(bh){
     +'</table></div></div>'
     +alertBox('warn','Subscriptions underdeveloped ('+fmtNum(snsP,1)+'% vs 5–10% target). Dematter drives 88% of S&amp;S revenue at only 2.9% penetration — push S&amp;S on Shampoo (9.8% penetration = proof it works) and Detangling (0% coupon dependency = healthiest base).');
   const maxR=Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0),12);
-  $('bh-returns-section').innerHTML = '<div style="padding:8px 0;">'+skus.filter(s=>s.return_rate_pct!=null).map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
+  const returnsHtml = '<div style="padding:8px 0;">'+skus.filter(s=>s.return_rate_pct!=null).map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
+  if ($'bh-returns-section')) $'bh-returns-section'.innerHTML = returnsHtml;
+  if ($'bh-returns-section-cx')) $'bh-returns-section-cx'.innerHTML = returnsHtml;
   const tT=brand.top_tier||{},pr=brand.promising||{},aR=brand.at_risk||{},totC=(tT.count||0)+(pr.count||0)+(aR.count||0),ttA=totC>0?(tT.count/totC*226):0,prA=totC>0?(pr.count/totC*226):0,arA=totC>0?(aR.count/totC*226):0;
   const tierCard=(lbl,cnt,pct,desc,action,col)=>'<div class="card '+col+'" style="min-width:190px;margin-bottom:8px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div class="c-lbl">'+esc(lbl)+'</div><span style="font-size:10px;color:var(--muted);">'+(cnt!=null?fmtInt(cnt):'—')+' · '+safePct(pct)+'</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">'+esc(desc)+'</div><div style="font-size:10px;font-weight:700;margin-top:5px;color:var(--navy);">'+esc(action)+'</div></div>';
   $('bh-brand-section').innerHTML = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;padding:8px 0;"><div style="text-align:center;min-width:120px;"><svg viewBox="0 0 100 100" width="110" height="110"><circle cx="50" cy="50" r="36" fill="none" stroke="#2faa6a" stroke-width="16" stroke-dasharray="'+ttA+' '+(226-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#15212E" stroke-width="16" stroke-dasharray="'+prA+' '+(226-prA)+'" stroke-dashoffset="'+(-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#e6a417" stroke-width="16" stroke-dasharray="'+arA+' '+(226-arA)+'" stroke-dashoffset="'+(-ttA-prA)+'" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" font-size="12" font-weight="800" fill="#1c2733">'+fmtInt(totC)+'</text><text x="50" y="59" text-anchor="middle" font-size="8" fill="#6b7886">CUSTOMERS</text></svg></div><div style="flex:1;min-width:220px;">'+tierCard('Top-Tier',tT.count,tT.pct,'Bought recently AND spend most — champions.','→ Cross-sell maintenance. Enroll S&S first.','bdr-green')+tierCard('Promising',pr.count,pr.pct,'Recent buyers, lower frequency — grow pool.','→ Win the 2nd purchase. Bundle Dematter + Rake.','bdr-grey')+tierCard('At-Risk',aR.count,aR.pct,'Haven\'t bought in a while — cooling off.'+(aR.wow_change_pct?' +'+aR.wow_change_pct+'% WoW ⚠️':''),'→ Win-back coupon. Replenishment reminder.',(aR.wow_change_pct||0)>100?'bdr-red':'bdr-amber')+'</div></div>'+
