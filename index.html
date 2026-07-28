@@ -2883,7 +2883,7 @@ function renderReports(files){
     const esc = s => String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const asof = new Date(inv.as_of);
     const ageDays = (Date.now() - asof.getTime()) / 86400000;
-    $i('inv-when').textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
+    const _w=$i('inv-when'); if(_w) _w.textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
 
     let worst = 'OK';
     const alerts = [];
@@ -2909,17 +2909,17 @@ function renderReports(files){
         + `<td class="r">${dDate(dos)}</td>`
         + `<td class="r"><span class="pill ${pill}">${status}</span></td></tr>`;
     });
-    $i('inv-table').querySelector('tbody').innerHTML = rows.join('');
-    tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok');
+    const _t=$i('inv-table'); if(_t) _t.querySelector('tbody').innerHTML = rows.join('');
+    if(tag){ tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok'); }
     $i('inv-alerts').innerHTML = alerts.length
       ? alerts.map(a=>`<div class="alert alert-crit">${a}</div>`).join('')
       : '<div class="alert alert-ok">All SKUs beyond 60 days of supply at current run-rates.</div>';
-    if (inv.note) { const n=$i('inv-note'); n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); }
-    if (ageDays > 2) $i('inv-alerts').insertAdjacentHTML('afterbegin',
+    if (inv.note) { const n=$i('inv-note'); if(n){ n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); } }
+    const _a=$i('inv-alerts'); if (ageDays > 2 && _a) _a.insertAdjacentHTML('afterbegin',
       '<div class="alert alert-warn"><b>On-hand data is '+Math.floor(ageDays)+' days old</b> — the daily inventory pull may have stopped. @josh</div>');
   } catch(e) {
-    tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info';
-    $i('inv-alerts').innerHTML =
+    if(tag){ tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info'; }
+    const _a2=$i('inv-alerts'); if(_a2) _a2.innerHTML =
       '<div class="alert alert-info"><b>Inventory pipeline not yet connected.</b> This panel reads data/inventory_data.json, which no routine writes yet. Last manual snapshot: InvRunway3.xlsx (on-hand as of Jul 10 — Rake Brush URGENT at ~41 days).</div>';
   }
 })();
