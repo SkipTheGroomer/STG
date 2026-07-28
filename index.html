@@ -459,6 +459,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="cards" id="amz-sales-cards"></div>
           <div id="amz-alerts"></div>
 
+          <div id="amz-trend-chart"></div>
+
           <!-- F: Listing Analyzer -->
           <div class="sec-head" style="margin-top:20px;">
             <h2>Listing Analyzer</h2>
@@ -686,6 +688,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
           <div class="tbl-wrap"><div class="tbl-title">Campaigns &mdash; last 7 days</div><div id="mt-campaigns"></div></div>
+          <div id="meta-trend-chart"></div>
         </div>
 
         <!-- REVIEWS -->
@@ -1314,6 +1317,68 @@ function render(d){
   $('amz-alerts').innerHTML =
     (aa.spend==null && sm.status==='RED') ? alertBox('crit','<b>Supermetrics RED:</b> Amazon Ads query returned an error or no data on the last run — noted in #stg-ads-watchdog instead of guessing numbers.') : '';
 
+  // — Amazon 7-day trend charts —
+  (function(){
+    const amzAds7d   = (sm.amazon_ads   || {}).daily_7d || [];
+    const amzSales7d = (sm.amazon_sales || {}).daily_7d || [];
+    const amzChartEl = $('amz-trend-chart');
+    if (!amzChartEl) return;
+    if (!amzAds7d.length && !amzSales7d.length) {
+      amzChartEl.innerHTML = alertBox('info','Amazon spend + units trend chart will appear after 2+ morning runs with v10.23 — arrays build passively each run.');
+      return;
+    }
+    const maxSpend = Math.max(...amzAds7d.map(d=>d.spend||0), 1);
+    const maxUnits = Math.max(...amzSales7d.map(d=>d.units_sold||0), 1);
+    const lastAdsDate   = amzAds7d.length   ? amzAds7d[amzAds7d.length-1].date   : null;
+    const lastSalesDate = amzSales7d.length ? amzSales7d[amzSales7d.length-1].date : null;
+    const spendBars = amzAds7d.length ? amzAds7d.map(d=>{
+      const pct=Math.round(((d.spend||0)/maxSpend)*100);
+      const isLast=d.date===lastAdsDate;
+      const dayLbl=new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+      const col=isLast?'var(--orange)':(d.spend||0)===0?'#c9d2db':'#f0a060';
+      return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">
+        <div style="font-size:9px;font-weight:${isLast?700:400};color:${(d.spend||0)===0?'var(--muted)':'var(--navy)'};">${(d.spend||0)>0?'$'+Number(d.spend).toFixed(0):'$0'}</div>
+        <div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">
+          <div style="width:100%;background:${col};height:${Math.max(pct,(d.spend||0)>0?2:0)}%;border-radius:4px 4px 0 0;min-height:${(d.spend||0)>0?3:0}px;"></div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);font-weight:${isLast?700:400};">${dayLbl}</div>
+        ${isLast?'<div style="font-size:9px;color:var(--orange);font-weight:700;">yesterday</div>':''}
+      </div>`;
+    }).join('') : '<div style="font-size:11px;color:var(--muted);padding:8px;">No spend data yet</div>';
+    const unitBars = amzSales7d.length ? amzSales7d.map(d=>{
+      const pct=Math.round(((d.units_sold||0)/maxUnits)*100);
+      const isLast=d.date===lastSalesDate;
+      const dayLbl=new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+      const col=isLast?'var(--purple)':(d.units_sold||0)===0?'#c9d2db':'var(--teal)';
+      return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">
+        <div style="font-size:9px;font-weight:${isLast?700:400};color:${(d.units_sold||0)===0?'var(--muted)':'var(--navy)'};">${d.units_sold??0} u</div>
+        <div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">
+          <div style="width:100%;background:${col};height:${Math.max(pct,(d.units_sold||0)>0?2:0)}%;border-radius:4px 4px 0 0;min-height:${(d.units_sold||0)>0?3:0}px;"></div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);font-weight:${isLast?700:400};">${dayLbl}</div>
+        ${isLast?'<div style="font-size:9px;color:var(--purple);font-weight:700;">yesterday</div>':''}
+      </div>`;
+    }).join('') : '<div style="font-size:11px;color:var(--muted);padding:8px;">No units data yet</div>';
+    amzChartEl.innerHTML = `
+      <div class="tbl-wrap" style="margin-top:10px;padding:14px 16px;">
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:200px;">
+            <div class="tbl-title" style="margin-bottom:8px;">Ad Spend — last 7 days</div>
+            <div style="display:flex;gap:4px;align-items:flex-end;height:90px;">${spendBars}</div>
+          </div>
+          <div style="flex:1;min-width:200px;">
+            <div class="tbl-title" style="margin-bottom:8px;">Units Sold — last 7 days (SC, 24-48h lag)</div>
+            <div style="display:flex;gap:4px;align-items:flex-end;height:90px;">${unitBars}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);">
+          <span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>yesterday spend</span>
+          <span><span style="display:inline-block;width:8px;height:8px;background:var(--purple);border-radius:2px;margin-right:3px;"></span>yesterday units</span>
+          <span><span style="display:inline-block;width:8px;height:8px;background:#c9d2db;border-radius:2px;margin-right:3px;"></span>$0 / 0 units</span>
+        </div>
+      </div>`;
+  })();
+
   // — SKU Watch: live per-SKU ROAS + TACOS vs locked bands —
   const bandsSkus = (BANDS && BANDS.skus) || [];
   const liveSkus = aa.skus || [];
@@ -1433,6 +1498,43 @@ function render(d){
         }).join('')
       + '</tbody></table>'
     : '<div style="padding:12px 16px;font-size:12px;color:var(--muted);">No campaign data on last run</div>';
+
+  // — Meta 7-day spend trend —
+  (function(){
+    const meta7d = mt.daily_7d || [];
+    const metaChartEl = $('meta-trend-chart');
+    if (!metaChartEl) return;
+    if (!meta7d.length) {
+      metaChartEl.innerHTML = alertBox('info','Meta daily spend trend will appear after 2+ morning runs with v10.23.');
+      return;
+    }
+    const maxSpend = Math.max(...meta7d.map(d=>d.spend||0), 1);
+    const lastDate = meta7d.length ? meta7d[meta7d.length-1].date : null;
+    const bars = meta7d.map(d=>{
+      const pct=Math.round(((d.spend||0)/maxSpend)*100);
+      const isLast=d.date===lastDate;
+      const dayLbl=new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+      const col=isLast?'var(--orange)':(d.spend||0)===0?'#c9d2db':'#4E2D82';
+      return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">
+        <div style="font-size:9px;font-weight:${isLast?700:400};color:${(d.spend||0)===0?'var(--muted)':'var(--navy)'};">${(d.spend||0)>0?'$'+Number(d.spend).toFixed(2):'$0'}</div>
+        <div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:70px;display:flex;align-items:flex-end;">
+          <div style="width:100%;background:${col};height:${Math.max(pct,(d.spend||0)>0?2:0)}%;border-radius:4px 4px 0 0;min-height:${(d.spend||0)>0?3:0}px;"></div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);font-weight:${isLast?700:400};">${dayLbl}</div>
+        ${isLast?'<div style="font-size:9px;color:var(--orange);font-weight:700;">yesterday</div>':''}
+      </div>`;
+    }).join('');
+    metaChartEl.innerHTML = `
+      <div class="tbl-wrap" style="margin-top:10px;padding:14px 16px;">
+        <div class="tbl-title" style="margin-bottom:10px;">Meta Daily Spend — last 7 days</div>
+        <div style="display:flex;gap:4px;align-items:flex-end;height:100px;">${bars}</div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);">
+          <span><span style="display:inline-block;width:8px;height:8px;background:#4E2D82;border-radius:2px;margin-right:3px;"></span>Meta spend</span>
+          <span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>yesterday</span>
+          <span><span style="display:inline-block;width:8px;height:8px;background:#c9d2db;border-radius:2px;margin-right:3px;"></span>$0 day</span>
+        </div>
+      </div>`;
+  })();
 
   // — Amazon Campaigns (Claude in Chrome scrape) —
   const ac = d.amazon_ads_browser || {};
