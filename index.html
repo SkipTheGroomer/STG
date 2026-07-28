@@ -242,6 +242,33 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 .placeholder-section h4{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px;}
 .placeholder-section p{font-size:11px;color:var(--muted);line-height:1.5;}
 .na-box{padding:16px;font-size:12px;color:var(--muted);font-style:italic;}
+
+/* ── MOCKUP LAYER: panels, chips, donuts ── */
+.panel-grid{display:grid;gap:12px;padding:12px 0 4px;}
+.pg-2{grid-template-columns:1fr 1fr;}
+.pg-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.pg-23{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);}
+@media(max-width:1020px){.pg-2,.pg-3,.pg-23{grid-template-columns:1fr;}}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);min-width:0;}
+.panel-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--ink);margin-bottom:12px;}
+.panel-foot{margin-top:12px;padding-top:10px;border-top:1px solid #eef1f6;font-size:11.5px;font-weight:700;color:#1d4ed8;}
+.legend-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:3.5px 0;gap:10px;}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px;}
+.chip-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;padding:10px 0 4px;}
+.chip{border-radius:10px;padding:12px 14px;font-size:11.5px;line-height:1.5;border:1px solid;}
+.chip b{display:block;font-size:12px;margin-bottom:2px;}
+.chip .chip-sub{color:var(--muted);}
+.chip.ok{background:#f0fdf4;border-color:#bbf7d0;} .chip.ok b{color:#15803d;}
+.chip.warn{background:#fffbeb;border-color:#fde68a;} .chip.warn b{color:#b45309;}
+.chip.crit{background:#fef2f2;border-color:#fecaca;} .chip.crit b{color:#b91c1c;}
+.chip.info{background:#eff6ff;border-color:#cadcf8;} .chip.info b{color:#1d4ed8;}
+.chip.purple{background:#f7f2ff;border-color:#e4d5fb;} .chip.purple b{color:#6d28d9;}
+.chip.orange{background:#fff7ed;border-color:#fed7aa;} .chip.orange b{color:#c2410c;}
+.hero-note{font-size:10.5px;color:var(--sub);padding:6px 2px 0;line-height:1.5;}
+.np{border:1px dashed #d3dae4;background:var(--card);border-radius:12px;padding:15px 17px;min-width:0;}
+.np h5{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.np p{font-size:11px;color:var(--sub);line-height:1.55;}
+.hero-sec-label{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);padding:16px 2px 0;}
 </style>
 </head>
 <body>
@@ -364,6 +391,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
               <span>Source: <b>Klaviyo · last 7 days</b></span>
             </div>
           </div>
+          <div id="kl-hero"></div>
           <div class="cards" id="kl-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Flagged flows (open &lt;15% or click &lt;2%)</div>
           <ul class="flag-list" id="kl-flags"></ul>
@@ -385,6 +413,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
               <span>Source: <b>Shopify · Supermetrics (attribution)</b></span>
             </div>
           </div>
+          <div id="sh-hero"></div>
           <div class="cards" id="sh-cards"></div>
           <div id="sh-alerts"></div>
           <div id="sh-chart"></div>
@@ -439,6 +468,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
               <span>Source: <b>Helium 10 · Seller Central · Amazon Ads · Supermetrics</b></span>
             </div>
           </div>
+          <div id="amz-hero"></div>
           <!-- A: Amazon Net Profit -->
           <div class="sec-head">
             <h2>Amazon — Net Profit</h2>
@@ -681,6 +711,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     </div>
   </div>
   <div class="sec-desc">Live Amazon FBA position (daily, from <b>data/inventory_data.json</b>) merged with the supply-chain plan in <b>data/supply_chain.json</b> (Patrick/Marcelo — POs, vessels, lead times, WSA, cash).</div>
+  <div id="inv-hero"></div>
   <div id="sc-banners"></div>
   <div id="sc-headline"></div>
   <div class="cards" id="ct-cards"></div>
@@ -806,6 +837,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
             </div>
           </div>
           <div class="sec-desc">Yesterday via Supermetrics. <b>Locked rule:</b> ROAS below 2.0 = flag. STG is not currently running Google campaigns &mdash; $0 / no data is expected, not an error.</div>
+          <div id="ga-hero"></div>
           <div class="cards" id="ga-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
           <ul class="flag-list" id="ga-campaigns"></ul>
@@ -829,6 +861,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
             </div>
           </div>
           <div class="sec-desc">Live via the Meta MCP connector &mdash; ad account <b>2158768751536031</b>. <b>Trailing 30-day window</b> (rolling — today minus 30 days; matches Meta Ads Manager default) &mdash; L30D ROAS is the headline metric. Flags fire on the $75 cumulative kill threshold and duplicate campaigns.</div>
+          <div id="mt-hero"></div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
           <div class="tbl-wrap"><div class="tbl-title">Campaigns &mdash; last 7 days</div><div id="mt-campaigns"></div></div>
@@ -965,6 +998,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
           <!-- Returns by SKU (from brand_analytics) -->
           <div class="sec-head" style="padding-top:16px;"><h2>Returns vs Industry — Amazon</h2><span class="tag tag-info">365-DAY</span></div>
+          <div id="cx-hero"></div>
           <div id="bh-returns-section-cx"></div>
 
           <div class="placeholder-page" style="padding-top:8px;">
@@ -981,12 +1015,14 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <div class="section" id="section-agentflags">
           <div class="sec-head"><h2>Agent Flags — Problems + Solutions</h2><span class="tag" id="af-tag">—</span></div>
           <div class="sec-desc">Structured flag cards from Blaze and 033. Each card shows the problem, the solution, the exact action, and the cost of inaction. Approvals still happen in Slack.</div>
+          <div id="af-hero"></div>
           <div id="agent-flags-panel"></div>
         </div>
         <!-- CHANNEL REPORTS (agent Slack mirror) -->
         <div class="section" id="section-reports">
           <div class="sec-head"><h2>Channel Reports — Agent Posts</h2><span class="tag" id="rep-tag">—</span><span class="when" id="rep-when"></span></div>
           <div class="sec-desc">Mirror of what each agent posted to Slack this morning — same text, same threads. Each routine pushes its posts to <b>data/reports/&lt;agent&gt;.json</b> right after posting. Read-only: approvals still happen in Slack, not here.</div>
+          <div id="rp-hero"></div>
           <div class="ch-tabs" id="rep-tabs"></div>
           <div id="rep-feed"></div>
         </div>
@@ -1075,6 +1111,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
             </table>
           </div>
 
+          <div id="bh-hero"></div>
           <div id="bh-alerts"></div>
           <div class="cards" id="bh-kpi-cards"></div>
           <div class="sec-head" style="padding-top:14px;"><h2>1 — Sales by SKU</h2><span class="tag tag-info">LIFETIME</span></div>
@@ -3024,6 +3061,364 @@ function renderReports(files){
   const cp=sc.cash_plan||{};
   const cashCols=$i('cash-cols'); if(cashCols) cashCols.innerHTML=['d30','d60','d90'].map(k=>{const c=cp[k];if(!c)return '';return '<div class="col-card"><h3>'+escS(c.title)+'</h3><table><tbody>'+c.rows.map(r=>'<tr><td>'+r[0]+'</td><td class="r">'+r[1]+'</td></tr>').join('')+'<tr style="background:var(--card2,#fafbfc);"><td>'+c.total[0]+'</td><td class="r">'+c.total[1]+'</td></tr></tbody></table></div>';}).join('');
   if(cp.balances){const bt=$i('bal-title');if(bt)bt.textContent=cp.balances.title;const bTbody=$i('bal-table')?$i('bal-table').querySelector('tbody'):null;if(bTbody)bTbody.innerHTML=cp.balances.rows.map(r=>'<tr><td>'+r[0]+'</td><td class="r">'+r[1]+'</td></tr>').join('')+'<tr style="background:var(--card2,#fafbfc);font-weight:700;"><td>'+cp.balances.total[0]+'</td><td class="r">'+cp.balances.total[1]+'</td></tr>';}
+})();
+</script>
+
+
+<script>
+/* ══ MOCKUP LAYER v1.0 — per-page hero panels (Will's redesign spec) ══
+   Additive only: wraps existing renderers, reads the same live data.
+   Rule: real numbers only — sections without a data source render as
+   NOT CONNECTED placeholders, never sample data. */
+(function(){
+const PAL = {green:'#16a34a', blue:'#3b82f6', purple:'#7c3aed', orange:'#FF5E00', teal:'#10b981', amber:'#d97706', slate:'#94a3b8', red:'#dc2626'};
+
+function hK(label, val, sub, accent, cls){
+  const v = (val==null || val==='') ? '<div class="kpi-val kpi-na">No data</div>' : '<div class="kpi-val '+(cls||'')+'">'+val+'</div>';
+  return '<div class="kpi-card kpi-'+(accent||'grey')+'"><div class="kpi-lbl">'+label+'</div>'+v+(sub?'<div class="kpi-period">'+sub+'</div>':'')+'</div>';
+}
+function panel(title, body, foot){ return '<div class="panel"><div class="panel-title">'+title+'</div>'+body+(foot?'<div class="panel-foot">'+foot+'</div>':'')+'</div>'; }
+function np(title, need){ return '<div class="np"><h5>'+title+'</h5><p>'+need+'</p><div class="kpi-missing" style="margin-top:8px;">NOT CONNECTED</div></div>'; }
+function chip(kind, title, desc){ return '<div class="chip '+kind+'"><b>'+title+'</b><span class="chip-sub">'+desc+'</span></div>'; }
+function chipRow(arr){ return arr.length ? '<div class="hero-sec-label">Key Alerts & Summary</div><div class="chip-row">'+arr.join('')+'</div>' : ''; }
+function secLbl(t){ return '<div class="hero-sec-label">'+t+'</div>'; }
+
+function donut(segs, centerTop, centerSub, fmt){
+  fmt = fmt || (v => fmtDollar(v));
+  segs = (segs||[]).filter(s => (s.value||0) > 0);
+  const tot = segs.reduce((a,s)=>a+s.value,0);
+  if (!tot) return '<div class="na-box">No data yet for this breakdown.</div>';
+  const C = 2*Math.PI*40; let off = 0;
+  const arcs = segs.map(s=>{ const len=s.value/tot*C;
+    const a='<circle cx="60" cy="60" r="40" fill="none" stroke="'+s.color+'" stroke-width="17" stroke-dasharray="'+len.toFixed(2)+' '+(C-len).toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'" transform="rotate(-90 60 60)"/>';
+    off+=len; return a; }).join('');
+  const legend = segs.map(s=>'<div class="legend-row"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span class="legend-dot" style="background:'+s.color+'"></span>'+esc(s.label)+'</span><span style="white-space:nowrap;"><b>'+fmt(s.value)+'</b> <span style="color:var(--sub);font-size:11px;">'+(s.value/tot*100).toFixed(1)+'%</span></span></div>').join('');
+  return '<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">'
+    +'<svg viewBox="0 0 120 120" width="128" height="128" style="flex-shrink:0;">'+arcs
+    +'<text x="60" y="57" text-anchor="middle" font-size="12.5" font-weight="800" fill="#101828">'+(centerTop||'')+'</text>'
+    +'<text x="60" y="71" text-anchor="middle" font-size="7.5" fill="#64748b">'+(centerSub||'')+'</text></svg>'
+    +'<div style="flex:1;min-width:180px;">'+legend+'</div></div>';
+}
+
+function lineChart(seriesArr, note){
+  seriesArr = (seriesArr||[]).filter(s => s.pts && s.pts.length >= 2);
+  if (!seriesArr.length) return '<div class="na-box">Trend appears after 2+ morning runs — daily_7d arrays build passively each run (v10.23).</div>';
+  const W=360, H=150, PL=10, PR=10, PT=14, PB=24;
+  const n = seriesArr[0].pts.length;
+  const xs = i => PL + i * ((W-PL-PR) / Math.max(n-1,1));
+  const paths = seriesArr.map(s=>{
+    const max = Math.max.apply(null, s.pts.map(p=>p.v||0).concat([1]));
+    const ys = v => H-PB - ((v||0)/max)*(H-PB-PT);
+    const pl = s.pts.map((p,i)=>xs(i).toFixed(1)+','+ys(p.v).toFixed(1)).join(' ');
+    const dots = s.pts.map((p,i)=>'<circle cx="'+xs(i).toFixed(1)+'" cy="'+ys(p.v).toFixed(1)+'" r="2.6" fill="'+s.color+'"/>').join('');
+    return '<polyline points="'+pl+'" fill="none" stroke="'+s.color+'" stroke-width="2"'+(s.dashed?' stroke-dasharray="5 4"':'')+'/>'+dots;
+  }).join('');
+  const labels = seriesArr[0].pts.map((p,i)=>'<text x="'+xs(i).toFixed(1)+'" y="'+(H-7)+'" text-anchor="middle" font-size="8" fill="#94a3b8">'+esc(p.d||'')+'</text>').join('');
+  const legend = seriesArr.map(s=>'<span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);margin:0 14px 8px 0;"><span style="width:14px;height:3px;border-radius:2px;background:'+s.color+';display:inline-block;"></span>'+esc(s.label)+'</span>').join('');
+  return '<div>'+legend+'</div><svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;display:block;">'+paths+labels+'</svg>'
+    + (seriesArr.length>1 ? '<div class="hero-note">Each series scaled to its own max — shape comparison, not a shared axis.</div>' : '')
+    + (note ? '<div class="hero-note">'+note+'</div>' : '');
+}
+function day7(arr, key){
+  return (arr||[]).map(x => ({ d: x.date ? new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'}) : '', v: Number(x[key]||0) }));
+}
+function miniTable(headers, rowsHtml, empty){
+  if (!rowsHtml) return '<div class="na-box">'+ (empty||'No data on the last run.') +'</div>';
+  return '<div style="overflow-x:auto;"><table><thead><tr>'+headers.map(h=>'<th'+(h.r?' class="r"':'')+'>'+h.t+'</th>').join('')+'</tr></thead><tbody>'+rowsHtml+'</tbody></table></div>';
+}
+function setHero(id, html){ const el = $(id); if (el) el.innerHTML = html; }
+
+/* ── BUSINESS HEALTH — Phase A KPI row + Phase B charts ── */
+function bhHero(d){
+  const qb = d.quickbooks||{}, mtd = qb.mtd||{}, sh = d.shopify||{};
+  const hp = (d.helium10_profits||{}).daily||{};
+  const sm = d.supermetrics||{}, aa = sm.amazon_ads||{}, ga = sm.google_ads||{};
+  const mtY = (d.meta_ads||{}).yesterday||{};
+  const daas = (window.__DAAS||{}).daily||null;
+  const tacos = daas ? daas.daily_tacos_pct : null;
+  const trueNet = daas ? daas.true_net : null;
+  const adTot = (aa.spend==null&&ga.spend==null&&mtY.spend==null) ? null : (aa.spend||0)+(ga.spend||0)+(mtY.spend||0);
+  const kpis = '<div class="kpi-grid">'
+    + hK('Total Revenue (MTD)', fmtDollar(mtd.revenue), (mtd.period||'QuickBooks')+' · live', 'green')
+    + hK('Net Profit Est. (MTD)', fmtDollar(mtd.net_income), 'QuickBooks · after expenses', (mtd.net_income||0)<0?'red':'green', (mtd.net_income||0)<0?'kpi-down':'kpi-up')
+    + hK('True Net (Yesterday)', trueNet!=null?fmtDollar(trueNet):null, 'After all costs + ads · Patrick / DAAS', trueNet!=null&&trueNet<0?'red':'green', trueNet!=null&&trueNet<0?'kpi-down':trueNet!=null?'kpi-up':'')
+    + hK('Cash Balance', fmtDollar(qb.cash_balance), qb.weeks_runway!=null?'Runway: '+fmtNum(qb.weeks_runway,1)+' weeks':'Checking + money market', qb.cash_balance!=null&&qb.cash_balance<25000?'red':'green')
+    + hK('Daily TACOS', tacos!=null?fmtNum(tacos,1)+'%':null, 'Patrick confirmed · target <35%', tacos==null?'grey':tacos>35?'red':tacos>30?'amber':'green', tacos!=null&&tacos>35?'kpi-down':'')
+    + hK('Total Ad Spend (Yday)', adTot!=null?fmtDollar(adTot):null, 'Amazon + Google + Meta', 'orange')
+    + '</div>';
+  const revDonut = donut([
+      {label:'Amazon', value:hp.gross_revenue||0, color:PAL.green},
+      {label:'Shopify', value:sh.yesterday_sales||0, color:PAL.blue}
+    ], (hp.gross_revenue||sh.yesterday_sales)?fmtDollar((hp.gross_revenue||0)+(sh.yesterday_sales||0)):'', 'YESTERDAY')
+    + '<div class="hero-note">TikTok Shop + Walmart revenue pending connectors (Phase D).</div>';
+  const profitBody = hp.net_profit!=null
+    ? '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.green+'"></span>Amazon (net, yesterday)</span><b style="color:'+((hp.net_profit||0)<0?PAL.red:PAL.green)+'">'+fmtDollar(hp.net_profit)+'</b></div>'
+      + '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.slate+'"></span>Shopify</span><span style="color:var(--sub);font-size:11px;">COGS mapping pending</span></div>'
+      + '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.slate+'"></span>TikTok / Walmart</span><span style="color:var(--sub);font-size:11px;">connector pending</span></div>'
+      + (hp.net_margin_pct!=null?'<div class="hero-note">Amazon net margin: '+fmtNum(hp.net_margin_pct,1)+'% (Helium 10, after COGS + fees + ads).</div>':'')
+    : '<div class="na-box">Helium 10 daily profit report not in the last run.</div>';
+  const adDonut = donut([
+      {label:'Amazon Ads', value:aa.spend||0, color:PAL.green},
+      {label:'Meta Ads', value:mtY.spend||0, color:PAL.blue},
+      {label:'Google Ads', value:ga.spend||0, color:PAL.purple}
+    ], adTot!=null?fmtDollar(adTot):'', 'TOTAL SPEND')
+    + '<div class="hero-note">TikTok Ads spend pending connector.</div>';
+  const chips = [];
+  if (trueNet!=null) chips.push(trueNet<0 ? chip('crit','True Net Negative','Business operating at a loss of '+fmtDollar(Math.abs(trueNet))+' after all costs.') : chip('ok','True Net Positive',fmtDollar(trueNet)+' after all costs yesterday.'));
+  if (tacos!=null) chips.push(tacos>35 ? chip('warn','TACOS Above Target','Daily TACOS '+fmtNum(tacos,1)+'% is above Patrick\u2019s target of <35%.') : chip('ok','TACOS On Target','Daily TACOS '+fmtNum(tacos,1)+'% — inside the <35% target.'));
+  if (qb.cash_balance!=null) chips.push(qb.cash_balance<25000 ? chip('crit','Cash Below Threshold','Checking below the $25K floor — see #stg-finance-alerts.') : chip('info','Cash Position',fmtDollar(qb.cash_balance)+(qb.weeks_runway!=null?' · '+fmtNum(qb.weeks_runway,1)+' weeks runway at current burn.':'')));
+  if (mtd.net_income!=null && mtd.net_income<0) chips.push(chip('warn','MTD Net Negative','Spending more than earning this month ('+fmtDollar(mtd.net_income)+'). Review with Patrick.'));
+  setHero('bh-hero', kpis + secLbl('Channel Breakdown — Yesterday')
+    + '<div class="panel-grid pg-3">'
+    + panel('Revenue by Channel', revDonut)
+    + panel('Profit by Channel (Est.)', profitBody)
+    + panel('Ad Spend by Platform', adDonut)
+    + '</div>' + chipRow(chips));
+}
+
+/* ── AMAZON ── */
+function amzHero(d){
+  const sm=d.supermetrics||{}, aa=sm.amazon_ads||{}, asl=sm.amazon_sales||{};
+  const hp=(d.helium10_profits||{}).daily||{}, h10=d.helium10||{};
+  const daas=(window.__DAAS||{}).daily||null;
+  const lowConv = asl.conversion_rate!=null && asl.conversion_rate>0 && asl.conversion_rate<10;
+  const kpis = '<div class="kpi-grid">'
+    + hK('Gross Revenue', fmtDollar(hp.gross_revenue), 'Yesterday · Helium 10', 'green')
+    + hK('Net Profit', fmtDollar(hp.net_profit), hp.net_margin_pct!=null?fmtNum(hp.net_margin_pct,1)+'% net margin':'After all costs', (hp.net_profit||0)<0?'red':'green', (hp.net_profit||0)<0?'kpi-down':'kpi-up')
+    + hK('Units Sold', fmtInt(asl.units_sold), asl.data_date?'As of '+esc(asl.data_date)+' · SC lag normal':'Seller Central', 'purple')
+    + hK('Sessions', fmtInt(asl.sessions), 'Seller Central traffic', 'teal')
+    + hK('Conversion Rate', fmtPct(asl.conversion_rate), 'Flag if below 10%', lowConv?'red':'green', lowConv?'kpi-down':'')
+    + hK('Ad Spend', fmtDollar(aa.spend), 'Account level · yesterday', 'orange')
+    + hK('ROAS', fmtNum(aa.roas), 'Per-SKU bands locked', 'blue')
+    + hK('Daily TACOS', daas&&daas.daily_tacos_pct!=null?fmtNum(daas.daily_tacos_pct,1)+'%':null, 'Target <35% · DAAS', daas&&daas.daily_tacos_pct>35?'red':'green', daas&&daas.daily_tacos_pct>35?'kpi-down':'')
+    + '</div>';
+  const trend = lineChart([
+      {label:'Ad Spend', color:PAL.orange, pts:day7(aa.daily_7d,'spend')},
+      {label:'Units Sold', color:PAL.purple, pts:day7(asl.daily_7d,'units')}
+    ]);
+  const topRows = (hp.products||[]).filter(p=>!p.marketplace||p.marketplace==='US')
+    .slice().sort((a,b)=>(b.net_profit||0)-(a.net_profit||0)).slice(0,6)
+    .map((p,i)=>{ const m = p.gross_revenue>0?(p.net_profit/p.gross_revenue*100):null;
+      return '<tr><td style="color:var(--muted);font-weight:700;">'+(i+1)+'</td><td><b>'+esc(p.name||'?')+'</b></td>'
+        +'<td class="r" style="font-weight:700;color:'+((p.net_profit||0)<0?PAL.red:PAL.green)+'">'+(fmtDollar(p.net_profit)||'—')+'</td>'
+        +'<td class="r">'+(m!=null?fmtNum(m,1)+'%':'—')+'</td><td class="r">'+(fmtInt(p.units)||'—')+'</td></tr>'; }).join('');
+  const kwRows = (h10.products||[]).flatMap(p=>(p.keywords||[]).map(k=>Object.assign({prod:p.name},k)))
+    .filter(k=>k.search_volume!=null).sort((a,b)=>(b.search_volume||0)-(a.search_volume||0)).slice(0,6)
+    .map(k=>'<tr><td>'+esc(k.keyword||'')+'</td><td class="r">'+(fmtInt(k.search_volume)||'—')+'</td>'
+      +'<td class="r">'+(k.organic_rank!=null?'#'+k.organic_rank:'—')+'</td><td class="r">'+(k.organic_change_rating!=null?esc(String(k.organic_change_rating)):'—')+'</td></tr>').join('');
+  setHero('amz-hero', kpis
+    + '<div class="panel-grid pg-23">'
+    + panel('7-Day Trend — Ad Spend & Units', trend)
+    + panel('Top Products by Net Profit', miniTable([{t:'#'},{t:'Product'},{t:'Net Profit',r:1},{t:'Margin',r:1},{t:'Units',r:1}], topRows, 'Per-product breakdown arrives with the Helium 10 daily report.'))
+    + '</div>'
+    + '<div class="panel-grid pg-3">'
+    + panel('Keyword Movers (Helium 10)', miniTable([{t:'Keyword'},{t:'Search Vol',r:1},{t:'Organic',r:1},{t:'Chg',r:1}], kwRows, 'Keyword tracker report not received in the last 24–48h.'))
+    + panel('Traffic & Conversion Summary',
+        '<div class="legend-row"><span>Sessions</span><b>'+(fmtInt(asl.sessions)||'—')+'</b></div>'
+        +'<div class="legend-row"><span>Units / Session</span><b>'+(asl.sessions&&asl.units_sold!=null?fmtNum(asl.units_sold/asl.sessions,3):'—')+'</b></div>'
+        +'<div class="legend-row"><span>Conversion Rate</span><b>'+(fmtPct(asl.conversion_rate)||'—')+'</b></div>'
+        +'<div class="legend-row"><span>Ad Spend</span><b>'+(fmtDollar(aa.spend)||'—')+'</b></div>'
+        +'<div class="hero-note">Page views + Buy Box % require the SP-API integration (Brand Analytics manual until then).</div>')
+    + np('Advertising Summary by Type', 'Sponsored Products / Brands / Display split requires a campaign-type breakdown in the Supermetrics Amazon Ads query — account-level spend only today.')
+    + '</div>');
+}
+
+/* ── SHOPIFY ── */
+function shHero(d){
+  const sh=d.shopify||{}, br=sh.order_breakdown||{};
+  const tot=br.total_orders||((br.single_item_orders||0)+(br.multi_item_orders||0))||null;
+  const kpis='<div class="kpi-grid">'
+    + hK('Net Sales (Yday)', fmtDollar(sh.yesterday_sales), 'vs 7-day average', 'green')
+    + hK('Orders', tot!=null?fmtInt(tot):null, br.capped?'50+ (capped)':'Yesterday', 'blue')
+    + hK('AOV', sh.yesterday_sales===0?'$0':fmtDollar(sh.aov), 'Target: $35+', sh.aov!=null&&sh.aov<35&&sh.yesterday_sales!==0?'red':'green', sh.aov!=null&&sh.aov<35&&sh.yesterday_sales!==0?'kpi-down':'')
+    + hK('vs 7-Day Avg', sh.vs_7day_avg_pct!=null?(sh.vs_7day_avg_pct>0?'+':'')+fmtNum(sh.vs_7day_avg_pct,1)+'%':null, 'Flag if drop >20%', sh.vs_7day_avg_pct!=null&&sh.vs_7day_avg_pct<=-20?'red':'teal', sh.vs_7day_avg_pct!=null?(sh.vs_7day_avg_pct<0?'kpi-down':'kpi-up'):'')
+    + hK('Multi-Item Orders', br.multi_item_orders!=null?fmtInt(br.multi_item_orders):null, tot?Math.round((br.multi_item_orders||0)/tot*100)+'% of orders':'Bundling signal', 'purple')
+    + hK('Avg Items / Order', br.avg_items_per_order!=null?fmtNum(br.avg_items_per_order,1):null, 'Higher = more bundling', 'orange')
+    + '</div>';
+  const trend=lineChart([{label:'Net Sales', color:PAL.green, pts:day7(sh.daily_7d,'sales')}]);
+  const prodRows=(sh.top_products||[]).slice(0,6).map((p,i)=>'<tr><td style="color:var(--muted);font-weight:700;">'+(i+1)+'</td><td><b>'+esc(p.product_title||'?')+'</b></td>'
+    +'<td class="r" style="font-weight:700;color:'+PAL.green+'">'+fmtDollar(p.revenue||0)+'</td><td class="r">'+(p.units_sold||0)+'</td><td class="r">'+(p.order_count||0)+'</td></tr>').join('');
+  setHero('sh-hero', kpis
+    + '<div class="panel-grid pg-23">'
+    + panel('Sales Over Time — Last 7 Days', trend)
+    + panel('Top Products by Revenue', miniTable([{t:'#'},{t:'Product'},{t:'Revenue',r:1},{t:'Units',r:1},{t:'Orders',r:1}], prodRows, 'Populates on the next active sales day.'))
+    + '</div>'
+    + '<div class="panel-grid pg-3">'
+    + np('Checkout Funnel', 'Sessions → Add to Cart → Checkout → Purchase needs Shopify Analytics events in the daily collect — order data only today.')
+    + np('Customer Mix (New vs Returning)', 'Requires the customer_type split from the Shopify orders query.')
+    + np('Discounts & Promotions', 'Requires discount-code fields in the orders pull — planned alongside the Klaviyo promo work.')
+    + '</div>');
+}
+
+/* ── META ADS ── */
+function mtHero(d){
+  const mt=d.meta_ads||{}; const m=mt.l30d||mt.mtd||{spend:mt.spend,purchase_value:mt.purchase_value,roas:mt.roas};
+  const y=mt.yesterday||{}; const cams=mt.campaigns_l30d||mt.campaigns_mtd||mt.campaigns_7d||[];
+  const act=cams.filter(c=>String(c.status).toUpperCase()==='ACTIVE');
+  const loss=m.spend>0&&(m.roas||0)<1;
+  const kpis='<div class="kpi-grid">'
+    + hK('Spend (L30D)', fmtDollar(m.spend), mt.period||'Trailing 30 days', 'orange')
+    + hK('Purchase Value (L30D)', fmtDollar(m.purchase_value), 'Meta-attributed', 'green')
+    + hK('Meta ROAS (L30D)', m.roas!=null?fmtNum(m.roas)+'x':null, loss?'Below 1.0 kill floor':'Kill floor: 1.0x', loss?'red':'green', loss?'kpi-down':'')
+    + hK('Yesterday Spend', fmtDollar(y.spend), 'Daily spike watch', 'blue')
+    + hK('Active Campaigns', cams.length?act.length+' of '+cams.length:null, act.length===0&&cams.length?'ALL OFF — no paid acquisition':'Account '+(mt.account_id||''), act.length===0&&cams.length?'red':'purple', act.length===0&&cams.length?'kpi-down':'')
+    + hK('Connector', mt.available?'Live':null, mt.available?'Meta MCP · native':'Pending rollout', mt.available?'green':'grey')
+    + '</div>';
+  const trend=lineChart([{label:'Daily Spend', color:PAL.purple, pts:day7(mt.daily_7d,'spend')}]);
+  const camRows=cams.slice(0,6).map((c,i)=>{const a=String(c.status).toUpperCase()==='ACTIVE';
+    return '<tr><td style="color:var(--muted);font-weight:700;">'+(i+1)+'</td><td><b>'+esc(c.name||'?')+'</b></td>'
+      +'<td><span class="pill '+(a?'pill-ok':'pill-na')+'">'+esc(c.status||'')+'</span></td>'
+      +'<td class="r">'+(fmtDollar(c.spend)||'—')+'</td>'
+      +'<td class="r" style="font-weight:700;color:'+(c.roas==null?'inherit':c.roas<1?PAL.red:PAL.green)+'">'+(c.roas!=null?fmtNum(c.roas)+'x':'—')+'</td></tr>';}).join('');
+  const chips=[];
+  if (cams.length&&act.length===0) chips.push(chip('crit','All Campaigns OFF','$0 active paid acquisition on Meta — launch decision with Will.'));
+  if (loss) chips.push(chip('warn','ROAS Below Kill Floor','L30D ROAS '+fmtNum(m.roas)+'x is under 1.0 — spending loses money.'));
+  (mt.flags||[]).slice(0,3).forEach(f=>chips.push(chip(/kill/i.test(f)?'crit':'warn','Blaze Flag',esc(f))));
+  setHero('mt-hero', kpis
+    + '<div class="panel-grid pg-23">'
+    + panel('Spend Trend — Last 7 Days', trend)
+    + panel('Performance by Campaign (L30D)', miniTable([{t:'#'},{t:'Campaign'},{t:'Status'},{t:'Spend',r:1},{t:'ROAS',r:1}], camRows, 'No campaign data on the last run.'))
+    + '</div>'
+    + '<div class="panel-grid pg-3">'
+    + np('Funnel Summary', 'Impressions → Reach → LPV → ATC → Purchase requires funnel fields in the Meta MCP daily pull.')
+    + np('Placement Performance', 'Feed / Stories / Reels / Audience Network split requires placement breakdown in the collect step.')
+    + np('Top Creatives', 'Per-ad creative performance requires the ad-level query (Project 088 roadmap).')
+    + '</div>' + chipRow(chips));
+}
+
+/* ── GOOGLE ADS ── */
+function gaHero(d){
+  const ga=(d.supermetrics||{}).google_ads||{};
+  const low=ga.roas!=null&&ga.roas<2;
+  const kpis='<div class="kpi-grid">'
+    + hK('Spend', fmtDollar(ga.spend), ga.spend==null?'$0 spend expected — no live campaigns':'Yesterday', 'blue')
+    + hK('Google ROAS', fmtNum(ga.roas), 'Flag if below 2.0', low?'red':'green', low?'kpi-down':'')
+    + hK('Campaigns Reporting', ga.top_campaigns?String((ga.top_campaigns||[]).length):null, 'From Supermetrics', 'purple')
+    + '</div>';
+  setHero('ga-hero', kpis
+    + '<div class="panel-grid pg-3">'
+    + np('Performance Over Time', 'Spend + conversion value trend requires google_ads.daily_7d in the evening pre-run (same pattern as Amazon/Meta).')
+    + np('Top Search Terms', 'Requires the search-terms report added to the Supermetrics Google Ads query set.')
+    + np('Spend by Campaign Type', 'Search / Shopping / PMax split requires campaign-type dimension in the collect.')
+    + '</div>');
+}
+
+/* ── KLAVIYO ── */
+function klHero(d){
+  const kl=d.klaviyo||{}; const flows=kl.flows||[];
+  const colors=[PAL.green,PAL.blue,PAL.purple,PAL.teal,PAL.amber,PAL.orange,PAL.slate];
+  const segs=flows.filter(f=>(f.revenue||0)>0).sort((a,b)=>(b.revenue||0)-(a.revenue||0))
+    .map((f,i)=>({label:f.name||'?', value:f.revenue||0, color:colors[i%colors.length]}));
+  const flowRows=flows.slice().sort((a,b)=>(b.revenue||0)-(a.revenue||0)).slice(0,6)
+    .map((f,i)=>'<tr><td style="color:var(--muted);font-weight:700;">'+(i+1)+'</td><td><b>'+esc(f.name||'?')+'</b></td>'
+      +'<td class="r">'+(fmtInt(f.recipients)||'—')+'</td>'
+      +'<td class="r">'+(f.open_rate_pct!=null?fmtNum(f.open_rate_pct,1)+'%':'—')+'</td>'
+      +'<td class="r">'+(f.click_rate_pct!=null?fmtNum(f.click_rate_pct,1)+'%':'—')+'</td>'
+      +'<td class="r" style="font-weight:700;color:'+((f.revenue||0)>0?PAL.green:'inherit')+'">'+(f.revenue!=null?fmtDollar(f.revenue):'—')+'</td></tr>').join('');
+  const kpis='<div class="kpi-grid">'
+    + hK('Email Revenue (7d)', fmtDollar(kl.total_email_revenue_7d), 'Klaviyo-attributed', 'green')
+    + hK('Avg Open Rate', fmtPct(kl.avg_open_rate), 'Flag if below 15%', kl.avg_open_rate!=null&&kl.avg_open_rate<15?'red':'blue', kl.avg_open_rate!=null&&kl.avg_open_rate<15?'kpi-down':'')
+    + hK('Avg Click Rate', fmtPct(kl.avg_click_rate), 'Flag if below 2%', kl.avg_click_rate!=null&&kl.avg_click_rate<2?'amber':'purple')
+    + hK('Flows Flagged', kl.flows_flagged?String((kl.flows_flagged||[]).length):null, 'Open <15% or click <2%', (kl.flows_flagged||[]).length?'amber':'green')
+    + '</div>';
+  setHero('kl-hero', kpis
+    + '<div class="panel-grid pg-23">'
+    + panel('Top Flows by Revenue — Last 7 Days', miniTable([{t:'#'},{t:'Flow'},{t:'Recipients',r:1},{t:'Open',r:1},{t:'Click',r:1},{t:'Revenue',r:1}], flowRows, 'Per-flow breakdown arrives with the next routine run.'))
+    + panel('Revenue by Flow', donut(segs, kl.total_email_revenue_7d!=null?fmtDollar(kl.total_email_revenue_7d):'', '7-DAY REVENUE'))
+    + '</div>'
+    + '<div class="panel-grid pg-3">'
+    + np('List Growth Over Time', 'Requires profile-count history in the Klaviyo daily pull.')
+    + np('Deliverability Summary', 'Sent / delivered / bounced / spam requires deliverability metrics in the collect step (Wren roadmap).')
+    + np('Campaign Performance', 'One-off campaign sends require the campaigns query alongside flows.')
+    + '</div>');
+}
+
+/* ── CUSTOMER EXPERIENCE ── */
+function cxHero(d){
+  const rv=d.reviews||{}; const recent=(rv.recent||[]);
+  const low=recent.filter(r=>(r.rating||5)<=2).slice(0,5);
+  const star=n=>'★'.repeat(Math.max(0,Math.min(5,Math.round(n||0))))+'☆'.repeat(5-Math.max(0,Math.min(5,Math.round(n||0))));
+  const lowBody=low.length? low.map(r=>'<div style="padding:8px 0;border-bottom:1px solid #eef1f6;">'
+      +'<div style="display:flex;justify-content:space-between;gap:8px;"><span style="color:'+PAL.red+';font-size:12px;letter-spacing:1px;">'+star(r.rating)+'</span><span style="font-size:10px;color:var(--sub);white-space:nowrap;">'+esc(r.date||'')+'</span></div>'
+      +'<div style="font-size:11px;font-weight:700;color:var(--ink);margin:2px 0;">'+esc(r.product||'')+'</div>'
+      +'<div style="font-size:11.5px;color:var(--muted);line-height:1.45;">'+esc((r.text||'').slice(0,140))+((r.text||'').length>140?'…':'')+'</div></div>').join('')
+    : '<div class="na-box">No 1–2★ reviews in the current batch'+(recent.length?'':' — review detail populates from Angelo\u2019s sheet via reviews.recent[]')+'.</div>';
+  setHero('cx-hero', secLbl('Review & Returns Detail')
+    + '<div class="panel-grid pg-3">'
+    + panel('Recent Low-Star Reviews', lowBody)
+    + np('Returns by Reason', 'Reason-code donut populates from the JARVIS RETURNS v1.0 run (FBA Customer Returns report — first Monday of the month, next: Aug 3).')
+    + np('Customer Service Performance', 'Response time / resolution / CSAT requires a helpdesk connector — not in the stack yet.')
+    + '</div>');
+}
+
+/* ── AGENT FLAGS hero ── */
+function afHero(files){
+  const el=$('af-hero'); if(!el) return;
+  const flags=(files||[]).flatMap(f=>f.flags||[]);
+  if(!files||!files.length){ el.innerHTML=''; return; }
+  const red=flags.filter(f=>/^(RED|KILL)$/i.test(f.status||'')).length;
+  const yel=flags.filter(f=>/^YELLOW$/i.test(f.status||'')).length;
+  el.innerHTML='<div class="kpi-grid">'
+    + hK('Open Flags', String(flags.length), 'Across all agents this run', flags.length?'orange':'green')
+    + hK('High Priority', String(red), 'RED / KILL status', red?'red':'green', red?'kpi-down':'')
+    + hK('Medium Priority', String(yel), 'YELLOW status', yel?'amber':'green')
+    + hK('Agents Reporting', String(files.length), (files||[]).map(f=>f.__label||f.__id||'').filter(Boolean).join(' · '), 'purple')
+    + '</div>';
+}
+
+/* ── CHANNEL REPORTS hero ── */
+function rpHero(files){
+  const el=$('rp-hero'); if(!el) return;
+  if(!files||!files.length){ el.innerHTML=''; return; }
+  let posts=0, channels=new Set(), latest='';
+  (files||[]).forEach(f=>{
+    const arr=f.posts||f.messages||[];
+    posts+=arr.length;
+    arr.forEach(m=>{ if(m.channel) channels.add(m.channel); });
+    if((f.generated_at||'')>latest) latest=f.generated_at||'';
+  });
+  el.innerHTML='<div class="kpi-grid">'
+    + hK('Reports Received', String(posts||files.length), 'Agent posts mirrored from Slack', 'blue')
+    + hK('Channels', String(channels.size||'—'), 'Slack channels posted to', 'purple')
+    + hK('Agents', String(files.length), 'Routines that pushed today', 'teal')
+    + hK('Last Update', latest?esc(latest.replace('T',' ').slice(0,16)):null, 'Most recent agent push', 'green')
+    + '</div>';
+}
+
+/* ── INVENTORY hero (Phase C scaffold) — own fetch, mirrors inventoryPanel source ── */
+(async function invHero(){
+  const el=document.getElementById('inv-hero'); if(!el) return;
+  try{
+    const r=await fetch('https://raw.githubusercontent.com/josh11100/STG/main/data/inventory_data.json',{cache:'no-store'});
+    if(!r.ok) throw 0;
+    const inv=await r.json(); const skus=inv.skus||[];
+    const onHand=skus.reduce((a,s)=>a+(s.on_hand||0),0);
+    const rate=skus.reduce((a,s)=>a+(s.rate_14d||0),0);
+    const dos=rate>0?Math.round(onHand/rate):null;
+    let urgent=0,watch=0;
+    skus.forEach(s=>{const rt=s.rate_14d||0; if(rt<=0)return; const toMin=(s.on_hand-(s.amazon_min||0))/rt;
+      if(toMin<=30)urgent++; else if(toMin<=60)watch++;});
+    el.innerHTML='<div class="kpi-grid">'
+      + hK('On-Hand Units (FBA)', fmtInt(onHand), 'As of '+esc(inv.as_of||'?'), 'blue')
+      + hK('Days of Inventory (Blended)', dos!=null?String(dos):null, 'On-hand ÷ 14-day daily rate', dos!=null&&dos<45?'amber':'green')
+      + hK('SKUs Urgent', String(urgent), 'Hit Amazon min within 30 days', urgent?'red':'green', urgent?'kpi-down':'')
+      + hK('SKUs on Watch', String(watch), 'Hit Amazon min in 31–60 days', watch?'amber':'green')
+      + '</div>'
+      + '<div class="panel-grid pg-3">'
+      + np('Days of Inventory Trend', 'Trend line requires daily snapshots archived by JARVIS INVENTORY — Phase C (single-day file today).')
+      + np('Inventory Value Trend', 'Retail vs COGS value over time requires the same snapshot history — Phase C.')
+      + np('Position by Location', 'FBA vs inbound vs WSA vs in-transit split requires location fields in inventory_data.json — Phase C.')
+      + '</div>';
+  }catch(e){ el.innerHTML=''; }
+})();
+
+/* ── wire wrappers ── */
+try{
+  const _r = render;
+  render = function(d){ _r(d); try{ bhHero(d); amzHero(d); shHero(d); mtHero(d); gaHero(d); klHero(d); cxHero(d); }catch(e){ console.error('hero layer', e); } };
+}catch(e){ console.error(e); }
+try{ const _af = renderAgentFlags; renderAgentFlags = function(f){ _af(f); try{ afHero(f); }catch(e){console.error(e);} }; }catch(e){}
+try{ const _rp = renderReports; renderReports = function(f){ _rp(f); try{ rpHero(f); }catch(e){console.error(e);} }; }catch(e){}
 })();
 </script>
 
