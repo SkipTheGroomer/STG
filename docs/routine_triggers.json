@@ -1,40 +1,4 @@
 {
-  "story": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01HpHgXts3WyuC2qra9tt5pU/fire",
-    "token": "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"
-  },
-  "tailwind": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_0124UCjH2YCzdrNv3ScWQhAD/fire",
-    "token": "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"
-  },
-  "anchor": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01X5boB4mKRZC8X3ZoaZee9g/fire",
-    "token": "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"
-  },
-  "wren": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01L8UVJaguhRhTAKBe7Q9Yy7/fire",
-    "token": "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"
-  },
-  "ezra": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01H1Nm1PdV9iQLRTC6X8RHiJ/fire",
-    "token": "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"
-  },
-  "spark": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01B431roe7qLdHPJABc1cic9/fire",
-    "token": "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"
-  },
-  "blaze": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01VqrLZkWfnTGYjmuatnZRoE/fire",
-    "token": "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"
-  },
-  "report": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01ExZ8V9HzDSoRxX8zYLVn1h/fire",
-    "token": "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"
-  },
-  "response": {
-    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_011GNQuyoZnVsHkeh1enPUBq/fire",
-    "token": "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"
-  },
   "slack": {
     "channels": {
       "finance_alerts":   "C0BDVDN50DU",
