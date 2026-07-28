@@ -1,1 +1,227 @@
-ewogICJhZ2VudCI6ICIwMzMgQW1hem9uIiwKICAiZGF0ZSI6ICIyMDI2LTA3LTI3IiwKICAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMDctMjdUMDg6MzA6MDAtMDc6MDAiLAogICJkYXRhX2ZyZXNobmVzcyI6IHsKICAgICJzdXBlcm1ldHJpY3MiOiAiMjAyNi0wNy0yNlQyMzoyMDoyNy0wNzowMCIsCiAgICAiY29ubmVjdG9ycyI6ICIyMDI2LTA3LTI1IiwKICAgICJpbnZlbnRvcnkiOiAiMjAyNi0wNy0yMyIsCiAgICAiaGVsaXVtMTAiOiAiMjAyNi0wNy0yNSIKICB9LAogICJzdW1tYXJ5IjogewogICAgInN0YXR1cyI6ICJSRUQiLAogICAgIm5lZ2F0aXZlc19zdGFnZWQiOiAwLAogICAgImJpZF9yZWNzIjogNCwKICAgICJyYW5rX2RlZmVuc2UiOiAwLAogICAgImxpc3RpbmdfZml4ZXMiOiAwLAogICAgInNvbHV0aW9ucyI6IDExLAogICAgImJsb2NrZWQiOiAzLAogICAgImRlZ3JhZGVkX21vZGUiOiB0cnVlLAogICAgImRlZ3JhZGVkX3JlYXNvbiI6ICJCcm93c2VyL0Nocm9tZSBwZXJtYW5lbnRseSB1bmF2YWlsYWJsZSAoTC0yMDI2LTA3LTE1LTAwMSkiLAogICAgImRlZ3JhZGVkX2NhcGFiaWxpdGllcyI6IFsibmVnYXRpdmVzIiwgImNyZWF0aXZlX3JvdXRpbmciLCAibGlzdGluZ19hbmFseXplciIsICJjb21wbGlhbmNlX3N3ZWVwIl0KICB9LAogICJmbGFncyI6IFsKICAgIHsKICAgICAgImlkIjogIkYtMjAyNi0wNy0yNy0wMDEiLAogICAgICAic2V2ZXJpdHkiOiAiUkVEIiwKICAgICAgImJsb2NrZWQiOiB0cnVlLAogICAgICAiYXNpbiI6ICJCMEdUMUg4NEpNIiwKICAgICAgInNrdSI6ICJCdW5kbGUiLAogICAgICAicHJvYmxlbSI6ICJCdW5kbGUgcnVubmluZyAkMSwwMjkuMDcgKDdkIHNwZW5kKSBhZ2FpbnN0ICQwLjAwIGF0dHJpYnV0ZWQgc2FsZXMg4oCUIERheSAzNisgQkxPQ0tFRCBzdGF0dXMiLAogICAgICAic3BlbmRfN2QiOiAxMDI5LjA3LAogICAgICAic2FsZXNfN2QiOiAwLjAwLAogICAgICAicm9hc183ZCI6IDAuMDAwLAogICAgICAibGVhcm5pbmdfcmVmIjogIkwtMjAyNi0wNy0xNC0wMDEiLAogICAgICAiYWN0aW9uIjogIkJMT0NLRUQg4oCUIGF3YWl0aW5nIEB3aWxsIGFwcHJvdmFsIHRvIHBhdXNlL3Jlc3RydWN0dXJlIGNhbXBhaWduIiwKICAgICAgImVzY2FsYXRpb25fZGF5IjogMzYKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDAyIiwKICAgICAgInNldmVyaXR5IjogIlJFRCIsCiAgICAgICJibG9ja2VkIjogdHJ1ZSwKICAgICAgImFzaW4iOiAiQjBGUTYyOEtDSCIsCiAgICAgICJza3UiOiAiU2xpY2tlciBCcnVzaCIsCiAgICAgICJwcm9ibGVtIjogIlNsaWNrZXIgc3BlbmQgJDU1LjA1ICg3ZCkg4oCUIERheSA0MSsgdmlvbGF0aW9uLiBFc2NhbGF0aW5nIGZyb20gJDQzLjMwIGxhc3QgcnVuICgrMjglIFdvVykuIExJUVVJREFUSU9OIFNLVSDigJQgYW55IHNwZW5kID4gJDAgaXMgYSB2aW9sYXRpb24uIiwKICAgICAgInNwZW5kXzdkIjogNTUuMDUsCiAgICAgICJzYWxlc183ZCI6IDE5Ljk5LAogICAgICAicm9hc183ZCI6IG51bGwsCiAgICAgICJsZWFybmluZ19yZWYiOiAiTC0yMDI2LTA3LTE0LTAwMSIsCiAgICAgICJhY3Rpb24iOiAiQkxPQ0tFRCDigJQgRGF5IDQxKyByZS1mbGFnLiBQYXVzaW5nIGFsbCBTbGlja2VyIGFkIGNhbXBhaWducyByZXF1aXJlcyBAd2lsbCBleGVjdXRpb24uIiwKICAgICAgImVzY2FsYXRpb25fZGF5IjogNDEKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDAzIiwKICAgICAgInNldmVyaXR5IjogIlJFRCIsCiAgICAgICJibG9ja2VkIjogdHJ1ZSwKICAgICAgImFzaW4iOiAiQjBGUUZQMlM5RiIsCiAgICAgICJza3UiOiAiRnVyRml4IiwKICAgICAgInByb2JsZW0iOiAiRnVyRml4IHN0cmFuZGVkIGludmVudG9yeSDigJQgRGF5IDE0Ky4gNjAgdW5pdHMsICQyLjQ1L2RheSBzdXJjaGFyZ2UsICQzNC4zMCBjdW11bGF0aXZlLiIsCiAgICAgICJ1bml0c19zdHJhbmRlZCI6IDYwLAogICAgICAiZGFpbHlfc3VyY2hhcmdlIjogMi40NSwKICAgICAgImN1bXVsYXRpdmVfc3VyY2hhcmdlIjogMzQuMzAsCiAgICAgICJsZWFybmluZ19yZWYiOiAiTC0yMDI2LTA3LTEzLTAwMSIsCiAgICAgICJhY3Rpb24iOiAiQkxPQ0tFRCDigJQgZmlsZSByZW1vdmFsIG9yZGVyIGluIFNlbGxlciBDZW50cmFsLiBSZXF1aXJlcyBAd2lsbCBleGVjdXRpb24uIiwKICAgICAgImVzY2FsYXRpb25fZGF5IjogMTQKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDA0IiwKICAgICAgInNldmVyaXR5IjogIllFTExPVyIsCiAgICAgICJibG9ja2VkIjogZmFsc2UsCiAgICAgICJhc2luIjogIkIwRlE0UFk1NzMiLAogICAgICAic2t1IjogIkRldGFuZ2xpbmcgVHJlYXRtZW50IiwKICAgICAgInByb2JsZW0iOiAiVHJlYXRtZW50IDdkIFJPQVMgMC4wMDAgKEtJTEwgYmFuZCkgdnMgMS1kYXkgSnVsIDI1IFJPQVMgMy4yNiAoR1JFRU4gYWJvdmUgMi43NCBicmVha2V2ZW4pLiBDb25mbGljdGluZyBzaWduYWwg4oCUIERPQ1RSSU5FIHJlcXVpcmVzIDdkIGV2YWx1YXRpb24uIiwKICAgICAgInNwZW5kXzdkIjogNDMuOTgsCiAgICAgICJzYWxlc18xZCI6IDE4Ljk5LAogICAgICAicm9hc18xZCI6IDMuMjYsCiAgICAgICJyb2FzXzdkIjogMC4wMDAsCiAgICAgICJicmVha2V2ZW4iOiAyLjc0LAogICAgICAiYWN0aW9uIjogIlNUQUdFRCDigJQgT3B0aW9uIEE6IGtpbGwgYWRzIG5vdyAoZm9sbG93IDdkIFJPQVMgRE9DVFJJTkUpIMK3IE9wdGlvbiBCOiBob2xkIDcyaCB0byBjb25maXJtIDEtZGF5IHNpZ25hbC4gQHdpbGwgZGVjaXNpb24gcmVxdWlyZWQuIiwKICAgICAgImRlY2lzaW9uX29wdGlvbnMiOiBbImtpbGxfbm93IiwgImhvbGRfNzJoIl0KICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDA1IiwKICAgICAgInNldmVyaXR5IjogIllFTExPVyIsCiAgICAgICJibG9ja2VkIjogZmFsc2UsCiAgICAgICJhc2luIjogIkIwN1Y1TkpSWTQiLAogICAgICAic2t1IjogIkRlbWF0dGVyIiwKICAgICAgInByb2JsZW0iOiAiRGVtYXR0ZXIgVEFDT1MgMTI1LjklICh0YXJnZXQgPDM1JSkuIDdkIHNwZW5kICQxLDM1NC4wNiAvIDdkIFNDIHNhbGVzICQxLDA3NS45MC4gV29yc2VuaW5nIGZyb20gMTAyLjQlIHllc3RlcmRheS4gQmlkIHJlZHVjZSBEYXkgNCsgdW5leGVjdXRlZC4iLAogICAgICAidGFjb3NfN2QiOiAxLjI1OSwKICAgICAgInNwZW5kXzdkIjogMTM1NC4wNiwKICAgICAgInNjX3NhbGVzXzdkIjogMTA3NS45MCwKICAgICAgInJvYXNfMWQiOiAxLjI5LAogICAgICAiYnJlYWtldmVuIjogMi4wNywKICAgICAgImFjdGlvbiI6ICJTVEFHRUQg4oCUIFJlZHVjZSBEZW1hdHRlciBiaWRzIDE1LTIwJS4gQHdpbGwgYXBwcm92YWwgcmVxdWlyZWQuIiwKICAgICAgImxlYXJuaW5nX3JlZiI6ICJMLTIwMjYtMDctMDgtMDAxIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIkYtMjAyNi0wNy0yNy0wMDYiLAogICAgICAic2V2ZXJpdHkiOiAiWUVMTE9XIiwKICAgICAgImJsb2NrZWQiOiBmYWxzZSwKICAgICAgImFzaW4iOiBudWxsLAogICAgICAic2t1IjogIlNoYW1wb28iLAogICAgICAicHJvYmxlbSI6ICJTaGFtcG9vIFRBQ09TIDc1LjclICh0YXJnZXQgPDM1JSkuIDdkIHNwZW5kICQ2MC41NCAvIDdkIFNDIHNhbGVzICQ3OS45Ni4gMS1kYXkgUk9BUyAyLjQ1IHZzIGJyZWFrZXZlbiAzLjc1LiIsCiAgICAgICJ0YWNvc183ZCI6IDAuNzU3LAogICAgICAic3BlbmRfN2QiOiA2MC41NCwKICAgICAgInNjX3NhbGVzXzdkIjogNzkuOTYsCiAgICAgICJyb2FzXzFkIjogMi40NSwKICAgICAgImJyZWFrZXZlbiI6IDMuNzUsCiAgICAgICJhY3Rpb24iOiAiU1RBR0VEIOKAlCBSZWR1Y2UgU2hhbXBvbyBiaWRzIDEwJS4gQHdpbGwgYXBwcm92YWwgcmVxdWlyZWQuIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIkYtMjAyNi0wNy0yNy0wMDciLAogICAgICAic2V2ZXJpdHkiOiAiWUVMTE9XIiwKICAgICAgImJsb2NrZWQiOiBmYWxzZSwKICAgICAgImFzaW4iOiBudWxsLAogICAgICAic2t1IjogIlBpbiBCcnVzaCIsCiAgICAgICJwcm9ibGVtIjogIlBpbiBUQUNPUyA4Ni4yJSAodGFyZ2V0IDwzNSUpLiA3ZCBzcGVuZCAkNDkuOTUgLyA3ZCBTQyBzYWxlcyAkNTcuOTcuIDEtZGF5IFJPQVMgMi40MSB2cyBicmVha2V2ZW4gMi42MS4iLAogICAgICAidGFjb3NfN2QiOiAwLjg2MiwKICAgICAgInNwZW5kXzdkIjogNDkuOTUsCiAgICAgICJzY19zYWxlc183ZCI6IDU3Ljk3LAogICAgICAicm9hc18xZCI6IDIuNDEsCiAgICAgICJicmVha2V2ZW4iOiAyLjYxLAogICAgICAiYWN0aW9uIjogIlNUQUdFRCDigJQgUmVkdWNlIFBpbiBiaWRzIDEwJS4gQHdpbGwgYXBwcm92YWwgcmVxdWlyZWQuIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIkYtMjAyNi0wNy0yNy0wMDgiLAogICAgICAic2V2ZXJpdHkiOiAiWUVMTE9XIiwKICAgICAgImJsb2NrZWQiOiBmYWxzZSwKICAgICAgImFzaW4iOiAiQjBGUTRQWTU3MyIsCiAgICAgICJza3UiOiAiRGV0YW5nbGVyIFNwcmF5IiwKICAgICAgInByb2JsZW0iOiAiU3ByYXkgWkVST19WRUxPQ0lUWSDigJQgMjg4IHVuaXRzIG9uLWhhbmQsIDAgc29sZCBpbiA5MCBkYXlzLiAkNzAuOTAgYWdlZCBzdXJjaGFyZ2UgKDE4NiBEb1MpLiBObyBhY3RpdmUgVUdDIGJyaWVmLiIsCiAgICAgICJ1bml0c19vbmhhbmQiOiAyODgsCiAgICAgICJkYXlzX29mX3N1cHBseSI6IDE4NiwKICAgICAgImFnZWRfc3VyY2hhcmdlIjogNzAuOTAsCiAgICAgICJ2ZWxvY2l0eV85MGQiOiAwLAogICAgICAiYWN0aW9uIjogIlNUQUdFRCDigJQgUHJpY2UgZHJvcCBvciByZW1vdmFsIG9yZGVyIHRvIGNsZWFyIGV4Y2Vzcy4gQHdpbGwgcmV2aWV3IHJlcXVpcmVkLiIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDA5IiwKICAgICAgInNldmVyaXR5IjogIllFTExPVyIsCiAgICAgICJibG9ja2VkIjogZmFsc2UsCiAgICAgICJhc2luIjogbnVsbCwKICAgICAgInNrdSI6ICJEZXRhbmdsaW5nIFRyZWF0bWVudCIsCiAgICAgICJwcm9ibGVtIjogIlRyZWF0bWVudCBaRVJPX1ZFTE9DSVRZIGV4Y2VzcyBpbnZlbnRvcnkgKEhlbGl1bTEwKS4gTm8gYWN0aXZlIFVHQyBicmllZi4gZ2FwX2ZsYWcgPSB0cnVlLiIsCiAgICAgICJhY3Rpb24iOiAiU1RBR0VEIOKAlCBVR0MgYnJpZWYgbmVlZGVkIHRvIGdlbmVyYXRlIG9yZ2FuaWMgZGVtYW5kIGJlZm9yZSBhZ2luZyBmZWVzIGVzY2FsYXRlLiIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDEwIiwKICAgICAgInNldmVyaXR5IjogIllFTExPVyIsCiAgICAgICJibG9ja2VkIjogZmFsc2UsCiAgICAgICJhc2luIjogbnVsbCwKICAgICAgInNrdSI6ICJTaGFtcG9vIiwKICAgICAgInByb2JsZW0iOiAiU2hhbXBvbyBFWENFU1MgaW52ZW50b3J5IOKAlCBMSUYgMjU4MGQgKEhlbGl1bTEwKS4gTm8gYWN0aXZlIFVHQyBicmllZi4gZ2FwX2ZsYWcgPSB0cnVlLiIsCiAgICAgICJkYXlzX29mX3N1cHBseSI6IDI1ODAsCiAgICAgICJhY3Rpb24iOiAiU1RBR0VEIOKAlCBVR0MgYnJpZWYgbmVlZGVkLiBSZXZpZXcgcmVtb3ZhbC9saXF1aWRhdGlvbiBvcHRpb25zIGZvciBleGNlc3Mgc3RvY2suIgogICAgfSwKICAgIHsKICAgICAgImlkIjogIkYtMjAyNi0wNy0yNy0wMTEiLAogICAgICAic2V2ZXJpdHkiOiAiWUVMTE9XIiwKICAgICAgImJsb2NrZWQiOiBmYWxzZSwKICAgICAgImFzaW4iOiBudWxsLAogICAgICAic2t1IjogIlBpbiBCcnVzaCIsCiAgICAgICJwcm9ibGVtIjogIlBpbiBZRUxMT1cgaW52ZW50b3J5IOKAlCBMSUYgNjU3ZCAoSGVsaXVtMTApLiBObyBhY3RpdmUgVUdDIGJyaWVmLiBnYXBfZmxhZyA9IHRydWUuIiwKICAgICAgImRheXNfb2Zfc3VwcGx5IjogNjU3LAogICAgICAiYWN0aW9uIjogIlNUQUdFRCDigJQgVUdDIGJyaWVmIG5lZWRlZCB0byBzdGltdWxhdGUgZGVtYW5kLiIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJGLTIwMjYtMDctMjctMDEyIiwKICAgICAgInNldmVyaXR5IjogIllFTExPVyIsCiAgICAgICJibG9ja2VkIjogZmFsc2UsCiAgICAgICJhc2luIjogbnVsbCwKICAgICAgInNrdSI6ICJSYWtlIiwKICAgICAgInByb2JsZW0iOiAiUmFrZSB+MTcgRG9TIG9uLWhhbmQgKGFkanVzdGVkIGZyb20gMjIgRG9TIG9uIEp1bCAyMyBhdCAxNi4zLzE0ZCB2ZWxvY2l0eSwgNCBkYXlzIGVsYXBzZWQpLiBQcm9qZWN0ZWQgc3RvY2tvdXQgfkF1ZyAxMy4gUmVvcmRlciBsZWFkIHRpbWUgY2hlY2sgcmVxdWlyZWQuIiwKICAgICAgImRheXNfb2Zfc3VwcGx5X2VzdGltYXRlZCI6IDE3LAogICAgICAic3RvY2tvdXRfZGF0ZV9lc3RpbWF0ZWQiOiAiMjAyNi0wOC0xMyIsCiAgICAgICJ1bml0c19vbmhhbmRfanVsMjMiOiA0NzksCiAgICAgICJ2ZWxvY2l0eV8xNGQiOiAxNi4zLAogICAgICAiYWN0aW9uIjogIlNUQUdFRCDigJQgVmVyaWZ5IHJlb3JkZXIgbGVhZCB0aW1lLiBJZiA+MTcgZGF5cywgcGxhY2UgUE8gaW1tZWRpYXRlbHkuIgogICAgfQogIF0sCiAgInBvc3RzIjogWwogICAgewogICAgICAiY2hhbm5lbCI6ICJzdGctYWRzLXdhdGNoZG9nIiwKICAgICAgInBoYXNlIjogInBoYXNlMSIsCiAgICAgICJsYWJlbCI6ICJQaGFzZSAxIG9wZW4iLAogICAgICAidGV4dCI6ICIwMzMgQW1hem9uIHYxLjEg4oCUIDIwMjYtMDctMjcgwrcgUGhhc2UgMTogQmlkL0tleXdvcmQvUmFua2luZ1xuQWNjb3VudCAxLWRheSAoSnVsIDI1KTogc3BlbmQgJDQwMy45NCDCtyBST0FTIDEuNzRcbuKaoO+4jyBEZWdyYWRlZDogTmVnYXRpdmVzIE5PVCBTVEFHRUQgKGJyb3dzZXIgb2ZmbGluZSDigJQgTC0yMDI2LTA3LTE1LTAwMSkiCiAgICB9LAogICAgewogICAgICAiY2hhbm5lbCI6ICJzdGctYWRzLXdhdGNoZG9nIiwKICAgICAgInBoYXNlIjogInBoYXNlMSIsCiAgICAgICJsYWJlbCI6ICJCdW5kbGUgQkxPQ0tFRCBEYXkgMzYrIiwKICAgICAgInRleHQiOiAi8J+UtCBbQkxPQ0tFRCBEYXkgMzYrXSBCdW5kbGUgQjBHVDFIODRKTSDigJQgJDEsMDI5LjA3IHNwZW5kIC8gJDAgc2FsZXMgKDdkKS4gQ2FtcGFpZ24gYnVybmluZyB+JDE0Ny9kYXkgd2l0aCB6ZXJvIHJldHVybi4gUmUtZmxhZyAjMzYuIEB3aWxsOiBwYXVzZSBvciByZXN0cnVjdHVyZSByZXF1aXJlZC4gUmVhY3Qg4pyFIHRvIGFwcHJvdmUgcGF1c2UuIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTEiLAogICAgICAibGFiZWwiOiAiU2xpY2tlciBCTE9DS0VEIERheSA0MSsiLAogICAgICAidGV4dCI6ICLwn5S0IFtCTE9DS0VEIERheSA0MStdIFNsaWNrZXIgQnJ1c2ggQjBGUTYyOEtDSCDigJQgc3BlbmQgJDU1LjA1ICg3ZCksIFVQIGZyb20gJDQzLjMwIGxhc3QgcnVuICgrMjglIFdvVykuIExJUVVJREFUSU9OIFNLVSDigJQgYW55IHNwZW5kID0gdmlvbGF0aW9uLiBEYXkgNDEgcmUtZmxhZy4gQHdpbGw6IHBhdXNlIGFsbCBTbGlja2VyIGNhbXBhaWducy4gUmVhY3Qg4pyFIHRvIGFwcHJvdmUuIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTEiLAogICAgICAibGFiZWwiOiAiVHJlYXRtZW50IGNvbmZsaWN0aW5nIHNpZ25hbCIsCiAgICAgICJ0ZXh0IjogIvCfn6EgW0RlY2lzaW9uIFJlcXVpcmVkXSBEZXRhbmdsaW5nIFRyZWF0bWVudCDigJQgN2QgUk9BUyAwLjAwMCAoS0lMTCBiYW5kKSB2cyAxLWRheSBKdWwgMjUgUk9BUyAzLjI2IChHUkVFTiBhYm92ZSAyLjc0IGJyZWFrZXZlbikuIENvbmZsaWN0aW5nIHNpZ25hbC5cbk9wdGlvbiBBOiBLaWxsIGFkcyBub3cgKGZvbGxvdyA3ZCBET0NUUklORSkgwrcgT3B0aW9uIEI6IEhvbGQgNzJoIHRvIGNvbmZpcm0gMS1kYXkgdHJlbmQuXG5Ad2lsbDogUmVhY3Qg4pyFID0gT3B0aW9uIEEgKGtpbGwpIMK3IPCfn6EgPSBPcHRpb24gQiAoaG9sZCA3MmgpIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTEiLAogICAgICAibGFiZWwiOiAiRGVtYXR0ZXIgYmlkIHJlZHVjZSIsCiAgICAgICJ0ZXh0IjogIvCfn6EgW1N0YWdlZF0gRGVtYXR0ZXIgYmlkIHJlZHVjZSDigJQgVEFDT1MgMTI1LjklICh0YXJnZXQgPDM1JSkuIDdkOiBzcGVuZCAkMSwzNTQuMDYgLyBTQyBzYWxlcyAkMSwwNzUuOTAuIDEtZGF5IFJPQVMgMS4yOSB2cyBicmVha2V2ZW4gMi4wNy4gV29yc2VuaW5nIGZyb20gMTAyLjQlIHllc3RlcmRheS4gRGF5IDQrIHVuZXhlY3V0ZWQuXG5SZWM6IHJlZHVjZSBiaWRzIDE1LTIwJSBhY3Jvc3MgRGVtYXR0ZXIgU1AgY2FtcGFpZ25zLlxuQHdpbGw6IFJlYWN0IOKchSB0byBhcHByb3ZlIGJpZCByZWR1Y3Rpb24uIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTIiLAogICAgICAibGFiZWwiOiAiUGhhc2UgMiBvcGVuIiwKICAgICAgInRleHQiOiAiMDMzIEFtYXpvbiB2MS4xIOKAlCAyMDI2LTA3LTI3IMK3IFBoYXNlIDI6IExpc3RpbmdzIC8gSW52ZW50b3J5IC8gVUdDXG7imqDvuI8gRGVncmFkZWQ6IExpc3RpbmcgQW5hbHl6ZXIgTk9UIFNUQUdFRCAoMTB0aCBjb25zZWN1dGl2ZSBkZWdyYWRlZCBydW4pIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTIiLAogICAgICAibGFiZWwiOiAiRnVyRml4IHN0cmFuZGVkIEJMT0NLRUQgRGF5IDE0KyIsCiAgICAgICJ0ZXh0IjogIvCflLQgW0JMT0NLRUQgRGF5IDE0K10gRnVyRml4IEIwRlFGUDJTOUYg4oCUIDYwIHVuaXRzIHN0cmFuZGVkLiAkMi40NS9kYXkgc3VyY2hhcmdlLCAkMzQuMzAgY3VtdWxhdGl2ZS4gUmUtZmxhZyAjMTQuIEB3aWxsOiBmaWxlIHJlbW92YWwgb3JkZXIgaW4gU2VsbGVyIENlbnRyYWwuIFJlYWN0IOKchSB0byBjb25maXJtIGZpbGVkLiIKICAgIH0sCiAgICB7CiAgICAgICJjaGFubmVsIjogInN0Zy1hZHMtd2F0Y2hkb2ciLAogICAgICAicGhhc2UiOiAicGhhc2UyIiwKICAgICAgImxhYmVsIjogIlJha2UgbG93IHN0b2NrIiwKICAgICAgInRleHQiOiAi8J+foSBbU3RhZ2VkXSBSYWtlIOKAlCB+MTcgRG9TIG9uLWhhbmQgKGFkanVzdGVkOiAyMiBEb1MgSnVsIDIzIOKGkiB2ZWxvY2l0eSAxNi4zLzE0ZCDDlyA0ZCBlbGFwc2VkKS4gUHJvamVjdGVkIHN0b2Nrb3V0IH5BdWcgMTMuIEB3aWxsOiBjb25maXJtIHJlb3JkZXIgbGVhZCB0aW1lLiBJZiA+MTcgZGF5cywgcGxhY2UgUE8gbm93LiBSZWFjdCDinIUgdG8gY29uZmlybS4iCiAgICB9LAogICAgewogICAgICAiY2hhbm5lbCI6ICJzdGctYWRzLXdhdGNoZG9nIiwKICAgICAgInBoYXNlIjogInBoYXNlMiIsCiAgICAgICJsYWJlbCI6ICJTaGFtcG9vIFRBQ09TICsgYmlkIHJlZHVjZSIsCiAgICAgICJ0ZXh0IjogIvCfn6EgW1N0YWdlZF0gU2hhbXBvbyDigJQgVEFDT1MgNzUuNyUgKHRhcmdldCA8MzUlKS4gN2Q6IHNwZW5kICQ2MC41NCAvIFNDIHNhbGVzICQ3OS45Ni4gMS1kYXkgUk9BUyAyLjQ1IHZzIGJyZWFrZXZlbiAzLjc1LlxuUmVjOiByZWR1Y2UgYmlkcyAxMCUgYWNyb3NzIFNoYW1wb28gU1AgY2FtcGFpZ25zLlxuQHdpbGw6IFJlYWN0IOKchSB0byBhcHByb3ZlLiIKICAgIH0sCiAgICB7CiAgICAgICJjaGFubmVsIjogInN0Zy1hZHMtd2F0Y2hkb2ciLAogICAgICAicGhhc2UiOiAicGhhc2UyIiwKICAgICAgImxhYmVsIjogIlBpbiBUQUNPUyArIGJpZCByZWR1Y2UiLAogICAgICAidGV4dCI6ICLwn5+hIFtTdGFnZWRdIFBpbiBCcnVzaCDigJQgVEFDT1MgODYuMiUgKHRhcmdldCA8MzUlKS4gN2Q6IHNwZW5kICQ0OS45NSAvIFNDIHNhbGVzICQ1Ny45Ny4gMS1kYXkgUk9BUyAyLjQxIHZzIGJyZWFrZXZlbiAyLjYxLlxuUmVjOiByZWR1Y2UgYmlkcyAxMCUgYWNyb3NzIFBpbiBTUCBjYW1wYWlnbnMuXG5Ad2lsbDogUmVhY3Qg4pyFIHRvIGFwcHJvdmUuIgogICAgfSwKICAgIHsKICAgICAgImNoYW5uZWwiOiAic3RnLWFkcy13YXRjaGRvZyIsCiAgICAgICJwaGFzZSI6ICJwaGFzZTIiLAogICAgICAibGFiZWwiOiAiU3ByYXkgemVybyB2ZWxvY2l0eSIsCiAgICAgICJ0ZXh0IjogIvCfn6EgW1N0YWdlZF0gRGV0YW5nbGVyIFNwcmF5IOKAlCBaRVJPX1ZFTE9DSVRZLiAyODggdW5pdHMgLyAwIHNvbGQgaW4gOTBkLiAkNzAuOTAgYWdlZCBzdXJjaGFyZ2UgKDE4NiBEb1MpLiBObyBhY3RpdmUgVUdDLlxuUmVjOiBwcmljZSBkcm9wIG9yIHJlbW92YWwgb3JkZXIgdG8gY2xlYXIgZXhjZXNzLiBAd2lsbDogUmVhY3Qg4pyFIHRvIGFwcHJvdmUgcmVtb3ZhbCwgb3Igc3BlY2lmeSBwcmljZSBkcm9wLiIKICAgIH0sCiAgICB7CiAgICAgICJjaGFubmVsIjogInN0Zy1hZHMtd2F0Y2hkb2ciLAogICAgICAicGhhc2UiOiAicGhhc2UyIiwKICAgICAgImxhYmVsIjogIlVHQyBnYXAgZmxhZ3MiLAogICAgICAidGV4dCI6ICLwn5+hIFtTdGFnZWRdIFVHQyBnYXBfZmxhZyA9IHRydWUgZm9yIEFMTCBTS1VzIChCaWxsbyArIEZpdmVycik6IG5vIGFjdGl2ZSBicmllZnMgb24gYW55IHByb2R1Y3QuXG5Qcmlvcml0eTogVHJlYXRtZW50IChleGNlc3MgKyBraWxsIHNpZ25hbCkg4oaSIFNoYW1wb28gKDI1ODAgRG9TKSDihpIgUGluICg2NTcgRG9TKSDihpIgUmFrZSAobG93IHN0b2NrIOKAlCBVR0MgYmVmb3JlIHN0b2Nrb3V0KS5cbkB3aWxsOiBSZWFjdCDinIUgdG8gY29uZmlybSBVR0MgYnJpZWYgY3JlYXRpb24gZm9yIHRvcCBwcmlvcml0eS4iCiAgICB9LAogICAgewogICAgICAiY2hhbm5lbCI6ICJzdGctYWRzLXdhdGNoZG9nIiwKICAgICAgInBoYXNlIjogImNsb3Nlb3V0IiwKICAgICAgImxhYmVsIjogIkNsb3NlLW91dCIsCiAgICAgICJ0ZXh0IjogIjAzMyBBbWF6b24gdjEuMSBwYXNzIGNvbXBsZXRlIOKAlCAyMDI2LTA3LTI3OlxuUGhhc2UgMTogMCBuZWdhdGl2ZXMgc3RhZ2VkIMK3IDQgYmlkIHJlY3MgKEJ1bmRsZSBCTE9DS0VEIERheSAzNisgwrcgU2xpY2tlciBCTE9DS0VEIERheSA0MSsgwrcgVHJlYXRtZW50IEtJTEwgRGF5IDMrIHcvIDEtZGF5IEdSRUVOIHNpZ25hbCDCtyBEZW1hdHRlciBiaWQgcmVkdWNlKSDCtyAwIHJhbmstZGVmZW5zZSBwbGFucyDCtyAwIGNyZWF0aXZlIHNpZ25hbHNcblBoYXNlIDI6IDAgbGlzdGluZyBmaXggbGlzdHMgKDEwdGggY29uc2VjdXRpdmUgZGVncmFkZWQpIMK3IDAgQW5jaG9yIGRpcmVjdGl2ZXMgwrcgMCBUYWlsd2luZCBkaXJlY3RpdmVzIMK3IDYgaW52ZW50b3J5IGZsYWdzICgxIFJFRCBCTE9DS0VEIHJlLWZsYWcgwrcgNSBZRUxMT1cgc3RhZ2VkKVxuU29sdXRpb25zOiAxMSBwb3N0ZWQgwrcgMCBhcHByb3ZlZCtsb2dnZWQgwrcgMyBCTE9DS0VEIHJlLXRhZ2dlZCAoQHdpbGwg4oCUIEJ1bmRsZSBEYXkgMzYrIMK3IFNsaWNrZXIgRGF5IDQxKyDCtyBGdXJGaXggRGF5IDE0Kylcblxu4pqg77iPIERlZ3JhZGVkOiBOZWdhdGl2ZXMgTk9UIFNUQUdFRCAoYnJvd3NlciBvZmZsaW5lKSDCtyBMaXN0aW5nIEFuYWx5emVyIE5PVCBTVEFHRUQgKDEwdGggY29uc2VjdXRpdmUpIMK3IENvbXBsaWFuY2Ugc3dlZXAgTk9UIFBFUkZPUk1FRCDCtyBDcmVhdGl2ZSByb3V0aW5nIE5PVCBTVEFHRUQgKENUUiB1bmF2YWlsYWJsZSlcblxuTmV4dCBydW46IDIwMjYtMDctMjggfjA4OjIwIFBUIgogICAgfQogIF0KfQo=
+{
+  "run_id": "033",
+  "date": "2026-07-28",
+  "generated_at": "2026-07-28T08:20:00-07:00",
+  "status": "RED",
+  "mode": "DEGRADED",
+  "degraded_reason": "L-2026-07-15-001 browser unavailable — listing analyzer not staged, compliance sweep not performed",
+  "slack_channel": "C0BDU52NV61",
+  "slack_phase1_ts": "1785251802.683759",
+  "slack_phase2_ts": "1785252031.823639",
+  "slack_closeout_ts": "1785252147.811369",
+  "account_metrics": {
+    "date": "2026-07-27",
+    "spend_1d": 290.94,
+    "roas_1d": 1.7631,
+    "spend_7d_total": 2491.65,
+    "source": "Supermetrics Query A + C"
+  },
+  "phase_1": {
+    "flags": [
+      {
+        "id": "V-1",
+        "sku": "Bundle",
+        "asin": "B0BKG8RFVP",
+        "type": "VIOLATION",
+        "severity": "RED",
+        "label": "ATTRIBUTION_CRISIS Day 37+",
+        "brief_id": "033_rec_bundle-pause_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "spend_7d": 870.25,
+          "sales_7d": 0.00,
+          "roas_7d": 0.000
+        },
+        "learning": "L-2026-07-27-001",
+        "recommendation": "Pause all Bundle campaigns immediately"
+      },
+      {
+        "id": "V-2",
+        "sku": "Slicker",
+        "asin": "B0FQ628KCH",
+        "type": "VIOLATION",
+        "severity": "RED",
+        "label": "LIQUIDATION_VIOLATION Day 42+",
+        "brief_id": "033_rec_slicker-pause_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "spend_7d": 71.80,
+          "sales_7d": 19.99,
+          "roas_7d": 0.278,
+          "wow_spend_delta": 16.75,
+          "organic_rank": 169,
+          "organic_rank_delta": 14
+        },
+        "learning": "L-2026-07-14-001",
+        "recommendation": "Pause all Slicker campaigns immediately"
+      },
+      {
+        "id": "B-1",
+        "sku": "Dematter",
+        "asin": "B09RPCXG2Z",
+        "type": "BID_REDUCE",
+        "severity": "RED",
+        "label": "ROAS below kill floor",
+        "brief_id": "033_rec_dematter-bidreduce_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "spend_7d": 1358.78,
+          "sales_7d": 1151.76,
+          "roas_7d": 0.848,
+          "tacos_7d": 1.179,
+          "tacos_prior": 1.259,
+          "breakeven": 2.07,
+          "kill_floor": 1.14
+        },
+        "learning": "L-2026-07-08-001",
+        "recommendation": "Reduce all Dematter bids 15-20%"
+      },
+      {
+        "id": "B-2",
+        "sku": "Shampoo",
+        "asin": "B0BN2D5FLZ",
+        "type": "BID_REDUCE",
+        "severity": "RED",
+        "label": "ROAS below breakeven, TACOS deteriorating",
+        "brief_id": "033_rec_shampoo-bidreduce_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "spend_7d": 72.10,
+          "sales_7d": 57.97,
+          "roas_7d": 0.804,
+          "tacos_7d": 1.244,
+          "tacos_prior": 0.757,
+          "breakeven": 3.75
+        },
+        "recommendation": "Reduce all Shampoo bids 10-15%"
+      }
+    ],
+    "green_updates": [
+      {
+        "sku": "Treatment",
+        "note": "Kill rec superseded — 7d ROAS 1.858 confirmed above kill floor 1.51; positive 1-day signal confirmed as trend",
+        "band": "RED",
+        "data": {
+          "spend_7d": 29.64,
+          "sales_7d": 55.07,
+          "roas_7d": 1.858,
+          "kill_floor": 1.51,
+          "breakeven": 2.74
+        }
+      }
+    ],
+    "sku_bands": {
+      "Treatment": "RED",
+      "Rake": "GREEN",
+      "Pin": "YELLOW",
+      "Dematter": "RED",
+      "Shampoo": "RED",
+      "Bundle": "KILL",
+      "Slicker": "KILL"
+    }
+  },
+  "phase_2": {
+    "flags": [
+      {
+        "id": "I-1",
+        "sku": "FurFix",
+        "type": "STRANDED",
+        "severity": "RED",
+        "label": "STRANDED Day 16+",
+        "brief_id": "033_rec_furfix-removal_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "units": 60,
+          "daily_surcharge": 2.45,
+          "cumulative_surcharge": 39.20
+        },
+        "learning": "L-2026-07-13-001",
+        "recommendation": "Submit removal order for all 60 FurFix units"
+      },
+      {
+        "id": "I-2",
+        "sku": "Rake",
+        "type": "LOW_STOCK",
+        "severity": "YELLOW",
+        "label": "LOW STOCK ~20 DoS",
+        "brief_id": "033_rec_rake-shipmentcheck_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "units_on_hand": 414,
+          "days_of_supply": 20,
+          "inbound": 4500,
+          "projected_stockout": "2026-08-17"
+        },
+        "recommendation": "Confirm inbound ETA — expedite if arrival after Aug 15"
+      },
+      {
+        "id": "I-3",
+        "sku": "Spray",
+        "type": "ZERO_VELOCITY",
+        "severity": "YELLOW",
+        "label": "ZERO VELOCITY 90d",
+        "brief_id": "033_rec_spray-coupontest_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "units": 288,
+          "sales_90d": 0
+        },
+        "recommendation": "Run 7-day 20% coupon test before removal decision"
+      },
+      {
+        "id": "I-4",
+        "sku": "Shampoo",
+        "type": "EXCESS",
+        "severity": "YELLOW",
+        "label": "EXCESS 365+ DoS",
+        "brief_id": "033_rec_shampoo-bundlevelocity_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "units": 4026,
+          "days_of_supply": 365
+        },
+        "recommendation": "Create Shampoo + Treatment virtual bundle at $34-36 AOV"
+      },
+      {
+        "id": "I-5",
+        "sku": "Pin",
+        "type": "EXCESS",
+        "severity": "YELLOW",
+        "label": "EXCESS 365+ DoS",
+        "brief_id": "033_rec_pin-salepromo_2026-07-28",
+        "status": "OPEN",
+        "data": {
+          "units": 2019,
+          "days_of_supply": 365
+        },
+        "recommendation": "Run 14-day 15% off sale promotion"
+      }
+    ]
+  },
+  "tacos_guard": {
+    "target": 0.35,
+    "deadline": "2026-08-01",
+    "skus": {
+      "Dematter": { "tacos_7d": 1.179, "prior": 1.259, "trend": "improving" },
+      "Shampoo": { "tacos_7d": 1.244, "prior": 0.757, "trend": "deteriorating" }
+    }
+  },
+  "ugc_gap": {
+    "skus_with_gap": 6,
+    "active_briefs": 0,
+    "note": "All 6 active SKUs gap_flag: true — no Billo or Fiverr briefs in progress"
+  },
+  "step_3": {
+    "approvals_found": 0,
+    "items_executed": 0,
+    "blocked_items": 0
+  },
+  "learnings_active": [
+    "L-2026-07-08-001",
+    "L-2026-07-13-001",
+    "L-2026-07-14-001",
+    "L-2026-07-14-002",
+    "L-2026-07-15-001",
+    "L-2026-07-27-001"
+  ]
+}
