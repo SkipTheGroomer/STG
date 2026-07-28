@@ -1048,7 +1048,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         </div>
 
                 <!-- BUSINESS HEALTH -->
-        <div class="section active" id="section-bizhealth">
+        <div class="section" id="section-bizhealth">
           <div class="page-header">
             <div class="page-header-top">
               <div class="page-title-block">
@@ -2487,6 +2487,7 @@ async function loadData(){
     $('loading-state').style.display = 'none';
     $('error-state').style.display   = 'none';
     $('dashboard').style.display     = 'block';
+    show('bizhealth');
     render(data);
     // BH after render() — needs window.__LIVE (set inside render)
     try{
