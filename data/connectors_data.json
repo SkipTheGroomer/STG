@@ -1,563 +1,397 @@
 {
-  "last_updated": "2026-07-28T07:45:00-07:00",
-  "report_date": "2026-07-28",
-  "generated_by": "JARVIS COLLECT v10.22",
-  "helium10": {
-    "report_date": "2026-07-27",
-    "keyword_tracker": {
-      "data_date": "2026-07-27",
-      "products": [
-        {
-          "asin": "B0FQL56V99",
-          "name": "Emergency Dematter Cream",
-          "amazon_choice": false,
-          "organic_top10": 2,
-          "organic_top50": 5,
-          "sponsored_top10": 1,
-          "sponsored_top50": 3,
-          "keywords": [
-            {
-              "keyword": "dematting comb for dogs",
-              "search_volume": 5782,
-              "organic_rank": 19,
-              "organic_rank_change": 5,
-              "sponsored_rank": 27,
-              "sponsored_rank_change": null,
-              "organic_change_rating": 35
-            },
-            {
-              "keyword": "dog detangler",
-              "search_volume": 1895,
-              "organic_rank": 19,
-              "organic_rank_change": 1,
-              "sponsored_rank": null,
-              "sponsored_rank_change": null,
-              "organic_change_rating": 31
-            }
-          ]
-        },
-        {
-          "asin": "B0FQ628KCH",
-          "name": "Slicker Brush",
-          "amazon_choice": false,
-          "organic_top10": 0,
-          "organic_top50": 1,
-          "sponsored_top10": 0,
-          "sponsored_top50": 1,
-          "keywords": [
-            {
-              "keyword": "doodle brush",
-              "search_volume": 5721,
-              "organic_rank": 49,
-              "organic_rank_change": 257,
-              "sponsored_rank": null,
-              "sponsored_rank_change": null,
-              "organic_change_rating": 347
-            },
-            {
-              "keyword": "dog slicker brushes for grooming",
-              "search_volume": 892,
-              "organic_rank": 71,
-              "organic_rank_change": 235,
-              "sponsored_rank": null,
-              "sponsored_rank_change": null,
-              "organic_change_rating": 255
-            },
-            {
-              "keyword": "slicker brush for dogs",
-              "search_volume": 20660,
-              "organic_rank": 113,
-              "organic_rank_change": 56,
-              "sponsored_rank": null,
-              "sponsored_rank_change": null,
-              "organic_change_rating": 66
-            }
-          ]
-        },
-        {
-          "asin": "B0FQ4PY573",
-          "name": "Detangling Spray",
-          "amazon_choice": false,
-          "organic_top10": 0,
-          "organic_top50": 0,
-          "sponsored_top10": 0,
-          "sponsored_top50": 0,
-          "keywords": []
-        }
-      ]
-    },
-    "helium10_profits": {
-      "daily": {
-        "date": "2026-07-25",
-        "gross_revenue": 1156.44,
-        "expenses": -1088.49,
-        "net_profit": 8.48,
-        "units": 57,
-        "stale": true
-      },
-      "weekly": null,
-      "monthly": null
-    },
-    "listing_analyzer": {
-      "report_date": "2026-07-27",
-      "products": [
-        {
-          "asin": "B0FQL56V99",
-          "lqs": 8.6,
-          "page_views_old": 1854,
-          "page_views_new": 1469,
-          "page_views_change_pct": -20.77,
-          "sessions_old": 1384,
-          "sessions_new": 1138,
-          "sessions_change_pct": -17.77,
-          "uosr_old": 29.62,
-          "uosr_new": 32.43,
-          "uosr_change_pct": 9.46,
-          "bsr_old": 8119,
-          "bsr_new": 9216,
-          "bsr_change_pct": -13.51
-        },
-        {
-          "asin": "B0FQF2VTMJ",
-          "lqs": 9.5,
-          "page_views_old": 265,
-          "page_views_new": 218,
-          "page_views_change_pct": -17.74,
-          "sessions_old": 208,
-          "sessions_new": 173,
-          "sessions_change_pct": -16.83,
-          "uosr_old": 86.54,
-          "uosr_new": 85.55,
-          "uosr_change_pct": -1.14,
-          "bsr_old": 52811,
-          "bsr_new": 57199,
-          "bsr_change_pct": -8.31
-        },
-        {
-          "asin": "B0FQDHXSZ5",
-          "lqs": 8.5,
-          "page_views_old": 212,
-          "page_views_new": 137,
-          "page_views_change_pct": -35.38,
-          "sessions_old": 157,
-          "sessions_new": 102,
-          "sessions_change_pct": -35.03,
-          "uosr_old": 12.74,
-          "uosr_new": 17.65,
-          "uosr_change_pct": 38.53,
-          "bsr_old": 55386,
-          "bsr_new": 56413,
-          "bsr_change_pct": -1.85
-        },
-        {
-          "asin": "B0GV5ZFLC2",
-          "lqs": 9.5,
-          "page_views_old": 200,
-          "page_views_new": 126,
-          "page_views_change_pct": -37.0,
-          "sessions_old": 155,
-          "sessions_new": 98,
-          "sessions_change_pct": -36.77,
-          "uosr_old": 17.42,
-          "uosr_new": 13.27,
-          "uosr_change_pct": -23.85,
-          "bsr_old": 50533,
-          "bsr_new": 59795,
-          "bsr_change_pct": -18.33
-        },
-        {
-          "asin": "B0FQL16GH4",
-          "lqs": 9.5,
-          "page_views_old": 22,
-          "page_views_new": 50,
-          "page_views_change_pct": 127.27,
-          "sessions_old": 22,
-          "sessions_new": 44,
-          "sessions_change_pct": 100.0,
-          "uosr_old": 31.82,
-          "uosr_new": 20.45,
-          "uosr_change_pct": -35.74,
-          "bsr_old": 81532,
-          "bsr_new": 56795,
-          "bsr_change_pct": -30.34
-        }
-      ]
-    }
-  },
+  "last_updated": "2026-07-28",
+  "routine_version": "v10.22",
+  "run_date": "2026-07-28",
   "quickbooks": {
-    "as_of": "2026-07-28",
-    "cash_balance": 473130.5,
-    "cash_breakdown": {
-      "checking": 14079.95,
-      "money_market": 459050.55
-    },
-    "accounts_payable": 39542.9,
-    "net_income_mtd": -31125.43,
+    "available": true,
     "status": "YELLOW",
+    "cash_balance": 473130.5,
+    "weeks_runway": 60.8,
+    "accounts_payable": 39542.9,
+    "accounts_receivable": null,
+    "mtd": {
+      "period": "2026-07-01 to 2026-07-28",
+      "revenue": 24681.7,
+      "cogs": null,
+      "gross_profit": null,
+      "gross_margin_pct": null,
+      "operating_expenses": null,
+      "net_income": -31125.43,
+      "net_margin_pct": null
+    },
     "sync_lag_flag": true,
-    "sync_lag_note": "MTD revenue $24,681.70 unchanged since 2026-07-14"
+    "sync_lag_note": "MTD revenue $24,681.70 unchanged since 2026-07-14 \u2014 QB sync lag Day 14+"
   },
   "klaviyo": {
-    "as_of": "2026-07-28",
-    "flows_7d": {
-      "abandoned_cart": {
-        "flow_id": "T5cHUL",
+    "available": true,
+    "avg_open_rate": 42.9,
+    "avg_click_rate": 0.0,
+    "total_email_revenue_7d": 0.0,
+    "flows_flagged": [
+      "All 4 flows: 0 revenue 7d \u2014 Klaviyo week appears dead"
+    ],
+    "flows": [
+      {
+        "name": "abandoned_cart",
         "recipients": 0,
-        "opens": 0,
-        "clicks": 0,
-        "conversions": 0,
-        "conversion_value": 0.0,
-        "revenue_per_recipient": 0.0
+        "open_rate_pct": 0.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
       },
-      "welcome": {
-        "flow_id": "SDc7uQ",
+      {
+        "name": "welcome",
         "recipients": 3,
-        "opens": 0,
-        "clicks": 0,
-        "conversions": 0,
-        "conversion_value": 0.0,
-        "revenue_per_recipient": 0.0
+        "open_rate_pct": 0.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
       },
-      "warranty": {
-        "flow_id": "TmJur2",
+      {
+        "name": "warranty",
         "recipients": 4,
-        "opens": 3,
-        "clicks": 0,
-        "conversions": 0,
-        "conversion_value": 0.0,
-        "revenue_per_recipient": 0.0
+        "open_rate_pct": 75.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
       },
-      "registration": {
-        "flow_id": "XmCaLP",
+      {
+        "name": "registration",
         "recipients": 0,
-        "opens": 0,
-        "clicks": 0,
-        "conversions": 0,
-        "conversion_value": 0.0,
-        "revenue_per_recipient": 0.0
+        "open_rate_pct": 0.0,
+        "click_rate_pct": 0.0,
+        "revenue": 0.0,
+        "revenue_per_recipient": 0.0,
+        "zero_revenue_flag": true,
+        "low_volume": true
       }
-    },
+    ],
     "cart_abandonment_recovery_pct": 0.0,
-    "total_flow_revenue_7d": 0.0
+    "cart_abandonment_flow_name": "abandoned_cart",
+    "cart_abandonment_recipients_7d": 0,
+    "cart_abandonment_revenue_7d": 0.0
   },
   "shopify": {
+    "available": true,
+    "report_date": "2026-07-27",
+    "yesterday_sales": 107.13,
+    "aov": 53.57,
+    "vs_7day_avg_pct": 183.0,
     "yesterday": {
       "date": "2026-07-27",
-      "gross_sales": 107.13,
+      "revenue": 107.13,
       "orders": 2,
-      "aov": 53.57
+      "aov": 53.57,
+      "items_per_order": null
     },
-    "vs_7day_avg_pct": 183.0,
-    "seven_day_avg": 37.86,
-    "top_products_30d": [
+    "daily_7d": [],
+    "top_products": [
       {
         "product_title": "Detangling Treatment",
-        "gross_sales": 272.17,
-        "orders": 15
+        "order_count": 15,
+        "units_sold": null,
+        "revenue": 272.17,
+        "avg_price": 18.14,
+        "variants": []
       },
       {
         "product_title": "Emergency Dematter Cream",
-        "gross_sales": 249.1,
-        "orders": 12
+        "order_count": 12,
+        "units_sold": null,
+        "revenue": 249.1,
+        "avg_price": 20.76,
+        "variants": []
       },
       {
-        "product_title": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
-        "gross_sales": 247.93,
-        "orders": 18
+        "product_title": "4-IN-1 Rosemary Mint Shampoo",
+        "order_count": 18,
+        "units_sold": null,
+        "revenue": 247.93,
+        "avg_price": 13.77,
+        "variants": []
       },
       {
         "product_title": "Slicker Brush",
-        "gross_sales": 210.42,
-        "orders": 18
+        "order_count": 18,
+        "units_sold": null,
+        "revenue": 210.42,
+        "avg_price": 11.69,
+        "variants": []
       },
       {
         "product_title": "Pin Brush",
-        "gross_sales": 180.57,
-        "orders": 10
+        "order_count": 10,
+        "units_sold": null,
+        "revenue": 180.57,
+        "avg_price": 18.06,
+        "variants": []
       },
       {
         "product_title": "Rake Brush",
-        "gross_sales": 147.41,
-        "orders": 11
+        "order_count": 11,
+        "units_sold": null,
+        "revenue": 147.41,
+        "avg_price": 13.4,
+        "variants": []
       },
       {
-        "product_title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
-        "gross_sales": 71.98,
-        "orders": 2
+        "product_title": "Shampoo + Pin Bundle",
+        "order_count": 2,
+        "units_sold": null,
+        "revenue": 71.98,
+        "avg_price": 35.99,
+        "variants": []
       }
     ],
-    "gross_sales_30d": 1379.58
+    "order_breakdown": {
+      "date": "2026-07-27",
+      "total_orders": 2,
+      "single_item_orders": null,
+      "multi_item_orders": null,
+      "avg_items_per_order": null,
+      "orders": [],
+      "combos": [],
+      "note": null
+    }
+  },
+  "helium10": {
+    "available": true,
+    "report_found": true,
+    "data_readable": true,
+    "report_date": "2026-07-27",
+    "flags": [],
+    "products": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "keywords": [
+          {
+            "keyword": "dematting comb for dogs",
+            "search_volume": 5782,
+            "organic_rank": 19,
+            "sponsored_rank": 27,
+            "organic_change_rating": "+5"
+          },
+          {
+            "keyword": "dog detangler",
+            "search_volume": 1895,
+            "organic_rank": 19,
+            "sponsored_rank": null,
+            "organic_change_rating": "+1"
+          }
+        ]
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "keywords": [
+          {
+            "keyword": "doodle brush",
+            "search_volume": 5721,
+            "organic_rank": 49,
+            "sponsored_rank": null,
+            "organic_change_rating": "+257"
+          },
+          {
+            "keyword": "dog slicker brushes for grooming",
+            "search_volume": 892,
+            "organic_rank": 71,
+            "sponsored_rank": null,
+            "organic_change_rating": "+235"
+          },
+          {
+            "keyword": "slicker brush for dogs",
+            "search_volume": 20660,
+            "organic_rank": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "new"
+          }
+        ]
+      }
+    ]
+  },
+  "helium10_profits": {
+    "available": true,
+    "daily": {
+      "date": "2026-07-25",
+      "gross_revenue": 1156.44,
+      "expenses": -1088.49,
+      "net_profit": 8.48,
+      "net_margin_pct": 0.7,
+      "units": 57,
+      "vs_prior_day_pct": null,
+      "stale": true,
+      "products": []
+    },
+    "weekly": null,
+    "monthly": null
+  },
+  "helium10_listing_analyzer": {
+    "available": false,
+    "report_found": true,
+    "report_date": "2026-07-27",
+    "listings": [],
+    "note": "No listing data extracted from today email \u2014 truncated or attachment only"
+  },
+  "helium10_market_tracker": {
+    "available": true,
+    "report_found": true,
+    "report_date": "2026-07-28",
+    "competitors": [
+      {
+        "name": "We Love Doodles \u2014 B0CXDL42B4",
+        "asin": "B0CXDL42B4",
+        "review_change": 4,
+        "review_change_direction": "increase"
+      },
+      {
+        "name": "We Love Doodles \u2014 B0BFZ4C4Z9",
+        "asin": "B0BFZ4C4Z9",
+        "review_change": 18,
+        "review_change_direction": "increase"
+      },
+      {
+        "name": "We Love Doodles \u2014 B09Q837KK1",
+        "asin": "B09Q837KK1",
+        "review_change": 19,
+        "review_change_direction": "increase"
+      }
+    ],
+    "note": null
+  },
+  "helium10_inventory": {
+    "available": false,
+    "skus": []
   },
   "supermetrics": {
-    "generated_at": "2026-07-27T23:10:40-07:00",
-    "query_date_yesterday": "2026-07-27",
-    "query_date_sc": "2026-07-26",
+    "available": true,
+    "status": "GREEN",
     "amazon_ads": {
-      "yesterday": {
-        "spend": 290.94,
-        "roas": 1.7631
-      },
+      "spend": 290.94,
+      "roas": 1.7631,
+      "flagged_skus": [
+        "B0GT1H84JM (Bundle): $870.25/7d spend \u2192 $0 attributed sales. Day 2. Pause immediately.",
+        "B0FQ628KCH (Slicker): Liquidation violation Day 42+. Ads still running."
+      ],
       "skus": [
         {
           "asin": "B0FQL56V99",
-          "name": "Emergency Dematter Cream",
-          "cost": 214.8,
-          "attributed_sales": 322.79,
+          "sku": "Emergency Dematter",
+          "spend": 214.8,
           "roas": 1.503,
-          "roas_band": "RED",
-          "tacos_7d_pct": 118.0,
-          "spend_7d": 1358.78,
-          "ordered_sales_7d": 1151.76
+          "tacos_7d": 118.0,
+          "tacos_target": 15.0,
+          "band": "RED"
         },
         {
           "asin": "B0FQF2VTMJ",
-          "name": "Rake Brush",
-          "cost": 18.17,
-          "attributed_sales": 0.0,
+          "sku": "Rake Brush",
+          "spend": 18.17,
           "roas": 0.0,
-          "roas_band": "RED",
-          "tacos_7d_pct": 11.6,
-          "spend_7d": 35.08,
-          "ordered_sales_7d": 301.26
-        },
-        {
-          "asin": "B0FQL16GH4",
-          "name": "4-in-1 Shampoo",
-          "cost": 18.21,
-          "attributed_sales": 32.97,
-          "roas": 1.811,
-          "roas_band": "RED",
-          "tacos_7d_pct": 124.4,
-          "spend_7d": 72.1,
-          "ordered_sales_7d": 57.97
-        },
-        {
-          "asin": "B0FQ628KCH",
-          "name": "Slicker Brush",
-          "cost": 16.75,
-          "attributed_sales": 9.99,
-          "roas": 0.596,
-          "roas_band": "LIQUIDATE",
-          "tacos_7d_pct": 359.2,
-          "spend_7d": 71.8,
-          "ordered_sales_7d": 19.99
-        },
-        {
-          "asin": "B0GT1H84JM",
-          "name": "Bundle",
-          "cost": 9.59,
-          "attributed_sales": 0.0,
-          "roas": 0.0,
-          "roas_band": null,
-          "tacos_7d_pct": null,
-          "spend_7d": 870.25,
-          "ordered_sales_7d": 0.0,
-          "attribution_crisis": true
-        },
-        {
-          "asin": "B0FQDHXSZ5",
-          "name": "Pin Brush",
-          "cost": 9.54,
-          "attributed_sales": 0.0,
-          "roas": 0.0,
-          "roas_band": "RED",
-          "tacos_7d_pct": 68.3,
-          "spend_7d": 53.24,
-          "ordered_sales_7d": 77.96
-        },
-        {
-          "asin": "B0GV5ZFLC2",
-          "name": "Detangling Treatment",
-          "cost": 3.88,
-          "attributed_sales": 0.0,
-          "roas": 0.0,
-          "roas_band": "RED",
-          "tacos_7d_pct": 53.8,
-          "spend_7d": 29.64,
-          "ordered_sales_7d": 55.07
+          "tacos_7d": 11.6,
+          "tacos_target": 15.0,
+          "band": "YELLOW"
         }
       ],
-      "flagged_skus": [
-        {
-          "asin": "B0FQ628KCH",
-          "flag": "LIQUIDATION_VIOLATION",
-          "note": "liquidate=true, spend=$16.75 yesterday / $71.80 7d. Day 42+."
-        },
-        {
-          "asin": "B0GT1H84JM",
-          "flag": "ATTRIBUTION_CRISIS",
-          "note": "$870.25 7d spend / $0 7d ordered_product_sales. 7d spend>=75 with $0 sales."
-        }
-      ],
-      "tacos_overall_pct": 150.9,
-      "cogs_source": "cogs_master.json"
+      "sku_data_pending": false
     },
     "amazon_sales": {
       "sessions": 452,
       "conversion_rate": 19.69,
       "units_sold": 89,
-      "data_date": "2026-07-26"
+      "data_date": "2026-07-26",
+      "note": "SC data reflects 2026-07-26 \u2014 24-48h lag is normal."
     },
     "google_ads": {
       "spend": null,
       "roas": null,
-      "note": "no data (Query F empty)"
+      "top_campaigns": []
     },
-    "lifetime": {
-      "query_g_date": "2026-07-27",
-      "revenue": 317626.81,
-      "units": 15464,
-      "skus": [
-        {
-          "asin": "B0FQL56V99",
-          "revenue": 243143.35,
-          "units": 10880,
-          "sessions": 57847,
-          "cvr_pct": 18.81,
-          "buy_box_pct": 99.55
-        },
-        {
-          "asin": "B0FQF2VTMJ",
-          "revenue": 31349.16,
-          "units": 2269,
-          "sessions": 7377,
-          "cvr_pct": 30.76,
-          "buy_box_pct": 99.46
-        },
-        {
-          "asin": "B0GV5ZFLC2",
-          "revenue": 12493.9,
-          "units": 705,
-          "sessions": 4641,
-          "cvr_pct": 15.19,
-          "buy_box_pct": 99.26
-        },
-        {
-          "asin": "B0FQDHXSZ5",
-          "revenue": 10155.58,
-          "units": 541,
-          "sessions": 3993,
-          "cvr_pct": 13.55,
-          "buy_box_pct": 99.45
-        },
-        {
-          "asin": "B0FQL16GH4",
-          "revenue": 9261.74,
-          "units": 474,
-          "sessions": 4818,
-          "cvr_pct": 9.84,
-          "buy_box_pct": 99.33
-        },
-        {
-          "asin": "B0FQ4PY573",
-          "revenue": 7303.78,
-          "units": 368,
-          "sessions": 3307,
-          "cvr_pct": 11.13,
-          "buy_box_pct": 79.53
-        },
-        {
-          "asin": "B0FQ628KCH",
-          "revenue": 3919.3,
-          "units": 227,
-          "sessions": 2389,
-          "cvr_pct": 9.5,
-          "buy_box_pct": 99.04
-        }
-      ]
+    "query_g": {
+      "status": "completed",
+      "lifetime_revenue": 317626.81,
+      "lifetime_units": 15464,
+      "unmatched_asins": [],
+      "note": "Patched business_health.json"
     }
   },
+  "amazon_ads_browser": {
+    "available": false,
+    "note": "Will Chrome profile not connected"
+  },
   "meta_ads": {
-    "as_of": "2026-07-28",
-    "account_l30d": {
+    "available": true,
+    "account_id": "2158768751536031",
+    "period": "Last 30 days (trailing)",
+    "l30d": {
       "spend": 567.42,
       "roas": 0.598,
-      "purchases": 14,
-      "purchase_value": 339.35,
-      "impressions": 11701,
-      "clicks": 751
+      "purchase_value": 339.35
     },
-    "account_yesterday": {
-      "date": "2026-07-27",
+    "yesterday": {
       "spend": 4.53,
       "purchases": 2,
       "purchase_value": 0.2
     },
     "campaigns_l30d": [
       {
-        "id": "120248769281270118",
         "name": "Save the Shave UGC Bill _UGC_070326",
+        "status": "PAUSED",
         "spend": 447.17,
         "roas": 0.714,
-        "purchases": 12,
-        "purchase_value": 319.35,
-        "impressions": 7738,
-        "status_note": "PAUSED — Day 37+ no action (L-2026-07-10-001)"
+        "results": "12 purchases"
       },
       {
-        "id": "120249184178260118",
-        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
+        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
+        "status": "ACTIVE",
         "spend": 86.17,
         "roas": 0.232,
-        "purchases": 2,
-        "purchase_value": 0.2,
-        "impressions": 1186
+        "results": "2 purchases"
       },
       {
-        "id": "120249252887330118",
-        "name": "BLZ-20260721-001 -- Detangle the Tangle TOF -- 2026-07-21",
+        "name": "BLZ-20260721-001 -- Detangle the Tangle TOF",
+        "status": "ACTIVE",
         "spend": 34.08,
         "roas": null,
-        "purchases": null,
-        "purchase_value": null,
-        "impressions": 2777
+        "results": "0 purchases"
       }
     ],
-    "status": "RED",
-    "status_note": "L30D ROAS 0.598. Save the Shave PAUSED Day 37+ ($447/0.714 ROAS)."
+    "flags": [
+      "kill_breach: L30D ROAS 0.598 < 1.0 kill floor. Save the Shave 0.714 = breach threshold."
+    ]
   },
   "reviews": {
-    "as_of": "2026-07-28",
+    "available": true,
     "status": "RED",
-    "status_note": "4 reviews with 1-2 stars in last 15 reviews",
+    "last_reviews_check": "2026-07-28",
     "new_review_count": 0,
     "avg_rating_new_batch": 3.8,
-    "last_review_date": "2026-07-09"
+    "sheet_last_modified": "2026-07-09",
+    "days_since_last_review": 19,
+    "recent": []
   },
-  "supply_chain": {
-    "as_of": "2026-07-27",
-    "position_summary": {
-      "units": 55702,
-      "cogs": 194093
-    },
-    "production_balances_total": 270271.5,
-    "slicker_return_rate_pct": 8.67,
-    "slicker_return_rate_flag": true,
-    "live_cash_in_inventory": 141323.49,
-    "live_inventory_units": 39444
+  "business_health": {
+    "available": true,
+    "cash_in_inventory": 194093,
+    "skus": []
   },
-  "market_tracker": {
-    "report_date": "2026-07-28",
-    "competitor": "We Love Doodles",
-    "review_changes": [
-      {
-        "asin": "B0CXDL42B4",
-        "reviews_old": 429,
-        "reviews_new": 433,
-        "change_pct": 0.9
-      },
-      {
-        "asin": "B0BFZ4C4Z9",
-        "reviews_old": 3378,
-        "reviews_new": 3396,
-        "change_pct": 0.5
-      },
-      {
-        "asin": "B09Q837KK1",
-        "reviews_old": 4742,
-        "reviews_new": 4761,
-        "change_pct": 0.4
-      }
-    ]
+  "brand_analytics": {
+    "available": false,
+    "week_of": null,
+    "funnel_extracted": false,
+    "repeat_purchase_extracted": false,
+    "brand_search_extracted": false,
+    "note": "Runs Mondays only \u2014 today is Tuesday"
+  },
+  "inventory": {
+    "available": false,
+    "skus": [],
+    "note": "Loaded separately by JARVIS INVENTORY"
   }
 }
