@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-27T00:00:00Z",
+  "last_updated": "2026-07-28T00:00:00Z",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -21,14 +21,15 @@
         "2026-07-21: 'dematting tool for dogs' r9 (-2), 'dematting comb for dogs' r22 (+5 - not in top 50 previously, improvement). Both Dematter and Detangler keywords stable vs prior day. Pattern update: original 'detangler for dogs' volatility resolved; current tracking keywords now 'dematting tool for dogs' and 'dematting comb for dogs'.",
         "2026-07-23: 'dematting tool for dogs' r9 (no change) per H10 Jul 22 report. 7d ROAS 0.69 on $1,329.22 spend - RED band persists. Pattern unchanged.",
         "2026-07-26: 'dematting tool for dogs' r7 (-2), 'dematting comb for dogs' r22 (+5). 7d ROAS 0.69 (RED band). TACOS 145.3% vs 15% target.",
-        "2026-07-27: Dematter ROAS 1.29 (RED, spend $214.14, sales $275.88). 7d spend $1,354.06. Listing Analyzer: page views -20.77%, sessions -17.77% WoW. 'dematting tool for dogs' r5 (+2). 'dematting comb for dogs' r24 (-2). TACOS 172.2%."
+        "2026-07-27: Dematter ROAS 1.29 (RED, spend $214.14, sales $275.88). 7d spend $1,354.06. Listing Analyzer: page views -20.77%, sessions -17.77% WoW. 'dematting tool for dogs' r5 (+2). 'dematting comb for dogs' r24 (-2). TACOS 172.2%.",
+        "2026-07-28: 'dematting comb for dogs' r19 (+5), 'dog detangler' r19 (+1). ROAS 1.503 (RED, spend $214.80, sales $322.79). 7d spend $1,358.78. TACOS 118.0%. Listing Analyzer: page views -20.77%, sessions -17.77% WoW (LQS 8.6)."
       ],
       "status": "DOCTRINE",
-      "confirmations": 9,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 10,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-08_red",
-      "action_implication": "Monitor paid ROAS vs organic rank weekly. Dematter ROAS 1.29 (RED, breakeven 2.07). 7d spend $1,354.06. TACOS 172.2% vs 15% target — paid spend far exceeds Amazon revenue attribution.",
+      "action_implication": "Monitor paid ROAS vs organic rank weekly. Dematter ROAS 1.503 (RED, breakeven 2.07). 7d spend $1,358.78. TACOS 118.0% vs 15% target — paid spend far exceeds Amazon revenue attribution.",
       "retired_reason": null
     },
     {
@@ -41,14 +42,15 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-26: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 35+ with no action taken.",
-        "2026-07-27: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 36+ with no action."
+        "2026-07-27: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 36+ with no action.",
+        "2026-07-28: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 37+ with no action."
       ],
       "status": "DOCTRINE",
-      "confirmations": 8,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 9,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-10",
-      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 36+ with no resolution.",
+      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 37+ with no resolution.",
       "retired_reason": null
     },
     {
@@ -63,11 +65,12 @@
         "2026-07-16: FurFix in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - STRANDED in FBA per Jul 15 SC data.",
         "2026-07-19 and 2026-07-23: FurFix again in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - status unchanged.",
         "2026-07-26: LIF <= 0, LTSF >= 181. Status unchanged after 3+ weeks.",
-        "2026-07-27: Listing Analyzer email truncated — FurFix LTSF/LIF not directly verified. Status assumed unchanged per prior DOCTRINE."
+        "2026-07-27: Listing Analyzer email truncated — FurFix LTSF/LIF not directly verified. Status assumed unchanged per prior DOCTRINE.",
+        "2026-07-28: FurFix (B0FQFP2S9F) 60 units on-hand per inventory_data.json Jul 26. LIF/LTSF not verified via Listing Analyzer (not in top 5 email). Status assumed unchanged per prior DOCTRINE."
       ],
       "status": "DOCTRINE",
-      "confirmations": 5,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 6,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-13_red",
       "action_implication": "Add B0FQFP2S9F to Step 4 H10 tracked-SKU list. Angelo/Will should confirm stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action overdue.",
@@ -87,14 +90,15 @@
         "2026-07-21: Slicker spend $1.37. 7d spend $5.48. H10: 'slicker brush for dogs' r166->r177 (-11 spots). Organic rank damage accelerating.",
         "2026-07-23: 7d spend $43.30. 'slicker brush for dogs' r174 (H10 Jul 22).",
         "2026-07-26: 7d spend $43.30 / ROAS 0.46 / TACOS 216.6%. Organic rank 183 (-9 spots Jul 25). Day 40+. @will: pause ALL campaigns targeting B0FQ628KCH immediately.",
-        "2026-07-27: B0FQ628KCH 7d spend $55.05/ROAS 0.36 (7d sales $19.99). Yesterday spend $11.75. Day 41+. Organic rank 'slicker brush for dogs': r169 (+14 improved from r183 — rank recovering, consistent with pausing ads improving organic.)"
+        "2026-07-27: B0FQ628KCH 7d spend $55.05/ROAS 0.36 (7d sales $19.99). Yesterday spend $11.75. Day 41+. Organic rank 'slicker brush for dogs': r169 (+14 improved from r183 — rank recovering, consistent with pausing ads improving organic.)",
+        "2026-07-28: B0FQ628KCH 7d spend $71.80/ROAS 0.596 (7d sales $19.99). Yesterday spend $16.75. 'doodle brush' r49 (+257 OCR=347), 'slicker brush for dogs' r113 (+56). Day 42+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 9,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 10,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 41+. Organic rank 'slicker brush for dogs' r169 (improved from r183 but still high; 7d spend $55.05/ROAS 0.36 ongoing). Policy enforcement - not a performance call.",
+      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 42+. 7d spend $71.80/ROAS 0.596 (7d sales $19.99). Keywords improving: 'doodle brush' r49 (+257), 'slicker brush for dogs' r113 (+56) — liquidation policy overrides; any spend = flag.",
       "retired_reason": null
     },
     {
@@ -107,11 +111,12 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-26: MTD revenue $24,681.70 unchanged. Sync lag persists.",
-        "2026-07-27: MTD revenue $24,681.70 — same value, sync lag confirmed. $10,070 Legal fees add expense complexity."
+        "2026-07-27: MTD revenue $24,681.70 — same value, sync lag confirmed. $10,070 Legal fees add expense complexity.",
+        "2026-07-28: MTD revenue $24,681.70 — unchanged. Sync lag persists Day 14+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 13,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 14,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14",
       "action_implication": "Josh to investigate QuickBooks sync connection. MTD revenue unreliable - use H10 Daily Profit for Amazon revenue until resolved.",
@@ -128,11 +133,12 @@
       "evidence": [
         "2026-07-15: Chrome unavailable in cloud environment. Permanent degraded mode confirmed.",
         "2026-07-26: Still unavailable - permanent degraded mode (v10.22).",
-        "2026-07-27: Still unavailable. Brand Analytics Monday trigger skipped."
+        "2026-07-27: Still unavailable. Brand Analytics Monday trigger skipped.",
+        "2026-07-28: Still unavailable. Brand Analytics Tuesday — Step 5f skipped (Monday-only)."
       ],
       "status": "DOCTRINE",
-      "confirmations": 13,
-      "last_confirmed": "2026-07-27",
+      "confirmations": 14,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-07-15",
       "action_implication": "No action - permanent infrastructure limitation. Dashboard shows amazon_ads_browser.available=false by design.",
@@ -141,20 +147,21 @@
     {
       "id": "L-2026-07-27-001",
       "date_observed": "2026-07-27",
-      "subject": "Bundle B0GT1H84JM attribution crisis — $1,029/week $0 attributed sales",
+      "subject": "Bundle B0GT1H84JM attribution crisis — $870/week $0 attributed sales",
       "asin": "B0GT1H84JM",
       "scope": "amazon_ads",
-      "learning": "Bundle B0GT1H84JM spending $1,029.07/week with $0 attributed ordered_product_sales. Yesterday: $143.22/$0. Attribution-window guard triggered (cost≥$75 with $0 sales). Breakeven ROAS=2.40, actual=0. Campaign structure or attribution window likely misconfigured.",
+      "learning": "Bundle B0GT1H84JM spending $870.25/week with $0 attributed ordered_product_sales. Attribution-window guard triggered (cost>=75 with $0 sales). Breakeven ROAS=2.40, actual=0. Campaign structure or attribution window likely misconfigured.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-27: 7d spend $1,029.07 (Query C), 7d ordered_product_sales $0 (Query D). Yesterday $143.22/$0. Attribution flag triggered (cost≥$75 with $0 sales)."
+        "2026-07-27: 7d spend $1,029.07 (Query C), 7d ordered_product_sales $0 (Query D). Yesterday $143.22/$0. Attribution flag triggered (cost>=75 with $0 sales).",
+        "2026-07-28: Bundle B0GT1H84JM 7d spend $870.25 / $0 ordered sales confirmed again (Supermetrics Query C/D). Attribution flag Day 2."
       ],
-      "status": "NEW",
-      "confirmations": 1,
-      "last_confirmed": "2026-07-27",
+      "status": "DOCTRINE",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-28",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-27_new",
-      "action_implication": "@will/@marcelo: Review Bundle B0GT1H84JM campaign structure in Ad Console. Pause all Bundle ad groups until attribution confirmed. $1,029/week with $0 attributed sales is untenable. Check attribution window settings — may be set to same-day vs. 7-day click.",
+      "action_implication": "@will/@marcelo: Review Bundle B0GT1H84JM campaign structure in Ad Console. Pause all Bundle ad groups until attribution confirmed. 7d spend $870.25 with $0 attributed sales. Day 2 — action overdue. Check attribution window settings — may be set to same-day vs. 7-day click.",
       "retired_reason": null
     }
   ]
