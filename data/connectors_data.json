@@ -349,22 +349,28 @@
       },
       {
         "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
-        "status": "ACTIVE",
+        "status": "OFF",
         "spend": 86.17,
         "roas": 0.232,
-        "results": "2 purchases"
+        "results": "2 purchases",
+        "status_note": "OFF \u2014 turned off, no active spend"
       },
       {
         "name": "BLZ-20260721-001 -- Detangle the Tangle TOF",
-        "status": "ACTIVE",
+        "status": "OFF",
         "spend": 34.08,
         "roas": null,
-        "results": "0 purchases"
+        "results": "0 purchases",
+        "status_note": "OFF \u2014 turned off, no active spend"
       }
     ],
     "flags": [
-      "kill_breach: L30D ROAS 0.598 < 1.0 kill floor. Save the Shave 0.714 = breach threshold."
-    ]
+      "kill_breach: L30D ROAS 0.598 < 1.0 kill floor. Save the Shave 0.714 = breach threshold.",
+      "WARNING: ALL campaigns currently OFF \u2014 $0 active paid acquisition on Meta as of 2026-07-28.",
+      "In Draft: New Sales Campaign and BLZ-20260717-001 Dematter RESCUE TOF \u2014 pending launch decision by Will."
+    ],
+    "campaigns_active_count": 0,
+    "campaigns_active_note": "All campaigns currently OFF or In Draft as of 2026-07-28. Two new draft campaigns pending launch decision."
   },
   "reviews": {
     "available": true,
