@@ -429,281 +429,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="tbl-wrap" id="sh-channel-table-wrap" style="margin-top:8px;">
             <table id="sh-channel-table">
               <thead><tr><th>Channel</th><th class="r">Spend (L30D)</th><th class="r">ROAS</th><th class="r">Revenue Attr.</th><th>Status</th></tr></thead>
-              <tbody>/* ═══════════════════════════════════════════════════════════════════════════
-   TIKTOK SHOP DASHBOARD PATCH — v10.24
-   ─────────────────────────────────────────────────────────────────────────
-   DROP THIS ENTIRE BLOCK immediately before </body> in the dashboard HTML.
-   It patches window.render() non-destructively — no existing code changes.
-   Reads from: connectors_data.json → tiktok_shop{}
-   ═══════════════════════════════════════════════════════════════════════════ */
-<script>
-(function(){
-
-/* ── local helpers ─────────────────────────────────────────────────────────── */
-const _$ = id => document.getElementById(id);
-const _esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-function kpiCard(label, val, sub, accent, cls){
-  const v = (val==null||val==='')
-    ? '<div class="kpi-val kpi-na">No data</div>'
-    : '<div class="kpi-val '+(cls||'')+'">'+val+'</div>';
-  return '<div class="kpi-card kpi-'+(accent||'grey')+'">'
-    +'<div class="kpi-lbl">'+label+'</div>'+v
-    +(sub?'<div class="kpi-period">'+sub+'</div>':'')+'</div>';
-}
-
-function barChart7d(arr, key, color){
-  if(!arr||!arr.length) return '<div style="padding:12px;font-size:11px;color:var(--muted);font-style:italic;">Trend builds after 2+ morning runs — 1 bar added each run.</div>';
-  const max = Math.max(...arr.map(x=>Number(x[key]||0)),1);
-  const bars = arr.map((x,i)=>{
-    const pct = Math.round(Number(x[key]||0)/max*100);
-    const isLast = i===arr.length-1;
-    const dayLbl = new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
-    const col = isLast ? 'var(--orange)' : color||'var(--teal)';
-    const v = Number(x[key]||0);
-    return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">'
-      +'<div style="font-size:9px;font-weight:'+(isLast?700:400)+';color:var(--navy);">'+(v>0?'$'+v.toFixed(2):'$0')+'</div>'
-      +'<div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">'
-      +'<div style="width:100%;background:'+col+';height:'+Math.max(pct,v>0?3:0)+'%;border-radius:4px 4px 0 0;min-height:'+(v>0?3:0)+'px;"></div></div>'
-      +'<div style="font-size:10px;color:var(--muted);font-weight:'+(isLast?700:400)+';">'+dayLbl+'</div>'
-      +(isLast?'<div style="font-size:9px;color:var(--orange);font-weight:700;">yesterday</div>':'')
-      +'</div>';
-  }).join('');
-  return '<div style="display:flex;gap:4px;align-items:flex-end;height:90px;">'+bars+'</div>';
-}
-
-/* ── main render function ─────────────────────────────────────────────────── */
-function renderTikTok(d){
-  const tt = d.tiktok_shop || {};
-
-  /* meta bar */
-  const lr = _$('tt-last-run');      if(lr) lr.textContent = d.last_updated||'—';
-  const dt = _$('tt-data-through');  if(dt) dt.textContent = tt.scrape_date||'—';
-
-  /* source badge — first child span after page-title-block */
-  const srcBadge = document.querySelector('#section-tiktok .source-badge');
-  if(srcBadge && tt.available){
-    srcBadge.className = 'source-badge source-manual';
-    srcBadge.textContent = 'CHROME SCRAPE · '+(tt.scrape_time_pt||tt.scrape_date||'');
-  }
-
-  if(!tt.available){ return; } /* keep NOT CONNECTED state */
-
-  /* ── destructure ─────────────────────────────────────────────────────── */
-  const ins   = tt.shop_insights   || {};
-  const ana   = tt.analytics       || {};
-  const todo  = tt.todo            || {};
-  const prob  = tt.probation       || {};
-  const ace   = tt.ace             || {};
-  const prods = tt.products_7d     || [];
-  const gmvC  = tt.gmv_by_content  || [];
-  const catR  = tt.category_rank   || {};
-  const d7    = tt.daily_7d        || [];
-  const flags = tt.flags           || [];
-
-  /* ── status ──────────────────────────────────────────────────────────── */
-  const isCrit = (todo.orders_to_ship||0)>0 || ace.response_rate_24h_pct===0;
-  const isWarn = prob.active || (tt.out_of_stock_count||0)>0;
-  const ttStatus = isCrit ? 'YELLOW' : isWarn ? 'YELLOW' : 'GREEN';
-
-  const ttTag = _$('tt-tag');
-  if(ttTag){
-    const map = {GREEN:['tag tag-live','GREEN'],YELLOW:['tag tag-warn','YELLOW'],RED:['tag tag-crit','RED']};
-    const [cls,txt] = map[ttStatus]||['tag tag-na','NO DATA'];
-    ttTag.className=cls; ttTag.textContent=txt;
-  }
-  const ttDot = _$('dot-tiktok');
-  if(ttDot){ ttDot.className='nav-dot '+(ttStatus==='GREEN'?'green':ttStatus==='YELLOW'?'yellow':'red'); }
-
-  /* ── alert strip ─────────────────────────────────────────────────────── */
-  const strip = document.querySelector('#section-tiktok .alert-strip');
-  if(strip){
-    const parts = [];
-    if((todo.orders_to_ship||0)>0)        parts.push((todo.orders_to_ship)+' orders pending shipment');
-    if(ace.response_rate_24h_pct===0)     parts.push('24h response rate 0% — probation risk');
-    if((tt.out_of_stock_count||0)>0)      parts.push(tt.out_of_stock_count+' SKU out of stock');
-    if((todo.unread_support_tickets||0)>0) parts.push((todo.unread_support_tickets)+' unread support ticket(s)');
-    if(parts.length){
-      strip.className='alert-strip warn';
-      strip.innerHTML='⚠️ '+parts.join(' · ');
-    } else {
-      strip.className='alert-strip ok';
-      strip.innerHTML='✅ TikTok Shop data live — scraped '+(tt.scrape_date||'')+(tt.scrape_time_pt?' '+tt.scrape_time_pt:'');
-    }
-  }
-
-  /* ── KPI grid ────────────────────────────────────────────────────────── */
-  const kpiGrid = document.querySelector('#section-tiktok .kpi-grid');
-  if(kpiGrid){
-    const fmtD = n => n==null?null:'$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
-    const fmtI = n => n==null?null:Number(n).toLocaleString('en-US');
-    const fmtP = n => n==null?null:Number(n).toFixed(1)+'%';
-    const creatorVid = gmvC.find(c=>c.channel==='creator_video');
-    const creatorPct = creatorVid ? creatorVid.contribution_pct : null;
-    const gmvDir = ins.gmv_direction;
-    kpiGrid.innerHTML =
-      kpiCard('Net Shop Sales (7d)', fmtD(ins.gmv),
-        (gmvDir?((gmvDir==='up'?'↑':'↓')+' '+fmtP(ins.gmv_delta_pct)+' vs prior 7d'):''),
-        gmvDir==='up'?'teal':'red', gmvDir==='up'?'kpi-up':'kpi-down') +
-      kpiCard('GMV Yesterday', fmtD(ana.gmv), 'Analytics · '+(ana.date||''), 'green') +
-      kpiCard('Orders (7d)', fmtI(ins.sku_orders),
-        ins.sku_orders_direction?((ins.sku_orders_direction==='up'?'↑':'↓')+' '+fmtP(ins.sku_orders_delta_pct)):null, 'grey') +
-      kpiCard('AOV', fmtD(ana.aov), 'Yesterday · TikTok Shop', ana.aov!=null&&ana.aov<15?'amber':'teal') +
-      kpiCard('GMV Max Spend', null, 'TikTok Ads not linked to shop — PLTFRM/VENDO acct', 'orange') +
-      kpiCard('Creator GMV %', creatorPct!=null?Number(creatorPct).toFixed(1)+'%':null,
-        'Creator video attribution · yesterday', 'purple') +
-      kpiCard('On Hold', fmtD(ins.on_hold), 'Funds in transit window', 'navy');
-  }
-
-  /* ── replace placeholder-page with real content ─────────────────────── */
-  const placeholder = document.querySelector('#section-tiktok .placeholder-page');
-  if(!placeholder) return;
-
-  /* probation banner */
-  const probHtml = prob.active
-    ? '<div class="alert alert-warn" style="margin-bottom:12px;"><b>Probation Program Active</b> — achieve all targets to lift limits.'
-      +'<div style="display:flex;gap:24px;margin-top:6px;font-size:12px;">'
-      +'<span>Daily order limit: <b>'+(prob.daily_order_used||0)+' / '+(prob.daily_order_max||50)+'</b></span>'
-      +'<span>Total listing limit: <b>'+(prob.listing_used||0)+' / '+(prob.listing_max||100)+'</b></span>'
-      +'</div></div>'
-    : '';
-
-  /* GMV trend */
-  const trendHtml = '<div class="tbl-wrap" style="margin-bottom:14px;padding:14px 16px;">'
-    +'<div class="tbl-title" style="margin-bottom:10px;">TikTok Shop GMV — last '+d7.length+' day'+(d7.length!==1?'s':'')+' (builds daily)</div>'
-    +barChart7d(d7,'gmv','#10b981')
-    +'<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);">'
-    +'<span><span style="display:inline-block;width:8px;height:8px;background:#10b981;border-radius:2px;margin-right:3px;"></span>GMV</span>'
-    +'<span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>yesterday</span>'
-    +'</div></div>';
-
-  /* 3-col top row: shop insights / analytics / to-do */
-  const todoRows = [
-    ['Orders to ship',         todo.orders_to_ship,         (todo.orders_to_ship||0)>0?'pill-crit':'pill-ok'],
-    ['Pending returns',        todo.pending_returns,        'pill-ok'],
-    ['Unread support tickets', todo.unread_support_tickets, (todo.unread_support_tickets||0)>0?'pill-warn':'pill-ok'],
-    ['Unread violations',      todo.unread_violations,      (todo.unread_violations||0)>0?'pill-crit':'pill-ok'],
-    ['Negative reviews',       todo.negative_reviews,       (todo.negative_reviews||0)>0?'pill-warn':'pill-ok'],
-  ].map(([lbl,val,cls])=>'<tr><td>'+_esc(lbl)+'</td><td class="r"><span class="pill '+cls+'">'+(val!=null?Number(val).toLocaleString('en-US'):'—')+'</span></td></tr>').join('');
-
-  const insHtml = '<div class="panel"><div class="panel-title">Shop Insights — Last 7 Days</div>'
-    +'<div class="legend-row"><span>GMV</span><b style="color:'+(ins.gmv_direction==='up'?'var(--green)':'var(--red)')+';">'
-    +'$'+Number(ins.gmv||0).toFixed(2)
-    +(ins.gmv_delta_pct!=null?' <span style="font-size:11px;">'+(ins.gmv_direction==='up'?'↑':'↓')+Number(ins.gmv_delta_pct).toFixed(1)+'%</span>':'')
-    +'</b></div>'
-    +'<div class="legend-row"><span>Visitors</span><b>'+Number(ins.visitors||0).toLocaleString('en-US')
-    +(ins.visitors_delta_pct!=null?' <span style="font-size:11px;color:var(--green);">↑'+Number(ins.visitors_delta_pct).toFixed(1)+'%</span>':'')+'</b></div>'
-    +'<div class="legend-row"><span>SKU Orders</span><b>'+Number(ins.sku_orders||0).toLocaleString('en-US')+'</b></div>'
-    +'<div class="legend-row"><span>On Hold</span><b>$'+Number(ins.on_hold||0).toFixed(2)+'</b></div>'
-    +'<div class="legend-row"><span>Active Products</span><b>'+(ins.active_products||'—')+'</b></div>'
-    +'<div class="hero-note">Updated: '+_esc(ins.updated_on||'')+'</div></div>';
-
-  const anaHtml = '<div class="panel"><div class="panel-title">Analytics — '+(ana.date||'Yesterday')+'</div>'
-    +'<div class="legend-row"><span>GMV</span><b>'+(ana.gmv!=null?'$'+Number(ana.gmv).toFixed(2):'—')+'</b></div>'
-    +'<div class="legend-row"><span>Orders</span><b>'+(ana.orders!=null?ana.orders:'—')+'</b></div>'
-    +'<div class="legend-row"><span>Customers</span><b>'+(ana.customers!=null?ana.customers:'—')+'</b></div>'
-    +'<div class="legend-row"><span>AOV</span><b>'+(ana.aov!=null?'$'+Number(ana.aov).toFixed(2):'—')+'</b></div>'
-    +'<div class="legend-row"><span>LIVE GMV</span><b style="color:var(--muted);">'+(ana.live_gmv!=null?'$'+Number(ana.live_gmv).toFixed(2):'$0.00')+'</b></div>'
-    +'<div class="legend-row"><span>Product Card GMV</span><b>'+(ana.product_card_gmv!=null?'$'+Number(ana.product_card_gmv).toFixed(2):'—')+'</b></div></div>';
-
-  const todoHtml = '<div class="panel"><div class="panel-title">To-Do List</div>'
-    +'<table><tbody>'+todoRows+'</tbody></table></div>';
-
-  /* 2-col: GMV by content / category rank */
-  const colMap = {creator_video:'#10b981',creator_live:'#3b82f6',seller_video:'#7c3aed',seller_live:'#f59e0b',shop_tab_search:'#FF5E00'};
-  const lblMap = {creator_video:'Creator Video',creator_live:'Creator LIVE',seller_video:'Seller Video',seller_live:'Seller LIVE',shop_tab_search:'Shop Tab / Search'};
-  const maxGmv = Math.max(...gmvC.map(c=>c.gmv||0),1);
-  const gmvBars = gmvC.map(c=>{
-    const pct = Math.round((c.gmv||0)/maxGmv*100);
-    const col = colMap[c.channel]||'#94a3b8';
-    const lbl = lblMap[c.channel]||c.channel;
-    return '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12px;">'
-      +'<div style="width:115px;color:var(--muted);">'+_esc(lbl)+'</div>'
-      +'<div style="flex:1;background:#eef1f4;border-radius:3px;height:8px;"><div style="background:'+col+';width:'+pct+'%;height:8px;border-radius:3px;"></div></div>'
-      +'<div style="width:36px;text-align:right;color:var(--muted);">'+Number(c.contribution_pct||0).toFixed(1)+'%</div>'
-      +'<div style="width:50px;text-align:right;font-weight:600;">'+(c.gmv!=null?'$'+Number(c.gmv).toFixed(2):'$0')+'</div>'
-      +'</div>';
-  }).join('');
-  const gmvContentHtml = '<div class="panel"><div class="panel-title">GMV by Content Type — Yesterday</div>'+gmvBars+'</div>';
-
-  const rankRows = (catR.rankings||[]).map(r=>
-    '<tr><td style="color:var(--muted);font-weight:700;">'+r.rank+'</td>'
-    +'<td><b>'+_esc(r.name||'?')+'</b>'+(r.badge?' <span style="font-size:9px;font-weight:700;background:#eff6ff;color:#1d4ed8;padding:1px 6px;border-radius:4px;">'+_esc(r.badge)+'</span>':'')+'</td>'
-    +'</tr>').join('');
-  const rankHtml = '<div class="panel"><div class="panel-title">Category GMV Ranking</div>'
-    +(catR.own_rank!=null?'<div style="margin-bottom:10px;"><span style="font-size:28px;font-weight:800;color:var(--teal);">#'+catR.own_rank+'</span> <span style="font-size:12px;color:var(--muted);">in your category</span></div>':'')
-    +'<table><thead><tr><th>#</th><th>Shop</th></tr></thead><tbody>'+rankRows+'</tbody></table></div>';
-
-  /* products table */
-  const prodRows = prods.map(p=>'<tr>'
-    +'<td><b>'+_esc(p.product_title||'?')+'</b>'+(p.note?' <span style="font-size:10px;color:var(--amber);" title="'+_esc(p.note)+'">⚠️</span>':'')+'</td>'
-    +'<td class="r" style="font-weight:700;color:'+((p.gmv||0)>0?'var(--green)':'var(--muted)')+'">'+(p.gmv!=null?'$'+Number(p.gmv).toFixed(2):'—')+'</td>'
-    +'<td class="r">'+(p.orders!=null?p.orders:'—')+'</td>'
-    +'<td class="r">'+(p.items_sold!=null?p.items_sold:'—')+'</td>'
-    +'<td style="font-size:11px;color:var(--muted);">'+_esc(p.top_source?(p.top_source.replace(/_/g,' ')):'—')+'</td>'
-    +'</tr>').join('');
-
-  /* ACE health */
-  const aceMetrics = [
-    ['24h Response Rate',          ace.response_rate_24h_pct,    '%', ace.response_rate_vs_benchmark_pp,    ace.response_rate_24h_pct===0?'pill-crit':'pill-na'],
-    ['Free Shipping % (video)',    ace.free_shipping_pct,         '%', ace.free_shipping_vs_benchmark_pp,    ''],
-    ['3-Day Delivery % (video)',   ace.three_day_delivery_pct,    '%', ace.three_day_delivery_vs_benchmark_pp,''],
-    ['Hit Video Count',            ace.hit_video_count,           '',  ace.hit_video_vs_benchmark,            ace.hit_video_count===0?'pill-warn':'pill-ok'],
-    ['Avg Video Share Rate',       ace.avg_video_share_rate_pct,  '%', null,                                  ''],
-  ];
-  const aceRows = aceMetrics.map(([lbl,val,unit,bench,pillCls])=>{
-    const p = pillCls||(val==null?'pill-na':Number(val)>0?'pill-ok':'pill-crit');
-    return '<tr><td>'+_esc(lbl)+'</td>'
-      +'<td class="r"><span class="pill '+p+'">'+(val!=null?Number(val).toFixed(val%1===0?0:1)+unit:'—')+'</span></td>'
-      +'<td class="r" style="font-size:11px;color:'+(bench==null?'var(--muted)':bench<0?'var(--red)':'var(--green)')+'">'
-      +(bench!=null?(bench>0?'+':'')+Number(bench).toFixed(1)+'pp vs benchmark':'—')+'</td></tr>';
-  }).join('');
-
-  /* ── assemble ────────────────────────────────────────────────────────── */
-  placeholder.innerHTML = probHtml
-    + trendHtml
-    + '<div class="panel-grid pg-3" style="margin-bottom:14px;">'
-      + insHtml + anaHtml + todoHtml
-    + '</div>'
-    + '<div class="panel-grid pg-2" style="margin-bottom:14px;">'
-      + gmvContentHtml + rankHtml
-    + '</div>'
-    + '<div class="tbl-wrap" style="margin-bottom:14px;">'
-      +'<div class="tbl-title">Product Analytics — Last 7 Days</div>'
-      +'<table><thead><tr><th>Product</th><th class="r">GMV</th><th class="r">Orders</th><th class="r">Items Sold</th><th>Top Source</th></tr></thead>'
-      +'<tbody>'+(prodRows||'<tr><td colspan="5" style="color:var(--muted);font-style:italic;">No product data this run.</td></tr>')+'</tbody></table>'
-      +((tt.out_of_stock_count||0)>0
-        ?'<div style="padding:8px 14px;font-size:11px;color:var(--amber);font-weight:600;">⚠️ '+(tt.out_of_stock_count)+' SKU out of stock — restock now to maintain shop performance.</div>'
-        :'')
-    +'</div>'
-    +'<div class="tbl-wrap" style="margin-bottom:14px;">'
-      +'<div class="tbl-title">Shop Health — ACE Framework · '+_esc(ace.period||'')+'</div>'
-      +'<table><thead><tr><th>Metric</th><th class="r">Value</th><th class="r">vs Benchmark</th></tr></thead>'
-      +'<tbody>'+aceRows+'</tbody></table>'
-      +(ace.response_rate_24h_pct===0
-        ?'<div style="padding:8px 14px;font-size:11px;color:var(--red);">🔴 <b>24h response rate is 0%</b> — reply to the open support ticket immediately to reset this metric and protect probation status.</div>'
-        :'')
-    +'</div>'
-    +'<div class="alert alert-info">Data source: Chrome browser scrape (seller-us.tiktok.com) — '+_esc(tt.scrape_date||'')+(tt.scrape_time_pt?' '+tt.scrape_time_pt:'')+'. '
-      +'The TikTok MCP connector covers Ads API only; TikTok Shop Seller Center uses a separate API. '
-      +'Upgrade Supermetrics TIKSH at hub.supermetrics.com/subscriptions/1809967 to replace with a clean API pull and enable historical date ranges.</div>';
-}
-
-/* ── hero layer (KPI + panels in the mockup style) ─────────────────────── */
-function ttHero(d){
-  const ttHeroEl = document.querySelector('#section-tiktok .kpi-grid');
-  /* already replaced by renderTikTok — hero is the KPI grid itself */
-}
-
-/* ── patch window.render() ──────────────────────────────────────────────── */
-const _renderPrev = window.render;
-window.render = function(d){
-  _renderPrev(d);
-  try{ renderTikTok(d); }catch(e){ console.error('[TikTok patch] renderTikTok failed:', e); }
-};
-
-})();
-</script></tbody>
+              <tbody></tbody>
             </table>
           </div>
 
@@ -3696,5 +3422,274 @@ try{ const _rp = renderReports; renderReports = function(f){ _rp(f); try{ rpHero
 })();
 </script>
 
+
+<script>
+(function(){
+
+/* ── local helpers ─────────────────────────────────────────────────────────── */
+const _$ = id => document.getElementById(id);
+const _esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function kpiCard(label, val, sub, accent, cls){
+  const v = (val==null||val==='')
+    ? '<div class="kpi-val kpi-na">No data</div>'
+    : '<div class="kpi-val '+(cls||'')+'">'+val+'</div>';
+  return '<div class="kpi-card kpi-'+(accent||'grey')+'">'
+    +'<div class="kpi-lbl">'+label+'</div>'+v
+    +(sub?'<div class="kpi-period">'+sub+'</div>':'')+'</div>';
+}
+
+function barChart7d(arr, key, color){
+  if(!arr||!arr.length) return '<div style="padding:12px;font-size:11px;color:var(--muted);font-style:italic;">Trend builds after 2+ morning runs — 1 bar added each run.</div>';
+  const max = Math.max(...arr.map(x=>Number(x[key]||0)),1);
+  const bars = arr.map((x,i)=>{
+    const pct = Math.round(Number(x[key]||0)/max*100);
+    const isLast = i===arr.length-1;
+    const dayLbl = new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+    const col = isLast ? 'var(--orange)' : color||'var(--teal)';
+    const v = Number(x[key]||0);
+    return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">'
+      +'<div style="font-size:9px;font-weight:'+(isLast?700:400)+';color:var(--navy);">'+(v>0?'$'+v.toFixed(2):'$0')+'</div>'
+      +'<div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">'
+      +'<div style="width:100%;background:'+col+';height:'+Math.max(pct,v>0?3:0)+'%;border-radius:4px 4px 0 0;min-height:'+(v>0?3:0)+'px;"></div></div>'
+      +'<div style="font-size:10px;color:var(--muted);font-weight:'+(isLast?700:400)+';">'+dayLbl+'</div>'
+      +(isLast?'<div style="font-size:9px;color:var(--orange);font-weight:700;">yesterday</div>':'')
+      +'</div>';
+  }).join('');
+  return '<div style="display:flex;gap:4px;align-items:flex-end;height:90px;">'+bars+'</div>';
+}
+
+/* ── main render function ─────────────────────────────────────────────────── */
+function renderTikTok(d){
+  const tt = d.tiktok_shop || {};
+
+  /* meta bar */
+  const lr = _$('tt-last-run');      if(lr) lr.textContent = d.last_updated||'—';
+  const dt = _$('tt-data-through');  if(dt) dt.textContent = tt.scrape_date||'—';
+
+  /* source badge — first child span after page-title-block */
+  const srcBadge = document.querySelector('#section-tiktok .source-badge');
+  if(srcBadge && tt.available){
+    srcBadge.className = 'source-badge source-manual';
+    srcBadge.textContent = 'CHROME SCRAPE · '+(tt.scrape_time_pt||tt.scrape_date||'');
+  }
+
+  if(!tt.available){ return; } /* keep NOT CONNECTED state */
+
+  /* ── destructure ─────────────────────────────────────────────────────── */
+  const ins   = tt.shop_insights   || {};
+  const ana   = tt.analytics       || {};
+  const todo  = tt.todo            || {};
+  const prob  = tt.probation       || {};
+  const ace   = tt.ace             || {};
+  const prods = tt.products_7d     || [];
+  const gmvC  = tt.gmv_by_content  || [];
+  const catR  = tt.category_rank   || {};
+  const d7    = tt.daily_7d        || [];
+  const flags = tt.flags           || [];
+
+  /* ── status ──────────────────────────────────────────────────────────── */
+  const isCrit = (todo.orders_to_ship||0)>0 || ace.response_rate_24h_pct===0;
+  const isWarn = prob.active || (tt.out_of_stock_count||0)>0;
+  const ttStatus = isCrit ? 'YELLOW' : isWarn ? 'YELLOW' : 'GREEN';
+
+  const ttTag = _$('tt-tag');
+  if(ttTag){
+    const map = {GREEN:['tag tag-live','GREEN'],YELLOW:['tag tag-warn','YELLOW'],RED:['tag tag-crit','RED']};
+    const [cls,txt] = map[ttStatus]||['tag tag-na','NO DATA'];
+    ttTag.className=cls; ttTag.textContent=txt;
+  }
+  const ttDot = _$('dot-tiktok');
+  if(ttDot){ ttDot.className='nav-dot '+(ttStatus==='GREEN'?'green':ttStatus==='YELLOW'?'yellow':'red'); }
+
+  /* ── alert strip ─────────────────────────────────────────────────────── */
+  const strip = document.querySelector('#section-tiktok .alert-strip');
+  if(strip){
+    const parts = [];
+    if((todo.orders_to_ship||0)>0)        parts.push((todo.orders_to_ship)+' orders pending shipment');
+    if(ace.response_rate_24h_pct===0)     parts.push('24h response rate 0% — probation risk');
+    if((tt.out_of_stock_count||0)>0)      parts.push(tt.out_of_stock_count+' SKU out of stock');
+    if((todo.unread_support_tickets||0)>0) parts.push((todo.unread_support_tickets)+' unread support ticket(s)');
+    if(parts.length){
+      strip.className='alert-strip warn';
+      strip.innerHTML='⚠️ '+parts.join(' · ');
+    } else {
+      strip.className='alert-strip ok';
+      strip.innerHTML='✅ TikTok Shop data live — scraped '+(tt.scrape_date||'')+(tt.scrape_time_pt?' '+tt.scrape_time_pt:'');
+    }
+  }
+
+  /* ── KPI grid ────────────────────────────────────────────────────────── */
+  const kpiGrid = document.querySelector('#section-tiktok .kpi-grid');
+  if(kpiGrid){
+    const fmtD = n => n==null?null:'$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
+    const fmtI = n => n==null?null:Number(n).toLocaleString('en-US');
+    const fmtP = n => n==null?null:Number(n).toFixed(1)+'%';
+    const creatorVid = gmvC.find(c=>c.channel==='creator_video');
+    const creatorPct = creatorVid ? creatorVid.contribution_pct : null;
+    const gmvDir = ins.gmv_direction;
+    kpiGrid.innerHTML =
+      kpiCard('Net Shop Sales (7d)', fmtD(ins.gmv),
+        (gmvDir?((gmvDir==='up'?'↑':'↓')+' '+fmtP(ins.gmv_delta_pct)+' vs prior 7d'):''),
+        gmvDir==='up'?'teal':'red', gmvDir==='up'?'kpi-up':'kpi-down') +
+      kpiCard('GMV Yesterday', fmtD(ana.gmv), 'Analytics · '+(ana.date||''), 'green') +
+      kpiCard('Orders (7d)', fmtI(ins.sku_orders),
+        ins.sku_orders_direction?((ins.sku_orders_direction==='up'?'↑':'↓')+' '+fmtP(ins.sku_orders_delta_pct)):null, 'grey') +
+      kpiCard('AOV', fmtD(ana.aov), 'Yesterday · TikTok Shop', ana.aov!=null&&ana.aov<15?'amber':'teal') +
+      kpiCard('GMV Max Spend', null, 'TikTok Ads not linked to shop — PLTFRM/VENDO acct', 'orange') +
+      kpiCard('Creator GMV %', creatorPct!=null?Number(creatorPct).toFixed(1)+'%':null,
+        'Creator video attribution · yesterday', 'purple') +
+      kpiCard('On Hold', fmtD(ins.on_hold), 'Funds in transit window', 'navy');
+  }
+
+  /* ── replace placeholder-page with real content ─────────────────────── */
+  const placeholder = document.querySelector('#section-tiktok .placeholder-page');
+  if(!placeholder) return;
+
+  /* probation banner */
+  const probHtml = prob.active
+    ? '<div class="alert alert-warn" style="margin-bottom:12px;"><b>Probation Program Active</b> — achieve all targets to lift limits.'
+      +'<div style="display:flex;gap:24px;margin-top:6px;font-size:12px;">'
+      +'<span>Daily order limit: <b>'+(prob.daily_order_used||0)+' / '+(prob.daily_order_max||50)+'</b></span>'
+      +'<span>Total listing limit: <b>'+(prob.listing_used||0)+' / '+(prob.listing_max||100)+'</b></span>'
+      +'</div></div>'
+    : '';
+
+  /* GMV trend */
+  const trendHtml = '<div class="tbl-wrap" style="margin-bottom:14px;padding:14px 16px;">'
+    +'<div class="tbl-title" style="margin-bottom:10px;">TikTok Shop GMV — last '+d7.length+' day'+(d7.length!==1?'s':'')+' (builds daily)</div>'
+    +barChart7d(d7,'gmv','#10b981')
+    +'<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);">'
+    +'<span><span style="display:inline-block;width:8px;height:8px;background:#10b981;border-radius:2px;margin-right:3px;"></span>GMV</span>'
+    +'<span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>yesterday</span>'
+    +'</div></div>';
+
+  /* 3-col top row: shop insights / analytics / to-do */
+  const todoRows = [
+    ['Orders to ship',         todo.orders_to_ship,         (todo.orders_to_ship||0)>0?'pill-crit':'pill-ok'],
+    ['Pending returns',        todo.pending_returns,        'pill-ok'],
+    ['Unread support tickets', todo.unread_support_tickets, (todo.unread_support_tickets||0)>0?'pill-warn':'pill-ok'],
+    ['Unread violations',      todo.unread_violations,      (todo.unread_violations||0)>0?'pill-crit':'pill-ok'],
+    ['Negative reviews',       todo.negative_reviews,       (todo.negative_reviews||0)>0?'pill-warn':'pill-ok'],
+  ].map(([lbl,val,cls])=>'<tr><td>'+_esc(lbl)+'</td><td class="r"><span class="pill '+cls+'">'+(val!=null?Number(val).toLocaleString('en-US'):'—')+'</span></td></tr>').join('');
+
+  const insHtml = '<div class="panel"><div class="panel-title">Shop Insights — Last 7 Days</div>'
+    +'<div class="legend-row"><span>GMV</span><b style="color:'+(ins.gmv_direction==='up'?'var(--green)':'var(--red)')+';">'
+    +'$'+Number(ins.gmv||0).toFixed(2)
+    +(ins.gmv_delta_pct!=null?' <span style="font-size:11px;">'+(ins.gmv_direction==='up'?'↑':'↓')+Number(ins.gmv_delta_pct).toFixed(1)+'%</span>':'')
+    +'</b></div>'
+    +'<div class="legend-row"><span>Visitors</span><b>'+Number(ins.visitors||0).toLocaleString('en-US')
+    +(ins.visitors_delta_pct!=null?' <span style="font-size:11px;color:var(--green);">↑'+Number(ins.visitors_delta_pct).toFixed(1)+'%</span>':'')+'</b></div>'
+    +'<div class="legend-row"><span>SKU Orders</span><b>'+Number(ins.sku_orders||0).toLocaleString('en-US')+'</b></div>'
+    +'<div class="legend-row"><span>On Hold</span><b>$'+Number(ins.on_hold||0).toFixed(2)+'</b></div>'
+    +'<div class="legend-row"><span>Active Products</span><b>'+(ins.active_products||'—')+'</b></div>'
+    +'<div class="hero-note">Updated: '+_esc(ins.updated_on||'')+'</div></div>';
+
+  const anaHtml = '<div class="panel"><div class="panel-title">Analytics — '+(ana.date||'Yesterday')+'</div>'
+    +'<div class="legend-row"><span>GMV</span><b>'+(ana.gmv!=null?'$'+Number(ana.gmv).toFixed(2):'—')+'</b></div>'
+    +'<div class="legend-row"><span>Orders</span><b>'+(ana.orders!=null?ana.orders:'—')+'</b></div>'
+    +'<div class="legend-row"><span>Customers</span><b>'+(ana.customers!=null?ana.customers:'—')+'</b></div>'
+    +'<div class="legend-row"><span>AOV</span><b>'+(ana.aov!=null?'$'+Number(ana.aov).toFixed(2):'—')+'</b></div>'
+    +'<div class="legend-row"><span>LIVE GMV</span><b style="color:var(--muted);">'+(ana.live_gmv!=null?'$'+Number(ana.live_gmv).toFixed(2):'$0.00')+'</b></div>'
+    +'<div class="legend-row"><span>Product Card GMV</span><b>'+(ana.product_card_gmv!=null?'$'+Number(ana.product_card_gmv).toFixed(2):'—')+'</b></div></div>';
+
+  const todoHtml = '<div class="panel"><div class="panel-title">To-Do List</div>'
+    +'<table><tbody>'+todoRows+'</tbody></table></div>';
+
+  /* 2-col: GMV by content / category rank */
+  const colMap = {creator_video:'#10b981',creator_live:'#3b82f6',seller_video:'#7c3aed',seller_live:'#f59e0b',shop_tab_search:'#FF5E00'};
+  const lblMap = {creator_video:'Creator Video',creator_live:'Creator LIVE',seller_video:'Seller Video',seller_live:'Seller LIVE',shop_tab_search:'Shop Tab / Search'};
+  const maxGmv = Math.max(...gmvC.map(c=>c.gmv||0),1);
+  const gmvBars = gmvC.map(c=>{
+    const pct = Math.round((c.gmv||0)/maxGmv*100);
+    const col = colMap[c.channel]||'#94a3b8';
+    const lbl = lblMap[c.channel]||c.channel;
+    return '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12px;">'
+      +'<div style="width:115px;color:var(--muted);">'+_esc(lbl)+'</div>'
+      +'<div style="flex:1;background:#eef1f4;border-radius:3px;height:8px;"><div style="background:'+col+';width:'+pct+'%;height:8px;border-radius:3px;"></div></div>'
+      +'<div style="width:36px;text-align:right;color:var(--muted);">'+Number(c.contribution_pct||0).toFixed(1)+'%</div>'
+      +'<div style="width:50px;text-align:right;font-weight:600;">'+(c.gmv!=null?'$'+Number(c.gmv).toFixed(2):'$0')+'</div>'
+      +'</div>';
+  }).join('');
+  const gmvContentHtml = '<div class="panel"><div class="panel-title">GMV by Content Type — Yesterday</div>'+gmvBars+'</div>';
+
+  const rankRows = (catR.rankings||[]).map(r=>
+    '<tr><td style="color:var(--muted);font-weight:700;">'+r.rank+'</td>'
+    +'<td><b>'+_esc(r.name||'?')+'</b>'+(r.badge?' <span style="font-size:9px;font-weight:700;background:#eff6ff;color:#1d4ed8;padding:1px 6px;border-radius:4px;">'+_esc(r.badge)+'</span>':'')+'</td>'
+    +'</tr>').join('');
+  const rankHtml = '<div class="panel"><div class="panel-title">Category GMV Ranking</div>'
+    +(catR.own_rank!=null?'<div style="margin-bottom:10px;"><span style="font-size:28px;font-weight:800;color:var(--teal);">#'+catR.own_rank+'</span> <span style="font-size:12px;color:var(--muted);">in your category</span></div>':'')
+    +'<table><thead><tr><th>#</th><th>Shop</th></tr></thead><tbody>'+rankRows+'</tbody></table></div>';
+
+  /* products table */
+  const prodRows = prods.map(p=>'<tr>'
+    +'<td><b>'+_esc(p.product_title||'?')+'</b>'+(p.note?' <span style="font-size:10px;color:var(--amber);" title="'+_esc(p.note)+'">⚠️</span>':'')+'</td>'
+    +'<td class="r" style="font-weight:700;color:'+((p.gmv||0)>0?'var(--green)':'var(--muted)')+'">'+(p.gmv!=null?'$'+Number(p.gmv).toFixed(2):'—')+'</td>'
+    +'<td class="r">'+(p.orders!=null?p.orders:'—')+'</td>'
+    +'<td class="r">'+(p.items_sold!=null?p.items_sold:'—')+'</td>'
+    +'<td style="font-size:11px;color:var(--muted);">'+_esc(p.top_source?(p.top_source.replace(/_/g,' ')):'—')+'</td>'
+    +'</tr>').join('');
+
+  /* ACE health */
+  const aceMetrics = [
+    ['24h Response Rate',          ace.response_rate_24h_pct,    '%', ace.response_rate_vs_benchmark_pp,    ace.response_rate_24h_pct===0?'pill-crit':'pill-na'],
+    ['Free Shipping % (video)',    ace.free_shipping_pct,         '%', ace.free_shipping_vs_benchmark_pp,    ''],
+    ['3-Day Delivery % (video)',   ace.three_day_delivery_pct,    '%', ace.three_day_delivery_vs_benchmark_pp,''],
+    ['Hit Video Count',            ace.hit_video_count,           '',  ace.hit_video_vs_benchmark,            ace.hit_video_count===0?'pill-warn':'pill-ok'],
+    ['Avg Video Share Rate',       ace.avg_video_share_rate_pct,  '%', null,                                  ''],
+  ];
+  const aceRows = aceMetrics.map(([lbl,val,unit,bench,pillCls])=>{
+    const p = pillCls||(val==null?'pill-na':Number(val)>0?'pill-ok':'pill-crit');
+    return '<tr><td>'+_esc(lbl)+'</td>'
+      +'<td class="r"><span class="pill '+p+'">'+(val!=null?Number(val).toFixed(val%1===0?0:1)+unit:'—')+'</span></td>'
+      +'<td class="r" style="font-size:11px;color:'+(bench==null?'var(--muted)':bench<0?'var(--red)':'var(--green)')+'">'
+      +(bench!=null?(bench>0?'+':'')+Number(bench).toFixed(1)+'pp vs benchmark':'—')+'</td></tr>';
+  }).join('');
+
+  /* ── assemble ────────────────────────────────────────────────────────── */
+  placeholder.innerHTML = probHtml
+    + trendHtml
+    + '<div class="panel-grid pg-3" style="margin-bottom:14px;">'
+      + insHtml + anaHtml + todoHtml
+    + '</div>'
+    + '<div class="panel-grid pg-2" style="margin-bottom:14px;">'
+      + gmvContentHtml + rankHtml
+    + '</div>'
+    + '<div class="tbl-wrap" style="margin-bottom:14px;">'
+      +'<div class="tbl-title">Product Analytics — Last 7 Days</div>'
+      +'<table><thead><tr><th>Product</th><th class="r">GMV</th><th class="r">Orders</th><th class="r">Items Sold</th><th>Top Source</th></tr></thead>'
+      +'<tbody>'+(prodRows||'<tr><td colspan="5" style="color:var(--muted);font-style:italic;">No product data this run.</td></tr>')+'</tbody></table>'
+      +((tt.out_of_stock_count||0)>0
+        ?'<div style="padding:8px 14px;font-size:11px;color:var(--amber);font-weight:600;">⚠️ '+(tt.out_of_stock_count)+' SKU out of stock — restock now to maintain shop performance.</div>'
+        :'')
+    +'</div>'
+    +'<div class="tbl-wrap" style="margin-bottom:14px;">'
+      +'<div class="tbl-title">Shop Health — ACE Framework · '+_esc(ace.period||'')+'</div>'
+      +'<table><thead><tr><th>Metric</th><th class="r">Value</th><th class="r">vs Benchmark</th></tr></thead>'
+      +'<tbody>'+aceRows+'</tbody></table>'
+      +(ace.response_rate_24h_pct===0
+        ?'<div style="padding:8px 14px;font-size:11px;color:var(--red);">🔴 <b>24h response rate is 0%</b> — reply to the open support ticket immediately to reset this metric and protect probation status.</div>'
+        :'')
+    +'</div>'
+    +'<div class="alert alert-info">Data source: Chrome browser scrape (seller-us.tiktok.com) — '+_esc(tt.scrape_date||'')+(tt.scrape_time_pt?' '+tt.scrape_time_pt:'')+'. '
+      +'The TikTok MCP connector covers Ads API only; TikTok Shop Seller Center uses a separate API. '
+      +'Upgrade Supermetrics TIKSH at hub.supermetrics.com/subscriptions/1809967 to replace with a clean API pull and enable historical date ranges.</div>';
+}
+
+/* ── hero layer (KPI + panels in the mockup style) ─────────────────────── */
+function ttHero(d){
+  const ttHeroEl = document.querySelector('#section-tiktok .kpi-grid');
+  /* already replaced by renderTikTok — hero is the KPI grid itself */
+}
+
+/* ── patch window.render() ──────────────────────────────────────────────── */
+const _renderPrev = window.render;
+window.render = function(d){
+  _renderPrev(d);
+  try{ renderTikTok(d); }catch(e){ console.error('[TikTok patch] renderTikTok failed:', e); }
+};
+
+})();
+</script>
 </body>
 </html>
