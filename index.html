@@ -3071,7 +3071,7 @@ function renderReports(files){
   const fmtDl = n => n==null?'—':'$'+Number(n).toLocaleString();
 
   let sc=null, inv=null;
-  try{ const r=await fetch('./data/supply_chain.json?_='+Date.now(),{cache:'no-store'}); if(r.ok) sc=await r.json(); }catch(e){}
+  try{ const r=await fetch('./data/supply_chain.json?_='+Date.now(),{cache:'no-store'}); if(r.ok){ sc=await r.json(); window.__SC_SKUS=sc.skus||[]; } }catch(e){}
   try{ const r=await fetch('./data/inventory_data.json?_='+Date.now(),{cache:'no-store'}); if(r.ok) inv=await r.json(); }catch(e){}
 
   const tag=$i('ct-tag'), liveTag=$i('sc-live-tag');
@@ -3289,9 +3289,32 @@ function bhHero(d){
       {label:'Shopify', value:sh.yesterday_sales||0, color:PAL.blue}
     ], (hp.gross_revenue||sh.yesterday_sales)?fmtDollar((hp.gross_revenue||0)+(sh.yesterday_sales||0)):'', 'YESTERDAY')
     + '<div class="hero-note">TikTok Shop + Walmart revenue pending connectors (Phase D).</div>';
+  // Compute Shopify net using supply_chain.json COGS — fuzzy match product title to SKU name
+  const _scSkus = window.__SC_SKUS || [];
+  const _shProds = sh.top_products || [];
+  let _shCogs = 0, _shMapped = 0;
+  _shProds.forEach(p => {
+    const units = p.units_sold || 0;
+    if (!units) return;
+    const scSku = _scSkus.find(s => {
+      if (!s.name || !p.product_title) return false;
+      const kw = s.name.split(' ')[0].toLowerCase();
+      return p.product_title.toLowerCase().includes(kw);
+    });
+    if (scSku && scSku.cogs) { _shCogs += units * scSku.cogs; _shMapped++; }
+  });
+  const _shNet = (sh.yesterday_sales != null && _shMapped > 0) ? sh.yesterday_sales - _shCogs : null;
+  const _shNote = _shNet != null
+    ? ('Net after COGS · ' + _shMapped + '/' + _shProds.length + ' products mapped')
+    : (_shProds.length > 0 ? 'COGS not mapped — product name mismatch' : 'No Shopify product data');
+
   const profitBody = hp.net_profit!=null
     ? '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.green+'"></span>Amazon (net, yesterday)</span><b style="color:'+((hp.net_profit||0)<0?PAL.red:PAL.green)+'">'+fmtDollar(hp.net_profit)+'</b></div>'
-      + '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.slate+'"></span>Shopify</span><span style="color:var(--sub);font-size:11px;">COGS mapping pending</span></div>'
+      + '<div class="legend-row"><span><span class="legend-dot" style="background:'+(_shNet!=null?(_shNet<0?PAL.amber:PAL.teal):PAL.slate)+'"></span>Shopify</span>'
+      + (_shNet!=null
+          ? '<b style="color:'+(_shNet<0?PAL.amber:PAL.green)+'">'+fmtDollar(_shNet)+'</b><span style="font-size:10px;color:var(--sub);margin-left:6px;">'+_shNote+'</span>'
+          : '<span style="color:var(--sub);font-size:11px;">'+_shNote+'</span>')
+      + '</div>'
       + '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.slate+'"></span>TikTok / Walmart</span><span style="color:var(--sub);font-size:11px;">connector pending</span></div>'
       + (hp.net_margin_pct!=null?'<div class="hero-note">Amazon net margin: '+fmtNum(hp.net_margin_pct,1)+'% (Helium 10, after COGS + fees + ads).</div>':'')
     : '<div class="na-box">Helium 10 daily profit report not in the last run.</div>';
