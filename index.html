@@ -1022,67 +1022,78 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="af-hero"></div>
           <div id="agent-flags-panel"></div>
         </div>
-        <!-- OPERATIONS HUB — manual + non-automated data -->
+        <!-- OPERATIONS HUB — manual Chrome pulls + our data pushes -->
         <div class="section" id="section-ops">
           <div class="page-header">
             <div class="page-header-top">
               <div class="page-title-block">
                 <div class="page-title">Operations Hub</div>
                 <span class="tag tag-na" id="ops-tag">MANUAL</span>
-                <span class="source-badge source-manual">MULTI-SOURCE</span>
+                <span class="source-badge source-manual">CHROME · MANUAL PUSH</span>
               </div>
             </div>
             <div class="page-meta-bar">
               <span>Last run: <b id="ops-last-run">—</b></span>
-              <span>Source: <b>supply_chain.json · JARVIS RETURNS · Walmart · Brand Analytics</b></span>
+              <span>Source: <b>Claude in Chrome · supply_chain.json · JARVIS RETURNS · Walmart export</b></span>
             </div>
           </div>
-          <div class="alert-strip info" id="ops-alert-strip">ℹ️ Aggregates all data sources that require manual updates or run on non-daily schedules.</div>
+          <div class="alert-strip info" id="ops-alert-strip">ℹ️ Data that requires our team to manually push or trigger — Chrome scrapes, repo updates, and monthly runs.</div>
 
-          <!-- Manual source status board -->
+          <!-- Status board — OUR manual sources only -->
           <div id="ops-status-board"></div>
 
-          <!-- Inventory + Supply Chain -->
+          <!-- Inventory + Supply Chain (Patrick → GitHub push) -->
           <div class="sec-head" style="margin-top:20px;">
             <h2>Inventory + Supply Chain</h2>
             <span class="tag" id="ops-inv-tag">—</span>
             <span class="when" id="ops-inv-when"></span>
           </div>
-          <div class="sec-desc">COGS master JSON (<code>supply_chain.json</code>) — Patrick updates when stock levels, pricing, or supplier costs change. Drives breakeven ROAS calculations across all ad channels.</div>
+          <div class="sec-desc">Patrick pushes updates to <code>data/supply_chain.json</code> in GitHub when stock levels, COGS, or pricing changes. Drives breakeven ROAS across all channels.</div>
           <div id="ops-inventory-panel"></div>
 
-          <!-- Amazon Customer Returns -->
+          <!-- Amazon Customer Returns (JARVIS RETURNS v1.0 — manual trigger) -->
           <div class="sec-head" style="margin-top:20px;">
             <h2>Amazon Customer Returns</h2>
             <span class="tag" id="ops-returns-tag">—</span>
             <span class="when" id="ops-returns-when"></span>
           </div>
-          <div class="sec-desc">JARVIS RETURNS v1.0 — runs first Monday of each month (manual trigger). Pulls FBA Customer Returns report from Seller Central email. Return rate by ASIN, reason codes, refund value.</div>
+          <div class="sec-desc">JARVIS RETURNS v1.0 — Patrick manually triggers the first Monday of each month via Claude in Chrome. Pulls the FBA Customer Returns report from Seller Central. Return rate, reason codes, refund value by ASIN.</div>
           <div id="ops-returns-panel"></div>
 
-          <!-- Walmart -->
-          <div class="sec-head" style="margin-top:20px;">
-            <h2>Walmart</h2>
-            <span class="tag" id="ops-walmart-tag">—</span>
-            <span class="when" id="ops-walmart-when"></span>
-          </div>
-          <div class="sec-desc">6 SKUs live on Walmart.com, fulfilled via Amazon MCF. No API pull wired — Patrick updates weekly from Walmart Seller Center. Target: wire Walmart MCP connector.</div>
-          <div id="ops-walmart-panel"></div>
-
-          <!-- Brand Analytics -->
+          <!-- Brand Analytics (Step 5f — Mondays Chrome scrape) -->
           <div class="sec-head" style="margin-top:20px;">
             <h2>Brand Analytics</h2>
             <span class="tag" id="ops-ba-tag">—</span>
             <span class="when" id="ops-ba-when"></span>
           </div>
-          <div class="sec-desc">Step 5f runs Mondays only via Chrome scrape. Search Query Performance and Repeat Purchase Behavior are updated manually by Patrick from Seller Central until SP-API integration is complete.</div>
+          <div class="sec-desc">Step 5f — JARVIS scrapes Seller Central Brand Analytics via Claude in Chrome every Monday. Search funnel, repeat purchase rate, branded search volume. Does not run on other days.</div>
           <div id="ops-ba-panel"></div>
+
+          <!-- Walmart (Patrick manual export) -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Walmart</h2>
+            <span class="tag" id="ops-walmart-tag">—</span>
+            <span class="when" id="ops-walmart-when"></span>
+          </div>
+          <div class="sec-desc">Patrick manually exports from <a href="https://seller.walmart.com" target="_blank">seller.walmart.com</a> and pushes to <code>data/walmart.json</code>. 6 SKUs live, fulfilled via Amazon MCF. Target: Walmart Marketplace API v3.</div>
+          <div id="ops-walmart-panel"></div>
 
           <!-- Pending connections -->
           <div class="sec-head" style="margin-top:20px;">
             <h2>Pending Connections</h2>
           </div>
+          <div class="sec-desc">These are blocking automation upgrades — each one removes a manual step from the routine.</div>
           <div id="ops-pending-panel"></div>
+
+          <!-- ── THIRD-PARTY OWNED DATA (separator) ─────────────────────── -->
+          <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border-strong);">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+              color:var(--muted);margin-bottom:4px;">Third-Party Managed Data</div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:16px;">
+              Data owned and updated by people outside the routine — we read it, we don't push it.
+            </div>
+            <div id="ops-third-party-panel"></div>
+          </div>
 
         </div>
 
@@ -3551,14 +3562,13 @@ function renderOps(d){
 
   if(_o('ops-last-run')) _o('ops-last-run').textContent = d.last_updated||'—';
 
-  const inv  = d.helium10_inventory  || {};
-  const sc   = d.business_health     || {};
-  const ret  = d.amazon_returns      || {};
-  const wmt  = d.walmart             || {};
-  const ba   = d.brand_analytics     || {};
-  const rv   = d.reviews             || {};
-  const tt   = d.tiktok_shop         || {};
-  const sm   = d.social_media        || {};
+  const inv  = d.helium10_inventory || {};
+  const ret  = d.amazon_returns     || {};
+  const wmt  = d.walmart            || {};
+  const ba   = d.brand_analytics    || {};
+  const rv   = d.reviews            || {};
+  const tt   = d.tiktok_shop        || {};
+  const sm   = d.social_media       || {};
 
   const ASIN_NAMES = {
     'B0FQL56V99':'Emergency Dematter','B0FQF2VTMJ':'Rake Brush',
@@ -3566,80 +3576,88 @@ function renderOps(d){
     'B0FQDHXSZ5':'Pin Brush','B0FQ628KCH':'Slicker Brush (liq.)'
   };
 
-  // ── STATUS BOARD ──────────────────────────────────────────────────────────
-  const sources = [
-    { name:'Inventory + Supply Chain', owner:'Patrick', schedule:'On change',
-      last: inv.report_date||'—',
+  // ── OUR MANUAL SOURCES (team pushes/triggers) ────────────────────────────
+  const ourSources = [
+    { name:'Inventory / Supply Chain',
+      owner:'Patrick → GitHub push',
+      how:'Edit data/supply_chain.json in repo → push to main',
+      last: inv.report_date || '—',
       status: (inv.skus||[]).length > 0 ? 'ok' : 'warn',
       note: (inv.skus||[]).length > 0
-        ? (inv.skus||[]).length+' SKUs tracked'
-        : 'No SKU data — Patrick needs to update supply_chain.json' },
-    { name:'Amazon Customer Returns', owner:'Patrick (JARVIS RETURNS)', schedule:'1st Monday monthly',
-      last: ret.report_date||'—',
-      status: ret.available ? 'ok' : 'na',
+        ? (inv.skus||[]).length+' SKUs loaded · last push: '+(inv.report_date||'?')
+        : 'No data — Patrick needs to push supply_chain.json to GitHub' },
+    { name:'Amazon Customer Returns',
+      owner:'Patrick → Claude in Chrome (JARVIS RETURNS v1.0)',
+      how:'First Monday of month — run JARVIS RETURNS standalone script',
+      last: ret.report_date || 'Not run this month',
+      status: ret.available ? 'ok' : 'warn',
       note: ret.available
-        ? fmtI(ret.total_returns)+' returns · '+fmtP(ret.return_rate)+' rate'
-        : 'Run JARVIS RETURNS v1.0 on first Monday of month' },
-    { name:'Walmart', owner:'Patrick', schedule:'Manual/weekly',
-      last: wmt.last_updated||'—',
-      status: wmt.available ? 'ok' : 'na',
-      note: wmt.available
-        ? fmtD(wmt.gmv_7d)+' GMV · '+fmtI(wmt.orders_7d)+' orders'
-        : 'Not connected — Patrick exports manually from seller.walmart.com' },
-    { name:'Brand Analytics', owner:'Patrick', schedule:'Mondays (Step 5f)',
-      last: ba.week_of||'—',
-      status: ba.available&&ba.funnel_extracted ? 'ok' : ba.available ? 'warn' : 'na',
+        ? fmtI(ret.total_returns)+' returns · '+fmtP(ret.return_rate)+' return rate'
+        : 'Not run this month — trigger JARVIS RETURNS v1.0 on first Monday' },
+    { name:'Brand Analytics',
+      owner:'JARVIS → Claude in Chrome (Mondays, Step 5f)',
+      how:'Runs automatically every Monday morning — no trigger needed',
+      last: ba.week_of || 'Next Monday',
+      status: ba.available && ba.funnel_extracted ? 'ok' : ba.available ? 'warn' : 'na',
       note: ba.available
-        ? 'Week of '+(ba.week_of||'?')+' · '+(ba.funnel_extracted?'Funnel ✓':'Funnel missing')
-        : 'Runs Mondays only via Chrome scrape' },
-    { name:"Product Reviews (Angelo's Sheet)", owner:'Angelo', schedule:'Weekly',
-      last: rv.sheet_last_modified||'—',
-      status: rv.status==='RED'?'crit':(rv.days_since_last_review||0)>7?'warn':'ok',
-      note: rv.available
-        ? (rv.new_review_count||0)+' new · '+(rv.avg_rating_new_batch||'?')+'★ · '+(rv.days_since_last_review||'?')+'d since update'
-        : 'Angelo needs to update the review sheet' },
-    { name:'TikTok Shop Open Platform API', owner:'Will', schedule:'Pending app approval',
-      last: tt.scrape_date||'Chrome scrape',
-      status: tt.available ? 'warn' : 'na',
+        ? 'Week of '+(ba.week_of||'?')+' · '+(ba.funnel_extracted?'Funnel ✓':'Funnel incomplete')
+        : 'Only runs Mondays — shows — on other days' },
+    { name:'Walmart',
+      owner:'Patrick → manual export + push',
+      how:'Export from seller.walmart.com → save as data/walmart.json → push to main',
+      last: wmt.last_updated || '—',
+      status: wmt.available ? 'ok' : 'warn',
+      note: wmt.available
+        ? fmtD(wmt.gmv_7d)+' GMV 7d · '+fmtI(wmt.orders_7d)+' orders'
+        : '6 SKUs live — Patrick needs to push Walmart data' },
+    { name:'TikTok Shop (Chrome → API upgrade pending)',
+      owner:'JARVIS → Claude in Chrome (Will's machine, daily, Step 5g)',
+      how:'Runs daily automatically on Will's machine — requires Will logged into Seller Center',
+      last: tt.scrape_date || '—',
+      status: tt.available ? 'ok' : 'warn',
       note: tt.available
-        ? 'Chrome scrape active — needs Will to apply for Open Platform API'
-        : 'Apply at developers.tiktok.com for proper API access' },
-    { name:'Social Media (Meta re-auth needed)', owner:'Will', schedule:'Pending',
-      last: sm.scrape_date||'—',
-      status: sm.available?'ok':sm.reauth_needed?'warn':'na',
+        ? 'Chrome scrape active · upgrade to Open Platform API removes browser dependency'
+        : 'Chrome not connected or not logged into seller-us.tiktok.com' },
+    { name:'Social Media (pending Will re-auth)',
+      owner:'JARVIS → Meta Graph API (Step 5h)',
+      how:'Will re-auth at business.facebook.com → add instagram_manage_insights scope',
+      last: sm.scrape_date || 'Not connected',
+      status: sm.available ? 'ok' : sm.reauth_needed ? 'warn' : 'na',
       note: sm.available
-        ? fmtI((sm.ig||{}).followers_count)+' followers · '+(sm.posts_7d_count||0)+' posts/wk'
-        : 'Will: re-auth Meta at business.facebook.com → add instagram_manage_insights' }
+        ? fmtI((sm.ig||{}).followers_count)+' IG followers · '+(sm.posts_7d_count||0)+' posts this week'
+        : 'Blocked — Will needs to re-auth Meta connection with instagram_manage_insights' }
   ];
 
   const sCls = {ok:'pill-ok',warn:'pill-warn',crit:'pill-crit',na:'pill-na'};
   const sIco = {ok:'🟢',warn:'🟡',crit:'🔴',na:'⚪'};
 
-  const boardRows = sources.map(s=>
+  // Status board — our sources
+  const boardRows = ourSources.map(s=>
     '<tr>'
-    +'<td style="font-size:13px;font-weight:500;">'+_esc(s.name)+'</td>'
-    +'<td style="font-size:12px;color:var(--muted);">'+_esc(s.owner)+'</td>'
-    +'<td style="font-size:12px;color:var(--muted);">'+_esc(s.schedule)+'</td>'
-    +'<td style="font-size:12px;color:var(--muted);">'+_esc(s.last)+'</td>'
+    +'<td><div style="font-size:13px;font-weight:500;">'+_esc(s.name)+'</div>'
+    +'<div style="font-size:11px;color:var(--muted);margin-top:2px;">'+_esc(s.how)+'</div></td>'
+    +'<td style="font-size:12px;color:var(--muted);white-space:nowrap;">'+_esc(s.owner)+'</td>'
+    +'<td style="font-size:12px;color:var(--muted);white-space:nowrap;">'+_esc(s.last)+'</td>'
     +'<td><span class="pill '+sCls[s.status]+'">'+sIco[s.status]+' '+s.status.toUpperCase()+'</span></td>'
-    +'<td style="font-size:11px;color:var(--muted);max-width:200px;">'+_esc(s.note)+'</td>'
+    +'<td style="font-size:11px;color:var(--muted);">'+_esc(s.note)+'</td>'
     +'</tr>'
   ).join('');
 
   const board = _o('ops-status-board');
   if(board) board.innerHTML =
     '<div class="tbl-wrap" style="margin-bottom:16px;">'
-    +'<div class="tbl-title">Manual Data Source Status</div>'
-    +'<table><thead><tr><th>Source</th><th>Owner</th><th>Schedule</th>'
-    +'<th>Last Updated</th><th>Status</th><th>Notes</th>'
+    +'<div class="tbl-title">Our Manual Push / Chrome Pull Status</div>'
+    +'<table><thead><tr>'
+    +'<th>Source</th><th>Owner / Method</th><th>Last Updated</th>'
+    +'<th>Status</th><th>Notes</th>'
     +'</tr></thead><tbody>'+boardRows+'</tbody></table></div>';
 
-  const hasCrit = sources.some(s=>s.status==='crit');
-  const hasWarn = sources.some(s=>s.status==='warn');
+  const hasCrit = ourSources.some(s=>s.status==='crit');
+  const hasWarn = ourSources.some(s=>s.status==='warn');
   const opsTag = _o('ops-tag');
   if(opsTag){
     opsTag.className = hasCrit?'tag tag-crit':hasWarn?'tag tag-warn':'tag tag-live';
-    opsTag.textContent = hasCrit?'ACTION NEEDED':hasWarn?'NEEDS ATTENTION':'OK';
+    opsTag.textContent = hasCrit?'ACTION NEEDED':hasWarn?'NEEDS PUSH':'UP TO DATE';
   }
   const dotEl = _o('dot-ops');
   if(dotEl) dotEl.className = 'nav-dot '+(hasCrit?'red':hasWarn?'yellow':'green');
@@ -3648,9 +3666,9 @@ function renderOps(d){
   const skus = inv.skus || [];
   const invTag = _o('ops-inv-tag');
   if(invTag){
-    const critSkus = skus.filter(s=>['LIQUIDATION','ZERO_VELOCITY'].includes(s.status));
-    invTag.className = critSkus.length?'tag tag-crit':skus.length?'tag tag-live':'tag tag-na';
-    invTag.textContent = critSkus.length?critSkus.length+' CRITICAL':skus.length?'OK':'NO DATA';
+    const crit = skus.filter(s=>['LIQUIDATION','ZERO_VELOCITY'].includes(s.status));
+    invTag.className = crit.length?'tag tag-crit':skus.length?'tag tag-live':'tag tag-na';
+    invTag.textContent = crit.length?crit.length+' CRITICAL':skus.length?'OK':'NO DATA';
   }
   if(_o('ops-inv-when')) _o('ops-inv-when').textContent = inv.report_date||'—';
   const stClr = {HEALTHY:'pill-ok',EXCESS:'pill-warn',LIQUIDATION:'pill-crit',ZERO_VELOCITY:'pill-crit'};
@@ -3658,53 +3676,74 @@ function renderOps(d){
     '<tr>'
     +'<td style="font-family:monospace;font-size:11px;">'+_esc(s.asin)+'</td>'
     +'<td style="font-size:12px;">'+_esc(ASIN_NAMES[s.asin]||s.asin)+'</td>'
-    +'<td><span class="pill '+(stClr[s.status]||'pill-na')+'">'+_esc(s.status||'?')+'</span></td>'
+    +'<td><span class="pill '+(stClr[s.status]||'pill-na')+'">'+_esc(s.status)+'</span></td>'
     +'<td class="r">'+(s.days_of_supply!=null?s.days_of_supply+'d':'—')+'</td>'
     +'<td style="font-size:11px;color:var(--muted);">'
     +(s.status==='LIQUIDATION'?'⚠️ No ad spend allowed'
-      :s.status==='ZERO_VELOCITY'?'🔴 Zero sales — investigate'
-      :s.status==='EXCESS'?'Consider reducing PPC bids':'')
-    +'</td></tr>'
+      :s.status==='ZERO_VELOCITY'?'🔴 Zero velocity — investigate'
+      :s.status==='EXCESS'?'Reduce PPC bids':'')+'</td></tr>'
   ).join('')
-  : '<tr><td colspan="5" style="color:var(--muted);font-style:italic;">No data — Patrick needs to update supply_chain.json in the repo.</td></tr>';
+  : '<tr><td colspan="5" style="color:var(--muted);font-style:italic;">No data — Patrick pushes supply_chain.json to GitHub when stock/COGS changes.</td></tr>';
   if(_o('ops-inventory-panel')) _o('ops-inventory-panel').innerHTML =
-    '<div class="tbl-wrap"><div class="tbl-title">Per-SKU Inventory Status</div>'
+    '<div class="tbl-wrap"><div class="tbl-title">Per-SKU Status</div>'
     +'<table><thead><tr><th>ASIN</th><th>Product</th><th>Status</th>'
-    +'<th class="r">Days Supply</th><th>Note</th></tr></thead>'
+    +'<th class="r">Days Supply</th><th>Flag</th></tr></thead>'
     +'<tbody>'+skuRows+'</tbody></table></div>'
-    +'<div class="alert alert-info" style="margin-top:8px;">To update: edit '
-    +'<code>data/supply_chain.json</code> in the GitHub repo and push to main. '
-    +'Include: asin, cost, msrp, return_rate, units_on_hand, reorder_point.</div>';
+    +'<div class="alert alert-info" style="margin-top:8px;">Patrick: edit '
+    +'<code>data/supply_chain.json</code> in the GitHub repo → push to main. '
+    +'Fields: asin, cost, msrp, return_rate, units_on_hand, reorder_point.</div>';
 
-  // ── RETURNS ───────────────────────────────────────────────────────────────
+  // ── AMAZON RETURNS ────────────────────────────────────────────────────────
   const retTag = _o('ops-returns-tag');
   if(retTag){ retTag.className=ret.available?'tag tag-live':'tag tag-na'; retTag.textContent=ret.available?'LOADED':'NOT RUN'; }
   if(_o('ops-returns-when')) _o('ops-returns-when').textContent = ret.report_date||'Pending';
   if(_o('ops-returns-panel')) _o('ops-returns-panel').innerHTML = ret.available
     ? '<div class="panel-grid pg-3" style="margin-bottom:12px;">'
-      +'<div class="metric-card"><div class="metric-label">Total returns</div>'
-      +'<div class="metric-value">'+fmtI(ret.total_returns)+'</div></div>'
-      +'<div class="metric-card"><div class="metric-label">Return rate</div>'
-      +'<div class="metric-value" style="color:'+((ret.return_rate||0)>10?'var(--red)':'inherit')+'">'+fmtP(ret.return_rate)+'</div></div>'
-      +'<div class="metric-card"><div class="metric-label">Refund value</div>'
-      +'<div class="metric-value">'+fmtD(ret.refund_value)+'</div></div></div>'
+      +'<div class="metric-card"><div class="metric-label">Total returns</div><div class="metric-value">'+fmtI(ret.total_returns)+'</div></div>'
+      +'<div class="metric-card"><div class="metric-label">Return rate</div><div class="metric-value" style="color:'+((ret.return_rate||0)>10?'var(--red)':'inherit')+'">'+fmtP(ret.return_rate)+'</div></div>'
+      +'<div class="metric-card"><div class="metric-label">Refund value</div><div class="metric-value">'+fmtD(ret.refund_value)+'</div></div></div>'
       +'<div class="tbl-wrap"><div class="tbl-title">By ASIN — '+_esc(ret.period||'')+'</div>'
-      +'<table><thead><tr><th>Product</th><th class="r">Returns</th>'
-      +'<th class="r">Rate</th><th>Top Reason</th></tr></thead><tbody>'
-      +(ret.by_asin||[]).map(r=>
-        '<tr><td>'+_esc(ASIN_NAMES[r.asin]||r.asin)+'</td>'
+      +'<table><thead><tr><th>Product</th><th class="r">Returns</th><th class="r">Rate</th><th>Top Reason</th></tr></thead><tbody>'
+      +(ret.by_asin||[]).map(r=>'<tr><td style="font-size:12px;">'+_esc(ASIN_NAMES[r.asin]||r.asin)+'</td>'
         +'<td class="r">'+fmtI(r.returns)+'</td>'
         +'<td class="r" style="color:'+((r.return_rate_pct||0)>10?'var(--red)':'inherit')+'">'+fmtP(r.return_rate_pct)+'</td>'
-        +'<td style="font-size:11px;color:var(--muted);">'+_esc(r.top_reason||'—')+'</td></tr>'
-      ).join('')
+        +'<td style="font-size:11px;color:var(--muted);">'+_esc(r.top_reason||'—')+'</td></tr>').join('')
       +'</tbody></table></div>'
-    : '<div class="alert alert-info">JARVIS RETURNS v1.0 runs first Monday of each month. '
-      +'Download the FBA Customer Returns report from Seller Central → Reports → Fulfillment → Customer Returns, '
-      +'then run the standalone JARVIS RETURNS script.</div>';
+    : '<div class="alert alert-info">'
+      +'<b>How to run:</b> First Monday of each month, Patrick runs the JARVIS RETURNS v1.0 standalone script via Claude in Chrome. '
+      +'Downloads FBA Customer Returns report from Seller Central → Reports → Fulfillment → Customer Returns, '
+      +'then JARVIS parses it and pushes <code>data/amazon_returns.json</code> to GitHub.'
+      +'</div>';
+
+  // ── BRAND ANALYTICS ───────────────────────────────────────────────────────
+  const baTag = _o('ops-ba-tag');
+  if(baTag){
+    baTag.className=ba.available&&ba.funnel_extracted?'tag tag-live':ba.available?'tag tag-warn':'tag tag-na';
+    baTag.textContent=ba.available?(ba.funnel_extracted?'LOADED':'PARTIAL'):'MONDAYS ONLY';
+  }
+  if(_o('ops-ba-when')) _o('ops-ba-when').textContent = ba.week_of||'Next Monday';
+  if(_o('ops-ba-panel')) _o('ops-ba-panel').innerHTML = ba.available
+    ? '<div class="panel-grid pg-2"><div class="panel"><div class="panel-title">Search Funnel — Week of '+_esc(ba.week_of||'?')+'</div>'
+      +(ba.funnel_extracted
+        ? '<div class="legend-row"><span>Impressions</span><b>'+fmtI((ba.funnel||{}).impressions)+'</b></div>'
+          +'<div class="legend-row"><span>Clicks</span><b>'+fmtI((ba.funnel||{}).clicks)+'</b></div>'
+          +'<div class="legend-row"><span>Cart adds</span><b>'+fmtI((ba.funnel||{}).cart_adds)+'</b></div>'
+          +'<div class="legend-row"><span>Purchases</span><b>'+fmtI((ba.funnel||{}).purchases)+'</b></div>'
+          +'<div class="legend-row"><span>Conversion rate</span><b>'+fmtP((ba.funnel||{}).conversion_rate)+'</b></div>'
+        : '<div style="color:var(--muted);font-size:12px;">Funnel not extracted this week.</div>')
+      +'</div><div class="panel"><div class="panel-title">Repeat Purchase + Brand Search</div>'
+      +(ba.repeat_purchase_extracted
+        ? '<div class="legend-row"><span>Repeat purchase rate</span><b>'+fmtP((ba.repeat_purchase||{}).rate)+'</b></div>'
+        : '<div style="font-size:12px;color:var(--muted);margin-bottom:6px;">Repeat purchase not extracted.</div>')
+      +(ba.brand_search_extracted
+        ? '<div class="legend-row"><span>Branded search vol.</span><b>'+fmtI((ba.brand_search||{}).volume)+'</b></div>'
+        : '<div style="font-size:12px;color:var(--muted);">Brand search not extracted.</div>')
+      +'</div></div>'
+    : '<div class="alert alert-info">Runs automatically every Monday via Step 5f (Claude in Chrome → Seller Central Brand Analytics). Shows — on all other days. Last run: '+_esc(ba.week_of||'no data yet')+'.</div>';
 
   // ── WALMART ───────────────────────────────────────────────────────────────
   const wmtTag = _o('ops-walmart-tag');
-  if(wmtTag){ wmtTag.className=wmt.available?'tag tag-live':'tag tag-na'; wmtTag.textContent=wmt.available?'CONNECTED':'NOT CONNECTED'; }
+  if(wmtTag){ wmtTag.className=wmt.available?'tag tag-live':'tag tag-warn'; wmtTag.textContent=wmt.available?'DATA LOADED':'NEEDS PUSH'; }
   if(_o('ops-walmart-when')) _o('ops-walmart-when').textContent = wmt.last_updated||'—';
   const WMT_SKUS=[
     {asin:'B0FQL56V99',name:'Emergency Dematter Cream'},
@@ -3718,74 +3757,79 @@ function renderOps(d){
     ? '<div class="panel-grid pg-3"><div class="metric-card"><div class="metric-label">GMV (7d)</div><div class="metric-value">'+fmtD(wmt.gmv_7d)+'</div></div>'
       +'<div class="metric-card"><div class="metric-label">Orders (7d)</div><div class="metric-value">'+fmtI(wmt.orders_7d)+'</div></div>'
       +'<div class="metric-card"><div class="metric-label">Active listings</div><div class="metric-value">'+fmtI(wmt.active_listings)+'</div></div></div>'
-    : '<div class="panel-grid pg-2" style="margin-bottom:12px;">'
-      +'<div class="panel"><div class="panel-title">6 Active SKUs on Walmart.com</div>'
+    : '<div class="panel-grid pg-2" style="margin-bottom:8px;">'
+      +'<div class="panel"><div class="panel-title">6 Active SKUs</div>'
       +WMT_SKUS.map(s=>'<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--border);font-size:12px;">'
         +'<span>'+_esc(s.name)+'</span>'
         +'<span style="font-family:monospace;font-size:11px;color:var(--muted);">'+_esc(s.asin)+'</span></div>').join('')
       +'</div>'
-      +'<div class="panel"><div class="panel-title">How to connect</div>'
+      +'<div class="panel"><div class="panel-title">Patrick: how to push</div>'
       +'<div style="font-size:12px;color:var(--muted);line-height:1.8;">'
-      +'<b>Now:</b> Patrick exports weekly from<br>'
-      +'<a href="https://seller.walmart.com" target="_blank" style="color:var(--text-accent);">↗ seller.walmart.com</a> → Analytics<br><br>'
-      +'<b>Future:</b> Walmart Marketplace API v3<br>Apply at developer.walmart.com<br><br>'
-      +'<b>Note:</b> Fulfilled via Amazon MCF so<br>inventory is already in Amazon data.'
+      +'1. Go to <a href="https://seller.walmart.com" target="_blank" style="color:var(--text-accent);">seller.walmart.com</a><br>'
+      +'2. Analytics → Performance Report → Export<br>'
+      +'3. Save as <code>data/walmart.json</code> in repo<br>'
+      +'4. Push to main → dashboard updates<br><br>'
+      +'<b>Long term:</b> Walmart Marketplace API v3<br>'
+      +'Apply at developer.walmart.com'
       +'</div></div></div>';
-
-  // ── BRAND ANALYTICS ───────────────────────────────────────────────────────
-  const baTag = _o('ops-ba-tag');
-  if(baTag){
-    baTag.className=ba.available&&ba.funnel_extracted?'tag tag-live':ba.available?'tag tag-warn':'tag tag-na';
-    baTag.textContent=ba.available?(ba.funnel_extracted?'LOADED':'PARTIAL'):'NOT RUN';
-  }
-  if(_o('ops-ba-when')) _o('ops-ba-when').textContent = ba.week_of||'Runs Mondays';
-  if(_o('ops-ba-panel')) _o('ops-ba-panel').innerHTML = ba.available
-    ? '<div class="panel-grid pg-2"><div class="panel"><div class="panel-title">Search Funnel — Week of '+_esc(ba.week_of||'?')+'</div>'
-      +(ba.funnel_extracted
-        ? '<div class="legend-row"><span>Impressions</span><b>'+fmtI((ba.funnel||{}).impressions)+'</b></div>'
-          +'<div class="legend-row"><span>Clicks</span><b>'+fmtI((ba.funnel||{}).clicks)+'</b></div>'
-          +'<div class="legend-row"><span>Cart adds</span><b>'+fmtI((ba.funnel||{}).cart_adds)+'</b></div>'
-          +'<div class="legend-row"><span>Purchases</span><b>'+fmtI((ba.funnel||{}).purchases)+'</b></div>'
-          +'<div class="legend-row"><span>Conversion rate</span><b>'+fmtP((ba.funnel||{}).conversion_rate)+'</b></div>'
-        : '<div style="color:var(--muted);font-size:12px;">Funnel not extracted this week.</div>')
-      +'</div><div class="panel"><div class="panel-title">Repeat Purchase + Brand Search</div>'
-      +(ba.repeat_purchase_extracted
-        ? '<div class="legend-row"><span>Repeat purchase rate</span><b>'+fmtP((ba.repeat_purchase||{}).rate)+'</b></div>'
-        : '<div style="color:var(--muted);font-size:12px;margin-bottom:8px;">Repeat purchase data not extracted.</div>')
-      +(ba.brand_search_extracted
-        ? '<div class="legend-row"><span>Branded search vol.</span><b>'+fmtI((ba.brand_search||{}).volume)+'</b></div>'
-        : '<div style="color:var(--muted);font-size:12px;">Brand search not extracted.</div>')
-      +'</div></div>'
-    : '<div class="alert alert-info">Brand Analytics runs Mondays only (Step 5f Chrome scrape). '
-      +'Last run: '+_esc(ba.week_of||'no data yet')+'. '
-      +'Patrick enters Sections 6+7 manually from Seller Central until SP-API integration.</div>';
 
   // ── PENDING CONNECTIONS ───────────────────────────────────────────────────
   const pending = [
-    { name:'TikTok Shop Open Platform API', status:'pending', owner:'Will',
-      action:'Apply at developers.tiktok.com → TikTok Shop Open Platform → Create App → request analytics.base.read + order.base.read',
-      benefit:'Replaces Chrome scrape (Step 5g) — proper API, historical dates, server-side' },
-    { name:'Meta instagram_manage_insights', status:'pending', owner:'Will',
-      action:'business.facebook.com/settings → Connected Apps → re-auth with instagram_manage_insights + pages_read_engagement + instagram_basic',
-      benefit:'Unlocks Social Media tab — IG followers, reach, top posts, FB page metrics' },
-    { name:'Walmart Marketplace API', status:'future', owner:'Patrick + Josh',
-      action:'Apply at developer.walmart.com → Marketplace API v3 (1-2 weeks approval)',
-      benefit:'Automated daily Walmart GMV, orders, listings in Operations Hub' },
-    { name:'Supermetrics TIKSH License', status:'future', owner:'Patrick (billing)',
-      action:'hub.supermetrics.com/subscriptions/1809967 — add TikTok Shop connector',
-      benefit:'Replaces Chrome scrape with API pull, enables date range queries' }
+    { name:'TikTok Shop Open Platform API', urgency:'Will',
+      action:'Apply at developers.tiktok.com → TikTok Shop section → Create App → request analytics.base.read + order.base.read + shop.base.read',
+      benefit:'Removes Chrome scrape dependency — runs on server, enables historical date ranges' },
+    { name:'Meta instagram_manage_insights', urgency:'Will',
+      action:'Go to business.facebook.com/settings → Connected Apps → re-auth existing Meta connection → add instagram_manage_insights + pages_read_engagement + instagram_basic',
+      benefit:'Activates Social Media tab — IG followers, reach, top posts, FB page metrics fully automated' },
+    { name:'Walmart Marketplace API v3', urgency:'Patrick + Josh',
+      action:'Apply at developer.walmart.com — 1-2 week approval. Replaces manual Patrick export with automated daily pull',
+      benefit:'Walmart GMV, orders, inventory auto-pushed daily — removes manual step entirely' }
   ];
-  if(_o('ops-pending-panel')) _o('ops-pending-panel').innerHTML = pending.map(p=>
-    '<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px;">'
-    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
-    +'<div style="font-size:13px;font-weight:500;">'+_esc(p.name)+'</div>'
-    +'<span class="pill '+(p.status==='pending'?'pill-warn':'pill-na')+'">'
-    +(p.status==='pending'?'⚡ ACTION NEEDED':'📋 FUTURE')+'</span></div>'
-    +'<div style="font-size:12px;color:var(--muted);line-height:1.6;">'
-    +'<b>Owner:</b> '+_esc(p.owner)+'<br>'
-    +'<b>Action:</b> '+_esc(p.action)+'<br>'
-    +'<b>Benefit:</b> '+_esc(p.benefit)+'</div></div>'
-  ).join('');
+  if(_o('ops-pending-panel')) _o('ops-pending-panel').innerHTML =
+    '<div style="display:flex;flex-direction:column;gap:10px;">'
+    +pending.map(p=>
+      '<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+      +'<div style="font-size:13px;font-weight:500;">'+_esc(p.name)+'</div>'
+      +'<span class="pill pill-warn">⚡ '+_esc(p.urgency)+' action needed</span></div>'
+      +'<div style="font-size:12px;color:var(--muted);line-height:1.6;">'
+      +'<b>Action:</b> '+_esc(p.action)+'<br>'
+      +'<b>Unlocks:</b> '+_esc(p.benefit)+'</div></div>'
+    ).join('')+'</div>';
+
+  // ── THIRD-PARTY OWNED DATA (Angelo etc.) ──────────────────────────────────
+  const tp = _o('ops-third-party-panel');
+  if(!tp) return;
+
+  const staleDays = rv.days_since_last_review || 0;
+  const reviewStatus = rv.status==='RED' ? 'crit' : staleDays > 7 ? 'warn' : 'ok';
+  const reviewStatusLbl = {ok:'UP TO DATE', warn:'STALE', crit:'NEEDS RESPONSE'}[reviewStatus];
+
+  tp.innerHTML =
+    '<div style="background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">'
+    +'<div>'
+    +'<div style="font-size:14px;font-weight:500;">Product Reviews — Angelo's Google Sheet</div>'
+    +'<div style="font-size:12px;color:var(--muted);margin-top:2px;">'
+    +'Angelo updates weekly — JARVIS reads the sheet, does not push to it</div>'
+    +'</div>'
+    +'<span class="pill '+{ok:'pill-ok',warn:'pill-warn',crit:'pill-crit'}[reviewStatus]+'">'+reviewStatusLbl+'</span>'
+    +'</div>'
+    +'<div style="display:flex;gap:24px;flex-wrap:wrap;">'
+    +'<div><div style="font-size:11px;color:var(--muted);">New reviews</div>'
+    +'<div style="font-size:20px;font-weight:600;">'+(rv.new_review_count!=null?rv.new_review_count:'—')+'</div></div>'
+    +'<div><div style="font-size:11px;color:var(--muted);">Avg rating</div>'
+    +'<div style="font-size:20px;font-weight:600;color:'+(rv.avg_rating_new_batch<3.5?'var(--red)':'var(--green)')+';">'
+    +(rv.avg_rating_new_batch!=null?rv.avg_rating_new_batch+'★':'—')+'</div></div>'
+    +'<div><div style="font-size:11px;color:var(--muted);">1-2 star (recent 15)</div>'
+    +'<div style="font-size:20px;font-weight:600;color:'+((rv.low_star_count_recent15||0)>=3?'var(--red)':'inherit')+';">'
+    +(rv.low_star_count_recent15!=null?rv.low_star_count_recent15:'—')+'</div></div>'
+    +'<div><div style="font-size:11px;color:var(--muted);">Sheet last updated</div>'
+    +'<div style="font-size:14px;font-weight:500;">'+(rv.sheet_last_modified||'—')+'</div>'
+    +(staleDays>7?'<div style="font-size:11px;color:var(--amber);">'+staleDays+'d ago — follow up with Angelo</div>':'')
+    +'</div></div>'
+    +(staleDays>7?'<div style="margin-top:12px;font-size:12px;color:var(--amber);">⚠️ Angelo needs to update the STG Weekly Review Update Google Sheet.</div>':'')
+    +'</div>';
 }
 
 // Patch window.render
