@@ -3333,7 +3333,7 @@ function bhHero(d){
     ? '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.green+'"></span>Amazon (net, yesterday)</span><b style="color:'+((hp.net_profit||0)<0?PAL.red:PAL.green)+'">'+fmtDollar(hp.net_profit)+'</b></div>'
       + '<div class="legend-row"><span><span class="legend-dot" style="background:'+(_shNet!=null?(_shNet<0?PAL.amber:PAL.teal):PAL.slate)+'"></span>Shopify</span>'
       + (_shNet!=null
-          ? '<b style="color:'+(_shNet<0?PAL.amber:PAL.green)+'">'+fmtDollar(_shNet)+'</b><span style="font-size:10px;color:var(--sub);margin-left:6px;">'+_shNote+'</span>'
+          ? '<span style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;"><b style="color:'+(_shNet<0?PAL.amber:PAL.green)+'">'+fmtDollar(_shNet)+'</b><span style="font-size:10px;color:var(--sub);white-space:nowrap;">'+_shNote+'</span></span>'
           : '<span style="color:var(--sub);font-size:11px;">'+_shNote+'</span>')
       + '</div>'
       + '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.slate+'"></span>TikTok / Walmart</span><span style="color:var(--sub);font-size:11px;">connector pending</span></div>'
