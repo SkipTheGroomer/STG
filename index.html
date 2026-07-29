@@ -975,13 +975,13 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           </div>
           <div class="alert-strip info" id="cx-alert-strip">Monitoring returns, reviews, and complaints across all channels. Full cross-channel view requires all source connectors.</div>
           <div class="kpi-grid" id="cx-kpi-grid">
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Returns / Refunds</div><div class="kpi-val kpi-na" id="cx-returns">—</div><div class="kpi-period">Cross-channel · last 30 days</div></div>
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Refund Dollars</div><div class="kpi-val kpi-na" id="cx-refund-dollars">—</div><div class="kpi-period">Estimated value returned</div></div>
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Return Rate</div><div class="kpi-val kpi-na" id="cx-return-rate">—</div><div class="kpi-period">Refunded / shipped units</div></div>
+            <div class="kpi-card kpi-amber"><div class="kpi-lbl">Zero Velocity / Liquidation SKUs</div><div class="kpi-val kpi-na" id="cx-returns">—</div><div class="kpi-period">FBA signal · full returns data needs JARVIS RETURNS v1.0</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Refund Dollars</div><div class="kpi-val kpi-na" id="cx-refund-dollars">—</div><div class="kpi-period">Runs first Monday monthly · JARVIS RETURNS v1.0</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Return Rate</div><div class="kpi-val kpi-na" id="cx-return-rate">—</div><div class="kpi-period">Runs first Monday monthly · JARVIS RETURNS v1.0</div></div>
             <div class="kpi-card kpi-grey"><div class="kpi-lbl">New Reviews</div><div class="kpi-val kpi-na" id="cx-new-reviews">—</div><div class="kpi-period">Amazon + Shopify · last check</div></div>
             <div class="kpi-card kpi-grey"><div class="kpi-lbl">Avg Rating</div><div class="kpi-val kpi-na" id="cx-avg-rating">—</div><div class="kpi-period">New batch rating</div></div>
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">1–2 Star Reviews</div><div class="kpi-val kpi-na" id="cx-low-stars">—</div><div class="kpi-period">Needs response</div></div>
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Open Critical Issues</div><div class="kpi-val kpi-na" id="cx-open-issues">—</div><div class="kpi-period">Unresolved flags</div></div>
+            <div class="kpi-card kpi-red"><div class="kpi-lbl">1–2 Star Reviews</div><div class="kpi-val kpi-na" id="cx-low-stars">—</div><div class="kpi-period">From Angelo's recent 15 · needs response</div></div>
+            <div class="kpi-card kpi-orange"><div class="kpi-lbl">Open Critical Issues</div><div class="kpi-val kpi-na" id="cx-open-issues">—</div><div class="kpi-period">Active RED flags across all channels</div></div>
           </div>
 
           <!-- Reviews migrated from standalone page -->
@@ -1997,21 +1997,69 @@ function render(d){
   const cxTag = $('cx-tag');
   const cxNewRev = cxRv.new_review_count;
   const cxAvgRat = cxRv.avg_rating_new_batch;
-  const cxLowStar = cxRv.recent ? cxRv.recent.filter(r => (r.rating||5) <= 2).length : null;
-  const cxStatus = cxRv.status === 'RED' ? 'RED' : cxRv.status === 'YELLOW' ? 'YELLOW' : cxRv.status === 'GREEN' ? 'GREEN' : null;
+  // BUG FIX: use low_star_count_recent15 when recent[] is empty (Angelo's sheet doesn't push individual rows)
+  const cxLowStar = (cxRv.recent && cxRv.recent.length > 0)
+    ? cxRv.recent.filter(r => (r.rating||5) <= 2).length
+    : (cxRv.low_star_count_recent15 != null ? cxRv.low_star_count_recent15 : null);
+  const cxStaleDays = cxRv.days_since_last_review;
+  const cxSheetDate = cxRv.sheet_last_modified;
+  // Open issues: count live RED flags across channels
+  const _cxIssues = [
+    (d.reviews||{}).status === 'RED',
+    (d.meta_ads||{}).campaigns_active_count === 0 && (d.meta_ads||{}).available,
+    ((d.supermetrics||{}).amazon_ads||{}).flagged_skus && ((d.supermetrics||{}).amazon_ads||{}).flagged_skus.length > 0,
+    (d.quickbooks||{}).status === 'RED',
+    ((d.tiktok_shop||{}).todo||{}).orders_to_ship > 0,
+    ((d.tiktok_shop||{}).ace||{}).response_rate_24h_pct === 0
+  ].filter(Boolean).length;
+  // Returns data: pull from helium10_inventory for velocity-based risk signal
+  const h10inv = d.helium10_inventory || {};
+  const _zeroVel = (h10inv.skus||[]).filter(s => s.status === 'ZERO_VELOCITY' || s.status === 'LIQUIDATION').length;
+  const _totalSkus = (h10inv.skus||[]).length;
+  const cxStatus = cxRv.status === 'RED' ? 'RED' : (cxStaleDays > 7 ? 'YELLOW' : cxRv.status === 'GREEN' ? 'GREEN' : cxRv.status === 'YELLOW' ? 'YELLOW' : null);
   if (cxTag) statusTag(cxTag, cxStatus);
   dot('dot-cx', cxStatus);
   const cxAlertEl = $('cx-alert-strip');
   if (cxAlertEl) {
-    if (cxStatus === 'RED') { cxAlertEl.className = 'alert-strip crit'; cxAlertEl.textContent = '🔴 RED alert — review batch below 3.5 stars or 3+ negative reviews. See details below.'; }
-    else if (cxStatus === 'YELLOW') { cxAlertEl.className = 'alert-strip warn'; cxAlertEl.textContent = '⚠️ Review sheet stale or concerns flagged — Angelo needs to update the Google Sheet.'; }
-    else if (cxStatus === 'GREEN') { cxAlertEl.className = 'alert-strip ok'; cxAlertEl.textContent = '✅ No critical customer experience issues this run.'; }
-    else { cxAlertEl.className = 'alert-strip info'; cxAlertEl.textContent = 'ℹ️ Monitoring returns, reviews, and complaints across all channels.'; }
+    if (cxStatus === 'RED') {
+      const lowCount = cxRv.low_star_count_recent15;
+      const avgRat = cxRv.avg_rating_new_batch;
+      const reason = lowCount != null && lowCount >= 3
+        ? `${lowCount} low-star reviews in Angelo's recent 15 — responses needed`
+        : (avgRat != null && avgRat < 3.5 ? `Avg rating ${fmtNum(avgRat,1)}★ below 3.5 threshold` : 'Review batch flagged — check Angelo\'s sheet');
+      const staleNote = cxStaleDays > 7 ? ` · ⚠️ Sheet not updated in ${cxStaleDays} days (last: ${cxSheetDate||'?'}) — follow up with Angelo` : '';
+      cxAlertEl.className = 'alert-strip crit';
+      cxAlertEl.innerHTML = '🔴 <b>' + reason + '</b>' + staleNote;
+    } else if (cxStatus === 'YELLOW' || cxStaleDays > 7) {
+      cxAlertEl.className = 'alert-strip warn';
+      cxAlertEl.innerHTML = `⚠️ Review sheet not updated in <b>${cxStaleDays} days</b> (last: ${cxSheetDate||'?'}) — Angelo needs to update the Google Sheet for new reviews to appear.`;
+    } else if (cxStatus === 'GREEN') {
+      cxAlertEl.className = 'alert-strip ok';
+      cxAlertEl.textContent = '✅ No critical customer experience issues this run.';
+    } else {
+      cxAlertEl.className = 'alert-strip info';
+      cxAlertEl.textContent = 'ℹ️ Monitoring returns, reviews, and complaints across all channels.';
+    }
   }
   const _cxEl = id => $(id);
   if (_cxEl('cx-new-reviews')) _cxEl('cx-new-reviews').innerHTML = cxNewRev != null ? `<span class="kpi-val">${fmtInt(cxNewRev)}</span>` : '<span class="kpi-val kpi-na">—</span>';
   if (_cxEl('cx-avg-rating')) _cxEl('cx-avg-rating').innerHTML = cxAvgRat != null ? `<span class="kpi-val ${cxAvgRat < 3.5 ? 'kpi-down' : 'kpi-up'}">${fmtNum(cxAvgRat,1)}★</span>` : '<span class="kpi-val kpi-na">—</span>';
   if (_cxEl('cx-low-stars')) _cxEl('cx-low-stars').innerHTML = cxLowStar != null ? `<span class="kpi-val ${cxLowStar >= 3 ? 'kpi-down' : ''}">${cxLowStar}</span>` : '<span class="kpi-val kpi-na">—</span>';
+  if (_cxEl('cx-open-issues')) _cxEl('cx-open-issues').innerHTML = `<span class="kpi-val ${_cxIssues > 0 ? 'kpi-down' : ''}">${_cxIssues}</span>`;
+  // Returns: surface H10 inventory velocity signal (full return rate data needs JARVIS RETURNS v1.0)
+  if (_cxEl('cx-returns')) _cxEl('cx-returns').innerHTML = _totalSkus > 0
+    ? `<span class="kpi-val ${_zeroVel > 0 ? 'kpi-warn' : ''}" style="font-size:16px;">${_zeroVel} SKU${_zeroVel!==1?'s':''}</span>`
+    : '<span class="kpi-val kpi-na">—</span>';
+  const cxReturnsCard = _cxEl('cx-returns') && _cxEl('cx-returns').closest('.kpi-card');
+  if (cxReturnsCard) {
+    const sub = cxReturnsCard.querySelector('.kpi-period');
+    if (sub && _totalSkus > 0) sub.textContent = _zeroVel > 0 ? 'Zero velocity / liquidation · FBA signal' : 'All SKUs moving · FBA signal';
+  }
+  // Stale note on review sheet date card
+  const rvNoteEl = $('rv-status-note');
+  if (rvNoteEl && cxStaleDays > 7) {
+    rvNoteEl.innerHTML = `<div style="background:#fff8e1;border-left:3px solid var(--amber);padding:8px 12px;border-radius:4px;font-size:11px;">⚠️ Review sheet last updated <b>${cxStaleDays} days ago</b> (${cxSheetDate||'?'}) — Angelo needs to update the Google Sheet. Return rate and complaint theme data runs first Monday monthly via JARVIS RETURNS v1.0.</div>`;
+  }
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
