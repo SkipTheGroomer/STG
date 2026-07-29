@@ -941,34 +941,35 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
               <div class="page-title-block">
                 <div class="page-title">Social Media</div>
                 <span class="tag tag-na" id="sm-tag">NOT CONNECTED</span>
-                <span class="source-badge source-pending"><span class="sb-type">META GRAPH API</span><span class="sb-file">connectors_data.social_media</span><span class="sb-section">Organic IG · FB Page · pending re-auth</span></span>
+                <span class="source-badge source-pending" id="sm-source-badge"><span class="sb-type">META GRAPH API</span><span class="sb-file">connectors_data.social_media</span><span class="sb-section">Organic IG · FB Page · pending re-auth</span></span>
               </div>
             </div>
             <div class="page-meta-bar">
               <span>Last run: <b id="sm-last-run">—</b></span>
               <span>Data through: <b id="sm-data-through">—</b></span>
-              <span>Source: <b>Instagram · Facebook · TikTok · YouTube (organic)</b></span>
+              <span>Source: <b>Instagram · Facebook · TikTok (organic)</b></span>
             </div>
           </div>
-          <div class="alert-strip info">ℹ️ Organic social connector not yet configured — data will populate once Instagram, TikTok, and YouTube analytics are connected via Supermetrics or native API.</div>
-          <div class="kpi-grid">
-            <div class="kpi-card kpi-teal"><div class="kpi-lbl">Total Views</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">All platforms · last 7 days</div></div>
-            <div class="kpi-card kpi-green"><div class="kpi-lbl">Total Engagements</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Likes + comments + shares</div></div>
-            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Net Follower Growth</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">All platforms</div></div>
-            <div class="kpi-card kpi-purple"><div class="kpi-lbl">Profile / Link Actions</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Bio link clicks</div></div>
-            <div class="kpi-card kpi-orange"><div class="kpi-lbl">Top Content</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Best performing piece</div></div>
-            <div class="kpi-card kpi-navy"><div class="kpi-lbl">Posting Consistency</div><div class="kpi-val kpi-na">No data</div><div class="kpi-period">Posts this week vs target</div></div>
+          <div class="alert-strip info" id="sm-alert-strip">ℹ️ Organic social connector not yet configured — Will needs to re-auth Meta connection with instagram_manage_insights scope.</div>
+
+          <!-- KPI Row 1: Core metrics -->
+          <div class="kpi-grid" id="sm-kpi-grid">
+            <div class="kpi-card kpi-teal"><div class="kpi-lbl">Impressions (7d)</div><div class="kpi-val kpi-na" id="sm-impressions">No data</div><div class="kpi-period">IG total views · last 7 days</div></div>
+            <div class="kpi-card kpi-green"><div class="kpi-lbl">Total Engagements (7d)</div><div class="kpi-val kpi-na" id="sm-engagements">No data</div><div class="kpi-period">Likes · comments · shares · saves</div></div>
+            <div class="kpi-card kpi-purple"><div class="kpi-lbl">Engagement Rate</div><div class="kpi-val kpi-na" id="sm-eng-rate">No data</div><div class="kpi-period">Engagements / reach · 7d avg</div></div>
+            <div class="kpi-card kpi-grey"><div class="kpi-lbl">Net Follower Growth</div><div class="kpi-val kpi-na" id="sm-follower-delta">No data</div><div class="kpi-period">IG this week vs prior week</div></div>
+            <div class="kpi-card kpi-orange"><div class="kpi-lbl">Profile Visits (7d)</div><div class="kpi-val kpi-na" id="sm-profile-visits">No data</div><div class="kpi-period">IG profile views · traffic signal</div></div>
+            <div class="kpi-card kpi-navy"><div class="kpi-lbl">Posting Consistency</div><div class="kpi-val kpi-na" id="sm-consistency">No data</div><div class="kpi-period">Posts this week vs 5-post target</div></div>
+            <div class="kpi-card kpi-teal"><div class="kpi-lbl">Revenue Attributed</div><div class="kpi-val kpi-na" id="sm-revenue">No data</div><div class="kpi-period">Social-driven orders · Shopify UTM</div></div>
+            <div class="kpi-card kpi-amber"><div class="kpi-lbl">Social Health Score</div><div class="kpi-val kpi-na" id="sm-health-score">—</div><div class="kpi-period">Composite · growth · engagement · consistency</div></div>
           </div>
-          <div class="placeholder-page">
-            <div class="placeholder-sections">
-              <div class="placeholder-section"><h4>Platform Summary</h4><p>Instagram, Facebook, TikTok, YouTube — followers, views, engagements, engagement rate, profile visits, link clicks by platform.</p></div>
-              <div class="placeholder-section"><h4>Follower Growth Trend</h4><p>7-day rolling follower growth chart across all platforms vs prior period.</p></div>
-              <div class="placeholder-section"><h4>Top Performing Content</h4><p>Best 5 pieces by views with engagement rate and link clicks.</p></div>
-              <div class="placeholder-section"><h4>Content Type Mix</h4><p>Educational vs entertainment vs product demo vs other — share of views and engagements.</p></div>
-              <div class="placeholder-section"><h4>Posting Consistency</h4><p>Posts per platform this week vs target, gaps, and scheduling recommendations.</p></div>
-              <div class="placeholder-section"><h4>YouTube</h4><p>Views, watch time, subscribers, and top video performance.</p></div>
-            </div>
-          </div>
+
+          <!-- All content panels — populated by renderSocialMedia() -->
+          <div id="sm-content-panels"></div>
+
+          <!-- AI Insights panel — populated by callSmAI() -->
+          <div id="sm-ai-panel"></div>
+
         </div>
 
         <!-- CUSTOMER EXPERIENCE + PRODUCT ISSUES -->
@@ -4125,6 +4126,442 @@ window.render = function(d){
 
 })();
 </script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   SOCIAL MEDIA v2 — Emily Adams spec
+   Adds: Engagement rate · Traffic & Conversions · Revenue attribution
+         Top content by revenue · Content Mix · AI Insights · Health Score
+   ═══════════════════════════════════════════════════════════════════════ */
+(function(){
+
+const _s = id => document.getElementById(id);
+const _e = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fi = n => n==null?'—':Number(n).toLocaleString('en-US');
+const fd = n => n==null?'—':'$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fp = (n,d=1) => n==null?'—':Number(n).toFixed(d)+'%';
+
+/* ── Social Health Score ───────────────────────────────────────────────── */
+function calcHealthScore(sm){
+  if(!sm.available) return null;
+  const ins = sm.ig_insights || {};
+  const scores = [];
+  // 1. Posting consistency (25pts)
+  const postPct = sm.posting_consistency_pct || 0;
+  scores.push(Math.min(25, postPct * 0.25));
+  // 2. Engagement rate (25pts) — benchmark 2% = full marks
+  const er = sm.avg_engagement_rate_7d || 0;
+  scores.push(Math.min(25, (er / 2.0) * 25));
+  // 3. Follower growth (25pts) — positive growth = 25, flat = 12, decline = 0
+  const delta = ins.follower_delta_7d;
+  scores.push(delta == null ? 12 : delta > 0 ? 25 : delta === 0 ? 12 : Math.max(0, 12 + delta));
+  // 4. Reach trend (25pts) — has reach data = 20pts min
+  const reach = ins.reach_7d;
+  scores.push(reach > 0 ? 25 : reach === 0 ? 0 : 12);
+  const total = Math.round(scores.reduce((a,b)=>a+b,0));
+  const grade = total >= 85?'A':total >= 70?'B':total >= 55?'C':total >= 40?'D':'F';
+  return {score: total, grade, breakdown: scores};
+}
+
+function healthScoreColor(s){ return s>=85?'var(--green)':s>=70?'var(--teal)':s>=55?'var(--amber)':'var(--red)'; }
+
+/* ── Content type classifier (keyword-based until JJ tags posts) ───────── */
+function classifyPost(caption){
+  if(!caption) return 'other';
+  const c = caption.toLowerCase();
+  if(/before.?after|transform|groom|mat|dematting|brush|comb/.test(c)) return 'product_demo';
+  if(/tip|how.?to|tutorial|why|did you know|guide|step/.test(c)) return 'educational';
+  if(/ugc|customer|review|love|obsessed|my dog|our pup/.test(c)) return 'ugc';
+  if(/sale|off|discount|promo|shop|link in bio|get yours/.test(c)) return 'promotional';
+  if(/fun|cute|adorable|puppy|pupper|wag|paw|fetch/.test(c)) return 'lifestyle';
+  return 'other';
+}
+const typeLabel = {product_demo:'Product Demo',educational:'Educational',ugc:'UGC',promotional:'Promotional',lifestyle:'Lifestyle',other:'Other'};
+const typeColor = {product_demo:'#10b981',educational:'#3b82f6',ugc:'#f59e0b',promotional:'#FF5E00',lifestyle:'#8b5cf6',other:'#94a3b8'};
+
+/* ── Main render ────────────────────────────────────────────────────────── */
+function renderSocialMedia(d){
+  const sm   = d.social_media || {};
+  const ig   = sm.ig          || {};
+  const ins  = sm.ig_insights || {};
+  const fb   = sm.fb          || {};
+  const fbI  = sm.fb_insights || {};
+  const d7   = sm.daily_7d    || [];
+  const posts = (sm.posts     || []).map(p=>({...p, content_type: classifyPost(p.caption)}));
+  const tp   = sm.top_post    || {};
+  const flags= sm.flags       || {};
+
+  /* ── status / tags ──────────────────────────────────────────────────── */
+  if(_s('sm-last-run')) _s('sm-last-run').textContent = d.last_updated||'—';
+  if(_s('sm-data-through')) _s('sm-data-through').textContent = sm.scrape_date||'—';
+
+  const smTag = _s('sm-tag');
+  const strip = _s('sm-alert-strip');
+  if(!sm.available){
+    if(smTag){ smTag.className='tag tag-na'; smTag.textContent='NOT CONNECTED'; }
+    if(strip){
+      strip.className='alert-strip warn';
+      strip.innerHTML = sm.reauth_needed
+        ? '⚠️ Will needs to re-auth Meta connection at business.facebook.com → Connected Apps → add <b>instagram_manage_insights</b> scope. Step 5h is ready and waiting.'
+        : 'ℹ️ Organic social data will populate once Meta is re-authenticated with instagram_manage_insights scope.';
+    }
+    return;
+  }
+
+  if(smTag){ smTag.className='tag tag-live'; smTag.textContent='LIVE'; }
+  if(strip){
+    const warns = (sm.flags||[]).filter(f=>!f.startsWith('hit_'));
+    strip.className = warns.length?'alert-strip warn':'alert-strip ok';
+    strip.innerHTML = warns.length
+      ? '⚠️ '+warns.map(f=>f.split(':')[1]?.trim()||f).join(' · ')
+      : '✅ Social data live — '+fi(ig.followers_count)+' IG followers · '+(sm.posts_7d_count||0)+'/5 posts this week';
+  }
+
+  /* ── health score ───────────────────────────────────────────────────── */
+  const hs = calcHealthScore(sm);
+  const hEl = _s('sm-health-score');
+  if(hEl && hs){
+    hEl.parentElement.querySelector('.kpi-val') && (hEl.parentElement.querySelector('.kpi-val').className='kpi-val');
+    hEl.innerHTML = '<span style="font-size:28px;font-weight:700;color:'+healthScoreColor(hs.score)+';">'+hs.score+'</span>'
+      +'<span style="font-size:14px;color:var(--muted);"> /100 · '+hs.grade+'</span>';
+    hEl.parentElement.querySelector('.kpi-period').textContent='Posting · engagement · growth · reach';
+  }
+
+  /* ── KPI cards ──────────────────────────────────────────────────────── */
+  const kpi = _s('sm-kpi-grid');
+  if(kpi){
+    const er = sm.avg_engagement_rate_7d;
+    const delta = ins.follower_delta_7d;
+    const revenue = sm.attributed_revenue_7d;
+    kpi.innerHTML =
+      kpiCard('Impressions (7d)',    ins.impressions_7d!=null?fi(ins.impressions_7d):null, 'IG total views · last 7 days','teal') +
+      kpiCard('Total Engagements',   sm.total_engagements_7d!=null?fi(sm.total_engagements_7d):null, 'Likes · comments · shares · saves','green') +
+      kpiCard('Engagement Rate',     er!=null?Number(er).toFixed(2)+'%':null,
+        er!=null?(er>=2?'✅ Above 2% benchmark':er>=1?'At benchmark':'Below 1% — needs work'):'Engagements / reach · 7d avg','purple',
+        er!=null&&er<1?'kpi-down':er!=null&&er>=2?'kpi-up':'') +
+      kpiCard('Net Follower Growth', delta!=null?(delta>=0?'+':'')+fi(delta):null,
+        'IG this week vs prior','grey', delta!=null&&delta<0?'kpi-down':delta!=null&&delta>0?'kpi-up':'') +
+      kpiCard('Profile Visits (7d)', ins.profile_views_7d!=null?fi(ins.profile_views_7d):null,'IG profile views · traffic signal','orange') +
+      kpiCard('Posting Consistency', sm.posts_7d_count!=null?(sm.posts_7d_count+' / '+(sm.posts_target_per_week||5)+' posts'):null,
+        sm.posting_consistency_pct!=null?(sm.posting_consistency_pct+'% of weekly target'):'Posts this week vs 5-post target',
+        (sm.posting_consistency_pct||0)<60?'amber':'teal') +
+      kpiCard('Revenue Attributed',  revenue!=null?fd(revenue):null,
+        revenue!=null?'Social-driven · Shopify UTM tracking':'Needs UTM tracking on bio link · Shopify attribution','teal') +
+      kpiCard('Social Health Score', null, 'Composite · growth · engagement · consistency','teal');
+    if(hs){ const hEl2=_s('sm-health-score'); if(hEl2){
+      hEl2.innerHTML='<span style="font-size:28px;font-weight:700;color:'+healthScoreColor(hs.score)+';">'+hs.score+'</span>'
+        +'<span style="font-size:14px;color:var(--muted);"> /100 · '+hs.grade+'</span>';
+    }}
+  }
+
+  /* ── Follower trend sparkline ──────────────────────────────────────── */
+  const maxF = Math.max(...d7.map(x=>x.ig_followers||0),1);
+  const trendBars = d7.map((x,i)=>{
+    const pct = Math.round((x.ig_followers||0)/maxF*100);
+    const isLast = i===d7.length-1;
+    const lbl = new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
+    return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">'
+      +'<div style="font-size:9px;font-weight:'+(isLast?700:400)+';color:var(--navy);">'
+      +(x.ig_followers!=null?Number(x.ig_followers).toLocaleString():'—')+'</div>'
+      +'<div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:56px;display:flex;align-items:flex-end;">'
+      +'<div style="width:100%;background:'+(isLast?'var(--orange)':'#e1306c')
+      +';height:'+Math.max(pct,(x.ig_followers||0)>0?3:0)+'%;border-radius:4px 4px 0 0;"></div></div>'
+      +'<div style="font-size:9px;color:var(--muted);font-weight:'+(isLast?700:400)+';">'+lbl+'</div>'
+      +'</div>';
+  }).join('');
+
+  /* ── Content Mix ───────────────────────────────────────────────────── */
+  const typeCounts = {};
+  const typeEngagement = {};
+  posts.forEach(p=>{
+    const t = p.content_type||'other';
+    typeCounts[t] = (typeCounts[t]||0) + 1;
+    typeEngagement[t] = (typeEngagement[t]||0) + (p.engagement_total||0);
+  });
+  const totalPosts = posts.length || 1;
+  const mixBars = Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).map(([t,n])=>{
+    const pct = Math.round(n/totalPosts*100);
+    const eng = typeEngagement[t]||0;
+    return '<div style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12px;">'
+      +'<div style="width:12px;height:12px;border-radius:3px;background:'+typeColor[t]+';flex-shrink:0;"></div>'
+      +'<div style="width:110px;color:var(--text-secondary);">'+(typeLabel[t]||t)+'</div>'
+      +'<div style="flex:1;background:#eef1f4;border-radius:3px;height:7px;">'
+      +'<div style="background:'+typeColor[t]+';width:'+pct+'%;height:7px;border-radius:3px;"></div></div>'
+      +'<div style="width:28px;text-align:right;color:var(--muted);">'+pct+'%</div>'
+      +'<div style="width:36px;text-align:right;font-weight:600;">'+n+' posts</div>'
+      +'<div style="width:70px;text-align:right;font-size:11px;color:var(--muted);">'+fi(eng)+' eng</div>'
+      +'</div>';
+  }).join('');
+
+  /* ── Top content table (by engagement) ────────────────────────────── */
+  const sortedPosts = [...posts].sort((a,b)=>(b.engagement_total||0)-(a.engagement_total||0));
+  const topRows = sortedPosts.slice(0,6).map((p,i)=>{
+    const dt = new Date(p.timestamp);
+    const dayStr = dt.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const engR = ins.reach_7d && p.reach ? ((p.engagement_total||0)/p.reach*100).toFixed(1)+'%' : '—';
+    return '<tr>'
+      +'<td style="font-size:11px;font-weight:700;color:var(--muted);">#'+(i+1)+'</td>'
+      +'<td style="font-size:11px;color:var(--muted);white-space:nowrap;">'+dayStr+'</td>'
+      +'<td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;">'
+      +(p.caption?_e(p.caption.substring(0,70)):'(no caption)')+'</td>'
+      +'<td style="font-size:11px;"><span style="background:'+typeColor[p.content_type]+';color:#fff;padding:2px 6px;border-radius:4px;font-size:10px;">'
+      +(typeLabel[p.content_type]||'Other')+'</span></td>'
+      +'<td class="r" style="font-weight:600;">'+(fi(p.engagement_total||0))+'</td>'
+      +'<td class="r" style="color:var(--muted);font-size:11px;">'+engR+'</td>'
+      +'<td class="r" style="color:var(--muted);font-size:11px;">'+(p.reach!=null?fi(p.reach):'—')+'</td>'
+      +'<td style="font-size:11px;">'
+      +(p.permalink?'<a href="'+_e(p.permalink)+'" target="_blank" style="color:var(--text-accent);">↗ View</a>':'—')+'</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ── Traffic & Conversions ─────────────────────────────────────────── */
+  const traffic = sm.traffic || {};
+  const trafficHtml =
+    '<div class="panel-grid pg-3" style="margin-bottom:14px;">'
+    +'<div class="panel"><div class="panel-title">IG Traffic</div>'
+    +'<div class="legend-row"><span>Profile visits (7d)</span><b>'+fi(ins.profile_views_7d)+'</b></div>'
+    +'<div class="legend-row"><span>Reach (7d)</span><b>'+fi(ins.reach_7d)+'</b></div>'
+    +'<div class="legend-row"><span>Impressions (7d)</span><b>'+fi(ins.impressions_7d)+'</b></div>'
+    +'<div class="legend-row"><span>IG followers</span><b>'+fi(ig.followers_count)+'</b></div>'
+    +'</div>'
+    +'<div class="panel"><div class="panel-title">Link Clicks & Conversions</div>'
+    +(traffic.link_clicks_7d!=null
+      ? '<div class="legend-row"><span>Bio link clicks (7d)</span><b>'+fi(traffic.link_clicks_7d)+'</b></div>'
+        +'<div class="legend-row"><span>Website sessions from social</span><b>'+fi(traffic.website_sessions_7d)+'</b></div>'
+        +'<div class="legend-row"><span>TikTok Shop clicks</span><b>'+fi(traffic.tiktok_shop_clicks_7d)+'</b></div>'
+        +'<div class="legend-row"><span>Social conversion rate</span><b>'+fp(traffic.conversion_rate_7d)+'</b></div>'
+      : '<div style="font-size:12px;color:var(--muted);line-height:1.6;">'
+        +'Bio link clicks + website sessions need:<br>'
+        +'• UTM params on bio link (e.g. <code>?utm_source=instagram</code>)<br>'
+        +'• GA4 connected in routine (Step 5d)<br>'
+        +'• Or Linktree/Later analytics push</div>')
+    +'</div>'
+    +'<div class="panel"><div class="panel-title">Revenue Attribution</div>'
+    +(sm.attributed_revenue_7d!=null
+      ? '<div class="legend-row"><span>Revenue from social (7d)</span><b style="color:var(--green);">'+fd(sm.attributed_revenue_7d)+'</b></div>'
+        +'<div class="legend-row"><span>Orders from social</span><b>'+fi(sm.attributed_orders_7d)+'</b></div>'
+        +'<div class="legend-row"><span>AOV social-driven</span><b>'+fd(sm.social_aov)+'</b></div>'
+      : '<div style="font-size:12px;color:var(--muted);line-height:1.6;">'
+        +'Social revenue attribution needs:<br>'
+        +'• UTM tracking on bio link → Shopify<br>'
+        +'• Patrick adds UTM params to all social links<br>'
+        +'• Then Shopify MCP pulls utm_source=instagram sessions</div>')
+    +'</div></div>';
+
+  /* ── Assemble all panels ────────────────────────────────────────────── */
+  const panels = _s('sm-content-panels');
+  if(!panels) return;
+
+  panels.innerHTML =
+    /* Follower trend */
+    (d7.length ? '<div class="tbl-wrap" style="margin-bottom:14px;padding:14px 16px;">'
+      +'<div class="tbl-title" style="margin-bottom:10px;">IG Follower Trend — '
+      +d7.length+' day'+(d7.length!==1?'s':'')+' (builds daily)</div>'
+      +'<div style="display:flex;gap:4px;align-items:flex-end;height:80px;">'+trendBars+'</div>'
+      +'<div style="display:flex;gap:12px;margin-top:6px;font-size:10px;color:var(--muted);">'
+      +'<span><span style="display:inline-block;width:8px;height:8px;background:#e1306c;border-radius:2px;margin-right:3px;"></span>Followers</span>'
+      +'<span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>Yesterday</span>'
+      +'</div></div>'
+    : '<div class="alert alert-info" style="margin-bottom:14px;">Follower trend builds after 2+ morning runs.</div>')
+
+    /* Traffic & Conversions */
+    +'<div class="sec-head" style="margin-top:4px;"><h2>Traffic &amp; Conversions</h2></div>'
+    +trafficHtml
+
+    /* Platform row */
+    +'<div class="sec-head" style="margin-top:4px;"><h2>Platform Overview</h2></div>'
+    +'<div class="panel-grid pg-3" style="margin-bottom:14px;">'
+    +'<div class="panel"><div class="panel-title">Instagram</div>'
+    +'<div class="legend-row"><span>Followers</span><b>'+fi(ig.followers_count)+'</b></div>'
+    +'<div class="legend-row"><span>7d reach</span><b>'+fi(ins.reach_7d)+'</b></div>'
+    +'<div class="legend-row"><span>7d impressions</span><b>'+fi(ins.impressions_7d)+'</b></div>'
+    +'<div class="legend-row"><span>7d engagements</span><b>'+fi(sm.total_engagements_7d)+'</b></div>'
+    +'<div class="legend-row"><span>Engagement rate</span><b>'+(sm.avg_engagement_rate_7d!=null?Number(sm.avg_engagement_rate_7d).toFixed(2)+'%':'—')+'</b></div>'
+    +'<div class="legend-row"><span>Follower change (7d)</span><b style="color:'
+    +(ins.follower_delta_7d<0?'var(--red)':'var(--green)')+'">'
+    +(ins.follower_delta_7d!=null?(ins.follower_delta_7d>=0?'+':'')+ins.follower_delta_7d:'—')+'</b></div>'
+    +'</div>'
+    +'<div class="panel"><div class="panel-title">Facebook Page</div>'
+    +'<div class="legend-row"><span>Page fans</span><b>'+fi(fb.fan_count)+'</b></div>'
+    +'<div class="legend-row"><span>Followers</span><b>'+fi(fb.followers_count)+'</b></div>'
+    +'<div class="legend-row"><span>Weekly reach</span><b>'+fi(fbI.weekly_reach)+'</b></div>'
+    +'<div class="legend-row"><span>Fan adds (7d)</span><b>'+(fbI.fan_adds_7d!=null?(fbI.fan_adds_7d>=0?'+':'')+fbI.fan_adds_7d:'—')+'</b></div>'
+    +'</div>'
+    +'<div class="panel"><div class="panel-title">Posting Consistency</div>'
+    +'<div style="font-size:28px;font-weight:700;margin:8px 0;color:'
+    +((sm.posting_consistency_pct||0)<60?'var(--amber)':'var(--teal)')+'">'
+    +(sm.posts_7d_count||0)+'<span style="font-size:16px;font-weight:400;color:var(--muted);"> / '+(sm.posts_target_per_week||5)+' target</span></div>'
+    +'<div style="background:#eef1f4;border-radius:4px;height:7px;margin:4px 0 8px;">'
+    +'<div style="background:'+((sm.posting_consistency_pct||0)<60?'var(--amber)':'var(--teal)')
+    +';width:'+Math.min(sm.posting_consistency_pct||0,100)+'%;height:7px;border-radius:4px;"></div></div>'
+    +'<div style="font-size:12px;color:var(--muted);">'
+    +((sm.posting_gap||0)>0?(sm.posting_gap)+' post'+((sm.posting_gap)!==1?'s':'')+' behind target':'Weekly target met ✅')+'</div>'
+    +'</div></div>'
+
+    /* Content Mix */
+    +'<div class="sec-head" style="margin-top:4px;"><h2>Content Mix</h2></div>'
+    +'<div class="panel-grid pg-2" style="margin-bottom:14px;">'
+    +'<div class="panel"><div class="panel-title">Breakdown by Type (last 10 posts)</div>'
+    +(posts.length ? mixBars
+      : '<div style="font-size:12px;color:var(--muted);">No post data yet — pulls after Meta re-auth.</div>')
+    +'<div style="font-size:11px;color:var(--muted);margin-top:8px;">Post types auto-classified from captions. JJ can tag posts in <code>social_media.posts[].content_type</code> for exact tracking.</div>'
+    +'</div>'
+    +'<div class="panel"><div class="panel-title">Top Content by Engagement</div>'
+    +(sortedPosts.length
+      ? sortedPosts.slice(0,3).map((p,i)=>
+          '<div style="padding:8px 0;border-bottom:0.5px solid var(--border);font-size:12px;">'
+          +'<div style="display:flex;justify-content:space-between;margin-bottom:3px;">'
+          +'<span style="background:'+typeColor[p.content_type]+';color:#fff;padding:1px 6px;border-radius:4px;font-size:10px;">'+(typeLabel[p.content_type]||'Other')+'</span>'
+          +'<span style="font-weight:600;">'+fi(p.engagement_total||0)+' eng</span></div>'
+          +'<div style="color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'
+          +(p.caption?_e(p.caption.substring(0,80)):'(no caption)')+'</div>'
+          +(p.permalink?'<a href="'+_e(p.permalink)+'" target="_blank" style="font-size:11px;color:var(--text-accent);">↗ View on Instagram</a>':'')
+          +'</div>'
+        ).join('')
+      : '<div style="font-size:12px;color:var(--muted);">No posts yet.</div>')
+    +'</div></div>'
+
+    /* Top content full table */
+    +'<div class="sec-head" style="margin-top:4px;"><h2>Top Performing Content</h2></div>'
+    +'<div class="tbl-wrap" style="margin-bottom:14px;">'
+    +'<table><thead><tr><th>#</th><th>Date</th><th>Caption</th><th>Type</th>'
+    +'<th class="r">Engagements</th><th class="r">Eng Rate</th><th class="r">Reach</th><th>Link</th>'
+    +'</tr></thead><tbody>'
+    +(topRows||'<tr><td colspan="8" style="color:var(--muted);font-style:italic;">No posts yet — pulls after Meta re-auth.</td></tr>')
+    +'</tbody></table></div>'
+
+    /* Social Health Score breakdown */
+    +(hs?'<div class="tbl-wrap" style="margin-bottom:14px;"><div class="tbl-title">Social Health Score Breakdown</div>'
+      +'<div style="display:flex;align-items:center;gap:16px;padding:14px;">'
+      +'<div style="text-align:center;">'
+      +'<div style="font-size:52px;font-weight:800;color:'+healthScoreColor(hs.score)+';">'+hs.score+'</div>'
+      +'<div style="font-size:18px;font-weight:700;color:'+healthScoreColor(hs.score)+';">'+hs.grade+'</div>'
+      +'<div style="font-size:11px;color:var(--muted);">/ 100</div></div>'
+      +'<div style="flex:1;">'
+      +[['Posting Consistency',hs.breakdown[0],25],['Engagement Rate',hs.breakdown[1],25],
+        ['Follower Growth',hs.breakdown[2],25],['Reach / Impressions',hs.breakdown[3],25]].map(([lbl,pts,max])=>
+        '<div style="margin-bottom:8px;">'
+        +'<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;">'
+        +'<span>'+lbl+'</span><span style="font-weight:600;">'+Math.round(pts)+' / '+max+'</span></div>'
+        +'<div style="background:#eef1f4;border-radius:3px;height:6px;">'
+        +'<div style="background:'+healthScoreColor(pts/max*100)+';width:'+Math.min(pts/max*100,100)+'%;height:6px;border-radius:3px;"></div></div>'
+        +'</div>'
+      ).join('')+'</div></div></div>'
+    :'');
+
+  /* ── AI Insights ────────────────────────────────────────────────────── */
+  const aiPanel = _s('sm-ai-panel');
+  if(aiPanel && sm.available){
+    aiPanel.innerHTML =
+      '<div class="sec-head" style="margin-top:4px;"><h2>AI Insights</h2></div>'
+      +'<div class="tbl-wrap" id="sm-ai-box" style="margin-bottom:14px;padding:16px;">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
+      +'<div style="font-size:13px;font-weight:500;color:var(--text-primary);">AI analysis of this week's social performance</div>'
+      +'<button onclick="callSmAI()" style="font-size:12px;padding:6px 14px;border-radius:6px;border:0.5px solid var(--border-strong);background:var(--surface-2);cursor:pointer;">↗ Generate Insights</button>'
+      +'</div>'
+      +'<div id="sm-ai-output" style="font-size:13px;color:var(--muted);font-style:italic;">Click Generate Insights to get an AI summary of trends, opportunities, and recommended actions based on this week's social data.</div>'
+      +'</div>';
+  }
+}
+
+/* ── Claude API call for AI Insights ──────────────────────────────────── */
+window.callSmAI = async function(){
+  const out = document.getElementById('sm-ai-output');
+  const btn = document.querySelector('[onclick="callSmAI()"]');
+  if(!out) return;
+  if(btn){ btn.disabled=true; btn.textContent='Generating...'; }
+  out.style.fontStyle='italic';
+  out.style.color='var(--muted)';
+  out.textContent='Analysing your social data...';
+
+  try{
+    // Get current data from the page
+    const sm = window._lastRenderData ? window._lastRenderData.social_media : null;
+    if(!sm || !sm.available){
+      out.textContent='Social media data not available. Re-auth Meta connection first.';
+      if(btn){ btn.disabled=false; btn.textContent='↗ Generate Insights'; }
+      return;
+    }
+
+    const ig = sm.ig||{};
+    const ins = sm.ig_insights||{};
+    const posts = sm.posts||[];
+    const typeCounts = {};
+    const typeEng = {};
+    posts.forEach(p=>{
+      const t = p.content_type||'other';
+      typeCounts[t] = (typeCounts[t]||0)+1;
+      typeEng[t] = (typeEng[t]||0)+(p.engagement_total||0);
+    });
+    const topPost = [...posts].sort((a,b)=>(b.engagement_total||0)-(a.engagement_total||0))[0];
+
+    const prompt = `You are the social media analyst for Skip the Groomer (STG), a D2C pet grooming brand.
+Analyse this week's Instagram performance data and provide 3-5 specific, actionable insights.
+
+DATA:
+- Followers: ${ig.followers_count?.toLocaleString()||'?'} (change this week: ${ins.follower_delta_7d>=0?'+':''}${ins.follower_delta_7d??'?'})
+- 7d Reach: ${ins.reach_7d?.toLocaleString()||'?'}
+- 7d Impressions: ${ins.impressions_7d?.toLocaleString()||'?'}
+- 7d Engagements: ${sm.total_engagements_7d?.toLocaleString()||'?'}
+- Engagement Rate: ${sm.avg_engagement_rate_7d?.toFixed(2)||'?'}%
+- Posts this week: ${sm.posts_7d_count||0} / ${sm.posts_target_per_week||5} target
+- Profile visits: ${ins.profile_views_7d?.toLocaleString()||'?'}
+- Top post: "${topPost?.caption?.substring(0,100)||'no caption'}" — ${topPost?.engagement_total?.toLocaleString()||0} engagements
+- Content mix this week: ${Object.entries(typeCounts).map(([t,n])=>`${t}: ${n} posts (${typeEng[t]||0} eng)`).join(', ')||'no data'}
+- FB page fans: ${(sm.fb||{}).fan_count?.toLocaleString()||'?'}
+- Revenue from social: ${sm.attributed_revenue_7d!=null?'$'+sm.attributed_revenue_7d:'not tracked yet'}
+
+Write 3-5 bullet insights, each starting with a bold label like **Opportunity:** or **Watch:** or **Win:**.
+Be specific to Skip the Groomer — a dog grooming brand. Max 200 words total. Plain text, no markdown headers.`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:400,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = (data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');
+
+    if(text){
+      out.style.fontStyle='normal';
+      out.style.color='var(--text-primary)';
+      // Render **bold** markers
+      out.innerHTML = text.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/
+/g,'<br>');
+    } else {
+      out.textContent='No insights returned. Check API connection.';
+    }
+  } catch(err){
+    out.textContent='Error fetching insights: '+err.message;
+  } finally {
+    if(btn){ btn.disabled=false; btn.textContent='↗ Regenerate'; }
+  }
+};
+
+/* ── Store render data for AI to access ──────────────────────────────── */
+const _smPrevRender = window.render;
+window.render = function(d){
+  window._lastRenderData = d;
+  _smPrevRender(d);
+  try{ renderSocialMedia(d); }catch(e){ console.error('[Social v2]',e); }
+};
+
+function kpiCard(label, val, sub, accent, cls){
+  const v = (val==null||val==='')
+    ? '<div class="kpi-val kpi-na">No data</div>'
+    : '<div class="kpi-val '+(cls||'')+'">'+val+'</div>';
+  return '<div class="kpi-card kpi-'+(accent||'grey')+'">'
+    +'<div class="kpi-lbl">'+label+'</div>'+v
+    +(sub?'<div class="kpi-period">'+sub+'</div>':'')+'</div>';
+}
+
+})();
+</script>
+
 
 <script>
 /* ── RICH SOURCE BADGE UPDATER — runs after all patches ────────────────── */
