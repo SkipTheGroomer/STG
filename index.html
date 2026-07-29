@@ -3289,24 +3289,34 @@ function bhHero(d){
       {label:'Shopify', value:sh.yesterday_sales||0, color:PAL.blue}
     ], (hp.gross_revenue||sh.yesterday_sales)?fmtDollar((hp.gross_revenue||0)+(sh.yesterday_sales||0)):'', 'YESTERDAY')
     + '<div class="hero-note">TikTok Shop + Walmart revenue pending connectors (Phase D).</div>';
-  // Compute Shopify net using supply_chain.json COGS — fuzzy match product title to SKU name
+  // Shopify net profit: match top_products[] to supply_chain SKUs by any shared keyword
   const _scSkus = window.__SC_SKUS || [];
   const _shProds = sh.top_products || [];
-  let _shCogs = 0, _shMapped = 0;
+  // Build keyword sets for each supply chain SKU (all meaningful words, lowercased)
+  const STOP = new Set(['the','a','an','and','or','for','in','of','to','with','by','at']);
+  const skuWords = _scSkus.map(s => ({
+    sku: s,
+    words: (s.name||'').toLowerCase().split(/[\s\-]+/).filter(w => w.length > 2 && !STOP.has(w))
+  }));
+  let _shCogs = 0, _shMapped = 0, _shUnmatched = [];
   _shProds.forEach(p => {
     const units = p.units_sold || 0;
     if (!units) return;
-    const scSku = _scSkus.find(s => {
-      if (!s.name || !p.product_title) return false;
-      const kw = s.name.split(' ')[0].toLowerCase();
-      return p.product_title.toLowerCase().includes(kw);
-    });
-    if (scSku && scSku.cogs) { _shCogs += units * scSku.cogs; _shMapped++; }
+    const titleWords = (p.product_title||'').toLowerCase().split(/[\s\-]+/);
+    const match = skuWords.find(({words}) => words.some(w => titleWords.some(tw => tw.includes(w) || w.includes(tw))));
+    if (match && match.sku.cogs) {
+      _shCogs += units * match.sku.cogs;
+      _shMapped++;
+    } else {
+      _shUnmatched.push(p.product_title||'?');
+    }
   });
   const _shNet = (sh.yesterday_sales != null && _shMapped > 0) ? sh.yesterday_sales - _shCogs : null;
   const _shNote = _shNet != null
-    ? ('Net after COGS · ' + _shMapped + '/' + _shProds.length + ' products mapped')
-    : (_shProds.length > 0 ? 'COGS not mapped — product name mismatch' : 'No Shopify product data');
+    ? ('Net after COGS · ' + _shMapped + '/' + _shProds.length + ' matched')
+    : (_shUnmatched.length > 0
+        ? ('No match: ' + _shUnmatched.slice(0,2).join(', ').substring(0,50))
+        : 'No Shopify product data');
 
   const profitBody = hp.net_profit!=null
     ? '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.green+'"></span>Amazon (net, yesterday)</span><b style="color:'+((hp.net_profit||0)<0?PAL.red:PAL.green)+'">'+fmtDollar(hp.net_profit)+'</b></div>'
