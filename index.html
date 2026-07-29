@@ -3289,34 +3289,45 @@ function bhHero(d){
       {label:'Shopify', value:sh.yesterday_sales||0, color:PAL.blue}
     ], (hp.gross_revenue||sh.yesterday_sales)?fmtDollar((hp.gross_revenue||0)+(sh.yesterday_sales||0)):'', 'YESTERDAY')
     + '<div class="hero-note">TikTok Shop + Walmart revenue pending connectors (Phase D).</div>';
-  // Shopify net profit: match top_products[] to supply_chain SKUs by any shared keyword
+  // Shopify gross margin (L30D): use top_products revenue/avg_price to estimate units
+  // then cross-ref COGS from supply_chain.json. top_products is L30D not yesterday.
   const _scSkus = window.__SC_SKUS || [];
   const _shProds = sh.top_products || [];
-  // Build keyword sets for each supply chain SKU (all meaningful words, lowercased)
-  const STOP = new Set(['the','a','an','and','or','for','in','of','to','with','by','at']);
-  const skuWords = _scSkus.map(s => ({
-    sku: s,
-    words: (s.name||'').toLowerCase().split(/[\s\-]+/).filter(w => w.length > 2 && !STOP.has(w))
-  }));
-  let _shCogs = 0, _shMapped = 0, _shUnmatched = [];
+  // Distinguishing keywords per SKU — avoids "brush" matching wrong SKU
+  const SKU_MAP = [
+    { keys: ['dematter','emergency'], name: 'Emergency Dematter Cream' },
+    { keys: ['rake'],                 name: 'Rake Brush' },
+    { keys: ['detangling','detangle'],name: 'Detangling Treatment' },
+    { keys: ['shampoo','rosemary','lavender','coconut'], name: '4-in-1 Shampoo' },
+    { keys: ['pin'],                  name: 'Pin Brush' },
+    { keys: ['slicker'],              name: 'Slicker Brush' },
+  ];
+  let _shRevL30 = 0, _shCogsL30 = 0, _shMapped = 0, _shUnmatched = [];
   _shProds.forEach(p => {
-    const units = p.units_sold || 0;
-    if (!units) return;
-    const titleWords = (p.product_title||'').toLowerCase().split(/[\s\-]+/);
-    const match = skuWords.find(({words}) => words.some(w => titleWords.some(tw => tw.includes(w) || w.includes(tw))));
-    if (match && match.sku.cogs) {
-      _shCogs += units * match.sku.cogs;
+    const rev = p.revenue || 0;
+    const avgP = p.avg_price || 0;
+    const unitsEst = avgP > 0 ? Math.round(rev / avgP) : (p.order_count || 0);
+    if (!rev) return;
+    const titleLow = (p.product_title||'').toLowerCase();
+    const mapEntry = SKU_MAP.find(m => m.keys.some(k => titleLow.includes(k)));
+    const scSku = mapEntry ? _scSkus.find(s => (s.name||'').toLowerCase().includes(mapEntry.keys[0])) : null;
+    const cogsPerUnit = scSku ? (scSku.cogs || 0) : 0;
+    _shRevL30 += rev;
+    if (cogsPerUnit && unitsEst) {
+      _shCogsL30 += unitsEst * cogsPerUnit;
       _shMapped++;
     } else {
       _shUnmatched.push(p.product_title||'?');
     }
   });
-  const _shNet = (sh.yesterday_sales != null && _shMapped > 0) ? sh.yesterday_sales - _shCogs : null;
+  const _shMarginPct = _shRevL30 > 0 ? ((_shRevL30 - _shCogsL30) / _shRevL30 * 100) : null;
+  // Apply L30D margin % to yesterday sales for an estimated yesterday net
+  const _shNet = (_shMarginPct != null && sh.yesterday_sales != null)
+    ? sh.yesterday_sales * (_shMarginPct / 100)
+    : null;
   const _shNote = _shNet != null
-    ? ('Net after COGS · ' + _shMapped + '/' + _shProds.length + ' matched')
-    : (_shUnmatched.length > 0
-        ? ('No match: ' + _shUnmatched.slice(0,2).join(', ').substring(0,50))
-        : 'No Shopify product data');
+    ? ('Est. ' + _shMarginPct.toFixed(1) + '% margin · L30D COGS basis · ' + _shMapped + '/' + _shProds.length + ' SKUs')
+    : (_shUnmatched.length > 0 ? ('Unmatched: ' + _shUnmatched[0].substring(0,40)) : 'No product data');
 
   const profitBody = hp.net_profit!=null
     ? '<div class="legend-row"><span><span class="legend-dot" style="background:'+PAL.green+'"></span>Amazon (net, yesterday)</span><b style="color:'+((hp.net_profit||0)<0?PAL.red:PAL.green)+'">'+fmtDollar(hp.net_profit)+'</b></div>'
