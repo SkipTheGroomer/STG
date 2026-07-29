@@ -23,7 +23,7 @@
       "net_margin_pct": null
     },
     "sync_lag_flag": true,
-    "sync_lag_note": "MTD revenue $24,706.68 \u2014 partial update (+$24.98 from $24,681.70 frozen since Jul 14). Sync lag partially resolving. L-2026-07-14-002"
+    "sync_lag_note": "MTD revenue $24,706.68 — partial update (+$24.98 from $24,681.70 frozen since Jul 14). Sync lag partially resolving. L-2026-07-14-002"
   },
   "klaviyo": {
     "available": true,
@@ -31,7 +31,7 @@
     "avg_click_rate": 0.0,
     "total_email_revenue_7d": 0.0,
     "flows_flagged": [
-      "All active flows: $0 revenue 7d \u2014 Klaviyo conversion at zero"
+      "All active flows: $0 revenue 7d — Klaviyo conversion at zero"
     ],
     "flows": [
       {
@@ -68,7 +68,7 @@
         "revenue": 0.0,
         "zero_revenue_flag": true,
         "low_volume": true,
-        "note": "Not found in 7d report \u2014 0 sends or flow inactive"
+        "note": "Not found in 7d report — 0 sends or flow inactive"
       }
     ],
     "cart_abandonment_recovery_pct": 0.0,
@@ -285,19 +285,19 @@
     "report_date": "2026-07-28",
     "competitors": [
       {
-        "name": "We Love Doodles \u2014 B0CXDL42B4",
+        "name": "We Love Doodles — B0CXDL42B4",
         "asin": "B0CXDL42B4",
         "review_change": 4,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B0BFZ4C4Z9",
+        "name": "We Love Doodles — B0BFZ4C4Z9",
         "asin": "B0BFZ4C4Z9",
         "review_change": 18,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B09Q837KK1",
+        "name": "We Love Doodles — B09Q837KK1",
         "asin": "B09Q837KK1",
         "review_change": 19,
         "review_change_direction": "increase"
@@ -342,9 +342,9 @@
       "spend": 442.63,
       "roas": 1.8489,
       "flagged_skus": [
-        "B0GT1H84JM (Bundle): 7d spend $895.71 \u2192 $0 attributed sales. Day 3 attribution crisis. Pause immediately.",
+        "B0GT1H84JM (Bundle): 7d spend $895.71 → $0 attributed sales. Day 3 attribution crisis. Pause immediately.",
         "B0FQ628KCH (Slicker): Liquidation violation Day 43+. 7d spend $92.30, ROAS 0.914.",
-        "B0FQF2VTMJ (Rake): BAND CHANGE YELLOW\u2192KILL. ROAS 0.597 < kill floor 1.716."
+        "B0FQF2VTMJ (Rake): BAND CHANGE YELLOW→KILL. ROAS 0.597 < kill floor 1.716."
       ],
       "band_changes": [
         {
@@ -496,7 +496,7 @@
   },
   "amazon_ads_browser": {
     "available": false,
-    "note": "Cloud environment \u2014 permanent unavailable (L-2026-07-15-001)"
+    "note": "Cloud environment — permanent unavailable (L-2026-07-15-001)"
   },
   "meta_ads": {
     "available": true,
@@ -522,7 +522,7 @@
         "results": "12 purchases"
       },
       {
-        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
+        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC",
         "status": "OFF",
         "spend": 86.17,
         "roas": 0.232,
@@ -538,7 +538,7 @@
     ],
     "flags": [
       "kill_breach: L30D ROAS 0.563 < 1.0 kill floor.",
-      "WARNING: ALL 8 campaigns currently PAUSED or OFF \u2014 $0 active paid acquisition on Meta as of 2026-07-28.",
+      "WARNING: ALL 8 campaigns currently PAUSED or OFF — $0 active paid acquisition on Meta as of 2026-07-28.",
       "kill_breach_campaigns: Save the Shave (ROAS 0.714), Shampoo 50OFF (ROAS 0.232)"
     ],
     "campaigns_active_count": 0,
@@ -572,7 +572,7 @@
     "funnel_extracted": false,
     "repeat_purchase_extracted": false,
     "brand_search_extracted": false,
-    "note": "Runs Mondays only \u2014 today is Wednesday"
+    "note": "Runs Mondays only — today is Wednesday"
   },
   "inventory": {
     "available": false,
@@ -614,7 +614,7 @@
     "scrape_date": "2026-07-29",
     "scrape_time_pt": "08:25 PT",
     "scrape_method": "chrome_browser",
-    "scrape_note": "TikTok MCP connector covers Ads API only \u2014 Shop Seller Center data requires Chrome scrape. Upgrade Supermetrics TIKSH license to replace with API pull.",
+    "scrape_note": "TikTok MCP connector covers Ads API only — Shop Seller Center data requires Chrome scrape. Upgrade Supermetrics TIKSH license to replace with API pull.",
     "shop_id": "7494104359187547577",
     "probation": {
       "active": true,
@@ -755,15 +755,15 @@
         "items_sold": null,
         "creator_attributed_gmv": null,
         "top_source": null,
-        "note": "1 SKU out of stock \u2014 data incomplete"
+        "note": "1 SKU out of stock — data incomplete"
       }
     ],
     "out_of_stock_count": 1,
     "flags": [
-      "orders_to_ship: 3 orders pending \u2014 ship within 24h",
-      "response_rate_zero: 24h response rate 0% \u2014 probation risk. Reply to support tickets.",
-      "sku_out_of_stock: 1 SKU out of stock \u2014 restock now",
-      "probation_active: Shop on probation \u2014 daily order limit 2/50"
+      "orders_to_ship: 3 orders pending — ship within 24h",
+      "response_rate_zero: 24h response rate 0% — probation risk. Reply to support tickets.",
+      "sku_out_of_stock: 1 SKU out of stock — restock now",
+      "probation_active: Shop on probation — daily order limit 2/50"
     ],
     "daily_7d": [
       {
@@ -772,5 +772,26 @@
         "orders": 2
       }
     ]
+  },
+  "social_media": {
+    "available": false,
+    "scrape_date": "2026-07-29",
+    "error": "Meta MCP Connector does not expose organic Instagram or Facebook Graph API endpoints. ads_get_ig_accounts returned empty — no IG account linked to ad account 2158768751536031 via ads API. Organic IG insights require instagram_manage_insights permission and Graph API access outside the ads connector scope.",
+    "meta_page_id": "565232076673059",
+    "meta_page_name": "Skipthegroomer",
+    "reauth_needed": false,
+    "ig": null,
+    "ig_insights": null,
+    "posts": [],
+    "posts_7d_count": null,
+    "total_engagements_7d": null,
+    "avg_engagement_rate_7d": null,
+    "posting_consistency_pct": null,
+    "posting_gap": null,
+    "top_post": null,
+    "fb": null,
+    "fb_insights": null,
+    "flags": ["data_unavailable_ads_api_only"],
+    "daily_7d": []
   }
 }
