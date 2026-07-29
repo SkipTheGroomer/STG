@@ -1,29 +1,29 @@
 {
   "last_updated": "2026-07-29",
-  "routine_version": "v10.23",
+  "routine_version": "v10.24",
   "run_date": "2026-07-29",
   "quickbooks": {
     "available": true,
     "status": "YELLOW",
-    "cash_balance": 473130.50,
+    "cash_balance": 473130.5,
     "checking_balance": 14079.95,
     "checking_status": "RED",
     "weeks_runway": 58.2,
-    "accounts_payable": 39542.90,
+    "accounts_payable": 39542.9,
     "accounts_payable_overdue_pct": 100.0,
     "accounts_receivable": null,
     "mtd": {
       "period": "2026-07-01 to 2026-07-29",
       "revenue": 24706.68,
       "cogs": null,
-      "gross_profit": 13504.40,
+      "gross_profit": 13504.4,
       "gross_margin_pct": 54.7,
       "operating_expenses": 46027.73,
       "net_income": -32523.33,
       "net_margin_pct": null
     },
     "sync_lag_flag": true,
-    "sync_lag_note": "MTD revenue $24,706.68 — partial update (+$24.98 from $24,681.70 frozen since Jul 14). Sync lag partially resolving. L-2026-07-14-002"
+    "sync_lag_note": "MTD revenue $24,706.68 \u2014 partial update (+$24.98 from $24,681.70 frozen since Jul 14). Sync lag partially resolving. L-2026-07-14-002"
   },
   "klaviyo": {
     "available": true,
@@ -31,7 +31,7 @@
     "avg_click_rate": 0.0,
     "total_email_revenue_7d": 0.0,
     "flows_flagged": [
-      "All active flows: $0 revenue 7d — Klaviyo conversion at zero"
+      "All active flows: $0 revenue 7d \u2014 Klaviyo conversion at zero"
     ],
     "flows": [
       {
@@ -68,7 +68,7 @@
         "revenue": 0.0,
         "zero_revenue_flag": true,
         "low_volume": true,
-        "note": "Not found in 7d report — 0 sends or flow inactive"
+        "note": "Not found in 7d report \u2014 0 sends or flow inactive"
       }
     ],
     "cart_abandonment_recovery_pct": 0.0,
@@ -92,13 +92,34 @@
       "items_per_order": 1.0
     },
     "daily_7d": [
-      {"date": "2026-07-22", "sales": 74.96},
-      {"date": "2026-07-23", "sales": 18.99},
-      {"date": "2026-07-24", "sales": 35.99},
-      {"date": "2026-07-25", "sales": 0.0},
-      {"date": "2026-07-26", "sales": 0.0},
-      {"date": "2026-07-27", "sales": 107.13},
-      {"date": "2026-07-28", "sales": 47.96}
+      {
+        "date": "2026-07-22",
+        "sales": 74.96
+      },
+      {
+        "date": "2026-07-23",
+        "sales": 18.99
+      },
+      {
+        "date": "2026-07-24",
+        "sales": 35.99
+      },
+      {
+        "date": "2026-07-25",
+        "sales": 0.0
+      },
+      {
+        "date": "2026-07-26",
+        "sales": 0.0
+      },
+      {
+        "date": "2026-07-27",
+        "sales": 107.13
+      },
+      {
+        "date": "2026-07-28",
+        "sales": 47.96
+      }
     ],
     "top_products": [
       {
@@ -113,7 +134,7 @@
         "product_title": "Emergency Dematter Cream",
         "order_count": 12,
         "units_sold": null,
-        "revenue": 249.10,
+        "revenue": 249.1,
         "avg_price": 20.76,
         "variants": []
       },
@@ -146,7 +167,7 @@
         "order_count": 11,
         "units_sold": null,
         "revenue": 147.41,
-        "avg_price": 13.40,
+        "avg_price": 13.4,
         "variants": []
       },
       {
@@ -233,7 +254,7 @@
     "daily": {
       "date": "2026-07-28",
       "gross_revenue": 1661.68,
-      "expenses": -1354.40,
+      "expenses": -1354.4,
       "net_profit": 80.31,
       "net_margin_pct": 4.83,
       "units": 85,
@@ -264,19 +285,19 @@
     "report_date": "2026-07-28",
     "competitors": [
       {
-        "name": "We Love Doodles — B0CXDL42B4",
+        "name": "We Love Doodles \u2014 B0CXDL42B4",
         "asin": "B0CXDL42B4",
         "review_change": 4,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles — B0BFZ4C4Z9",
+        "name": "We Love Doodles \u2014 B0BFZ4C4Z9",
         "asin": "B0BFZ4C4Z9",
         "review_change": 18,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles — B09Q837KK1",
+        "name": "We Love Doodles \u2014 B09Q837KK1",
         "asin": "B09Q837KK1",
         "review_change": 19,
         "review_change_direction": "increase"
@@ -288,11 +309,27 @@
     "available": true,
     "report_date": "2026-07-28",
     "skus": [
-      {"asin": "B0FQ4PY573", "status": "ZERO_VELOCITY"},
-      {"asin": "B0FQL16GH4", "status": "EXCESS"},
-      {"asin": "B0FQF2VTMJ", "status": "HEALTHY", "days_of_supply": 79},
-      {"asin": "B0FQDHXSZ5", "status": "EXCESS"},
-      {"asin": "B0FQ628KCH", "status": "LIQUIDATION"}
+      {
+        "asin": "B0FQ4PY573",
+        "status": "ZERO_VELOCITY"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "status": "EXCESS"
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "status": "HEALTHY",
+        "days_of_supply": 79
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "status": "EXCESS"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "status": "LIQUIDATION"
+      }
     ]
   },
   "supermetrics": {
@@ -305,13 +342,25 @@
       "spend": 442.63,
       "roas": 1.8489,
       "flagged_skus": [
-        "B0GT1H84JM (Bundle): 7d spend $895.71 → $0 attributed sales. Day 3 attribution crisis. Pause immediately.",
+        "B0GT1H84JM (Bundle): 7d spend $895.71 \u2192 $0 attributed sales. Day 3 attribution crisis. Pause immediately.",
         "B0FQ628KCH (Slicker): Liquidation violation Day 43+. 7d spend $92.30, ROAS 0.914.",
-        "B0FQF2VTMJ (Rake): BAND CHANGE YELLOW→KILL. ROAS 0.597 < kill floor 1.716."
+        "B0FQF2VTMJ (Rake): BAND CHANGE YELLOW\u2192KILL. ROAS 0.597 < kill floor 1.716."
       ],
       "band_changes": [
-        {"asin": "B0FQL56V99", "from": "RED", "to": "GREEN", "roas": 2.182, "breakeven": 2.07},
-        {"asin": "B0FQF2VTMJ", "from": "YELLOW", "to": "KILL", "roas": 0.597, "kill_floor": 1.716}
+        {
+          "asin": "B0FQL56V99",
+          "from": "RED",
+          "to": "GREEN",
+          "roas": 2.182,
+          "breakeven": 2.07
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "from": "YELLOW",
+          "to": "KILL",
+          "roas": 0.597,
+          "kill_floor": 1.716
+        }
       ],
       "skus": [
         {
@@ -361,7 +410,7 @@
         {
           "asin": "B0GY9WZWKH",
           "sku": "Unknown",
-          "spend": 18.90,
+          "spend": 18.9,
           "sales": 0.0,
           "roas": 0.0,
           "tacos_7d": null,
@@ -409,14 +458,28 @@
           "band": "KILL"
         }
       ],
-      "sku_data_pending": false
+      "sku_data_pending": false,
+      "daily_7d": [
+        {
+          "date": "2026-07-29",
+          "spend": 442.63,
+          "roas": 1.8489
+        }
+      ]
     },
     "amazon_sales": {
       "sessions": 437,
       "conversion_rate": 22.2,
       "units_sold": 97,
       "data_date": "2026-07-28",
-      "note": "SC data reflects 2026-07-28."
+      "note": "SC data reflects 2026-07-28.",
+      "daily_7d": [
+        {
+          "date": "2026-07-29",
+          "units_sold": 97,
+          "sessions": 437
+        }
+      ]
     },
     "google_ads": {
       "spend": null,
@@ -433,7 +496,7 @@
   },
   "amazon_ads_browser": {
     "available": false,
-    "note": "Cloud environment — permanent unavailable (L-2026-07-15-001)"
+    "note": "Cloud environment \u2014 permanent unavailable (L-2026-07-15-001)"
   },
   "meta_ads": {
     "available": true,
@@ -459,7 +522,7 @@
         "results": "12 purchases"
       },
       {
-        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC",
+        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
         "status": "OFF",
         "spend": 86.17,
         "roas": 0.232,
@@ -475,11 +538,17 @@
     ],
     "flags": [
       "kill_breach: L30D ROAS 0.563 < 1.0 kill floor.",
-      "WARNING: ALL 8 campaigns currently PAUSED or OFF — $0 active paid acquisition on Meta as of 2026-07-28.",
+      "WARNING: ALL 8 campaigns currently PAUSED or OFF \u2014 $0 active paid acquisition on Meta as of 2026-07-28.",
       "kill_breach_campaigns: Save the Shave (ROAS 0.714), Shampoo 50OFF (ROAS 0.232)"
     ],
     "campaigns_active_count": 0,
-    "campaigns_active_note": "All 8 campaigns currently PAUSED or OFF as of 2026-07-28. Two new draft campaigns pending launch decision."
+    "campaigns_active_note": "All 8 campaigns currently PAUSED or OFF as of 2026-07-28. Two new draft campaigns pending launch decision.",
+    "daily_7d": [
+      {
+        "date": "2026-07-29",
+        "spend": 0.0
+      }
+    ]
   },
   "reviews": {
     "available": true,
@@ -503,7 +572,7 @@
     "funnel_extracted": false,
     "repeat_purchase_extracted": false,
     "brand_search_extracted": false,
-    "note": "Runs Mondays only — today is Wednesday"
+    "note": "Runs Mondays only \u2014 today is Wednesday"
   },
   "inventory": {
     "available": false,
@@ -513,13 +582,195 @@
   "rolling_trends": {
     "last_updated": "2026-07-29",
     "amzads_7d": [
-      {"date": "2026-07-29", "spend": 442.63, "roas": 1.8489}
+      {
+        "date": "2026-07-29",
+        "spend": 442.63,
+        "roas": 1.8489
+      }
     ],
     "amzsales_7d": [
-      {"date": "2026-07-29", "units_sold": 97, "sessions": 437}
+      {
+        "date": "2026-07-29",
+        "units_sold": 97,
+        "sessions": 437
+      }
     ],
     "meta_7d": [
-      {"date": "2026-07-29", "spend": 0.0}
+      {
+        "date": "2026-07-29",
+        "spend": 0.0
+      }
+    ],
+    "tiktok_7d": [
+      {
+        "date": "2026-07-29",
+        "gmv": 25.97,
+        "orders": 2
+      }
+    ]
+  },
+  "tiktok_shop": {
+    "available": true,
+    "scrape_date": "2026-07-29",
+    "scrape_time_pt": "08:25 PT",
+    "scrape_method": "chrome_browser",
+    "scrape_note": "TikTok MCP connector covers Ads API only \u2014 Shop Seller Center data requires Chrome scrape. Upgrade Supermetrics TIKSH license to replace with API pull.",
+    "shop_id": "7494104359187547577",
+    "probation": {
+      "active": true,
+      "daily_order_used": 2,
+      "daily_order_max": 50,
+      "listing_used": 10,
+      "listing_max": 100
+    },
+    "shop_insights": {
+      "period": "Last 7 days",
+      "updated_on": "Jul 29, 00:00 (GMT-07:00)",
+      "gmv": 29.97,
+      "gmv_delta_pct": 57.9,
+      "gmv_direction": "up",
+      "visitors": 63,
+      "visitors_delta_pct": 85.29,
+      "visitors_direction": "up",
+      "sku_orders": 3,
+      "sku_orders_delta_pct": 50.0,
+      "sku_orders_direction": "up",
+      "on_hold": 101.17,
+      "active_products": 10
+    },
+    "todo": {
+      "orders_to_ship": 3,
+      "pending_returns": 0,
+      "unread_support_tickets": 1,
+      "unread_violations": 0,
+      "negative_reviews": 0
+    },
+    "analytics": {
+      "date": "2026-07-28",
+      "gmv": 25.97,
+      "orders": 2,
+      "customers": 2,
+      "items_sold": 2,
+      "aov": 12.98,
+      "sku_orders": 2,
+      "live_gmv": 0.0,
+      "product_card_gmv": 9.99
+    },
+    "gmv_by_content": [
+      {
+        "channel": "creator_video",
+        "gmv": 15.98,
+        "contribution_pct": 61.5
+      },
+      {
+        "channel": "creator_live",
+        "gmv": 0.0,
+        "contribution_pct": 0.0
+      },
+      {
+        "channel": "seller_video",
+        "gmv": 0.0,
+        "contribution_pct": 0.0
+      },
+      {
+        "channel": "seller_live",
+        "gmv": 0.0,
+        "contribution_pct": 0.0
+      },
+      {
+        "channel": "shop_tab_search",
+        "gmv": 9.99,
+        "contribution_pct": 38.5
+      }
+    ],
+    "category_rank": {
+      "own_rank": 1,
+      "rankings": [
+        {
+          "rank": 1,
+          "name": "Skip the Groomer",
+          "badge": "New"
+        },
+        {
+          "rank": 2,
+          "name": "PetPivot",
+          "badge": null
+        },
+        {
+          "rank": 3,
+          "name": "HapawPet",
+          "badge": null
+        },
+        {
+          "rank": 4,
+          "name": "Wild Wolf Bully Sticks",
+          "badge": null
+        },
+        {
+          "rank": 5,
+          "name": "Lesure Pet",
+          "badge": null
+        },
+        {
+          "rank": 6,
+          "name": "Zesty Paws",
+          "badge": null
+        }
+      ]
+    },
+    "ace": {
+      "period": "Jul 20 - Jul 26",
+      "gmv": 9.99,
+      "response_rate_24h_pct": 0.0,
+      "response_rate_vs_benchmark_pp": -97.06,
+      "free_shipping_pct": 33.33,
+      "free_shipping_vs_benchmark_pp": -59.13,
+      "three_day_delivery_pct": 4.55,
+      "three_day_delivery_vs_benchmark_pp": -34.01,
+      "hit_video_count": 0,
+      "hit_video_vs_benchmark": -198.63,
+      "avg_video_share_rate_pct": 0.0
+    },
+    "products_7d": [
+      {
+        "product_title": "4-in-1 Rosemary Mint Shampoo",
+        "gmv": 45.95,
+        "orders": 4,
+        "items_sold": 4,
+        "creator_attributed_gmv": 15.98,
+        "top_source": "creator_video"
+      },
+      {
+        "product_title": "Dog Detangling Treatment",
+        "gmv": 0.0,
+        "orders": 0,
+        "items_sold": 0,
+        "creator_attributed_gmv": 0.0,
+        "top_source": null
+      },
+      {
+        "product_title": "Emergency Dematter Cream",
+        "gmv": null,
+        "orders": null,
+        "items_sold": null,
+        "creator_attributed_gmv": null,
+        "top_source": null,
+        "note": "1 SKU out of stock \u2014 data incomplete"
+      }
+    ],
+    "out_of_stock_count": 1,
+    "flags": [
+      "orders_to_ship: 3 orders pending \u2014 ship within 24h",
+      "response_rate_zero: 24h response rate 0% \u2014 probation risk. Reply to support tickets.",
+      "sku_out_of_stock: 1 SKU out of stock \u2014 restock now",
+      "probation_active: Shop on probation \u2014 daily order limit 2/50"
+    ],
+    "daily_7d": [
+      {
+        "date": "2026-07-29",
+        "gmv": 25.97,
+        "orders": 2
+      }
     ]
   }
 }
