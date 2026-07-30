@@ -489,8 +489,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
         <p style="margin-top:10px;text-align:left;font-size:12px;line-height:1.7;">
           <b>Common causes:</b><br>
           1. Morning routine pushed to a branch instead of <b>main</b> — check GitHub PRs<br>
-          2. File is missing on main — <a href="https://github.com/josh11100/STG/blob/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">view file on GitHub</a><br>
-          3. Routine failed mid-run and pushed broken JSON — check <a href="https://github.com/josh11100/STG/commits/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">commit history</a> and revert to last good commit<br>
+          2. File is missing on main — <a href="https://github.com/SkipTheGroomer/STG/blob/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">view file on GitHub</a><br>
+          3. Routine failed mid-run and pushed broken JSON — check <a href="https://github.com/SkipTheGroomer/STG/commits/main/data/connectors_data.json" target="_blank" style="color:#F57E26;">commit history</a> and revert to last good commit<br>
           4. JSON syntax error — paste the raw file into <a href="https://jsonlint.com" target="_blank" style="color:#F57E26;">jsonlint.com</a>
         </p>
       </div>
@@ -3080,7 +3080,7 @@ function renderReports(files){
 <script>
 (async function authorityPanel(){
   const $a = id => document.getElementById(id);
-  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+  const RAW = 'https://raw.githubusercontent.com/SkipTheGroomer/STG/main/';
 
   // ── 1. Standing Authority status (live from the signed doc) ──
   let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.0.md';
@@ -3145,7 +3145,7 @@ function renderReports(files){
 <script>
 (async function inventoryPanel(){
   const $i = id => document.getElementById(id);
-  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+  const RAW = 'https://raw.githubusercontent.com/SkipTheGroomer/STG/main/';
   const tag = $i('inv-tag');
   try {
     const r = await fetch(RAW + 'data/inventory_data.json', {cache:'no-store'});
@@ -3704,7 +3704,7 @@ function rpHero(files){
 (async function invHero(){
   const el=document.getElementById('inv-hero'); if(!el) return;
   try{
-    const r=await fetch('https://raw.githubusercontent.com/josh11100/STG/main/data/inventory_data.json',{cache:'no-store'});
+    const r=await fetch('https://raw.githubusercontent.com/SkipTheGroomer/STG/main/data/inventory_data.json',{cache:'no-store'});
     if(!r.ok) throw 0;
     const inv=await r.json(); const skus=inv.skus||[];
     const onHand=skus.reduce((a,s)=>a+(s.on_hand||0),0);
