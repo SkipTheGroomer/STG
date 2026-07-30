@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-29T00:00:00Z",
+  "last_updated": "2026-07-30T00:00:00Z",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -23,11 +23,12 @@
         "2026-07-26: 'dematting tool for dogs' r7 (-2), 'dematting comb for dogs' r22 (+5). 7d ROAS 0.69 (RED band). TACOS 145.3% vs 15% target.",
         "2026-07-27: Dematter ROAS 1.29 (RED, spend $214.14, sales $275.88). 7d spend $1,354.06. Listing Analyzer: page views -20.77%, sessions -17.77% WoW. 'dematting tool for dogs' r5 (+2). 'dematting comb for dogs' r24 (-2). TACOS 172.2%.",
         "2026-07-28: 'dematting comb for dogs' r19 (+5), 'dog detangler' r19 (+1). ROAS 1.503 (RED, spend $214.80, sales $322.79). 7d spend $1,358.78. TACOS 118.0%. Listing Analyzer: page views -20.77%, sessions -17.77% WoW (LQS 8.6).",
-        "2026-07-29: 'dematting comb for dogs' r19 (flat), 'dog detangler' r17 (+2 ⬆️). ROAS 2.182 on $196.01 spend / $427.61 sales — BAND CHANGE: RED → GREEN (first day above breakeven 2.07 since L was opened). 7d spend $1,370.11. 7d TACOS 126.8% vs 15% target — still RED on TACOS despite GREEN ROAS day. Note: single-day GREEN does not confirm pattern resolved; monitor 3-5 days for sustained performance."
+        "2026-07-29: 'dematting comb for dogs' r19 (flat), 'dog detangler' r17 (+2). ROAS 2.182 on $196.01 spend / $427.61 sales — BAND CHANGE: RED → GREEN (first day above breakeven 2.07 since L was opened). 7d spend $1,370.11. 7d TACOS 126.8% vs 15% target — still RED on TACOS despite GREEN ROAS day. Note: single-day GREEN does not confirm pattern resolved; monitor 3-5 days for sustained performance.",
+        "2026-07-30: Amazon Ads Supermetrics data carried from 2026-07-28/29 (query timed out — cannot confirm Day 2 GREEN ROAS independently). 7d ROAS 2.182 per carry-forward. 7d TACOS 126.8% vs 35% target. Hold current bids per prior DOCTRINE. Monitoring Day 2 of 3-5 day window."
       ],
       "status": "DOCTRINE",
-      "confirmations": 11,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 12,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-08_red",
       "action_implication": "BAND CHANGE: Dematter GREEN (ROAS 2.182 > 2.07 breakeven). Monitor 3-5 days for sustained performance before scaling spend. 7d TACOS 126.8% vs 15% target still RED — watch 7d ROAS trend. Do not scale spend until TACOS trend also improves.",
@@ -45,14 +46,15 @@
         "2026-07-26: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 35+ with no action taken.",
         "2026-07-27: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 36+ with no action.",
         "2026-07-28: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 37+ with no action.",
-        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+ with no action. All 8 Meta campaigns now PAUSED/OFF — $0 active Meta acquisition."
+        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+ with no action. All 8 Meta campaigns now PAUSED/OFF — $0 active Meta acquisition.",
+        "2026-07-30: All 8 Meta campaigns still PAUSED/OFF via Meta MCP live pull. L30D spend $567.42 / ROAS 0.598. Day 39+ with no active acquisition."
       ],
       "status": "DOCTRINE",
-      "confirmations": 10,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 11,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-10",
-      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 38+ with no resolution. All Meta campaigns now PAUSED — no active paid acquisition on Meta.",
+      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 39+ with no resolution. All Meta campaigns now PAUSED — no active paid acquisition on Meta.",
       "retired_reason": null
     },
     {
@@ -69,11 +71,12 @@
         "2026-07-26: LIF <= 0, LTSF >= 181. Status unchanged after 3+ weeks.",
         "2026-07-27: Listing Analyzer email truncated — FurFix LTSF/LIF not directly verified. Status assumed unchanged per prior DOCTRINE.",
         "2026-07-28: FurFix (B0FQFP2S9F) 60 units on-hand per inventory_data.json Jul 26. LIF/LTSF not verified via Listing Analyzer (not in top 5 email). Status assumed unchanged per prior DOCTRINE.",
-        "2026-07-29: H10 Listing Analyzer email too large to parse — FurFix status not directly verified. Status assumed unchanged per prior DOCTRINE. 60 units remain stranded."
+        "2026-07-29: H10 Listing Analyzer email too large to parse — FurFix status not directly verified. Status assumed unchanged per prior DOCTRINE. 60 units remain stranded.",
+        "2026-07-30: B0FQFP2S9F still STOCKOUT per connectors_data.json helium10_inventory (LIF=0, LTSF=181+). Day 18+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 7,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 8,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-13_red",
       "action_implication": "Add B0FQFP2S9F to Step 4 H10 tracked-SKU list. Angelo/Will should confirm stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action overdue.",
@@ -95,14 +98,15 @@
         "2026-07-26: 7d spend $43.30 / ROAS 0.46 / TACOS 216.6%. Organic rank 183 (-9 spots Jul 25). Day 40+. @will: pause ALL campaigns targeting B0FQ628KCH immediately.",
         "2026-07-27: B0FQ628KCH 7d spend $55.05/ROAS 0.36 (7d sales $19.99). Yesterday spend $11.75. Day 41+. Organic rank 'slicker brush for dogs': r169 (+14 improved from r183 — rank recovering, consistent with pausing ads improving organic.)",
         "2026-07-28: B0FQ628KCH 7d spend $71.80/ROAS 0.596 (7d sales $19.99). Yesterday spend $16.75. 'doodle brush' r49 (+257 OCR=347), 'slicker brush for dogs' r113 (+56). Day 42+.",
-        "2026-07-29: B0FQ628KCH 7d spend $92.30/ROAS 0.914 (7d sales $19.98). Yesterday spend $21.87. 'doodle brush' r57 (-8 vs prior r49), 'dog slicker brushes for grooming' r94 (-23 vs prior r71), 'slicker brush for dogs' r88 (new entry). 7d TACOS 462%. Day 43+. Spend continues to increase week-over-week."
+        "2026-07-29: B0FQ628KCH 7d spend $92.30/ROAS 0.914 (7d sales $19.98). Yesterday spend $21.87. 'doodle brush' r57 (-8 vs prior r49), 'dog slicker brushes for grooming' r94 (-23 vs prior r71), 'slicker brush for dogs' r88 (new entry). 7d TACOS 462%. Day 43+. Spend continues to increase week-over-week.",
+        "2026-07-30: B0FQ628KCH yesterday spend $23.62 (Supermetrics Query B Jul 28 carry-forward). H10 Jul 29: 'doodle brush' now UNRANKED (was #57, delta -249 per helium10_flags in connectors_data.json). 'slicker brush for dogs' r133 (-45 vs prior r88). Organic rank collapse accelerating. Day 44+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 11,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 12,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 43+. 7d spend $92.30/ROAS 0.914 (7d sales $19.98). 7d TACOS 462%. Slicker keywords declining again: 'doodle brush' r57 (-8), 'dog slicker brushes for grooming' r94 (-23). Any spend = immediate flag per liquidation policy.",
+      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 44+. H10 Jul 29: 'doodle brush' UNRANKED (was #57, delta -249). 'slicker brush for dogs' r133 (-45). Organic rank collapse accelerating. Any spend = immediate flag per liquidation policy.",
       "retired_reason": null
     },
     {
@@ -117,14 +121,15 @@
         "2026-07-26: MTD revenue $24,681.70 unchanged. Sync lag persists.",
         "2026-07-27: MTD revenue $24,681.70 — same value, sync lag confirmed. $10,070 Legal fees add expense complexity.",
         "2026-07-28: MTD revenue $24,681.70 — unchanged. Sync lag persists Day 14+.",
-        "2026-07-29: MTD revenue $24,706.68 — partial update (+$24.98 from $24,681.70). Sync lag partially resolving but still significantly behind expected MTD revenue. Gross profit $13,504.40 (54.7%), net income -$32,523.33. Cash balance and expense data remain reliable."
+        "2026-07-29: MTD revenue $24,706.68 — partial update (+$24.98 from $24,681.70). Sync lag partially resolving but still significantly behind expected MTD revenue. Gross profit $13,504.40 (54.7%), net income -$32,523.33. Cash balance and expense data remain reliable.",
+        "2026-07-30: MTD revenue $24,706.68 (unchanged — sync lag persisting, sync_lag_flag: true in connectors_data.json)."
       ],
       "status": "DOCTRINE",
-      "confirmations": 15,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 16,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14",
-      "action_implication": "Josh to investigate QuickBooks sync connection. MTD revenue showed partial update today (+$24.98) — may be slowly resolving. Still significantly lagged. Use H10 Daily Profit for Amazon revenue until fully resolved.",
+      "action_implication": "Josh to investigate QuickBooks sync connection. MTD revenue showed partial update yesterday (+$24.98) — may be slowly resolving. Still significantly lagged. Use H10 Daily Profit for Amazon revenue until fully resolved.",
       "retired_reason": null
     },
     {
@@ -140,11 +145,12 @@
         "2026-07-26: Still unavailable - permanent degraded mode (v10.22).",
         "2026-07-27: Still unavailable. Brand Analytics Monday trigger skipped.",
         "2026-07-28: Still unavailable. Brand Analytics Tuesday — Step 5f skipped (Monday-only).",
-        "2026-07-29: Still unavailable. Wednesday — Brand Analytics Monday-only trigger skipped."
+        "2026-07-29: Still unavailable. Wednesday — Brand Analytics Monday-only trigger skipped.",
+        "2026-07-30: Still unavailable. Thursday — Brand Analytics Monday-only trigger skipped."
       ],
       "status": "DOCTRINE",
-      "confirmations": 15,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 16,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-07-15",
       "action_implication": "No action - permanent infrastructure limitation. Dashboard shows amazon_ads_browser.available=false by design.",
@@ -161,14 +167,15 @@
       "evidence": [
         "2026-07-27: 7d spend $1,029.07 (Query C), 7d ordered_product_sales $0 (Query D). Yesterday $143.22/$0. Attribution flag triggered (cost>=75 with $0 sales).",
         "2026-07-28: Bundle B0GT1H84JM 7d spend $870.25 / $0 ordered sales confirmed again (Supermetrics Query C/D). Attribution flag Day 2.",
-        "2026-07-29: Bundle B0GT1H84JM 7d spend $895.71 / $0 ordered sales (Supermetrics Query C/D). Yesterday spend $155.05/$0 attributed sales. Attribution flag Day 3. No action confirmed. Spend increasing week-over-week."
+        "2026-07-29: Bundle B0GT1H84JM 7d spend $895.71 / $0 ordered sales (Supermetrics Query C/D). Yesterday spend $155.05/$0 attributed sales. Attribution flag Day 3. No action confirmed. Spend increasing week-over-week.",
+        "2026-07-30: Bundle B0GT1H84JM 7d spend $155.05 / $0 attributed ordered_product_sales (stale from Jul 28/29 carry-forward). Attribution crisis Day 4+. No action confirmed."
       ],
       "status": "DOCTRINE",
-      "confirmations": 3,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 4,
+      "last_confirmed": "2026-07-30",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-27_new",
-      "action_implication": "@will/@marcelo: PAUSE ALL Bundle B0GT1H84JM campaigns immediately. Day 3 — no action confirmed. 7d spend $895.71 with $0 attributed sales. Check attribution window settings (same-day vs. 7-day click). $155.05 burned yesterday with zero return.",
+      "action_implication": "@will/@marcelo: PAUSE ALL Bundle B0GT1H84JM campaigns immediately. Day 4 — no action confirmed. 7d spend $895.71 with $0 attributed sales (carry-forward). Check attribution window settings (same-day vs. 7-day click). Each day of inaction = ~$155 burned with zero return.",
       "retired_reason": null
     }
   ]
