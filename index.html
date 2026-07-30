@@ -14,7 +14,14 @@
   --green:#16a34a;--red:#dc2626;--amber:#d97706;--purple:#7c3aed;
   --blue:#3b82f6;--orange:#FF5E00;--teal:#10b981;--teal2:#2dd4a8;
   --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.04);
+  --shadow-md:0 1px 3px rgba(16,24,40,.06),0 4px 12px rgba(16,24,40,.06);
   --font:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  /* v2 fix — these vars were referenced but never defined (silent render failures) */
+  --surface-2:#f8fafc;
+  --text-primary:#1e293b;
+  --text-secondary:#475569;
+  --text-accent:#0f766e;
+  --border-strong:#cbd5e1;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{margin:0;font-family:var(--font);background:var(--chrome);color:var(--text);font-size:13px;-webkit-font-smoothing:antialiased;}
@@ -279,6 +286,99 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 .np h5{font-size:10.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
 .np p{font-size:11px;color:var(--sub);line-height:1.55;}
 .hero-sec-label{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);padding:16px 2px 0;}
+
+/* ═════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM v2 — visual reskin to match approved mockups.
+   CSS-ONLY override layer. No IDs, classes, or JS were changed.
+   Safe to delete this entire block to revert to v1 styling.
+   ═════════════════════════════════════════════════════════════════ */
+
+/* — foundation — */
+body{font-size:13px;}
+.content{padding:0 30px 72px;}
+.wrap{max-width:1280px;}
+
+/* custom scrollbar (webkit) */
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px;border:2px solid var(--bg);}
+::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+.sidebar::-webkit-scrollbar-thumb{background:#2a3550;border-color:var(--chrome);}
+
+/* — topbar — */
+.topbar{padding:12px 26px;min-height:66px;border-bottom:1px solid rgba(255,255,255,.09);}
+.topbar .ttl{font-size:16px;}
+.topbar .meta{font-size:12.5px;gap:22px;}
+.refresh-btn{border-radius:11px;padding:10px 20px;font-size:13px;box-shadow:0 1px 3px rgba(16,185,129,.35);}
+
+/* — sidebar — */
+.sidebar{width:244px;padding:16px 12px 32px;}
+.sidebar.hidden{margin-left:-244px;}
+@media(max-width:860px){.sidebar.hidden{margin-left:-244px;}}
+.nav-card{padding:11px 13px;border-radius:11px;}
+.nav-card.active{background:rgba(16,185,129,.15);box-shadow:inset 0 0 0 1px rgba(16,185,129,.25);}
+.nav-title{font-size:13.5px;}
+
+/* — page headers (match mockup scale) — */
+.page-title{font-size:23px;letter-spacing:.4px;}
+.sec-head h2{font-size:15px;}
+.page-header{padding:28px 0 0;}
+.page-meta-bar{font-size:12px;padding:6px 0 16px;}
+
+/* — KPI cards — */
+.kpi-grid{gap:14px;padding:16px 0 8px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));}
+.kpi-card{border-radius:13px;padding:16px 18px;transition:box-shadow .18s,transform .18s;}
+.kpi-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.kpi-lbl{font-size:10.5px;letter-spacing:.7px;}
+.kpi-val{font-size:28px;letter-spacing:-.6px;margin:8px 0 5px;}
+.kpi-delta{font-size:12px;}
+.kpi-period{font-size:10.5px;}
+
+/* generic .card kpi (older sections) — same treatment */
+.cards{gap:14px;padding:12px 0;}
+.card{border-radius:13px;padding:16px 18px;transition:box-shadow .18s,transform .18s;}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.c-val{font-size:26px;letter-spacing:-.5px;margin-top:7px;}
+
+/* — tables — */
+table{font-size:12.5px;}
+th{padding:11px 14px;font-size:10px;letter-spacing:.7px;background:#f8fafc;}
+td{padding:11px 14px;}
+tr:hover td{background:#f6f9fc;}
+.tbl-wrap{border-radius:13px;margin:10px 0;}
+.tbl-title{padding:15px 14px 2px;font-size:11px;}
+
+/* — alerts: strip → card row (matches mockup bottom alert cards).
+     Uses :has(); older browsers keep the original full-width strips. — */
+div:has(> .alert + .alert){display:flex;flex-wrap:wrap;gap:12px;align-items:stretch;}
+div:has(> .alert + .alert) > .alert{flex:1 1 210px;min-width:190px;margin:8px 0;border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);}
+.alert{border-radius:11px;line-height:1.6;}
+.alert b{display:inline-block;margin-bottom:1px;}
+.alert-crit{border-color:#fca5a5;}
+.alert-warn{border-color:#fcd34d;}
+.alert-ok{border-color:#86efac;}
+.alert-info{border-color:#93c5fd;}
+.alert-strip{border-radius:11px;padding:13px 17px;}
+
+/* — pills / tags / chips — */
+.pill{padding:3.5px 10px;font-size:9.5px;}
+.tag{padding:3.5px 11px;font-size:9.5px;}
+
+/* — SKU blocks + report cards — */
+.sku-block{border-radius:13px;transition:box-shadow .18s;}
+.sku-block:hover{box-shadow:var(--shadow-md);}
+.msg{border-radius:13px;}
+.col-card{border-radius:13px;}
+
+/* — buttons — */
+.ch-tab{padding:7px 15px;border-radius:999px;}
+.ch-tab.active{box-shadow:0 1px 3px rgba(16,24,40,.2);}
+
+/* — focus ring consistency — */
+button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+
+/* — print sanity — */
+@media print{.sidebar,.topbar,.refresh-btn{display:none!important;}.content{padding:0;}}
 </style>
 </head>
 <body>
