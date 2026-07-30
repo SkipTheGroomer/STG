@@ -377,6 +377,23 @@ div:has(> .alert + .alert) > .alert{flex:1 1 210px;min-width:190px;margin:8px 0;
 /* — focus ring consistency — */
 button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
 
+/* — BHv2 channel visuals (Business Health mockup module) — */
+.bhv2-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:6px 0 10px;}
+.bhv2-wide{grid-column:1 / -1;}
+@media(max-width:900px){.bhv2-row{grid-template-columns:1fr;}}
+.bhv2-panel h3{display:flex;align-items:center;gap:8px;}
+.bhv2-win{font-size:9px;font-weight:700;color:var(--sub);background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:2px 8px;letter-spacing:.4px;text-transform:none;}
+.bhv2-flex{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:6px 0 2px;}
+.bhv2-empty{font-size:11px;color:var(--sub);font-style:italic;padding:14px 0;}
+.bhv2-legend{display:flex;flex-direction:column;gap:8px;min-width:190px;flex:1;}
+.bhv2-li{display:flex;align-items:center;gap:9px;font-size:12px;}
+.bhv2-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+.bhv2-li .nm{color:var(--text);font-weight:600;flex:1;min-width:0;}
+.bhv2-li .vl{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);}
+.bhv2-li .pc{font-variant-numeric:tabular-nums;color:var(--muted);width:52px;text-align:right;}
+.bhv2-note{font-size:10px;color:var(--sub);padding-top:8px;line-height:1.5;}
+.bhv2-donut-ctr text{font-family:var(--font);}
+
 /* — print sanity — */
 @media print{.sidebar,.topbar,.refresh-btn{display:none!important;}.content{padding:0;}}
 </style>
@@ -1285,6 +1302,22 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
 
           <!-- ── LIVE TOP-ROW CARDS (Cash, TACOS, Shopify, Amazon, True Net, Ad Spend, Reviews) ── -->
           <div class="cards" id="ov-cards"></div>
+
+          <!-- ── BHv2: CHANNEL VISUALS (additive module — reads window.__LIVE, no existing JS touched) ── -->
+          <div class="bhv2-row" id="bhv2-visuals">
+            <div class="col-card bhv2-panel">
+              <h3>Revenue by Channel <span class="bhv2-win">7 days</span></h3>
+              <div class="bhv2-flex" id="bhv2-rev-donut"><div class="bhv2-empty">Awaiting data…</div></div>
+            </div>
+            <div class="col-card bhv2-panel">
+              <h3>Ad Spend by Platform <span class="bhv2-win" id="bhv2-spend-win">as reported</span></h3>
+              <div class="bhv2-flex" id="bhv2-spend-donut"><div class="bhv2-empty">Awaiting data…</div></div>
+            </div>
+            <div class="col-card bhv2-panel bhv2-wide">
+              <h3>Sales Trend <span class="bhv2-win">rolling 7 days</span></h3>
+              <div id="bhv2-trend"><div class="bhv2-empty">Awaiting data…</div></div>
+            </div>
+          </div>
 
           <!-- ── DAAS CHANNEL SUMMARY ── -->
           <div class="sec-head" style="padding-top:14px;"><h2>Channel Summary</h2><span class="tag tag-info" id="daas-channel-tag">Amazon · TikTok · Shopify</span><span class="when" id="daas-when"></span></div>
@@ -4600,10 +4633,10 @@ function renderSocialMedia(d){
       '<div class="sec-head" style="margin-top:4px;"><h2>AI Insights</h2></div>'
       +'<div class="tbl-wrap" id="sm-ai-box" style="margin-bottom:14px;padding:16px;">'
       +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">'
-      +'<div style="font-size:13px;font-weight:500;color:var(--text-primary);">AI analysis of this week's social performance</div>'
+      +'<div style="font-size:13px;font-weight:500;color:var(--text-primary);">AI analysis of this week\'s social performance</div>'
       +'<button onclick="callSmAI()" style="font-size:12px;padding:6px 14px;border-radius:6px;border:0.5px solid var(--border-strong);background:var(--surface-2);cursor:pointer;">↗ Generate Insights</button>'
       +'</div>'
-      +'<div id="sm-ai-output" style="font-size:13px;color:var(--muted);font-style:italic;">Click Generate Insights to get an AI summary of trends, opportunities, and recommended actions based on this week's social data.</div>'
+      +'<div id="sm-ai-output" style="font-size:13px;color:var(--muted);font-style:italic;">Click Generate Insights to get an AI summary of trends, opportunities, and recommended actions based on this week\'s social data.</div>'
       +'</div>';
   }
 }
@@ -4674,8 +4707,7 @@ Be specific to Skip the Groomer — a dog grooming brand. Max 200 words total. P
       out.style.fontStyle='normal';
       out.style.color='var(--text-primary)';
       // Render **bold** markers
-      out.innerHTML = text.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/
-/g,'<br>');
+      out.innerHTML = text.replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
     } else {
       out.textContent='No insights returned. Check API connection.';
     }
@@ -4798,6 +4830,131 @@ function kpiCard(label, val, sub, accent, cls){
     _prevBadgeRender(d);
     try{ updateBadges(d); }catch(e){ console.error('[Badge updater]',e); }
   };
+})();
+</script>
+
+<script>
+/* ═══ BHv2 CHANNEL VISUALS — self-contained additive module ═══
+   Reads window.__LIVE (set by render()). Never modifies existing data or DOM
+   outside its own #bhv2-* containers. Delete this block + the HTML/CSS marked
+   BHv2 to fully remove. Zero dependencies — SVG drawn inline. */
+(function(){
+  const COLORS = { amazon:'#16a34a', shopify:'#3b82f6', tiktok:'#7c3aed', walmart:'#FF5E00', meta:'#2563eb', amzads:'#16a34a', other:'#94a3b8' };
+  const fmt$ = v => v==null ? '—' : '$' + Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+
+  function donutSVG(slices, centerLabel){
+    const total = slices.reduce((s,x)=>s+x.value,0);
+    if (!(total>0)) return null;
+    const R=52, r=34, C=64;
+    let a0=-Math.PI/2, paths='';
+    slices.forEach(s=>{
+      const frac=s.value/total, a1=a0+frac*2*Math.PI;
+      // full-circle guard
+      const aEnd = frac>=0.999 ? a0+1.999*Math.PI : a1;
+      const large = (aEnd-a0)>Math.PI ? 1 : 0;
+      const x0=C+R*Math.cos(a0), y0=C+R*Math.sin(a0), x1=C+R*Math.cos(aEnd), y1=C+R*Math.sin(aEnd);
+      const xi=C+r*Math.cos(aEnd), yi=C+r*Math.sin(aEnd), xj=C+r*Math.cos(a0), yj=C+r*Math.sin(a0);
+      paths += '<path d="M'+x0+' '+y0+' A'+R+' '+R+' 0 '+large+' 1 '+x1+' '+y1+' L'+xi+' '+yi+' A'+r+' '+r+' 0 '+large+' 0 '+xj+' '+yj+' Z" fill="'+s.color+'"/>';
+      a0=a1;
+    });
+    return '<svg class="bhv2-donut-ctr" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="'+centerLabel+'">'
+      + paths
+      + '<text x="64" y="60" text-anchor="middle" font-size="13" font-weight="800" fill="#101828">'+centerLabel+'</text>'
+      + '<text x="64" y="74" text-anchor="middle" font-size="8.5" font-weight="700" fill="#94a3b8" letter-spacing="0.5">TOTAL</text>'
+      + '</svg>';
+  }
+
+  function legend(slices){
+    const total = slices.reduce((s,x)=>s+x.value,0);
+    return '<div class="bhv2-legend">' + slices.map(s=>{
+      const pc = total>0 ? (100*s.value/total).toFixed(1)+'%' : '—';
+      return '<div class="bhv2-li"><span class="bhv2-dot" style="background:'+s.color+'"></span><span class="nm">'+s.name+(s.note?' <span style="color:var(--sub);font-weight:500;font-size:10px;">'+s.note+'</span>':'')+'</span><span class="vl">'+fmt$(s.value)+'</span><span class="pc">'+pc+'</span></div>';
+    }).join('') + '</div>';
+  }
+
+  function lineSVG(series, W, H){
+    // series: [{name,color,points:[{x label,y}]}] — x normalized by index across union of dates
+    const dates = [...new Set(series.flatMap(s=>s.points.map(p=>p.date)))].sort();
+    if (dates.length < 2) return null;
+    const allY = series.flatMap(s=>s.points.map(p=>p.y)).filter(y=>y!=null);
+    if (!allY.length) return null;
+    const maxY = Math.max(...allY, 1);
+    const padL=44, padR=12, padT=12, padB=24;
+    const px = i => padL + (W-padL-padR) * (i/(dates.length-1));
+    const py = v => padT + (H-padT-padB) * (1 - v/maxY);
+    let out = '';
+    // gridlines
+    for (let g=0; g<=3; g++){
+      const gv = maxY*g/3, gy = py(gv);
+      out += '<line x1="'+padL+'" y1="'+gy+'" x2="'+(W-padR)+'" y2="'+gy+'" stroke="#eef1f6" stroke-width="1"/>';
+      out += '<text x="'+(padL-6)+'" y="'+(gy+3)+'" text-anchor="end" font-size="9" fill="#94a3b8">$'+Math.round(gv).toLocaleString()+'</text>';
+    }
+    series.forEach(s=>{
+      const pts = dates.map((dt,i)=>{ const p=s.points.find(q=>q.date===dt); return p&&p.y!=null ? px(i)+','+py(p.y) : null; }).filter(Boolean);
+      if (pts.length>=2) out += '<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+s.color+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>';
+      dates.forEach((dt,i)=>{ const p=s.points.find(q=>q.date===dt); if(p&&p.y!=null) out += '<circle cx="'+px(i)+'" cy="'+py(p.y)+'" r="3" fill="'+s.color+'"/>'; });
+    });
+    dates.forEach((dt,i)=>{ out += '<text x="'+px(i)+'" y="'+(H-6)+'" text-anchor="middle" font-size="9" fill="#94a3b8">'+dt.slice(5)+'</text>'; });
+    return '<svg width="100%" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Sales trend">'+out+'</svg>'
+      + '<div class="bhv2-flex" style="gap:16px;padding-top:4px;">' + series.map(s=>'<span class="bhv2-li"><span class="bhv2-dot" style="background:'+s.color+'"></span><span class="nm">'+s.name+'</span></span>').join('') + '</div>';
+  }
+
+  function renderBHv2(d){
+    try{
+      // ── Revenue by Channel (7d) ──
+      const amz7 = (((d.helium10_profits||{}).weekly)||{}).gross_revenue;
+      const shop7 = ((d.shopify||{}).daily_7d||[]).reduce((s,x)=>s+(x.sales||0),0);
+      const tt7 = (((d.tiktok_shop||{}).shop_insights)||{}).gmv;
+      const rev = [
+        {name:'Amazon',  value:+amz7||0, color:COLORS.amazon, note:(((d.helium10_profits||{}).weekly)||{}).period?'':''},
+        {name:'Shopify', value:+shop7||0, color:COLORS.shopify},
+        {name:'TikTok Shop', value:+tt7||0, color:COLORS.tiktok}
+      ].filter(s=>s.value>0 || true);
+      const revBox = document.getElementById('bhv2-rev-donut');
+      if (revBox){
+        const total = rev.reduce((s,x)=>s+x.value,0);
+        const svg = donutSVG(rev.filter(s=>s.value>0), '$'+Math.round(total).toLocaleString());
+        revBox.innerHTML = svg ? svg + legend(rev) : '<div class="bhv2-empty">No channel revenue reported for this window yet.</div>';
+      }
+
+      // ── Ad Spend by Platform (windows differ by source — labeled honestly) ──
+      const aa = ((d.supermetrics||{}).amazon_ads)||{};
+      const meta = ((d.meta_ads||{}).l30d)||{};
+      const spend = [
+        {name:'Amazon Ads', value:+aa.spend||0, color:COLORS.amzads, note:'(7d'+(aa.stale?' · stale':'')+')'},
+        {name:'Meta Ads', value:+meta.spend||0, color:COLORS.meta, note:'(30d)'}
+      ];
+      const spBox = document.getElementById('bhv2-spend-donut');
+      if (spBox){
+        const total = spend.reduce((s,x)=>s+x.value,0);
+        const svg = donutSVG(spend.filter(s=>s.value>0), '$'+Math.round(total).toLocaleString());
+        spBox.innerHTML = (svg ? svg + legend(spend) : '<div class="bhv2-empty">No ad spend reported.</div>')
+          + '<div class="bhv2-note" style="flex-basis:100%;">Windows differ by source (Amazon 7d, Meta 30d) — mixed until routine writes uniform 7d spend for all platforms.</div>';
+      }
+
+      // ── Sales trend (rolling_trends builds up daily) ──
+      const rt = d.rolling_trends||{};
+      const trBox = document.getElementById('bhv2-trend');
+      if (trBox){
+        const series = [
+          {name:'Shopify', color:COLORS.shopify, points:(rt.shopify_7d||[]).map(x=>({date:x.date,y:x.sales}))},
+          {name:'TikTok GMV', color:COLORS.tiktok, points:(rt.tiktok_7d||[]).filter(x=>x.gmv!=null).map(x=>({date:x.date,y:x.gmv}))},
+          {name:'Amazon Ads Spend', color:'#d97706', points:(rt.amzads_7d||[]).map(x=>({date:x.date,y:x.spend}))}
+        ].filter(s=>s.points.length);
+        const svg = lineSVG(series, 900, 220);
+        trBox.innerHTML = svg || '<div class="bhv2-empty">Trend builds as the morning routine appends daily points to rolling_trends — needs 2+ days of data.</div>';
+      }
+    }catch(e){ console.error('[BHv2]', e); }
+  }
+
+  // Poll for window.__LIVE; re-render when data fingerprint changes (covers Refresh)
+  let fp = null;
+  setInterval(function(){
+    const d = window.__LIVE;
+    if (!d) return;
+    const f = (d.last_updated||'') + '|' + JSON.stringify((d.rolling_trends||{}).last_updated||'') + '|' + ((((d.helium10_profits||{}).weekly)||{}).gross_revenue||'');
+    if (f !== fp){ fp = f; renderBHv2(d); }
+  }, 600);
 })();
 </script>
 </body>
