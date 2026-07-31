@@ -1145,8 +1145,8 @@
         "views": 178,
         "shares": 0,
         "saved": 0,
-        "engagements": 14,
-        "engagement_rate": 9.7
+        "engagement_rate": 9.7,
+        "engagement_total": 14
       },
       {
         "id": "17982886299022472",
@@ -1160,8 +1160,8 @@
         "views": 141,
         "shares": 0,
         "saved": 0,
-        "engagements": 4,
-        "engagement_rate": 3.4
+        "engagement_rate": 3.4,
+        "engagement_total": 4
       },
       {
         "id": "18109956343966502",
@@ -1175,8 +1175,8 @@
         "views": 214,
         "shares": 1,
         "saved": 0,
-        "engagements": 12,
-        "engagement_rate": 6.9
+        "engagement_rate": 6.9,
+        "engagement_total": 12
       },
       {
         "id": "18414596140197289",
@@ -1190,8 +1190,8 @@
         "views": 224,
         "shares": 0,
         "saved": 0,
-        "engagements": 13,
-        "engagement_rate": 7.9
+        "engagement_rate": 7.9,
+        "engagement_total": 13
       },
       {
         "id": "18006212678933351",
@@ -1205,8 +1205,8 @@
         "views": 221,
         "shares": 0,
         "saved": 0,
-        "engagements": 11,
-        "engagement_rate": 7.1
+        "engagement_rate": 7.1,
+        "engagement_total": 11
       },
       {
         "id": "17955880071154507",
@@ -1220,8 +1220,8 @@
         "views": 281,
         "shares": 0,
         "saved": 0,
-        "engagements": 12,
-        "engagement_rate": 5.8
+        "engagement_rate": 5.8,
+        "engagement_total": 12
       },
       {
         "id": "17859196473659090",
@@ -1235,8 +1235,8 @@
         "views": 359,
         "shares": 1,
         "saved": 0,
-        "engagements": 18,
-        "engagement_rate": 7.4
+        "engagement_rate": 7.4,
+        "engagement_total": 18
       },
       {
         "id": "18204075637361995",
@@ -1250,8 +1250,8 @@
         "views": 224,
         "shares": 0,
         "saved": 0,
-        "engagements": 6,
-        "engagement_rate": 4.1
+        "engagement_rate": 4.1,
+        "engagement_total": 6
       },
       {
         "id": "18066161072441820",
@@ -1265,8 +1265,8 @@
         "views": 237,
         "shares": 0,
         "saved": 0,
-        "engagements": 15,
-        "engagement_rate": 8.4
+        "engagement_rate": 8.4,
+        "engagement_total": 15
       },
       {
         "id": "17989576553817610",
@@ -1280,8 +1280,8 @@
         "views": 201,
         "shares": 0,
         "saved": 0,
-        "engagements": 11,
-        "engagement_rate": 7.1
+        "engagement_rate": 7.1,
+        "engagement_total": 11
       }
     ],
     "posts_7d_count": 3,
