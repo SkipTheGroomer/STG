@@ -78,115 +78,114 @@
   },
   "shopify": {
     "available": true,
-    "report_date": "2026-07-29",
-    "yesterday_sales": 19.98,
-    "aov": 9.99,
-    "aov_status": "RED",
-    "aov_note": "Jul 29: $19.98 / 2 orders = $9.99 AOV. Below $35 AOV target.",
-    "vs_7day_avg_pct": -39.2,
+    "report_date": "2026-07-30",
+    "data_source": "Shopify MCP \u2014 live pull 2026-07-31",
     "yesterday": {
-      "date": "2026-07-29",
-      "sales": 19.98,
-      "orders": 2,
-      "aov": 9.99,
-      "items_per_order": 1.0
+      "date": "2026-07-30",
+      "sales": 36.97,
+      "net_sales": 8.99,
+      "orders": 3,
+      "aov": 12.32
     },
+    "yesterday_sales": 36.97,
+    "aov": 12.32,
+    "aov_status": "RED",
+    "aov_note": "Jul 30: $36.97 / 3 orders = $12.32 AOV.",
+    "vs_7day_avg_pct": 4.3,
+    "seven_day_avg": 35.43,
     "daily_7d": [
       {
-        "date": "2026-07-23",
-        "sales": 18.99
-      },
-      {
         "date": "2026-07-24",
-        "sales": 35.99
+        "sales": 35.99,
+        "net_sales": 0,
+        "orders": 1
       },
       {
         "date": "2026-07-25",
-        "sales": 0.0
+        "sales": 0,
+        "net_sales": 0,
+        "orders": 0
       },
       {
         "date": "2026-07-26",
-        "sales": 0.0
+        "sales": 0,
+        "net_sales": 0,
+        "orders": 0
       },
       {
         "date": "2026-07-27",
-        "sales": 107.13
+        "sales": 107.13,
+        "net_sales": 0,
+        "orders": 2
       },
       {
         "date": "2026-07-28",
-        "sales": 47.96
+        "sales": 47.96,
+        "net_sales": 19.98,
+        "orders": 4
       },
       {
         "date": "2026-07-29",
-        "sales": 19.98
+        "sales": 19.98,
+        "net_sales": 19.98,
+        "orders": 2
+      },
+      {
+        "date": "2026-07-30",
+        "sales": 36.97,
+        "net_sales": 8.99,
+        "orders": 3
       }
     ],
     "top_products": [
       {
         "product_title": "Detangling Treatment",
-        "order_count": 15,
-        "units_sold": null,
-        "revenue": 272.17,
-        "avg_price": 18.14,
-        "variants": []
-      },
-      {
-        "product_title": "Emergency Dematter Cream",
-        "order_count": 12,
-        "units_sold": null,
-        "revenue": 249.1,
-        "avg_price": 20.76,
-        "variants": []
+        "gross_sales": 293.06,
+        "net_sales": 65.28,
+        "orders": 16
       },
       {
         "product_title": "4-IN-1 Rosemary Mint Shampoo",
-        "order_count": 18,
-        "units_sold": null,
-        "revenue": 247.93,
-        "avg_price": 13.77,
-        "variants": []
+        "gross_sales": 250.91,
+        "net_sales": 105.39,
+        "orders": 20
+      },
+      {
+        "product_title": "Emergency Dematter Cream",
+        "gross_sales": 228.41,
+        "net_sales": 164.91,
+        "orders": 11
       },
       {
         "product_title": "Slicker Brush",
-        "order_count": 18,
-        "units_sold": null,
-        "revenue": 210.42,
-        "avg_price": 11.69,
-        "variants": []
-      },
-      {
-        "product_title": "Pin Brush",
-        "order_count": 10,
-        "units_sold": null,
-        "revenue": 180.57,
-        "avg_price": 18.06,
-        "variants": []
+        "gross_sales": 204.11,
+        "net_sales": 35.97,
+        "orders": 19
       },
       {
         "product_title": "Rake Brush",
-        "order_count": 11,
-        "units_sold": null,
-        "revenue": 147.41,
-        "avg_price": 13.4,
-        "variants": []
+        "gross_sales": 133.92,
+        "net_sales": 92.52,
+        "orders": 10
       },
       {
-        "product_title": "Shampoo + Pin Bundle",
-        "order_count": 2,
-        "units_sold": null,
-        "revenue": 71.98,
-        "avg_price": 35.99,
-        "variants": []
+        "product_title": "Pin Brush",
+        "gross_sales": 125.6,
+        "net_sales": 48.75,
+        "orders": 7
+      },
+      {
+        "product_title": "Soft & Tangle Free Dog Grooming Kit",
+        "gross_sales": 71.98,
+        "net_sales": 0,
+        "orders": 2
       }
     ],
-    "top_products_note": "30-day window carried forward from 2026-07-29 run \u2014 fresh re-query skipped due to context compaction.",
+    "top_products_period": "2026-07-01 to 2026-07-30",
     "order_breakdown": {
-      "date": "2026-07-29",
-      "total_orders": 2,
-      "single_item_orders": 2,
-      "multi_item_orders": 0,
-      "avg_items_per_order": 1.0,
-      "note": "Jul 29: 2 orders, both single-item, AOV $9.99"
+      "date": "2026-07-30",
+      "total_orders": 3,
+      "note": "Jul 30: 3 orders, AOV $12.32"
     },
     "refunds": {
       "available": true,
@@ -1163,10 +1162,6 @@
     ],
     "shopify_7d": [
       {
-        "date": "2026-07-23",
-        "sales": 18.99
-      },
-      {
         "date": "2026-07-24",
         "sales": 35.99
       },
@@ -1189,6 +1184,12 @@
       {
         "date": "2026-07-29",
         "sales": 19.98
+      },
+      {
+        "date": "2026-07-30",
+        "sales": 36.97,
+        "net_sales": 8.99,
+        "orders": 3
       }
     ],
     "sm_ig_7d": [
