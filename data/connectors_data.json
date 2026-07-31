@@ -1144,7 +1144,9 @@
         "reach": 145,
         "views": 178,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 14,
+        "engagement_rate": 9.7
       },
       {
         "id": "17982886299022472",
@@ -1157,7 +1159,9 @@
         "reach": 116,
         "views": 141,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 4,
+        "engagement_rate": 3.4
       },
       {
         "id": "18109956343966502",
@@ -1170,7 +1174,9 @@
         "reach": 173,
         "views": 214,
         "shares": 1,
-        "saved": 0
+        "saved": 0,
+        "engagements": 12,
+        "engagement_rate": 6.9
       },
       {
         "id": "18414596140197289",
@@ -1183,7 +1189,9 @@
         "reach": 165,
         "views": 224,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 13,
+        "engagement_rate": 7.9
       },
       {
         "id": "18006212678933351",
@@ -1196,7 +1204,9 @@
         "reach": 156,
         "views": 221,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 11,
+        "engagement_rate": 7.1
       },
       {
         "id": "17955880071154507",
@@ -1209,7 +1219,9 @@
         "reach": 206,
         "views": 281,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 12,
+        "engagement_rate": 5.8
       },
       {
         "id": "17859196473659090",
@@ -1222,7 +1234,9 @@
         "reach": 244,
         "views": 359,
         "shares": 1,
-        "saved": 0
+        "saved": 0,
+        "engagements": 18,
+        "engagement_rate": 7.4
       },
       {
         "id": "18204075637361995",
@@ -1235,7 +1249,9 @@
         "reach": 147,
         "views": 224,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 6,
+        "engagement_rate": 4.1
       },
       {
         "id": "18066161072441820",
@@ -1248,7 +1264,9 @@
         "reach": 179,
         "views": 237,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 15,
+        "engagement_rate": 8.4
       },
       {
         "id": "17989576553817610",
@@ -1261,7 +1279,9 @@
         "reach": 154,
         "views": 201,
         "shares": 0,
-        "saved": 0
+        "saved": 0,
+        "engagements": 11,
+        "engagement_rate": 7.1
       }
     ],
     "posts_7d_count": 3,
@@ -1404,8 +1424,8 @@
     "available": false,
     "account_id": "7574135215329869825",
     "account_name": "Skip The Groomer",
-    "data_source": "TikTok MCP \u2014 attempted 2026-07-31",
-    "error": "MCP access token not authorized for advertiser 7574135215329869825 \u2014 MCP connector must be re-authenticated with Will's TikTok Ads credentials",
+    "data_source": "TikTok MCP — attempted 2026-07-31",
+    "error": "MCP access token not authorized for advertiser 7574135215329869825 — MCP connector must be re-authenticated with Will's TikTok Ads credentials",
     "error_code": 40001,
     "action_required": "Reconnect TikTok MCP connector in Claude using the login that owns advertiser ID 7574135215329869825",
     "stale": true,
