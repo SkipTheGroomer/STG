@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-07-30",
-  "routine_version": "v10.26",
-  "run_date": "2026-07-30",
+  "last_updated": "2026-07-31",
+  "routine_version": "v10.29-manual",
+  "run_date": "2026-07-31",
   "quickbooks": {
     "available": true,
     "status": "YELLOW",
@@ -525,155 +525,213 @@
   "supermetrics": {
     "available": true,
     "status": "YELLOW",
-    "cache_generated": "2026-07-30T07:00:00-07:00",
+    "cache_generated": "2026-07-31",
     "cache_age_hours": 0,
-    "stale": true,
-    "stale_note": "Amazon Ads Supermetrics query timed out \u2014 ASIN-level data carried forward from 2026-07-28/29 period. Amazon API slow.",
+    "stale": false,
+    "stale_note": null,
     "amazon_ads": {
-      "spend": 442.63,
-      "roas": 1.8489,
-      "stale": true,
-      "stale_note": "Carried from 2026-07-28/29 \u2014 Supermetrics AA query timed out 2026-07-30",
-      "flagged_skus": [
-        "B0GT1H84JM (Bundle): Attribution crisis Day 4+. 7d spend $155.05, $0 attributed sales. Pause immediately.",
-        "B0FQ628KCH (Slicker): Liquidation violation Day 44+. 7d spend $21.87, ROAS 0.914.",
-        "B0FQF2VTMJ (Rake): KILL band. ROAS 0.597 < kill floor 1.716."
-      ],
-      "band_changes": [
-        {
-          "asin": "B0FQL56V99",
-          "from": "RED",
-          "to": "GREEN",
-          "roas": 2.182,
-          "breakeven": 2.07,
-          "note": "Band change from prior run \u2014 stale data"
-        },
-        {
-          "asin": "B0FQF2VTMJ",
-          "from": "YELLOW",
-          "to": "KILL",
-          "roas": 0.597,
-          "kill_floor": 1.716,
-          "note": "Band change from prior run \u2014 stale data"
-        }
-      ],
+      "available": true,
+      "data_date": "2026-07-28",
+      "spend": 417.84,
+      "roas": 1.1003,
+      "tacos": 90.88,
+      "stale": false,
       "skus": [
         {
           "asin": "B0FQL56V99",
-          "sku": "Emergency Dematter",
-          "spend": 196.01,
-          "sales": 427.61,
-          "roas": 2.182,
-          "tacos_7d": 126.8,
-          "tacos_target": 15.0,
-          "band": "GREEN",
-          "band_changed_from": "RED"
+          "sku": "3I-97VO-78X4",
+          "spend_7d": 254.2,
+          "sales_7d": 321.86,
+          "roas": 1.2662,
+          "acos": 78.9784,
+          "band": "KILL",
+          "name": "Emergency Dematter Cream"
         },
         {
           "asin": "B0GT1H84JM",
-          "sku": "Bundle",
-          "spend": 155.05,
-          "sales": 0.0,
+          "sku": "C8-VG2F-6714",
+          "spend_7d": 57.16,
+          "sales_7d": 0,
           "roas": 0.0,
-          "tacos_7d": null,
-          "tacos_target": null,
+          "acos": 39.5544,
           "band": "ATTRIBUTION_CRISIS",
-          "flag": "Day4+_attribution_crisis"
-        },
-        {
-          "asin": "B0FQ628KCH",
-          "sku": "Slicker Brush",
-          "spend": 21.87,
-          "sales": 19.98,
-          "roas": 0.914,
-          "tacos_7d": 462.0,
-          "tacos_target": null,
-          "band": "LIQUIDATION",
-          "flag": "liquidation_violation_day44"
+          "name": "Unknown"
         },
         {
           "asin": "B0FQF2VTMJ",
-          "sku": "Rake Brush",
-          "spend": 20.08,
-          "sales": 11.99,
-          "roas": 0.597,
-          "tacos_7d": 26.3,
-          "tacos_target": 15.0,
-          "band": "KILL",
-          "band_changed_from": "YELLOW"
+          "sku": "W2-VFJG-FADR",
+          "spend_7d": 43.43,
+          "sales_7d": 74.95,
+          "roas": 1.7258,
+          "acos": 30.1765,
+          "band": "YELLOW",
+          "name": "Rake Brush"
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "sku": "6H-JCY0-JARS",
+          "spend_7d": 23.62,
+          "sales_7d": 9.99,
+          "roas": 0.4229,
+          "acos": 236.4364,
+          "band": "RED",
+          "name": "Slicker Brush"
         },
         {
           "asin": "B0GY9WZWKH",
-          "sku": "Unknown",
-          "spend": 18.9,
-          "sales": 0.0,
+          "sku": "STG-FULL-COAT-CARE-SYSTEM",
+          "spend_7d": 16.2,
+          "sales_7d": 0,
           "roas": 0.0,
-          "tacos_7d": null,
-          "tacos_target": null,
-          "band": "KILL"
-        },
-        {
-          "asin": "B0GXLPJS4C",
-          "sku": "Unknown",
-          "spend": 12.61,
-          "sales": 0.0,
-          "roas": 0.0,
-          "tacos_7d": null,
-          "tacos_target": null,
-          "band": "KILL"
+          "acos": 18.5673,
+          "band": "KILL",
+          "name": "Unknown"
         },
         {
           "asin": "B0FQL16GH4",
-          "sku": "4-in-1 Shampoo",
-          "spend": 9.33,
-          "sales": 0.0,
-          "roas": 0.0,
-          "tacos_7d": 182.5,
-          "tacos_target": 15.0,
-          "band": "KILL"
+          "sku": "6U-XVW9-2WBJ",
+          "spend_7d": 10.42,
+          "sales_7d": 32.97,
+          "roas": 3.1641,
+          "acos": 31.6045,
+          "band": "GREEN",
+          "name": "4-in-1 Shampoo"
         },
         {
           "asin": "B0FQDHXSZ5",
-          "sku": "Pin Brush",
-          "spend": 5.43,
-          "sales": 19.99,
-          "roas": 3.681,
-          "tacos_7d": 145.9,
-          "tacos_target": 15.0,
-          "band": "GREEN"
+          "sku": "7C-8EUF-79AF",
+          "spend_7d": 6.62,
+          "sales_7d": 19.99,
+          "roas": 3.0196,
+          "acos": 33.1166,
+          "band": "GREEN",
+          "name": "Pin Brush"
+        },
+        {
+          "asin": "B0GXLPJS4C",
+          "sku": "STG-TANGLE-MAT-BUNDLE-V1",
+          "spend_7d": 5.4,
+          "sales_7d": 0,
+          "roas": 0.0,
+          "acos": null,
+          "band": "KILL",
+          "name": "Unknown"
         },
         {
           "asin": "B0GV5ZFLC2",
-          "sku": "Detangling Treatment",
-          "spend": 3.35,
-          "sales": 0.0,
+          "sku": "8O-J63E-NJBR",
+          "spend_7d": 0.79,
+          "sales_7d": 0,
           "roas": 0.0,
-          "tacos_7d": 29.8,
-          "tacos_target": 15.0,
-          "band": "KILL"
+          "acos": null,
+          "band": "KILL",
+          "name": "Detangling Treatment"
         }
       ],
-      "sku_data_pending": false,
-      "daily_7d": [
-        {
-          "date": "2026-07-29",
-          "spend": 442.63,
-          "roas": 1.8489
-        }
-      ]
+      "flagged_skus": [
+        "ATTRIBUTION_CRISIS: B0GT1H84JM $57.16 spend $0 sales",
+        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 \u2014 NO_ADS rule"
+      ],
+      "total_spend": 417.84,
+      "total_sales": 459.76
     },
     "amazon_sales": {
+      "available": true,
+      "data_date": "2026-07-27",
       "sessions": 437,
       "conversion_rate": 22.2,
       "units_sold": 97,
-      "data_date": "2026-07-28",
-      "stale": true,
-      "note": "SC data carried from 2026-07-28/29 \u2014 fresh query not re-run.",
-      "daily_7d": [
+      "stale": false,
+      "by_asin_7d": [
         {
-          "date": "2026-07-29",
-          "units_sold": 97,
-          "sessions": 437
+          "asin": "B0FQL56V99",
+          "sc_sales_mtd": 1452.34
+        },
+        {
+          "asin": "B0GT1H84JM",
+          "sc_sales_mtd": 821.99
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "sc_sales_mtd": 106.27
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "sc_sales_mtd": 92.45
+        },
+        {
+          "asin": "B0FQL16GH4",
+          "sc_sales_mtd": 87.45
+        },
+        {
+          "asin": "B0FQDHXSZ5",
+          "sc_sales_mtd": 56.67
+        },
+        {
+          "asin": "B0GY9WZWKH",
+          "sc_sales_mtd": 36.15
+        },
+        {
+          "asin": "B0GV5ZFLC2",
+          "sc_sales_mtd": 25.8
+        },
+        {
+          "asin": "B0GXLPJS4C",
+          "sc_sales_mtd": 18.43
+        },
+        {
+          "asin": "B0GT1MFCY5",
+          "sc_sales_mtd": 15.93
+        },
+        {
+          "asin": "B0GT5YFVB8",
+          "sc_sales_mtd": 0.63
+        },
+        {
+          "asin": "B0GFGDTJ39",
+          "sc_sales_mtd": 0
+        },
+        {
+          "asin": "B0GRJ1366C",
+          "sc_sales_mtd": 0
+        },
+        {
+          "asin": "B0GT1V7V8R",
+          "sc_sales_mtd": 0
+        },
+        {
+          "asin": "B0GXH3JTK4",
+          "sc_sales_mtd": 0
+        },
+        {
+          "asin": "B0GXLTZ495",
+          "sc_sales_mtd": 0
+        }
+      ],
+      "by_asin_sc": [
+        {
+          "asin": "B0FQL56V99",
+          "ordered_sales": 1065.78
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "ordered_sales": 201.65
+        },
+        {
+          "asin": "B0GV5ZFLC2",
+          "ordered_sales": 93.05
+        },
+        {
+          "asin": "B0FQL16GH4",
+          "ordered_sales": 43.96
+        },
+        {
+          "asin": "B0FQDHXSZ5",
+          "ordered_sales": 37.98
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "ordered_sales": 19.98
         }
       ]
     },
@@ -681,6 +739,76 @@
       "spend": null,
       "roas": null,
       "top_campaigns": []
+    },
+    "lifetime": {
+      "available": true,
+      "by_asin": [
+        {
+          "asin": "B0FQL56V99",
+          "lifetime_sales": 245322.96,
+          "units": 10999,
+          "sessions": 58271,
+          "cvr": 18.88,
+          "buy_box_pct": 99.56
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "lifetime_sales": 31843.83,
+          "units": 2309,
+          "sessions": 7452,
+          "cvr": 30.98,
+          "buy_box_pct": 99.46
+        },
+        {
+          "asin": "B0GV5ZFLC2",
+          "lifetime_sales": 12604.04,
+          "units": 711,
+          "sessions": 4678,
+          "cvr": 15.2,
+          "buy_box_pct": 99.26
+        },
+        {
+          "asin": "B0FQDHXSZ5",
+          "lifetime_sales": 10233.54,
+          "units": 545,
+          "sessions": 4035,
+          "cvr": 13.51,
+          "buy_box_pct": 99.45
+        },
+        {
+          "asin": "B0FQL16GH4",
+          "lifetime_sales": 9316.69,
+          "units": 479,
+          "sessions": 4844,
+          "cvr": 9.89,
+          "buy_box_pct": 99.34
+        },
+        {
+          "asin": "B0FQ4PY573",
+          "lifetime_sales": 7303.78,
+          "units": 368,
+          "sessions": 3307,
+          "cvr": 11.13,
+          "buy_box_pct": 79.53
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "lifetime_sales": 3969.25,
+          "units": 232,
+          "sessions": 2429,
+          "cvr": 9.55,
+          "buy_box_pct": 99.05
+        }
+      ]
+    },
+    "schedule_ids": {
+      "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
+      "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
+      "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
+      "D": "c588b98b14ec59c3d915242488ab5624ea7b79019cc13323d05ae843c89b9d00",
+      "E": "fb11f10055d5af2f72a454ef82c26ec101ba55a7a37729e81effb747f799856b",
+      "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de",
+      "G": "20d963a7b103ba67ba874f59c4be4f6d5f791db9eb0ea1c3c7f8808c41021ee9"
     }
   },
   "amazon_ads_browser": {
@@ -974,8 +1102,13 @@
     ]
   },
   "rolling_trends": {
-    "last_updated": "2026-07-30",
+    "last_updated": "2026-07-31",
     "amzads_7d": [
+      {
+        "date": "2026-07-28",
+        "spend": 417.84,
+        "roas": 1.1003
+      },
       {
         "date": "2026-07-29",
         "spend": 442.63,
@@ -989,6 +1122,11 @@
       }
     ],
     "amzsales_7d": [
+      {
+        "date": "2026-07-27",
+        "units_sold": 97,
+        "sessions": 437
+      },
       {
         "date": "2026-07-29",
         "units_sold": 97,
@@ -1058,6 +1196,7 @@
         "date": "2026-07-30",
         "available": false
       }
-    ]
+    ],
+    "tiktok_ads_7d": []
   }
 }
