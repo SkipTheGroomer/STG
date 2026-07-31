@@ -4,7 +4,7 @@
   "run_date": "2026-07-31",
   "quickbooks": {
     "available": true,
-    "data_source": "QuickBooks MCP \u2014 live pull 2026-07-31",
+    "data_source": "QuickBooks MCP — live pull 2026-07-31",
     "period": "2026-07-01 to 2026-07-30",
     "cash_balance": 472368.54,
     "checking_balance": 13317.99,
@@ -42,7 +42,7 @@
     },
     "status": "RED",
     "flags": [
-      "CHECKING_BELOW_25K: $13,317.99 in checking \u2014 below $25K threshold",
+      "CHECKING_BELOW_25K: $13,317.99 in checking — below $25K threshold",
       "MTD_NET_NEGATIVE: -$44,536.59 net income MTD July",
       "NEGATIVE_EQUITY: Total equity -$104,573.19",
       "HIGH_AP: $49,253.40 accounts payable",
@@ -54,15 +54,15 @@
   },
   "klaviyo": {
     "available": true,
-    "data_source": "Klaviyo MCP \u2014 live pull 2026-07-31",
+    "data_source": "Klaviyo MCP — live pull 2026-07-31",
     "period": "last_7_days",
     "total_email_revenue_7d": 0.0,
     "avg_open_rate": 50.0,
     "avg_click_rate": 0.0,
     "total_recipients_7d": 6,
     "flows_flagged": [
-      "All flows: $0 revenue 7d \u2014 conversion attribution at zero",
-      "Cart Abandonment: 0 recipients sent \u2014 flow may not be triggering",
+      "All flows: $0 revenue 7d — conversion attribution at zero",
+      "Cart Abandonment: 0 recipients sent — flow may not be triggering",
       "Only 2 flows active this week (Welcome Series + Warranty Confirmation)"
     ],
     "cart_abandonment_flow_name": "Abandoned Cart",
@@ -108,7 +108,7 @@
   "shopify": {
     "available": true,
     "report_date": "2026-07-30",
-    "data_source": "Shopify MCP \u2014 live pull 2026-07-31",
+    "data_source": "Shopify MCP — live pull 2026-07-31",
     "yesterday": {
       "date": "2026-07-30",
       "sales": 36.97,
@@ -230,7 +230,7 @@
     "data_readable": true,
     "report_date": "2026-07-29",
     "flags": [
-      "SLICKER_BRUSH_RANKINGS_CRASH: B0FQ628KCH \u2014 doodle brush unranked (was #57, delta-249), dog slicker brushes for grooming 94->293 (delta-199), slicker brush for dogs 88->133 (delta-45)"
+      "SLICKER_BRUSH_RANKINGS_CRASH: B0FQ628KCH — doodle brush unranked (was #57, delta-249), dog slicker brushes for grooming 94->293 (delta-199), slicker brush for dogs 88->133 (delta-45)"
     ],
     "products": [
       {
@@ -479,33 +479,33 @@
     "report_date": "2026-07-28",
     "competitors": [
       {
-        "name": "We Love Doodles \u2014 B0CXDL42B4",
+        "name": "We Love Doodles — B0CXDL42B4",
         "asin": "B0CXDL42B4",
         "review_change": 4,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B0BFZ4C4Z9",
+        "name": "We Love Doodles — B0BFZ4C4Z9",
         "asin": "B0BFZ4C4Z9",
         "review_change": 18,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B09Q837KK1",
+        "name": "We Love Doodles — B09Q837KK1",
         "asin": "B09Q837KK1",
         "review_change": 19,
         "review_change_direction": "increase"
       }
     ],
-    "note": "Carried forward from 2026-07-29 run \u2014 no fresh Market Tracker email parsed today."
+    "note": "Carried forward from 2026-07-29 run — no fresh Market Tracker email parsed today."
   },
   "helium10_inventory": {
     "available": true,
     "report_date": "2026-07-29",
     "flags": [
-      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) \u2014 LIF <= 0 days, FBA OUT OF STOCK",
-      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) \u2014 LIF <= 0 days, FBA OUT OF STOCK",
-      "LTSF_RISK: All tracked ASINs showing LTSF >= 181 Days \u2014 long-term storage fee risk"
+      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) — LIF <= 0 days, FBA OUT OF STOCK",
+      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) — LIF <= 0 days, FBA OUT OF STOCK",
+      "LTSF_RISK: All tracked ASINs showing LTSF >= 181 Days — long-term storage fee risk"
     ],
     "skus": [
       {
@@ -658,7 +658,7 @@
       ],
       "flagged_skus": [
         "ATTRIBUTION_CRISIS: B0GT1H84JM $57.16 spend $0 sales",
-        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 \u2014 NO_ADS rule"
+        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 — NO_ADS rule"
       ],
       "total_spend": 417.84,
       "total_sales": 459.76
@@ -841,7 +841,7 @@
   },
   "amazon_ads_browser": {
     "available": false,
-    "note": "Cloud environment \u2014 permanent unavailable (L-2026-07-15-001)"
+    "note": "Cloud environment — permanent unavailable (L-2026-07-15-001)"
   },
   "meta_ads": {
     "available": true,
@@ -870,7 +870,7 @@
         "results": "12 purchases"
       },
       {
-        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
+        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC",
         "status": "OFF",
         "spend": 86.17,
         "roas": 0.232,
@@ -886,7 +886,7 @@
     ],
     "flags": [
       "kill_breach: L30D ROAS 0.598 < 1.0 kill floor.",
-      "WARNING: ALL campaigns currently PAUSED or OFF \u2014 $0 active paid acquisition on Meta as of 2026-07-30.",
+      "WARNING: ALL campaigns currently PAUSED or OFF — $0 active paid acquisition on Meta as of 2026-07-30.",
       "kill_breach_campaigns: Save the Shave (ROAS 0.714), Shampoo 50OFF (ROAS 0.232)"
     ],
     "campaigns_active_count": 0,
@@ -912,11 +912,11 @@
     "days_since_last_review": 21,
     "low_star_count_recent15": 3,
     "recent": [],
-    "note": "No Google Sheets access \u2014 data carried forward. Sheet 21 days stale."
+    "note": "No Google Sheets access — data carried forward. Sheet 21 days stale."
   },
   "business_health": {
     "available": true,
-    "data_source": "QuickBooks MCP + supply_chain.json \u2014 2026-07-31",
+    "data_source": "QuickBooks MCP + supply_chain.json — 2026-07-31",
     "cash_in_inventory": 194200.59,
     "checking_balance": 13317.99,
     "checking_status": "RED",
@@ -940,7 +940,7 @@
     "funnel_extracted": false,
     "repeat_purchase_extracted": false,
     "brand_search_extracted": false,
-    "note": "Runs Mondays only \u2014 today is Thursday"
+    "note": "Runs Mondays only — today is Thursday"
   },
   "inventory": {
     "available": false,
@@ -952,7 +952,7 @@
     "scrape_date": "2026-07-29",
     "scrape_time_pt": "08:25 PT",
     "scrape_method": "chrome_browser",
-    "scrape_note": "Jul 30 scrape unavailable \u2014 cloud environment cannot run Chrome. Data carried from 2026-07-29. TikTok MCP connector covers Ads API only.",
+    "scrape_note": "Jul 30 scrape unavailable — cloud environment cannot run Chrome. Data carried from 2026-07-29. TikTok MCP connector covers Ads API only.",
     "shop_id": "7494104359187547577",
     "probation": {
       "active": true,
@@ -1093,15 +1093,15 @@
         "items_sold": null,
         "creator_attributed_gmv": null,
         "top_source": null,
-        "note": "1 SKU out of stock \u2014 data incomplete"
+        "note": "1 SKU out of stock — data incomplete"
       }
     ],
     "out_of_stock_count": 1,
     "flags": [
-      "orders_to_ship: 3 orders pending \u2014 ship within 24h",
-      "response_rate_zero: 24h response rate 0% \u2014 probation risk. Reply to support tickets.",
-      "sku_out_of_stock: 1 SKU out of stock \u2014 restock now",
-      "probation_active: Shop on probation \u2014 daily order limit 2/50"
+      "orders_to_ship: 3 orders pending — ship within 24h",
+      "response_rate_zero: 24h response rate 0% — probation risk. Reply to support tickets.",
+      "sku_out_of_stock: 1 SKU out of stock — restock now",
+      "probation_active: Shop on probation — daily order limit 2/50"
     ],
     "daily_7d": [
       {
@@ -1117,30 +1117,186 @@
     ]
   },
   "social_media": {
-    "available": false,
-    "scrape_date": "2026-07-30",
-    "error": "Meta MCP Connector does not expose organic Instagram or Facebook Graph API endpoints. ads_get_ig_accounts returned empty \u2014 no IG account linked to ad account 2158768751536031 via ads API. Organic IG insights require instagram_manage_insights permission and Graph API access outside the ads connector scope.",
-    "meta_page_id": "565232076673059",
-    "meta_page_name": "Skipthegroomer",
-    "reauth_needed": false,
-    "ig": null,
-    "ig_insights": null,
-    "posts": [],
-    "posts_7d_count": null,
-    "total_engagements_7d": null,
-    "avg_engagement_rate_7d": null,
-    "posting_consistency_pct": null,
-    "posting_gap": null,
-    "top_post": null,
-    "fb": null,
-    "fb_insights": null,
-    "flags": [
-      "data_unavailable_ads_api_only"
+    "available": true,
+    "data_source": "Meta Graph API v21.0 — live pull 2026-07-31",
+    "scrape_date": "2026-07-31",
+    "ig": {
+      "username": "skipthegroomer",
+      "id": "17841465880821401",
+      "followers_count": 279,
+      "media_count": 83
+    },
+    "ig_insights": {
+      "reach_yesterday": 77,
+      "reach_today_partial": 4,
+      "profile_views_day": null,
+      "notes": "profile_views metric_type incompatible; follower_count from profile endpoint"
+    },
+    "posts": [
+      {
+        "id": "18216774637340914",
+        "timestamp": "2026-07-29T21:56:22+0000",
+        "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves. Zero brushing after…",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/",
+        "like_count": 12,
+        "comments_count": 2,
+        "reach": 145,
+        "views": 178,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "17982886299022472",
+        "timestamp": "2026-07-29T11:40:54+0000",
+        "caption": "The groomer said the S-word.\n\nShave.",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DbYB35TCsau/",
+        "like_count": 4,
+        "comments_count": 0,
+        "reach": 116,
+        "views": 141,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "18109956343966502",
+        "timestamp": "2026-07-27T17:01:01+0000",
+        "caption": "Skipper is always there for you 🥰🐶",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DbTc66hFK3c/",
+        "like_count": 9,
+        "comments_count": 2,
+        "reach": 173,
+        "views": 214,
+        "shares": 1,
+        "saved": 0
+      },
+      {
+        "id": "18414596140197289",
+        "timestamp": "2026-06-28T00:31:23+0000",
+        "caption": "She is such a princess 👸👑",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DaHAnzFDUUc/",
+        "like_count": 12,
+        "comments_count": 1,
+        "reach": 165,
+        "views": 224,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "18006212678933351",
+        "timestamp": "2026-06-26T21:31:26+0000",
+        "caption": "Mine! Mine! Mine! #MammaMia",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DaEHPIhlnEj/",
+        "like_count": 11,
+        "comments_count": 0,
+        "reach": 156,
+        "views": 221,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "17955880071154507",
+        "timestamp": "2026-06-25T23:21:24+0000",
+        "caption": "She is just our little baby 🐶💕",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DaBvBXcj_Au/",
+        "like_count": 12,
+        "comments_count": 0,
+        "reach": 206,
+        "views": 281,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "17859196473659090",
+        "timestamp": "2026-06-24T14:30:40+0000",
+        "caption": "We had a talk about boundaries after this 🤣🤣",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DZ-NfZ6iawF/",
+        "like_count": 16,
+        "comments_count": 1,
+        "reach": 244,
+        "views": 359,
+        "shares": 1,
+        "saved": 0
+      },
+      {
+        "id": "18204075637361995",
+        "timestamp": "2026-06-23T13:16:22+0000",
+        "caption": "A dog treat goes a long way #doodles",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DZ7gMKUEpZm/",
+        "like_count": 6,
+        "comments_count": 0,
+        "reach": 147,
+        "views": 224,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "18066161072441820",
+        "timestamp": "2026-06-22T16:40:55+0000",
+        "caption": "Personally I think she is both 🥰🐶",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DZ5Sz0YDvm9/",
+        "like_count": 14,
+        "comments_count": 1,
+        "reach": 179,
+        "views": 237,
+        "shares": 0,
+        "saved": 0
+      },
+      {
+        "id": "17989576553817610",
+        "timestamp": "2026-06-21T14:55:36+0000",
+        "caption": "Happy Father's Day from our family to yours!",
+        "media_type": "VIDEO",
+        "permalink": "https://www.instagram.com/reel/DZ2h9cNjmiG/",
+        "like_count": 8,
+        "comments_count": 3,
+        "reach": 154,
+        "views": 201,
+        "shares": 0,
+        "saved": 0
+      }
     ],
+    "posts_7d_count": 3,
+    "total_engagements_7d": 30,
+    "avg_engagement_rate_7d": 6.7,
+    "posting_consistency_pct": 29.0,
+    "posting_gap_days": 1,
+    "top_post": {
+      "id": "17859196473659090",
+      "caption_snippet": "We had a talk about boundaries after this 🤣🤣",
+      "timestamp": "2026-06-24T14:30:40+0000",
+      "views": 359,
+      "reach": 244,
+      "likes": 16,
+      "comments": 1,
+      "shares": 1,
+      "permalink": "https://www.instagram.com/reel/DZ-NfZ6iawF/"
+    },
+    "fb": {
+      "page_id": "565232076673059",
+      "page_name": "Skipthegroomer"
+    },
+    "fb_insights": null,
+    "flags": [],
     "daily_7d": [
       {
         "date": "2026-07-30",
-        "available": false
+        "reach": 77,
+        "available": true
+      },
+      {
+        "date": "2026-07-31",
+        "reach": 4,
+        "available": true,
+        "note": "partial day"
       }
     ]
   },
