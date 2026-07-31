@@ -1243,5 +1243,22 @@
       }
     ],
     "tiktok_ads_7d": []
+  },
+  "tiktok_ads": {
+    "available": false,
+    "account_id": "7574135215329869825",
+    "account_name": "Skip The Groomer",
+    "data_source": "TikTok MCP \u2014 attempted 2026-07-31",
+    "error": "MCP access token not authorized for advertiser 7574135215329869825 \u2014 MCP connector must be re-authenticated with Will's TikTok Ads credentials",
+    "error_code": 40001,
+    "action_required": "Reconnect TikTok MCP connector in Claude using the login that owns advertiser ID 7574135215329869825",
+    "stale": true,
+    "l7d": null,
+    "yesterday": null,
+    "campaigns": [],
+    "top_ads": [],
+    "flags": [
+      "TIKTOK_ADS_MCP_AUTH_ERROR"
+    ]
   }
 }
