@@ -1130,62 +1130,199 @@
     ]
   },
   "social_media": {
-    "available": false,
-    "stale": true,
-    "stale_reason": "META_ACCESS_TOKEN not available in cloud environment \u2014 social media data unavailable this run",
-    "data_source": "Meta Graph API v21.0 \u2014 last live pull 2026-07-31 (carried)",
-    "scrape_date": "2026-07-31",
+    "available": true,
+    "scrape_date": "2026-08-03",
+    "data_source": "Meta MCP (instagram_basic) \u2014 ads_get_ig_media \u00b7 followers/reach pending instagram_manage_insights re-auth",
     "ig": {
       "username": "skipthegroomer",
-      "id": "17841465880821401",
-      "followers_count": 279,
-      "media_count": 83
+      "ig_user_id": "17841465880821401",
+      "followers_count": null,
+      "following_count": null,
+      "media_count": null,
+      "note": "followers_count unavailable \u2014 requires instagram_manage_insights scope re-auth on business.facebook.com"
     },
     "ig_insights": {
-      "reach_yesterday": 77,
-      "reach_today_partial": 4,
-      "profile_views_day": null,
-      "notes": "Stale \u2014 carried from 2026-07-31 pull"
+      "impressions_7d": null,
+      "reach_7d": null,
+      "profile_views_7d": null,
+      "follower_delta_7d": null,
+      "note": "insights unavailable \u2014 requires instagram_manage_insights scope"
     },
     "posts_7d_count": 3,
-    "total_engagements_7d": 30,
-    "avg_engagement_rate_7d": 6.7,
-    "posting_consistency_pct": 29.0,
-    "posting_gap_days": 1,
+    "posts_target_per_week": 5,
+    "posting_consistency_pct": 60,
+    "posting_gap": 2,
+    "total_engagements_7d": 29,
+    "total_likes_7d": 25,
+    "total_comments_7d": 4,
+    "avg_engagement_rate_7d": null,
+    "attributed_revenue_7d": null,
     "top_post": {
-      "id": "17859196473659090",
-      "caption_snippet": "We had a talk about boundaries after this",
-      "timestamp": "2026-06-24T14:30:40+0000",
-      "views": 359,
-      "reach": 244,
-      "likes": 16,
-      "comments": 1,
-      "shares": 1,
-      "permalink": "https://www.instagram.com/reel/DZ-NfZ6iawF/"
+      "id": "18216774637340914",
+      "caption": "Best day of his life. He had no idea what was coming. \ud83d\udc3e\n\nMuddy yard. Piles of leaves...\n\nDemat. Deta...",
+      "engagement_total": 14,
+      "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/",
+      "date": "2026-07-29"
     },
+    "posts": [
+      {
+        "id": "18216774637340914",
+        "caption": "Best day of his life. He had no idea what was coming. \ud83d\udc3e\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-07-29T14:56:22-0700",
+        "date": "2026-07-29",
+        "like_count": 12,
+        "comments_count": 2,
+        "engagement_total": 14,
+        "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/"
+      },
+      {
+        "id": "17982886299022472",
+        "caption": "The groomer said the S-word.\n\nShave.\n\nAnd just like that\u2026 months of coat, gone...",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-07-29T04:40:54-0700",
+        "date": "2026-07-29",
+        "like_count": 4,
+        "comments_count": 0,
+        "engagement_total": 4,
+        "permalink": "https://www.instagram.com/reel/DbYB35TCsau/"
+      },
+      {
+        "id": "18109956343966502",
+        "caption": "Skipper is always there for you \ud83e\udd70\ud83d\udc36 #dog #doggos #doglife",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-07-27T10:01:01-0700",
+        "date": "2026-07-27",
+        "like_count": 9,
+        "comments_count": 2,
+        "engagement_total": 11,
+        "permalink": "https://www.instagram.com/reel/DbTc66hFK3c/"
+      },
+      {
+        "id": "18414596140197289",
+        "caption": "She is such a princess \ud83d\udc78\ud83d\udc51 #princesses #dogs",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-27T17:31:23-0700",
+        "date": "2026-06-28",
+        "like_count": 12,
+        "comments_count": 1,
+        "engagement_total": 13,
+        "permalink": "https://www.instagram.com/reel/DaHAnzFDUUc/"
+      },
+      {
+        "id": "18006212678933351",
+        "caption": "Mine! Mine! Mine! #MammaMia",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-26T14:31:26-0700",
+        "date": "2026-06-26",
+        "like_count": 11,
+        "comments_count": 0,
+        "engagement_total": 11,
+        "permalink": "https://www.instagram.com/reel/DaEHPIhlnEj/"
+      },
+      {
+        "id": "17955880071154507",
+        "caption": "She is just our little baby \ud83d\udc36\ud83d\udc95",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-25T16:21:24-0700",
+        "date": "2026-06-25",
+        "like_count": 12,
+        "comments_count": 0,
+        "engagement_total": 12,
+        "permalink": "https://www.instagram.com/reel/DaBvBXcj_Au/"
+      },
+      {
+        "id": "17859196473659090",
+        "caption": "We had a talk about boundaries after this \ud83e\udd23\ud83e\udd23",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-24T07:30:40-0700",
+        "date": "2026-06-24",
+        "like_count": 16,
+        "comments_count": 1,
+        "engagement_total": 17,
+        "permalink": "https://www.instagram.com/reel/DZ-NfZ6iawF/"
+      },
+      {
+        "id": "18204075637361995",
+        "caption": "A dog treat goes a long way #doodles",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-23T06:16:22-0700",
+        "date": "2026-06-23",
+        "like_count": 6,
+        "comments_count": 0,
+        "engagement_total": 6,
+        "permalink": "https://www.instagram.com/reel/DZ7gMKUEpZm/"
+      },
+      {
+        "id": "18066161072441820",
+        "caption": "Personally I think she is both \ud83e\udd70\ud83d\udc36 #summertrends #golf",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-22T09:40:55-0700",
+        "date": "2026-06-22",
+        "like_count": 14,
+        "comments_count": 1,
+        "engagement_total": 15,
+        "permalink": "https://www.instagram.com/reel/DZ5Sz0YDvm9/"
+      },
+      {
+        "id": "17989576553817610",
+        "caption": "Happy Father's Day from our family to yours! #dogdad",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "timestamp": "2026-06-21T07:55:36-0700",
+        "date": "2026-06-21",
+        "like_count": 8,
+        "comments_count": 3,
+        "engagement_total": 11,
+        "permalink": "https://www.instagram.com/reel/DZ2h9cNjmiG/"
+      }
+    ],
     "fb": {
       "page_id": "565232076673059",
-      "page_name": "Skipthegroomer"
+      "page_name": "Skipthegroomer",
+      "fan_count": null,
+      "followers_count": null,
+      "note": "FB insights require pages_read_engagement \u2014 re-auth needed"
     },
-    "flags": [],
+    "fb_insights": {},
+    "flags": [
+      "PARTIAL_DATA: instagram_basic only \u2014 followers/reach/impressions require instagram_manage_insights scope",
+      "ACTION_NEEDED: Will re-auth at business.facebook.com \u2192 Connected Apps \u2192 add instagram_manage_insights"
+    ],
     "daily_7d": [
       {
-        "date": "2026-07-30",
-        "reach": 77,
-        "available": true
-      },
-      {
-        "date": "2026-07-31",
-        "reach": 4,
+        "date": "2026-07-29",
         "available": true,
-        "note": "partial day"
+        "posts": 1,
+        "likes": 12,
+        "comments": 2
       },
       {
-        "date": "2026-08-03",
-        "available": false,
-        "note": "META_ACCESS_TOKEN missing"
+        "date": "2026-07-29",
+        "available": true,
+        "posts": 1,
+        "likes": 4,
+        "comments": 0
+      },
+      {
+        "date": "2026-07-27",
+        "available": true,
+        "posts": 1,
+        "likes": 9,
+        "comments": 2
       }
-    ]
+    ],
+    "reauth_needed": true,
+    "reauth_scope": "instagram_manage_insights"
   },
   "rolling_trends": {
     "last_updated": "2026-08-03",
