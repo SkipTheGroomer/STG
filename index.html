@@ -1306,7 +1306,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
           <!-- ── BHv2: CHANNEL VISUALS (additive module — reads window.__LIVE, no existing JS touched) ── -->
           <div class="bhv2-row" id="bhv2-visuals">
             <div class="col-card bhv2-panel">
-              <h3>Revenue by Channel <span class="bhv2-win" id="bhv2-rev-win">7 days</span></h3>
+              <h3>Revenue by Channel <span class="bhv2-win">7 days</span></h3>
               <div class="bhv2-flex" id="bhv2-rev-donut"><div class="bhv2-empty">Awaiting data…</div></div>
             </div>
             <div class="col-card bhv2-panel">
@@ -1314,7 +1314,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
               <div class="bhv2-flex" id="bhv2-spend-donut"><div class="bhv2-empty">Awaiting data…</div></div>
             </div>
             <div class="col-card bhv2-panel bhv2-wide">
-              <h3>Ad Spend Trend <span class="bhv2-win">rolling 7 days</span></h3>
+              <h3>Sales Trend <span class="bhv2-win">rolling 7 days</span></h3>
               <div id="bhv2-trend"><div class="bhv2-empty">Awaiting data…</div></div>
             </div>
           </div>
@@ -1535,7 +1535,7 @@ function renderDaas(daas) {
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-const fmtDollar = n => n == null ? null : '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtDollar = n => n == null ? null : '$' + Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
 const fmtNum    = (n,d=2) => n == null ? null : Number(n).toFixed(d);
 const fmtPct    = n => n == null ? null : Number(n).toFixed(1) + '%';
 const fmtInt    = n => n == null ? null : Number(n).toLocaleString('en-US');
@@ -2410,10 +2410,13 @@ function renderBizHealth(bh){
     ? alertBox('warn','<b>Strategic data is ' + bhDays + ' days old</b> (last update ' + esc(bh.report_date) + '). Lifetime revenue, inventory, and production numbers below are stale — Patrick\'s weekly update is overdue. Live row below is current as of this morning.')
     : '';
   const bhFresh = (bh._meta && bh._meta.field_freshness) || {};
-  const fbLive = freshnessBadge(bh.last_updated, true);
-  const fbQG   = freshnessBadge((bhFresh.lifetime_revenue||{}).last_updated, true);
-  const fbSC   = freshnessBadge((bhFresh.inventory_cogs||{}).last_updated, false);
-  const fbSNS  = freshnessBadge((bhFresh.subscribe_and_save||{}).last_updated, false);
+  // FIX v2: live cards use connectors_data last_updated (today), not bh.last_updated (Patrick's weekly file)
+  const _liveDate = (window.__LIVE||{}).last_updated || bh.last_updated;
+  const _bhDate   = bh.report_date || bh.last_updated;
+  const fbLive = freshnessBadge(_liveDate, true);   // LIVE — QuickBooks / H10 / Shopify from today's run
+  const fbQG   = freshnessBadge(_bhDate, false);    // MANUAL — lifetime revenue from Patrick's weekly file
+  const fbSC   = freshnessBadge(_bhDate, false);    // MANUAL — COGS / inventory from Patrick's weekly file
+  const fbSNS  = freshnessBadge(_bhDate, false);    // MANUAL — S&S data from Patrick's weekly file
   $('bh-kpi-cards').innerHTML =
     card('MTD Revenue' + fbLive, fmtDollar(lmtd.revenue), (lmtd.period || 'QuickBooks') + ' · LIVE', 'bdr-teal') +
     card('MTD Net Income' + fbLive, fmtDollar(lmtd.net_income), 'QuickBooks · LIVE', (lmtd.net_income || 0) < 0 ? 'bdr-red' : 'bdr-green', (lmtd.net_income || 0) < 0 ? 'down' : 'up') +
@@ -2569,14 +2572,8 @@ function renderBizHealth(bh){
     +'</tr></tfoot>'
     +'</table></div></div>'
     +alertBox('warn','Subscriptions underdeveloped ('+fmtNum(snsP,1)+'% vs 5–10% target). Dematter drives 88% of S&amp;S revenue at only 2.9% penetration — push S&amp;S on Shampoo (9.8% penetration = proof it works) and Detangling (0% coupon dependency = healthiest base).');
-  const maxR=Math.max(...skus.map(s=>s.return_rate_pct||0),12);
-  const returnsHtml = '<div style="padding:8px 0;">'+skus.map(s=>{ 
-    if (s.return_rate_pct==null) {
-      return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill pill-na">No data</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:#d0d5dd;width:0%;height:8px;border-radius:4px;"></div></div><div style="font-size:10px;color:var(--muted);margin-top:2px;">Return data pending — populated from Brand Analytics (Mondays)</div></div>';
-    }
-    const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; 
-    return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; 
-  }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
+  const maxR=Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0),12);
+  const returnsHtml = '<div style="padding:8px 0;">'+skus.filter(s=>s.return_rate_pct!=null).map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
   if ($('bh-returns-section')) $('bh-returns-section').innerHTML = returnsHtml;
   if ($('bh-returns-section-cx')) $('bh-returns-section-cx').innerHTML = returnsHtml;
   const tT=brand.top_tier||{},pr=brand.promising||{},aR=brand.at_risk||{},totC=(tT.count||0)+(pr.count||0)+(aR.count||0),ttA=totC>0?(tT.count/totC*226):0,prA=totC>0?(pr.count/totC*226):0,arA=totC>0?(aR.count/totC*226):0;
@@ -3489,9 +3486,11 @@ function bhHero(d){
   if (tacos!=null) chips.push(tacos>35 ? chip('warn','TACOS Above Target','Daily TACOS '+fmtNum(tacos,1)+'% is above Patrick\u2019s target of <35%.') : chip('ok','TACOS On Target','Daily TACOS '+fmtNum(tacos,1)+'% — inside the <35% target.'));
   if (qb.cash_balance!=null) chips.push(qb.cash_balance<25000 ? chip('crit','Cash Below Threshold','Checking below the $25K floor — see #stg-finance-alerts.') : chip('info','Cash Position',fmtDollar(qb.cash_balance)+(qb.weeks_runway!=null?' · '+fmtNum(qb.weeks_runway,1)+' weeks runway at current burn.':'')));
   if (mtd.net_income!=null && mtd.net_income<0) chips.push(chip('warn','MTD Net Negative','Spending more than earning this month ('+fmtDollar(mtd.net_income)+'). Review with Patrick.'));
-  setHero('bh-hero', kpis
-    + '<div class="panel-grid pg-1" style="margin-top:12px;">'
-    + panel('Profit by Channel (Est.) — Yesterday', profitBody)
+  setHero('bh-hero', kpis + secLbl('Channel Breakdown — Yesterday')
+    + '<div class="panel-grid pg-3">'
+    + panel('Revenue by Channel', revDonut)
+    + panel('Profit by Channel (Est.)', profitBody)
+    + panel('Ad Spend by Platform', adDonut)
     + '</div>' + chipRow(chips));
 }
 
@@ -4915,9 +4914,6 @@ function kpiCard(label, val, sub, accent, cls){
         {name:'TikTok Shop', value:+tt7||0, color:COLORS.tiktok}
       ].filter(s=>s.value>0 || true);
       const revBox = document.getElementById('bhv2-rev-donut');
-      const revWin = document.getElementById('bhv2-rev-win');
-      const revDate = (((d.helium10_profits||{}).weekly)||{}).period || (((d.helium10_profits||{}).daily)||{}).date;
-      if (revWin && revDate) revWin.textContent = 'data: ' + revDate;
       if (revBox){
         const total = rev.reduce((s,x)=>s+x.value,0);
         const svg = donutSVG(rev.filter(s=>s.value>0), '$'+Math.round(total).toLocaleString());
@@ -4932,14 +4928,11 @@ function kpiCard(label, val, sub, accent, cls){
         {name:'Meta Ads', value:+meta.spend||0, color:COLORS.meta, note:'(30d)'}
       ];
       const spBox = document.getElementById('bhv2-spend-donut');
-      const spWin = document.getElementById('bhv2-spend-win');
-      const aaDate = (((d.supermetrics||{}).amazon_ads)||{}).data_date;
-      if (spWin) spWin.textContent = aaDate ? 'Amz: ' + aaDate + ' · Meta: L30D' : 'as reported';
       if (spBox){
         const total = spend.reduce((s,x)=>s+x.value,0);
         const svg = donutSVG(spend.filter(s=>s.value>0), '$'+Math.round(total).toLocaleString());
         spBox.innerHTML = (svg ? svg + legend(spend) : '<div class="bhv2-empty">No ad spend reported.</div>')
-          + '<div class="bhv2-note" style="flex-basis:100%;">Amazon data date shown above. Meta is 30-day window — windows normalize once routine writes uniform 7d spend.</div>';
+          + '<div class="bhv2-note" style="flex-basis:100%;">Windows differ by source (Amazon 7d, Meta 30d) — mixed until routine writes uniform 7d spend for all platforms.</div>';
       }
 
       // ── Sales trend (rolling_trends builds up daily) ──
