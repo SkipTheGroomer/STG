@@ -499,7 +499,7 @@
       "name": "Chews \u2014 v2"
     },
     {
-      "sku": "Skin & Coat Omega (COAT)",
+      "sku": "Omega Soft Coat (COAT)",
       "asin": null,
       "type": "chew",
       "price": 32.99,
@@ -525,7 +525,7 @@
       "breakeven_confirmed": true
     },
     {
-      "sku": "Calm & Relax (MIND)",
+      "sku": "Calming Comfort (MIND)",
       "asin": null,
       "type": "chew",
       "price": 32.99,
@@ -551,7 +551,7 @@
       "breakeven_confirmed": true
     },
     {
-      "sku": "Immune & Allergy (BODY)",
+      "sku": "Allergy & Itch Relief (BODY)",
       "asin": null,
       "type": "chew",
       "price": 32.99,
@@ -576,5 +576,6 @@
       "liquidate": false,
       "breakeven_confirmed": true
     }
-  ]
+  ],
+  "_name_correction_note": "Chew SKU names corrected 2026-08-03 to match Brand & Marketing Handbook. roas_bands.json previously had stale working names. BANDS ARE CORRECT AND UNCHANGED \u2014 only the three chew sku labels were updated."
 }
