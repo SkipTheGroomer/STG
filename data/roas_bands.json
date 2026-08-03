@@ -7,6 +7,7 @@
     {
       "sku": "Emergency Dematter",
       "asin": "B0FQL56V99",
+      "cogs": 3.36,
       "sku_id": "3I-97VO-78X4",
       "type": "single",
       "price": 22.99,
@@ -38,6 +39,7 @@
     {
       "sku": "Pin Brush",
       "asin": "B0FQDHXSZ5",
+      "cogs": 3.19,
       "sku_id": "7C-8EUG-79AF",
       "type": "single",
       "price": 19.99,
@@ -68,6 +70,7 @@
     {
       "sku": "Detangling Treatment",
       "asin": "B0GV5ZFLC2",
+      "cogs": 3.3,
       "sku_id": "8O-J63E-NJBR",
       "type": "single",
       "price": 18.99,
@@ -98,6 +101,7 @@
     {
       "sku": "Rake Brush",
       "asin": "B0FQF2VTMJ",
+      "cogs": 1.82,
       "sku_id": "W2-VFJG-FADR",
       "type": "single",
       "price": 14.99,
@@ -129,6 +133,7 @@
     {
       "sku": "4-in-1 Shampoo",
       "asin": "B0FQL16GH4",
+      "cogs": 5.17,
       "sku_id": "6U-XVW9-2WBJ",
       "type": "single",
       "price": 19.99,
@@ -159,6 +164,7 @@
     {
       "sku": "Slicker Brush",
       "asin": "B0FQ628KCH",
+      "cogs": 4.97,
       "sku_id": "6H-JCY0-JARS",
       "type": "single",
       "price": 17.99,
@@ -571,18 +577,4 @@
       "breakeven_confirmed": true
     }
   ]
-}
-{
-  "_comment": "PATCH — add 'cogs' field to each entry in the skus[] array. All values from supply_chain.json as_of 2026-07-14, confirmed by Patrick. Update cogs when a new production run has a different landed cost.",
-
-  "_cogs_per_sku": {
-    "B0FQL56V99": { "name": "Emergency Dematter Cream",   "cogs": 3.36 },
-    "B0FQF2VTMJ": { "name": "Rake Brush",                "cogs": 1.82 },
-    "B0GV5ZFLC2": { "name": "Detangling Treatment",      "cogs": 3.30 },
-    "B0FQL16GH4": { "name": "4-in-1 Shampoo",            "cogs": 5.17 },
-    "B0FQDHXSZ5": { "name": "Pin Brush",                 "cogs": 3.19 },
-    "B0FQ628KCH": { "name": "Slicker Brush",             "cogs": 4.97 }
-  },
-
-  "_instruction": "For each object in roas_bands.json skus[], add the matching 'cogs' value as a new field. Example — Emergency Dematter entry becomes: { 'asin': 'B0FQL56V99', 'sku': 'Emergency Dematter...', 'cogs': 3.36, 'price': 22.99, ... }. Place 'cogs' immediately after 'asin' and 'sku' for readability. Do not change any other field."
 }
