@@ -1,27 +1,230 @@
 {
-  "source": "patrick_daas_email",
-  "parse_source": "body_only",
-  "patrick_confirmed": true,
-  "routine_version": "v1.3",
-  "collected_at": "2026-07-24T10:30:00-07:00",
-  "report_date": "2026-07-23",
+  "generated_at": "2026-08-03T10:31:00-07:00",
+  "report_date": "2026-08-02",
+  "reporting_day": "Sunday, August 2, 2026",
+  "prepared_by": "Patrick Towle, CFO",
+  "parse_source": "pdf_manual",
   "daily": {
-    "gross_revenue": null,
-    "ad_spend": 503.62,
-    "daily_tacos_pct": 40.0,
-    "expenses_fba": null,
-    "net_profit_h10": null,
-    "true_net": -186.74,
-    "units_sold": null
+    "date": "2026-08-02",
+    "gross_revenue": 2269.0,
+    "ad_spend": 507.65,
+    "daily_tacos_pct": 22.4,
+    "tacos_30d_avg_pct": 36.1,
+    "tacos_change_pts": -13.7,
+    "expenses": 890.53,
+    "net_profit_h10": 1207.72,
+    "true_net": 700.07,
+    "units_sold": 120,
+    "revenue_30d_avg": 1769.08,
+    "revenue_vs_30d_avg_pct": 28.3,
+    "tacos_7d_weighted_pct": 34.2,
+    "tacos_7d_period": "Jul 27-Aug 2",
+    "tacos_prior_7d_pct": 36.3,
+    "tacos_prior_7d_period": "Jul 20-26",
+    "profitable_day": true
   },
   "mtd": {
-    "revenue": null,
-    "ad_spend": null,
-    "tacos_pct": 36.3,
-    "days_confirmed": null
+    "period": "2026-08-01 to 2026-08-02",
+    "revenue": 4374.11,
+    "ad_spend": 1515.34,
+    "tacos_pct": 34.6,
+    "days_confirmed": 2,
+    "days_in_month": 2,
+    "status": "On target"
   },
-  "sku_table": [],
-  "inventory_flags": [],
-  "ytd_table": [],
-  "flags": ["daily_tacos_red", "mtd_tacos_elevated", "true_net_negative", "parse_incomplete"]
+  "ytd_table": [
+    {
+      "month": "January",
+      "revenue": 46782,
+      "ad_spend": 15209,
+      "tacos_pct": 32.5,
+      "status": "On target"
+    },
+    {
+      "month": "February",
+      "revenue": 43117,
+      "ad_spend": 33359,
+      "tacos_pct": 77.4,
+      "status": "High"
+    },
+    {
+      "month": "March",
+      "revenue": 40599,
+      "ad_spend": 30020,
+      "tacos_pct": 73.9,
+      "status": "High"
+    },
+    {
+      "month": "April",
+      "revenue": 35009,
+      "ad_spend": 16578,
+      "tacos_pct": 47.4,
+      "status": "Elevated"
+    },
+    {
+      "month": "May (Final)",
+      "revenue": 47902,
+      "ad_spend": 24356,
+      "tacos_pct": 50.8,
+      "status": "High"
+    },
+    {
+      "month": "June (Final)",
+      "revenue": 49883,
+      "ad_spend": 22839,
+      "tacos_pct": 45.8,
+      "status": "Elevated",
+      "note": "29/30d confirmed. H10 official monthly used as authoritative ($49,883.25)"
+    },
+    {
+      "month": "July (Final)",
+      "revenue": 53678,
+      "ad_spend": 19640,
+      "tacos_pct": 36.6,
+      "status": "Elevated",
+      "note": "31/31d. Sum of daily H10 emails \u2014 official H10 July Monthly Report not yet received. Reconcile when available."
+    },
+    {
+      "month": "August MTD (Day 2)",
+      "revenue": 4374,
+      "ad_spend": 1515,
+      "tacos_pct": 34.6,
+      "status": "On target",
+      "note": "2/2d confirmed"
+    }
+  ],
+  "sku_table": [
+    {
+      "sku_name": "Emergency Dematter Cream",
+      "asin": "B0FQL56V99",
+      "revenue": 1673.53,
+      "units": 76,
+      "net_profit_h10": 931.55,
+      "rev_share_pct": 73.8
+    },
+    {
+      "sku_name": "Rake Brush",
+      "asin": "B0FQF2VTMJ",
+      "revenue": 461.65,
+      "units": 37,
+      "net_profit_h10": 249.33,
+      "rev_share_pct": 20.3
+    },
+    {
+      "sku_name": "Detangling Treatment",
+      "asin": "B0GV5ZFLC2",
+      "revenue": 92.07,
+      "units": 5,
+      "net_profit_h10": 54.4,
+      "rev_share_pct": 4.1
+    },
+    {
+      "sku_name": "Dog Shampoo",
+      "asin": "B0FQL16GH4",
+      "revenue": 21.76,
+      "units": 1,
+      "net_profit_h10": -15.73,
+      "rev_share_pct": 1.0
+    },
+    {
+      "sku_name": "Pin Brush",
+      "asin": "B0FQDHXSZ5",
+      "revenue": 19.99,
+      "units": 1,
+      "net_profit_h10": -5.28,
+      "rev_share_pct": 0.9
+    },
+    {
+      "sku_name": "Slicker Brush",
+      "asin": "B0FQ628KCH",
+      "revenue": 0,
+      "units": 0,
+      "net_profit_h10": -6.56,
+      "rev_share_pct": 0.0,
+      "note": "Liquidation \u2014 no revenue, net loss from FBA fees"
+    }
+  ],
+  "inventory_flags": [
+    {
+      "sku_name": "Dog Shampoo & Conditioner",
+      "asin": "B0FQL16GH4",
+      "lif_flag": "LIF <= 2485 Days",
+      "ltsf_flag": "LTSF >= 181 Days",
+      "note": "LTSF ongoing \u2014 review liquidation/pricing"
+    },
+    {
+      "sku_name": "Pin Brush",
+      "asin": "B0FQDHXSZ5",
+      "lif_flag": "LIF <= 629 Days",
+      "ltsf_flag": "LTSF >= 181 Days",
+      "note": "LTSF ongoing \u2014 review liquidation/pricing"
+    },
+    {
+      "sku_name": "Slicker Brush",
+      "asin": "B0FQ628KCH",
+      "lif_flag": "LIF <= 2878 Days",
+      "ltsf_flag": "LTSF >= 181 Days",
+      "note": "LTSF ongoing \u2014 liquidation SKU"
+    },
+    {
+      "sku_name": "Rake Brush",
+      "asin": "B0FQF2VTMJ",
+      "lif_flag": null,
+      "ltsf_flag": null,
+      "note": "LTSF flag CLEARED \u2014 3rd consecutive day"
+    },
+    {
+      "sku_name": "Emergency Dematter Cream",
+      "asin": "B0FQL56V99",
+      "lif_flag": null,
+      "ltsf_flag": null,
+      "note": "Hero SKU \u2014 verify >= 1,400 FBA units (Daisy to confirm)"
+    }
+  ],
+  "flags": [
+    "ltsf_risk_present",
+    "emd_concentration_flag"
+  ],
+  "flags_detail": {
+    "daily_tacos_status": "ON TARGET \u2014 22.4% vs 35% target (-13.7 pts vs 30d avg)",
+    "true_net_status": "PROFITABLE \u2014 $700.07 after ads",
+    "ltsf_skus": [
+      "B0FQL16GH4",
+      "B0FQDHXSZ5",
+      "B0FQ628KCH"
+    ],
+    "emd_concentration_pct": 73.8,
+    "tacos_trend": "IMPROVING \u2014 7d weighted 34.2% (prior 7d: 36.3%)",
+    "slicker_aug1_note": "Aug 1: Slicker Brush sold 1 organic unit ($19.99 revenue, $1.14 net) \u2014 NO ad spend on Slicker confirmed. Not a NO_ADS violation. Organic sales are fine."
+  },
+  "prior_days": [
+    {
+      "date": "2026-07-31",
+      "gross_revenue": 1753.37,
+      "ad_spend": 503.49,
+      "daily_tacos_pct": 28.7,
+      "true_net": 1.99,
+      "units_sold": 90,
+      "profitable_day": true
+    },
+    {
+      "date": "2026-08-01",
+      "gross_revenue": 2105.11,
+      "ad_spend": 1007.69,
+      "daily_tacos_pct": 47.9,
+      "true_net": -57.03,
+      "units_sold": 105,
+      "profitable_day": false,
+      "note": "LOSS DAY \u2014 ad spend doubled to $1,007.69. Recommend Angelo check console for bid/budget change."
+    },
+    {
+      "date": "2026-08-02",
+      "gross_revenue": 2269.0,
+      "ad_spend": 507.65,
+      "daily_tacos_pct": 22.4,
+      "true_net": 700.07,
+      "units_sold": 120,
+      "profitable_day": true
+    }
+  ]
 }
