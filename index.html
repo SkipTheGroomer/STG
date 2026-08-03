@@ -763,7 +763,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
   </div>
   <div class="sec-desc">
     The complete rulebook the agents enforce. Auto-execute authority is governed by
-    <b>docs/STANDING_AUTHORITY_v1.0.md</b> (checked live below) — everything else is
+    <b>docs/STANDING_AUTHORITY_v1.1.md</b> (checked live below) — everything else is
     staged and waits for a human "approved" in Slack.
   </div>
 
@@ -3086,9 +3086,9 @@ function renderReports(files){
   const RAW = 'https://raw.githubusercontent.com/SkipTheGroomer/STG/main/';
 
   // ── 1. Standing Authority status (live from the signed doc) ──
-  let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.0.md';
+  let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.1.md';
   try {
-    const r = await fetch(RAW + 'docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
+    const r = await fetch(RAW + 'docs/STANDING_AUTHORITY_v1.1.md', {cache:'no-store'});
     if (r.ok) {
       const txt = await r.text();
       const line = (txt.split('\n').find(l => l.includes('SIGNATURE STATUS')) || '');
