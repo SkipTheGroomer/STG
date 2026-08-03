@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-29T00:00:00Z",
+  "last_updated": "2026-08-03T10:31:00-07:00",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -11,26 +11,21 @@
       "learning": "Dematter paid ROAS fell to RED (1.43 vs 2.07 breakeven) in the same window its 'detangler for dogs' organic rank slid 8->13 - possible pattern: rising paid spend masking organic decline; check organic rank before scaling Dematter paid.",
       "driver_type": "FAILURE",
       "evidence": [
-        "ROAS 1.43 on $318.18 spend (Supermetrics Query B, 2026-07-08)",
-        "Organic rank 'detangler for dogs' 8->13 (H10 Daily Keyword Tracker, 2026-07-08)",
-        "2026-07-10: 'detangler for dogs' rank slid further to 7 (from a baseline of 5), and 'dog detangler' dropped 9 spots (7->16) - organic instability continues, but paid ROAS remains unverifiable (Supermetrics down 2nd straight day) so this cannot be confirmed or contradicted today",
-        "2026-07-11: 'detangler for dogs' rank collapsed 7->23 (-16 spots), the largest single-day drop yet in this pattern (H10 Daily Keyword Tracker, report date 2026-07-10); other Dematter keywords ('dog detangler', 'dematting comb for dogs', 'dematting spray for dogs') all improved the same day, so this is isolated to one keyword, not a whole-listing decline. Paid ROAS impact still unverifiable - Supermetrics 3rd consecutive day of total outage",
-        "2026-07-12: 'detangler for dogs' reversed sharply, 23->8 (+15 spots), the largest single-day recovery yet (H10 Daily Keyword Tracker, report date 2026-07-11) - the keyword is now more volatile in both directions than any other Dematter keyword. Paid ROAS impact still unverifiable - Supermetrics 4th consecutive day of total outage. This does not confirm the original 'decline' direction, but does reinforce that this specific keyword is unusually unstable; driver remains unidentified without paid-spend visibility.",
-        "2026-07-13: 'detangler for dogs' and 'dog detangler' are absent entirely from today's Daily Keyword Tracker report (only 'dematting tool for dogs' and 'dematting comb for dogs' listed for this SKU) - report display gap, not a confirmed rank change either direction. Paid ROAS impact still unverifiable - Supermetrics 5th consecutive day of total outage.",
-        "2026-07-14: both keywords reappear in today's report. 'detangler for dogs' r8 (no change shown), 'dog detangler' r7 (no change shown) - ranks stable, volatility appears to have settled. Supermetrics back online: Dematter ROAS 1.33 on $325.03 7d spend - still RED vs 2.07 breakeven. Pattern holds: rank stabilized but ROAS not recovered.",
-        "2026-07-21: 'dematting tool for dogs' r9 (-2), 'dematting comb for dogs' r22 (+5 - not in top 50 previously, improvement). Both Dematter and Detangler keywords stable vs prior day. Pattern update: original 'detangler for dogs' volatility resolved; current tracking keywords now 'dematting tool for dogs' and 'dematting comb for dogs'.",
-        "2026-07-23: 'dematting tool for dogs' r9 (no change) per H10 Jul 22 report. 7d ROAS 0.69 on $1,329.22 spend - RED band persists. Pattern unchanged.",
-        "2026-07-26: 'dematting tool for dogs' r7 (-2), 'dematting comb for dogs' r22 (+5). 7d ROAS 0.69 (RED band). TACOS 145.3% vs 15% target.",
-        "2026-07-27: Dematter ROAS 1.29 (RED, spend $214.14, sales $275.88). 7d spend $1,354.06. Listing Analyzer: page views -20.77%, sessions -17.77% WoW. 'dematting tool for dogs' r5 (+2). 'dematting comb for dogs' r24 (-2). TACOS 172.2%.",
-        "2026-07-28: 'dematting comb for dogs' r19 (+5), 'dog detangler' r19 (+1). ROAS 1.503 (RED, spend $214.80, sales $322.79). 7d spend $1,358.78. TACOS 118.0%. Listing Analyzer: page views -20.77%, sessions -17.77% WoW (LQS 8.6).",
-        "2026-07-29: 'dematting comb for dogs' r19 (flat), 'dog detangler' r17 (+2 ⬆️). ROAS 2.182 on $196.01 spend / $427.61 sales — BAND CHANGE: RED → GREEN (first day above breakeven 2.07 since L was opened). 7d spend $1,370.11. 7d TACOS 126.8% vs 15% target — still RED on TACOS despite GREEN ROAS day. Note: single-day GREEN does not confirm pattern resolved; monitor 3-5 days for sustained performance."
+        "2026-07-08: ROAS 1.43 on $318.18 spend (Supermetrics Query B)",
+        "2026-07-14: ROAS 1.33 on $325.03 7d spend \u2014 still RED vs 2.07 breakeven",
+        "2026-07-23: 7d ROAS 0.69 on $1,329.22 spend \u2014 RED band persists",
+        "2026-07-26: 7d ROAS 0.69. TACOS 145.3% vs 15% target",
+        "2026-07-27: ROAS 1.29 (RED, spend $214.14, sales $275.88). TACOS 172.2%",
+        "2026-07-28: ROAS 1.503 (RED, spend $214.80, sales $322.79). TACOS 118.0%",
+        "2026-07-29: ROAS 2.182 on $196.01 spend / $427.61 sales \u2014 BAND CHANGE: RED \u2192 GREEN (first day above breakeven 2.07). 7d TACOS 126.8% vs 15% target \u2014 still RED on TACOS.",
+        "2026-08-03: Amazon Ads Supermetrics stale (data_date: 2026-07-28 \u2014 6 days old, Evening Pre-Run not confirmed running). ROAS and TACOS unverifiable. Last confirmed GREEN band: 2026-07-29. TACOS trend direction unknown. Monitor when fresh data resumes."
       ],
       "status": "DOCTRINE",
-      "confirmations": 11,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 12,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-08_red",
-      "action_implication": "BAND CHANGE: Dematter GREEN (ROAS 2.182 > 2.07 breakeven). Monitor 3-5 days for sustained performance before scaling spend. 7d TACOS 126.8% vs 15% target still RED — watch 7d ROAS trend. Do not scale spend until TACOS trend also improves.",
+      "action_implication": "Last confirmed GREEN band 2026-07-29. Supermetrics data stale \u2014 cannot confirm sustained GREEN. Do not scale spend until 3-5 days of confirmed GREEN ROAS + TACOS trend improvement.",
       "retired_reason": null
     },
     {
@@ -39,20 +34,18 @@
       "subject": "Meta Ads Save the Shave UGC Bill campaign",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Save the Shave UGC Bill campaign paused with $447.17 L30D spend and ROAS 0.714 - no action taken for 35+ days despite underperformance.",
+      "learning": "Save the Shave UGC Bill campaign paused with $447.17 L30D spend and ROAS 0.714 \u2014 no action taken for 35+ days despite underperformance.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-26: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 35+ with no action taken.",
-        "2026-07-27: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 36+ with no action.",
-        "2026-07-28: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 37+ with no action.",
-        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+ with no action. All 8 Meta campaigns now PAUSED/OFF — $0 active Meta acquisition."
+        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+. All 8 Meta campaigns PAUSED \u2014 $0 active Meta acquisition.",
+        "2026-08-03: All 8 Meta campaigns confirmed PAUSED per morning routine Aug 3 run (meta_ads.all_campaigns_paused=true). $567.42 L30D spend / 0.60 ROAS. Day 24+ since all campaigns paused. No active Meta acquisition. Day 52+ since UGC Bill paused with no resolution."
       ],
       "status": "DOCTRINE",
-      "confirmations": 10,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 11,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-10",
-      "action_implication": "@will/@marcelo: Decide on Save the Shave UGC Bill - pause all ad groups or restart with revised creative. Day 38+ with no resolution. All Meta campaigns now PAUSED — no active paid acquisition on Meta.",
+      "action_implication": "@will: All 8 Meta campaigns PAUSED \u2014 Day 52+ with zero active Meta acquisition. Decide on UGC Bill campaign: revise creative or archive. Broader decision needed on Meta restart timing given cash position.",
       "retired_reason": null
     },
     {
@@ -64,19 +57,15 @@
       "learning": "FurFix stranded in FBA for 3+ weeks with LIF <= 0 Days and LTSF >= 181 Days. No ads running. Stranded inventory issue unresolved.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-16: FurFix in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - STRANDED in FBA per Jul 15 SC data.",
-        "2026-07-19 and 2026-07-23: FurFix again in H10 Inventory Insights with LIF <= 0 Days and LTSF >= 181 Days - status unchanged.",
-        "2026-07-26: LIF <= 0, LTSF >= 181. Status unchanged after 3+ weeks.",
-        "2026-07-27: Listing Analyzer email truncated — FurFix LTSF/LIF not directly verified. Status assumed unchanged per prior DOCTRINE.",
-        "2026-07-28: FurFix (B0FQFP2S9F) 60 units on-hand per inventory_data.json Jul 26. LIF/LTSF not verified via Listing Analyzer (not in top 5 email). Status assumed unchanged per prior DOCTRINE.",
-        "2026-07-29: H10 Listing Analyzer email too large to parse — FurFix status not directly verified. Status assumed unchanged per prior DOCTRINE. 60 units remain stranded."
+        "2026-07-29: 60 units remain stranded. Status assumed unchanged per prior DOCTRINE.",
+        "2026-08-03: No new H10 Inventory data in today's run (Listing Analyzer email not parsed). Status assumed unchanged per DOCTRINE. FurFix excluded from DAAS Aug 1 and Aug 2 reports (listed as discontinued). Action still overdue."
       ],
       "status": "DOCTRINE",
-      "confirmations": 7,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 8,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-13_red",
-      "action_implication": "Add B0FQFP2S9F to Step 4 H10 tracked-SKU list. Angelo/Will should confirm stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action overdue.",
+      "action_implication": "Angelo/Will: confirm stranded inventory root cause. FurFix excluded from all active reporting but 60 units remain in FBA accruing storage fees. Action overdue Day 51+.",
       "retired_reason": null
     },
     {
@@ -85,24 +74,20 @@
       "subject": "Slicker Brush (liquidation SKU) receiving ad spend",
       "asin": "B0FQ628KCH",
       "scope": "amazon_ads",
-      "learning": "Slicker Brush is flagged in roas_bands.json as liquidate=true with an explicit note 'Any ad spend > $0 = immediate flag' (no ad funding). Despite this, it shows real ad spend - the underlying campaign/targeting was evidently never paused when the SKU was set to liquidate.",
+      "learning": "Slicker Brush flagged liquidate=true with explicit no-ad policy. Despite this, real ad spend continues. Campaigns never paused when SKU was set to liquidate.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-14: Slicker Brush (B0FQ628KCH) spend $1.05, ROAS 0.00 (Supermetrics Query B, 2026-07-12)",
-        "2026-07-15 through 2026-07-19: spend confirmed $1.37/day. 7d spend $7.37. Organic rank damage observed.",
-        "2026-07-21: Slicker spend $1.37. 7d spend $5.48. H10: 'slicker brush for dogs' r166->r177 (-11 spots). Organic rank damage accelerating.",
-        "2026-07-23: 7d spend $43.30. 'slicker brush for dogs' r174 (H10 Jul 22).",
-        "2026-07-26: 7d spend $43.30 / ROAS 0.46 / TACOS 216.6%. Organic rank 183 (-9 spots Jul 25). Day 40+. @will: pause ALL campaigns targeting B0FQ628KCH immediately.",
-        "2026-07-27: B0FQ628KCH 7d spend $55.05/ROAS 0.36 (7d sales $19.99). Yesterday spend $11.75. Day 41+. Organic rank 'slicker brush for dogs': r169 (+14 improved from r183 — rank recovering, consistent with pausing ads improving organic.)",
-        "2026-07-28: B0FQ628KCH 7d spend $71.80/ROAS 0.596 (7d sales $19.99). Yesterday spend $16.75. 'doodle brush' r49 (+257 OCR=347), 'slicker brush for dogs' r113 (+56). Day 42+.",
-        "2026-07-29: B0FQ628KCH 7d spend $92.30/ROAS 0.914 (7d sales $19.98). Yesterday spend $21.87. 'doodle brush' r57 (-8 vs prior r49), 'dog slicker brushes for grooming' r94 (-23 vs prior r71), 'slicker brush for dogs' r88 (new entry). 7d TACOS 462%. Day 43+. Spend continues to increase week-over-week."
+        "2026-07-29: 7d spend $92.30 / ROAS 0.914. 7d TACOS 462%. Day 43+. Spend increasing week-over-week.",
+        "2026-08-01: DAAS Aug 1 report \u2014 Slicker Brush shows $19.99 revenue / $1.14 net profit (1 unit sold). No confirmed ad spend breakdown by SKU available (Amazon Ads Supermetrics stale). Organic sale on liquidation SKU.",
+        "2026-08-02: DAAS Aug 2 report \u2014 Slicker Brush $0 revenue / ($6.56) net loss. FBA fees accruing on zero-revenue day.",
+        "2026-08-03: Amazon Ads Supermetrics data stale at 2026-07-28. Cannot confirm current ad spend on Slicker. Last known: $92.30/week (Day 43). Day 50+ since violation first detected. No action confirmed in any data source. VIOLATION CONTINUES \u2014 A-2 alert active."
       ],
       "status": "DOCTRINE",
-      "confirmations": 11,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 12,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "@will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. Violation Day 43+. 7d spend $92.30/ROAS 0.914 (7d sales $19.98). 7d TACOS 462%. Slicker keywords declining again: 'doodle brush' r57 (-8), 'dog slicker brushes for grooming' r94 (-23). Any spend = immediate flag per liquidation policy.",
+      "action_implication": "@will: PAUSE ALL campaigns targeting B0FQ628KCH in Amazon Ads console \u2014 Day 50+. Last confirmed spend $92.30/week (July 29). Supermetrics stale \u2014 actual current spend unknown. No confirmed action in 50 days. This is the single highest-priority unresolved violation in the system.",
       "retired_reason": null
     },
     {
@@ -111,20 +96,18 @@
       "subject": "QuickBooks MTD revenue sync lag",
       "asin": null,
       "scope": "quickbooks",
-      "learning": "QuickBooks MTD revenue has not updated since Jul 14 - sync lag confirmed. Cash balance and expense data remain reliable. Use H10 Daily Profit for Amazon revenue cross-check.",
+      "learning": "QuickBooks MTD revenue sync lag \u2014 use H10 Daily Profit for Amazon revenue cross-check.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-26: MTD revenue $24,681.70 unchanged. Sync lag persists.",
-        "2026-07-27: MTD revenue $24,681.70 — same value, sync lag confirmed. $10,070 Legal fees add expense complexity.",
-        "2026-07-28: MTD revenue $24,681.70 — unchanged. Sync lag persists Day 14+.",
-        "2026-07-29: MTD revenue $24,706.68 — partial update (+$24.98 from $24,681.70). Sync lag partially resolving but still significantly behind expected MTD revenue. Gross profit $13,504.40 (54.7%), net income -$32,523.33. Cash balance and expense data remain reliable."
+        "2026-07-29: MTD revenue $24,706.68 \u2014 partial update. Sync lag partially resolving.",
+        "2026-08-03: August MTD shows $0 (sync lag \u2014 only 2 days in, normal for new month). July final confirmed: $24,726.68 revenue / -$60,742.90 net income. QB sync lag resolved for July. August lag expected \u2014 use DAAS for Amazon revenue cross-check during first week of month."
       ],
       "status": "DOCTRINE",
-      "confirmations": 15,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 16,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14",
-      "action_implication": "Josh to investigate QuickBooks sync connection. MTD revenue showed partial update today (+$24.98) — may be slowly resolving. Still significantly lagged. Use H10 Daily Profit for Amazon revenue until fully resolved.",
+      "action_implication": "August MTD $0 in QB is normal for Day 2 of new month. Cross-reference DAAS for Amazon revenue. July final reconciled. Monitor weekly.",
       "retired_reason": null
     },
     {
@@ -133,42 +116,79 @@
       "subject": "Amazon Ads browser scrape permanently unavailable in cloud",
       "asin": null,
       "scope": "amazon_ads_browser",
-      "learning": "DOCTRINE: Amazon Ads browser scrape (Step 5b) is permanently unavailable in the cloud execution environment. Chrome/Playwright cannot authenticate to Amazon Ads console in headless cloud mode. This step will always show available=false.",
+      "learning": "DOCTRINE: Amazon Ads browser scrape permanently unavailable in cloud. This step will always show available=false.",
       "driver_type": "INFRASTRUCTURE",
       "evidence": [
-        "2026-07-15: Chrome unavailable in cloud environment. Permanent degraded mode confirmed.",
-        "2026-07-26: Still unavailable - permanent degraded mode (v10.22).",
-        "2026-07-27: Still unavailable. Brand Analytics Monday trigger skipped.",
-        "2026-07-28: Still unavailable. Brand Analytics Tuesday — Step 5f skipped (Monday-only).",
-        "2026-07-29: Still unavailable. Wednesday — Brand Analytics Monday-only trigger skipped."
+        "2026-07-29: Still unavailable. Permanent degraded mode.",
+        "2026-08-03: Still unavailable. Dashboard shows amazon_ads_browser.available=false by design."
       ],
       "status": "DOCTRINE",
-      "confirmations": 15,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 16,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-07-15",
-      "action_implication": "No action - permanent infrastructure limitation. Dashboard shows amazon_ads_browser.available=false by design.",
+      "action_implication": "No action \u2014 permanent infrastructure limitation.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-27-001",
       "date_observed": "2026-07-27",
-      "subject": "Bundle B0GT1H84JM attribution crisis — $895/week $0 attributed sales",
+      "subject": "Bundle B0GT1H84JM attribution crisis \u2014 spend with $0 attributed sales",
       "asin": "B0GT1H84JM",
       "scope": "amazon_ads",
-      "learning": "Bundle B0GT1H84JM spending $870.25/week with $0 attributed ordered_product_sales. Attribution-window guard triggered (cost>=75 with $0 sales). Breakeven ROAS=2.40, actual=0. Campaign structure or attribution window likely misconfigured.",
+      "learning": "Bundle B0GT1H84JM spending ~$895/week with $0 attributed ordered_product_sales. Attribution-window guard triggered. Breakeven ROAS=2.40, actual=0. Campaign structure or attribution window misconfigured.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-27: 7d spend $1,029.07 (Query C), 7d ordered_product_sales $0 (Query D). Yesterday $143.22/$0. Attribution flag triggered (cost>=75 with $0 sales).",
-        "2026-07-28: Bundle B0GT1H84JM 7d spend $870.25 / $0 ordered sales confirmed again (Supermetrics Query C/D). Attribution flag Day 2.",
-        "2026-07-29: Bundle B0GT1H84JM 7d spend $895.71 / $0 ordered sales (Supermetrics Query C/D). Yesterday spend $155.05/$0 attributed sales. Attribution flag Day 3. No action confirmed. Spend increasing week-over-week."
+        "2026-07-27: 7d spend $1,029.07 / $0 ordered sales. Attribution flag triggered.",
+        "2026-07-28: 7d spend $870.25 / $0 ordered sales. Day 2.",
+        "2026-07-29: 7d spend $895.71 / $0 ordered sales. Yesterday spend $155.05/$0. Day 3. No action confirmed.",
+        "2026-07-31: Amazon Business Report confirms B0GT1H84JM \u2014 8,508 sessions, 97.93% buy box, $0 revenue, 0 units ordered (lifetime/period total). Zero conversion confirmed from independent source.",
+        "2026-08-03: Amazon Ads Supermetrics stale at 2026-07-28 \u2014 cannot confirm current spend. Last known: $895.71/week. Day 8 with no confirmed action. Business Report independently confirms $0 revenue on this ASIN. CRITICAL: ~$155/day burning with zero return. Estimated burn since Day 1: ~$1,200+."
       ],
       "status": "DOCTRINE",
-      "confirmations": 3,
-      "last_confirmed": "2026-07-29",
+      "confirmations": 4,
+      "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-27_new",
-      "action_implication": "@will/@marcelo: PAUSE ALL Bundle B0GT1H84JM campaigns immediately. Day 3 — no action confirmed. 7d spend $895.71 with $0 attributed sales. Check attribution window settings (same-day vs. 7-day click). $155.05 burned yesterday with zero return.",
+      "action_implication": "@will/@marcelo: PAUSE ALL B0GT1H84JM campaigns \u2014 Day 8, no action confirmed. Est. $1,200+ burned since flag opened with $0 attributed sales. Business Report confirms zero conversion independently. Check attribution window settings in Amazon Ads console. This is the second highest-priority unresolved violation after Slicker Brush.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-08-03-001",
+      "date_observed": "2026-08-03",
+      "subject": "Amazon Ads Supermetrics stale \u2014 Evening Pre-Run not confirmed running",
+      "asin": null,
+      "scope": "amazon_ads",
+      "learning": "Amazon Ads data consistently stale at 2026-07-28 across multiple morning runs. Evening Pre-Run (11 PM cron) likely not running or queries timing out before completion. Per-ASIN ROAS, TACOS, and spend data unavailable for 6+ days.",
+      "driver_type": "INFRASTRUCTURE",
+      "evidence": [
+        "2026-08-03: connectors_data.supermetrics.amazon_ads.data_date = 2026-07-28 \u2014 6 days stale. Morning routine v10.32 ran but could not collect fresh data. Per-ASIN spend/ROAS unknown for Slicker (L-2026-07-14-001) and Bundle (L-2026-07-27-001)."
+      ],
+      "status": "OPEN",
+      "confirmations": 1,
+      "last_confirmed": "2026-08-03",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_infrastructure_2026-08-03",
+      "action_implication": "@josh: Confirm 11 PM Evening Pre-Run cron is running on JARVIS machine (`crontab -l`). If not running, start it. If running, check logs for timeout errors. Amazon Ads data has been stale 6+ days \u2014 highest-priority infrastructure fix.",
+      "retired_reason": null
+    },
+    {
+      "id": "blaze_write_path_verified",
+      "date_observed": "2026-08-03",
+      "subject": "Meta Ads write path verification \u2014 A-1 prerequisite",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Required by STANDING_AUTHORITY_v1.1 before A-1 auto-kill can fire. Josh must test: pause any already-paused Meta campaign via Meta MCP connector, confirm success, update this learning to VALIDATED.",
+      "driver_type": "INFRASTRUCTURE",
+      "evidence": [
+        "2026-08-03: Learning added as PENDING. Will signed v1.1 on 2026-07-16. A-1 is authorized but cannot auto-execute until this learning is VALIDATED. Until then, A-1 stages as Class B."
+      ],
+      "status": "PENDING",
+      "confirmations": 0,
+      "last_confirmed": null,
+      "contradictions": 0,
+      "source_brief_id": "standing_authority_v1.1_prerequisite",
+      "action_implication": "@josh: Test Meta MCP write path \u2014 run `ads_update_entity` to pause any already-paused campaign, confirm it worked, then update this learning status to VALIDATED. Until done, A-1 auto-kill cannot fire even though Will signed the authority.",
       "retired_reason": null
     }
   ]
