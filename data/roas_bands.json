@@ -1,14 +1,23 @@
 {
-  "version": "2026-07-14 \u2014 added 12 bundle ASINs from Seller Central full catalog audit. Single-SKU breakevens unchanged from 2026-06-28 FINAL. Bundle breakevens estimated from component COGS blends \u2014 FLAG FOR WILL to confirm exact values before treating as DOCTRINE.",
+  "version": "2026-08-03 — REPAIRED. (1) Applied the six cogs values and DELETED the concatenated patch block that made this file invalid JSON. (2) Renamed 3 chews to locked Handbook names. (3) Renamed 4 bundles to Handbook names; flagged 8 bundles with no Handbook equivalent. (4) Removed scrambled 'name' fields that labelled bundles as chews. Single-SKU breakevens UNCHANGED from 2026-06-28 FINAL. Bundle breakevens still ESTIMATES.",
+  "validated": "Parsed with json.tool before commit. This file must contain exactly ONE top-level object. Never append instructions to it — apply them and delete them.",
   "band_rule": "Green >= breakeven. Yellow = 80% of breakeven up to breakeven. Red = kill floor up to 80% of breakeven. Kill floor = higher of (55% of breakeven) or 1.0x. No ad killed in its first 3 days (learning window); kill logic activates day 4.",
-  "tacos_note": "TACOS = total ad spend / TOTAL sales (ad + organic). Target 35% for every SKU except Slicker Brush (liquidate, no ad funding). Bundles: use 35% target until Will sets per-bundle targets. Chews: 45-55% at Sept 1 launch, ratchet to 35% steady-state. Computed on trailing 7-day window.",
-  "bundle_note": "Bundle breakevens are ESTIMATES based on component COGS blends and standard Amazon fee structure. Will + Angelo must confirm exact COGS per bundle before these values are treated as authoritative. Flagged with 'breakeven_confirmed: false'.",
+  "tacos_note": "TACOS = total ad spend / TOTAL sales (ad + organic). NOT ad sales — dividing by ad sales gives ACOS. Target 35% for every SKU except Slicker Brush (liquidate, no ad funding). Bundles: 35% until Will sets per-bundle targets. Chews: 45-55% at Sept 1 launch, ratchet to 35% steady-state. Computed on trailing 7-day window.",
+  "bundle_note": "Bundle breakevens are ESTIMATES based on component COGS blends and standard Amazon fee structure. Will + Angelo must confirm exact COGS per bundle before these values are treated as authoritative. Flagged with breakeven_confirmed: false.",
+  "cogs_source": "supply_chain.json as_of 2026-07-14, confirmed by Patrick. All six values independently confirmed against the stg-cogs skill on 2026-08-03 — they match exactly. COGS is settled; margins are not (see open_flags).",
+  "open_flags": [
+    "MARGIN_SOURCE_CONFLICT — HIGHEST PRIORITY, WILL MUST RULE. The margin_pct and profit values in this file disagree substantially with the stg-cogs skill for every single SKU. Amazon margin, this file vs stg-cogs: Dematter 48% vs 50%; Detangling 36% vs 47%; Shampoo 27% vs 39%; Pin 38% vs 49%; Rake 32% vs 52%; Slicker 14% vs 37%. Because breakeven = price / profit, this changes breakevens materially: Rake 3.12 vs 1.93, Shampoo 3.75 vs 2.59, Slicker 6.92 vs 2.73. Consequence for the band audit: if THIS file governs, 4 of 6 SKUs were misbanded on the 2026-07-28 run. If stg-cogs governs, only 2 were (Dematter and Slicker) and the GREEN on the Shampoo plus the YELLOW on the Rake were CORRECT. The breakevens in this file are unchanged from the 2026-06-28 FINAL doctrine and were not altered by this repair. Likely explanation: this file is all-in (may allocate returns, storage, LTSF) while stg-cogs is clean per-unit economics after Amazon fees. Do not act on any band until this is settled.",
+    "BAND_CLASSIFIER_BUG: the generator misbanded 4 of 7 SKUs on the 2026-07-28 run (Dematter labelled KILL at 1.27 when floor is 1.14; Slicker labelled RED at 0.42 when floor is 3.81; Rake labelled YELLOW at 1.73 when yellow floor is 2.49; 4-in-1 labelled GREEN at 3.16 when breakeven is 3.75). Re-audit all rows after this file parses.",
+    "TACOS_MISCOMPUTED: the generator reported tacos 90.88 on the 2026-07-28 run, which is ACOS (spend/ad-sales). True TACOS on $417.84 spend against $13,101.81 weekly revenue is approximately 3.2%.",
+    "EIGHT_BUNDLES_UNAPPROVED: 8 bundle ASINs have no Handbook equivalent. ad_eligible set false pending Will's decision to name or delist.",
+    "SLICKER_VIOLATION_OPEN: B0FQ628KCH spent $23.62 in the 7 days to 2026-07-28 despite liquidate: true."
+  ],
   "skus": [
     {
       "sku": "Emergency Dematter",
       "asin": "B0FQL56V99",
-      "cogs": 3.36,
       "sku_id": "3I-97VO-78X4",
+      "cogs": 3.36,
       "type": "single",
       "price": 22.99,
       "amazon": {
@@ -29,7 +38,7 @@
       "sns": {
         "amazon": true,
         "shopify": false,
-        "note": "Liquid consumable \u2014 Amazon S&S only"
+        "note": "Liquid consumable — Amazon S&S only"
       },
       "liquidate": false,
       "breakeven_confirmed": true,
@@ -39,8 +48,8 @@
     {
       "sku": "Pin Brush",
       "asin": "B0FQDHXSZ5",
-      "cogs": 3.19,
       "sku_id": "7C-8EUG-79AF",
+      "cogs": 3.19,
       "type": "single",
       "price": 19.99,
       "amazon": {
@@ -61,7 +70,7 @@
       "sns": {
         "amazon": false,
         "shopify": false,
-        "note": "Durable good \u2014 never S&S"
+        "note": "Durable good — never S&S"
       },
       "liquidate": false,
       "breakeven_confirmed": true,
@@ -70,8 +79,8 @@
     {
       "sku": "Detangling Treatment",
       "asin": "B0GV5ZFLC2",
-      "cogs": 3.3,
       "sku_id": "8O-J63E-NJBR",
+      "cogs": 3.3,
       "type": "single",
       "price": 18.99,
       "amazon": {
@@ -92,7 +101,7 @@
       "sns": {
         "amazon": true,
         "shopify": true,
-        "note": "Liquid consumable \u2014 both channels"
+        "note": "Liquid consumable — both channels"
       },
       "liquidate": false,
       "breakeven_confirmed": true,
@@ -101,8 +110,8 @@
     {
       "sku": "Rake Brush",
       "asin": "B0FQF2VTMJ",
-      "cogs": 1.82,
       "sku_id": "W2-VFJG-FADR",
+      "cogs": 1.82,
       "type": "single",
       "price": 14.99,
       "amazon": {
@@ -123,18 +132,18 @@
       "sns": {
         "amazon": false,
         "shopify": false,
-        "note": "Durable good \u2014 never S&S"
+        "note": "Durable good — never S&S"
       },
       "liquidate": false,
       "breakeven_confirmed": true,
       "inventory_fba": 679,
-      "note": "LOW STOCK \u2014 ~26 days remaining at current velocity. Reorder decision pending with Graham."
+      "note": "LOW STOCK — ~26 days remaining at current velocity. Reorder decision pending with Graham. PO2 deposit $21,613 pending."
     },
     {
       "sku": "4-in-1 Shampoo",
       "asin": "B0FQL16GH4",
-      "cogs": 5.17,
       "sku_id": "6U-XVW9-2WBJ",
+      "cogs": 5.17,
       "type": "single",
       "price": 19.99,
       "amazon": {
@@ -155,17 +164,18 @@
       "sns": {
         "amazon": true,
         "shopify": true,
-        "note": "Liquid consumable \u2014 both channels"
+        "note": "Liquid consumable — both channels"
       },
       "liquidate": false,
       "breakeven_confirmed": true,
-      "inventory_fba": 3893
+      "inventory_fba": 3893,
+      "note": "Toughest single-SKU breakeven at 3.75. Weakest converting liquid at 10% unit session rate."
     },
     {
       "sku": "Slicker Brush",
       "asin": "B0FQ628KCH",
-      "cogs": 4.97,
       "sku_id": "6H-JCY0-JARS",
+      "cogs": 4.97,
       "type": "single",
       "price": 17.99,
       "amazon": {
@@ -186,17 +196,23 @@
       "sns": {
         "amazon": false,
         "shopify": false,
-        "note": "Never S&S \u00b7 no ad funding"
+        "note": "Never S&S · no ad funding"
       },
       "liquidate": true,
       "breakeven_confirmed": true,
       "inventory_fba": 2591,
-      "note": "Corrected COGS $5.95 incl. freight (TACOS doc). Any ad spend > $0 = immediate flag."
+      "ad_eligible": false,
+      "cogs_disputed": {
+        "resolved": "2026-08-03 — $4.97 CONFIRMED by the stg-cogs skill: $4.40 production plus shipping and tariff equals $4.97 total landed. The $5.95 incl-freight figure previously noted in this file is superseded.",
+        "note": "COGS is settled. The MARGIN is not — see MARGIN_SOURCE_CONFLICT in open_flags. This file says 14% / $2.52 profit; stg-cogs says 37% / $6.60."
+      },
+      "note": "LIQUIDATE. Any ad spend > $0 = immediate flag, no threshold, no learning window. 8.67% return rate approaching 10.2% Amazon fee threshold. 2,878 days LIF."
     },
     {
       "sku": "Detangling Spray",
       "asin": "B0FQ4PY573",
       "sku_id": "A9-P0UJ-QT6S",
+      "cogs": null,
       "type": "single",
       "price": 19.99,
       "amazon": {
@@ -211,19 +227,20 @@
       "listing_status": "CLOSED",
       "breakeven_confirmed": false,
       "inventory_fba": 322,
-      "note": "Listing CLOSED as of Feb 2026. 322 FBA units sitting. No ad spend expected \u2014 flag immediately if any spend observed.",
-      "name": "Detangling Spray"
+      "ad_eligible": false,
+      "note": "Listing CLOSED as of Feb 2026. STOCKOUT, LIF 0 days. 322 FBA units stranded. No cogs in supply_chain.json. No ad spend expected — flag immediately if any observed."
     },
     {
-      "sku": "Save THE Shave Bundle",
+      "sku": "Save the Shave",
       "asin": "B0GT1H84JM",
       "sku_id": "C8-VG2F-6714",
       "type": "bundle",
+      "handbook_name": "Save the Shave",
       "components": [
         "B0FQL56V99",
         "B0FQF2VTMJ"
       ],
-      "price": null,
+      "price": 33.99,
       "amazon": {
         "margin_pct": null,
         "profit": null,
@@ -234,14 +251,88 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Dematter + Rake Brush bundle. Breakeven ESTIMATED \u2014 Will to confirm. Spending $258.62/day as of Jul 14 \u2014 HIGHEST spend item in account. Add to H10 tracking immediately.",
-      "name": "Save the Shave Bundle"
+      "ad_eligible": true,
+      "note": "HERO · MOST POPULAR. Spending $258.62/day as of Jul 14 — highest spend item in account. Breakeven ESTIMATED."
+    },
+    {
+      "sku": "Tangle + Mat",
+      "asin": "B0GXLPJS4C",
+      "sku_id": "STG-TANGLE-MAT-BUNDLE-V1",
+      "type": "bundle",
+      "handbook_name": "Tangle + Mat",
+      "components": [
+        "B0FQL56V99",
+        "B0GV5ZFLC2"
+      ],
+      "price": 37.99,
+      "amazon": {
+        "margin_pct": null,
+        "profit": null,
+        "breakeven": 2.42,
+        "yellow_min": 1.94,
+        "red_min": 1.33
+      },
+      "tacos_target": 35,
+      "liquidate": false,
+      "breakeven_confirmed": false,
+      "ad_eligible": true,
+      "note": "Breakeven ESTIMATED — Will + Angelo to confirm."
+    },
+    {
+      "sku": "Full Brush Set",
+      "asin": "B0GYQGNDK8",
+      "sku_id": "STG-BUNDLE-FULLBRUSH-3PC",
+      "type": "bundle",
+      "handbook_name": "Full Brush Set",
+      "components": [
+        "B0FQ628KCH",
+        "B0FQDHXSZ5",
+        "B0FQF2VTMJ"
+      ],
+      "price": 41.99,
+      "amazon": {
+        "margin_pct": null,
+        "profit": null,
+        "breakeven": 2.45,
+        "yellow_min": 1.96,
+        "red_min": 1.35
+      },
+      "tacos_target": 35,
+      "liquidate": false,
+      "breakeven_confirmed": false,
+      "ad_eligible": true,
+      "note": "CONTAINS SLICKER (liquidation SKU). Breakeven ESTIMATED."
+    },
+    {
+      "sku": "Detangle the Tangle",
+      "asin": "B0GYQHQLKC",
+      "sku_id": "STG-BNDL-DAILYTRT-2PC-V2",
+      "type": "bundle",
+      "handbook_name": "Detangle the Tangle",
+      "components": [
+        "B0GV5ZFLC2",
+        "B0FQDHXSZ5"
+      ],
+      "price": 34.99,
+      "amazon": {
+        "margin_pct": null,
+        "profit": null,
+        "breakeven": 2.5,
+        "yellow_min": 2.0,
+        "red_min": 1.38
+      },
+      "tacos_target": 35,
+      "liquidate": false,
+      "breakeven_confirmed": false,
+      "ad_eligible": true,
+      "note": "Was mislabelled 'Daily Treatment Bundle'. Same contents as the Detangle the Tangle funnel. Breakeven ESTIMATED."
     },
     {
       "sku": "Clean & Finish Bundle",
       "asin": "B0GT1MFCY5",
       "sku_id": "73-EY5E-UIBV",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL16GH4",
         "B0FQ628KCH"
@@ -257,14 +348,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Shampoo + Slicker Brush bundle. Contains liquidation SKU (Slicker) \u2014 watch for Slicker being promoted via this bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Chews \u2014 Calm & Relax"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "CONTAINS SLICKER (liquidation SKU). NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Bath Finish Bundle",
       "asin": "B0GT1V7V8R",
       "sku_id": "HG-EGAG-1HO5",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL16GH4",
         "B0FQDHXSZ5",
@@ -281,14 +374,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Shampoo + Pin Brush + Slicker bundle. Contains liquidation SKU (Slicker). Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Chews \u2014 Allergy & Itch"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "CONTAINS SLICKER (liquidation SKU). NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Daily Coat Care System 4pc",
       "asin": "B0GT5YFVB8",
       "sku_id": "YH-4KUE-9WQH",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL56V99",
         "B0FQL16GH4",
@@ -306,14 +401,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Dematter + Shampoo + Rake + Pin 4pc bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Chews \u2014 Skin & Coat"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Fresh Start Bundle",
       "asin": "B0GFGDTJ39",
       "sku_id": "99-8KLV-TU5S",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL56V99",
         "B0FQL16GH4"
@@ -329,14 +426,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Dematter + Shampoo bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Shampoo \u2014 Coconut Lime"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Dog Grooming Kit",
       "asin": "B0GRJ1366C",
       "sku_id": "BF-U1I9-TB25",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL16GH4",
         "B0FQDHXSZ5"
@@ -352,37 +451,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Shampoo + Pin Brush bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Shampoo \u2014 Lavender"
-    },
-    {
-      "sku": "Tangle & Mat Bundle",
-      "asin": "B0GXLPJS4C",
-      "sku_id": "STG-TANGLE-MAT-BUNDLE-V1",
-      "type": "bundle",
-      "components": [
-        "B0FQL56V99",
-        "B0GV5ZFLC2"
-      ],
-      "price": null,
-      "amazon": {
-        "margin_pct": null,
-        "profit": null,
-        "breakeven": 2.42,
-        "yellow_min": 1.94,
-        "red_min": 1.33
-      },
-      "tacos_target": 35,
-      "liquidate": false,
-      "breakeven_confirmed": false,
-      "note": "Dematter + Detangling Treatment bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "STG Tangle Mat Bundle"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Easy Brush Days Bundle",
       "asin": "B0GXLTZ495",
       "sku_id": "STG-EASY-BRUSH-DAYS-V1",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL16GH4",
         "B0FQDHXSZ5",
@@ -399,14 +477,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Shampoo + Pin Brush + Detangling Treatment bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "STG Easy Brush Days Bundle"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Wash & Wear Bundle",
       "asin": "B0GXH3JTK4",
       "sku_id": "STG-WASH-WEAR-BUNDLE-V2",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL16GH4",
         "B0GV5ZFLC2"
@@ -422,14 +502,16 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "Shampoo + Detangling Treatment bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Bundle \u2014 v3"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
       "sku": "Full Coat Care System 5pc",
       "asin": "B0GY9WZWKH",
       "sku_id": "STG-FULL-COAT-CARE-SYSTEM",
       "type": "bundle",
+      "handbook_name": null,
       "components": [
         "B0FQL56V99",
         "B0GV5ZFLC2",
@@ -448,60 +530,15 @@
       "tacos_target": 35,
       "liquidate": false,
       "breakeven_confirmed": false,
-      "note": "5pc full system bundle. Highest component count \u2014 lowest estimated breakeven due to volume. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Full Coat Care Bundle"
+      "ad_eligible": false,
+      "needs_approval": true,
+      "note": "NO HANDBOOK EQUIVALENT. Per Will's ruling 2026-08-03, Handbook bundle names are authoritative. This combination is not in the Handbook — delist or take through the approval gate. Do not fund ad spend. Breakeven ESTIMATED."
     },
     {
-      "sku": "Full Brush Set 3pc",
-      "asin": "B0GYQGNDK8",
-      "sku_id": "STG-BUNDLE-FULLBRUSH-3PC",
-      "type": "bundle",
-      "components": [
-        "B0FQ628KCH",
-        "B0FQDHXSZ5",
-        "B0FQF2VTMJ"
-      ],
-      "price": null,
-      "amazon": {
-        "margin_pct": null,
-        "profit": null,
-        "breakeven": 2.45,
-        "yellow_min": 1.96,
-        "red_min": 1.35
-      },
-      "tacos_target": 35,
-      "liquidate": false,
-      "breakeven_confirmed": false,
-      "note": "Slicker + Pin + Rake 3pc brush bundle. Contains liquidation SKU (Slicker). Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Chews \u2014 v1"
-    },
-    {
-      "sku": "Daily Treatment Bundle",
-      "asin": "B0GYQHQLKC",
-      "sku_id": "STG-BNDL-DAILYTRT-2PC-V2",
-      "type": "bundle",
-      "components": [
-        "B0GV5ZFLC2",
-        "B0FQDHXSZ5"
-      ],
-      "price": null,
-      "amazon": {
-        "margin_pct": null,
-        "profit": null,
-        "breakeven": 2.5,
-        "yellow_min": 2.0,
-        "red_min": 1.38
-      },
-      "tacos_target": 35,
-      "liquidate": false,
-      "breakeven_confirmed": false,
-      "note": "Detangling Treatment + Pin Brush bundle. Breakeven ESTIMATED \u2014 Will to confirm.",
-      "name": "Chews \u2014 v2"
-    },
-    {
-      "sku": "Omega Soft Coat (COAT)",
+      "sku": "Omega Soft Coat",
       "asin": null,
       "type": "chew",
+      "pillar": "COAT",
       "price": 32.99,
       "launch": "2026-09-01",
       "amazon": {
@@ -519,15 +556,18 @@
       "sns": {
         "amazon": false,
         "shopify": true,
-        "note": "Shopify subscription. No Amazon S&S at launch."
+        "note": "RULED 2026-08-03 by Will: Shopify subscription live at launch. NO Amazon S&S until Amazon grants permission. Do NOT use 'Save 15% on every refill' or 'Chews run out every 45 days' on any Amazon chew asset."
       },
       "liquidate": false,
-      "breakeven_confirmed": true
+      "breakeven_confirmed": true,
+      "ready": "2026-08-18",
+      "renamed_from": "Skin & Coat Omega"
     },
     {
-      "sku": "Calming Comfort (MIND)",
+      "sku": "Calming Comfort",
       "asin": null,
       "type": "chew",
+      "pillar": "MIND",
       "price": 32.99,
       "launch": "2026-09-01",
       "amazon": {
@@ -545,15 +585,18 @@
       "sns": {
         "amazon": false,
         "shopify": true,
-        "note": "Shopify subscription. No Amazon S&S at launch."
+        "note": "RULED 2026-08-03 by Will: Shopify subscription live at launch. NO Amazon S&S until Amazon grants permission. Do NOT use 'Save 15% on every refill' or 'Chews run out every 45 days' on any Amazon chew asset."
       },
       "liquidate": false,
-      "breakeven_confirmed": true
+      "breakeven_confirmed": true,
+      "ready": "2026-08-18",
+      "renamed_from": "Calm & Relax"
     },
     {
-      "sku": "Allergy & Itch Relief (BODY)",
+      "sku": "Allergy & Itch Relief",
       "asin": null,
       "type": "chew",
+      "pillar": "BODY",
       "price": 32.99,
       "launch": "2026-09-01",
       "amazon": {
@@ -571,11 +614,12 @@
       "sns": {
         "amazon": false,
         "shopify": true,
-        "note": "Shopify subscription. No Amazon S&S at launch."
+        "note": "RULED 2026-08-03 by Will: Shopify subscription live at launch. NO Amazon S&S until Amazon grants permission. Do NOT use 'Save 15% on every refill' or 'Chews run out every 45 days' on any Amazon chew asset."
       },
       "liquidate": false,
-      "breakeven_confirmed": true
+      "breakeven_confirmed": true,
+      "ready": "2026-08-18",
+      "renamed_from": "Immune & Allergy"
     }
-  ],
-  "_name_correction_note": "Chew SKU names corrected 2026-08-03 to match Brand & Marketing Handbook. roas_bands.json previously had stale working names. BANDS ARE CORRECT AND UNCHANGED \u2014 only the three chew sku labels were updated."
+  ]
 }
