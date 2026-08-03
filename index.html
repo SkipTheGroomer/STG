@@ -4379,6 +4379,7 @@ function renderSocialMedia(d){
   const strip = _s('sm-alert-strip');
   if(!sm.available){
     if(smTag){ smTag.className='tag tag-na'; smTag.textContent='NOT CONNECTED'; }
+    dot('dot-social', null);
     if(strip){
       strip.className='alert-strip warn';
       strip.innerHTML = sm.reauth_needed
@@ -4388,13 +4389,26 @@ function renderSocialMedia(d){
     return;
   }
 
-  if(smTag){ smTag.className='tag tag-live'; smTag.textContent='LIVE'; }
+  // Nav dot: YELLOW if partial data (reauth needed), GREEN if full insights available
+  const smStatus = sm.reauth_needed ? 'YELLOW' : (sm.ig && sm.ig.followers_count ? 'GREEN' : 'YELLOW');
+  dot('dot-social', smStatus);
+
+  if(smTag){
+    smTag.className = smStatus==='GREEN' ? 'tag tag-live' : 'tag tag-warn';
+    smTag.textContent = smStatus==='GREEN' ? 'LIVE' : 'PARTIAL';
+  }
   if(strip){
-    const warns = (sm.flags||[]).filter(f=>!f.startsWith('hit_'));
-    strip.className = warns.length?'alert-strip warn':'alert-strip ok';
-    strip.innerHTML = warns.length
-      ? '⚠️ '+warns.map(f=>f.split(':')[1]?.trim()||f).join(' · ')
-      : '✅ Social data live — '+fi(ig.followers_count)+' IG followers · '+(sm.posts_7d_count||0)+'/5 posts this week';
+    const warns = (sm.flags||[]).filter(f=>f.startsWith('ACTION_NEEDED')||f.startsWith('PARTIAL_DATA'));
+    if(sm.reauth_needed){
+      strip.className='alert-strip warn';
+      strip.innerHTML = '⚠️ <b>Partial data</b> — posts + engagement live via Meta MCP · Followers/reach/impressions need instagram_manage_insights re-auth at business.facebook.com';
+    } else if(warns.length){
+      strip.className='alert-strip warn';
+      strip.innerHTML = '⚠️ '+warns.map(f=>f.split(':')[1]?.trim()||f).join(' · ');
+    } else {
+      strip.className='alert-strip ok';
+      strip.innerHTML = '✅ Social data live — '+fi(ig.followers_count)+' IG followers · '+(sm.posts_7d_count||0)+'/5 posts this week';
+    }
   }
 
   /* ── health score ───────────────────────────────────────────────────── */
