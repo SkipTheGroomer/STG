@@ -1,95 +1,274 @@
 {
-    "_notes": {
-          "owner": "Patrick — update weekly after pulling Brand Analytics + FBA Returns from Seller Central",
-          "push": "Commit to data/brand_analytics.json on main — dashboard reads it automatically",
-          "return_rates": "Seller Central → Reports → Fulfillment → FBA Customer Returns → last 365 days → pivot by ASIN → returns ÷ units_shipped",
-          "repeat_purchase": "Brand Analytics → Repeat Purchase Behavior report → select last 90 days → export",
-          "brand_search": "Brand Analytics → Search Terms → filter your brand name → Impression Share column",
-          "cart_abandoners": "Klaviyo → Flows → Browse Abandonment → Triggered (last 30 days) OR Brand Analytics → Market Basket"
+  "generated_at": "2026-08-03",
+  "source": "Amazon Brand Analytics + Business Report \u2014 processed from STG_JARVIS_Data Google Drive",
+  "data_as_of": "2026-07-31",
+  "repeat_purchase": {
+    "brand_level_q2": {
+      "period": "Q2 2026 (Apr 1 \u2013 Jun 30)",
+      "reporting_date": "2026-06-30",
+      "total_orders": 5633,
+      "unique_customers": 5285,
+      "repeat_sales": 6757.98,
+      "repeat_sales_pct_of_total": 5.27,
+      "repeat_sales_change_vs_prior": 42.49,
+      "repeat_units": 384,
+      "repeat_units_pct_of_total": 5.97,
+      "repeat_units_change_vs_prior": 44.36,
+      "repeat_customer_count": 326,
+      "repeat_customer_share_pct": 6.17,
+      "repeat_customer_share_change_vs_prior": 2.93
     },
-    "as_of": "2026-07-27",
-    "period": "2025-07-24 → 2026-07-24",
-    "return_rates": {
-          "B0FQL56V99": {
-                  "name": "Emergency Dematter",
-                  "return_rate_pct": null,
-                  "category_avg_return_pct": 3.5,
-                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL56V99"
-          },
-          "B0FQF2VTMJ": {
-                  "name": "Rake Brush",
-                  "return_rate_pct": null,
-                  "category_avg_return_pct": 5.0,
-                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQF2VTMJ"
-          },
-          "B0GV5ZFLC2": {
-                  "name": "Detangling Treatment",
-                  "return_rate_pct": null,
-                  "category_avg_return_pct": 3.5,
-                  "note": "Pull from FBA Customer Returns report — filter ASIN B0GV5ZFLC2"
-          },
-          "B0FQL16GH4": {
-                  "name": "4-in-1 Shampoo",
-                  "return_rate_pct": null,
-                  "category_avg_return_pct": 3.5,
-                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQL16GH4"
-          },
-          "B0FQDHXSZ5": {
-                  "name": "Pin Brush",
-                  "return_rate_pct": null,
-                  "category_avg_return_pct": 5.0,
-                  "note": "Pull from FBA Customer Returns report — filter ASIN B0FQDHXSZ5"
-          },
-          "B0FQ628KCH": {
-                  "name": "Slicker Brush",
-                  "return_rate_pct": 8.67,
-                  "category_avg_return_pct": 4.0,
-                  "note": "Already confirmed — from supply_chain.json Jul 14"
-          }
+    "asin_level_q2": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "orders": 4230,
+        "customers": 4171,
+        "repeat_sales": 1134.3,
+        "repeat_sales_pct": 1.2,
+        "repeat_units": 59,
+        "repeat_units_pct": 1.38,
+        "repeat_customers": 58,
+        "repeat_customer_share_pct": 1.39,
+        "change_vs_prior_pct": -0.07,
+        "note": "Highest volume, low repeat % \u2014 mostly first-time buyers"
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "orders": 622,
+        "customers": 612,
+        "repeat_sales": 185.44,
+        "repeat_sales_pct": 1.67,
+        "repeat_units": 11,
+        "repeat_units_pct": 1.75,
+        "repeat_customers": 9,
+        "repeat_customer_share_pct": 1.47,
+        "change_vs_prior_pct": null,
+        "note": "First period of data \u2014 baseline"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "orders": 135,
+        "customers": 132,
+        "repeat_sales": 51.79,
+        "repeat_sales_pct": 2.01,
+        "repeat_units": 3,
+        "repeat_units_pct": 2.16,
+        "repeat_customers": 3,
+        "repeat_customer_share_pct": 2.27,
+        "change_vs_prior_pct": 0.06,
+        "note": "Highest repeat share of active SKUs \u2014 consumable behavior emerging"
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "orders": 1065,
+        "customers": 1052,
+        "repeat_sales": 126.66,
+        "repeat_sales_pct": 0.85,
+        "repeat_units": 13,
+        "repeat_units_pct": 1.22,
+        "repeat_customers": 13,
+        "repeat_customer_share_pct": 1.24,
+        "change_vs_prior_pct": -0.85,
+        "note": "Durable good \u2014 low repeat expected"
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "orders": 246,
+        "customers": 243,
+        "repeat_sales": 37.98,
+        "repeat_sales_pct": 0.87,
+        "repeat_units": 3,
+        "repeat_units_pct": 1.21,
+        "repeat_customers": 3,
+        "repeat_customer_share_pct": 1.23,
+        "change_vs_prior_pct": -0.42,
+        "note": "Durable good \u2014 low repeat expected"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "orders": 61,
+        "customers": 61,
+        "repeat_sales": 0,
+        "repeat_sales_pct": 0.0,
+        "repeat_units": 0,
+        "repeat_units_pct": 0.0,
+        "repeat_customers": 0,
+        "repeat_customer_share_pct": 0.0,
+        "change_vs_prior_pct": -2.46,
+        "note": "Liquidation \u2014 zero repeat buyers, down 100% vs Q1"
+      }
+    ],
+    "key_insight": "Brand repeat rate 6.17% (Q2) \u2014 doubled from 3.24% in Q1. Cross-SKU purchases driving growth, not same-SKU repeats. Shampoo has highest repeat rate (2.27%) \u2014 consumable behavior emerging.",
+    "target": "10-15%",
+    "status": "BELOW_TARGET",
+    "trend": "IMPROVING"
+  },
+  "demographics": {
+    "q2_2026": {
+      "period": "Q2 2026 (Apr 1 \u2013 Jun 30)",
+      "reporting_date": "2026-06-30",
+      "total_customers": 20410,
+      "total_units": 24800,
+      "gender": {
+        "female_pct": 44.61,
+        "female_customers": 9105,
+        "male_pct": 26.62,
+        "male_customers": 5433,
+        "unknown_pct": 28.77,
+        "unknown_customers": 5872,
+        "note": "Male share growing \u2014 'Pet Dad' angle landing"
+      },
+      "age": {
+        "18_24_pct": 5.23,
+        "25_34_pct": 11.45,
+        "35_44_pct": 16.31,
+        "45_54_pct": 14.74,
+        "55_64_pct": 11.43,
+        "65plus_pct": 15.27,
+        "unknown_pct": 25.58,
+        "core_35plus_pct": 57.75,
+        "note": "25-34 underindexed vs 21% category benchmark \u2014 opportunity gap"
+      },
+      "income": {
+        "over_250k_pct": 9.07,
+        "200_249k_pct": 5.85,
+        "175_199k_pct": 4.39,
+        "150_174k_pct": 4.45,
+        "125_149k_pct": 9.64,
+        "100_124k_pct": 6.15,
+        "75_99k_pct": 11.2,
+        "50_74k_pct": 10.43,
+        "unknown_pct": 38.82,
+        "over_150k_pct_of_known": 39.5,
+        "over_150k_pct_of_total": 23.76,
+        "note": "39.5% of known-income buyers earn $150K+ \u2014 premium customer base"
+      },
+      "marital": {
+        "married_pct": 35.59,
+        "single_pct": 3.84,
+        "unknown_pct": 60.57,
+        "note": "Married growing +2.18 pts vs Q1"
+      }
     },
-    "brand_health": {
-          "_pull_from": "Brand Analytics → Repeat Purchase Behavior → last 90 days → all ASINs combined",
-          "report_date": "2026-07-20",
-          "week_of": "2026-07-20",
-          "total_customers": 12888,
-          "repeat_purchase_rate_pct": 9.87,
-          "brand_search_share_pct": 51.2,
-          "sns_total_penetration_pct": 2.9,
-          "cart_abandoners": null,
-          "top_tier": {
-                  "_note": "Repeat Purchase Behavior → 'Repeat Purchase Customers' column → top spenders",
-                  "count": 723,
-                  "pct": 5.61
-          },
-          "promising": {
-                  "_note": "Repeat Purchase Behavior → customers with 2+ orders in period",
-                  "count": 10179,
-                  "pct": 78.98
-          },
-          "at_risk": {
-                  "_note": "Customers who ordered 6–12 months ago but not since",
-                  "count": 1986,
-                  "pct": 15.41,
-                  "wow_change_pct": null
-          },
-          "funnel": {
-                  "_note": "Brand Analytics → Market Basket or leave null until SP-API live",
-                  "awareness": {
-                            "count": 12041,
-                            "wow_pct": -25.48
-                  },
-                  "consideration": {
-                            "count": 1228,
-                            "wow_pct": 36.75
-                  },
-                  "intent_carted": {
-                            "count": 173,
-                            "wow_pct": -2.26
-                  },
-                  "purchase_new": {
-                            "count": 217,
-                            "wow_pct": 10.71
-                  }
-          }
-    }
+    "key_insights": [
+      "20,410 unique Q2 customers \u2014 +140% vs 8,521 in Q1. Massive growth quarter.",
+      "39.5% of known-income buyers earn $150K+ \u2014 premium customer base holding.",
+      "Male share at 26.62% \u2014 Pet Dad angle growing (up +8.8 pts from Q4 2025 baseline).",
+      "25-34 age bracket: 11.45% vs 21% category benchmark \u2014 biggest demographic gap.",
+      "65+ at 15.27% \u2014 significant older demographic, keep UX and messaging accessible."
+    ]
+  },
+  "business_report": {
+    "report_date": "2026-07-31",
+    "source": "Amazon Seller Central Business Report",
+    "note": "Appears to be cumulative/lifetime data \u2014 no date range in file (per README)",
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "sessions": 58655,
+        "session_pct": 59.26,
+        "page_views": 79639,
+        "buy_box_pct": 99.55,
+        "units": 11120,
+        "cvr_pct": 18.96,
+        "revenue": 247946.05
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "sessions": 7551,
+        "session_pct": 7.63,
+        "page_views": 9788,
+        "buy_box_pct": 99.45,
+        "units": 2354,
+        "cvr_pct": 31.17,
+        "revenue": 32414.88
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "sessions": 4695,
+        "session_pct": 4.74,
+        "page_views": 6072,
+        "buy_box_pct": 99.27,
+        "units": 727,
+        "cvr_pct": 15.48,
+        "revenue": 12905.98
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "sessions": 4066,
+        "session_pct": 4.11,
+        "page_views": 5409,
+        "buy_box_pct": 99.46,
+        "units": 552,
+        "cvr_pct": 13.58,
+        "revenue": 10371.47
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "sessions": 4863,
+        "session_pct": 4.91,
+        "page_views": 6220,
+        "buy_box_pct": 99.34,
+        "units": 485,
+        "cvr_pct": 9.97,
+        "revenue": 9398.63
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "sessions": 2458,
+        "session_pct": 2.48,
+        "page_views": 3302,
+        "buy_box_pct": 99.06,
+        "units": 233,
+        "cvr_pct": 9.48,
+        "revenue": 3979.24
+      },
+      {
+        "asin": "B0GT1H84JM",
+        "name": "Save the Shave Bundle (ALERT)",
+        "sessions": 8508,
+        "session_pct": 8.6,
+        "page_views": 11435,
+        "buy_box_pct": 97.93,
+        "units": 0,
+        "cvr_pct": 0.0,
+        "revenue": 0.0,
+        "flag": "ZERO_CONVERSION: 8,508 sessions, 97.93% buy box, $0 revenue, 0 units \u2014 confirmed active traffic to dead listing. Any ad spend here is pure waste."
+      }
+    ],
+    "flags": [
+      "ZERO_CONVERSION_ALERT: B0GT1H84JM (Save the Shave Bundle) has 8,508 sessions + 97.93% buy box but ZERO units sold. If ads are running to this ASIN they are burning money with no attribution.",
+      "HIGH_CVR: Rake Brush 31.17% CVR \u2014 highest in catalog, likely review-driven. Protect ranking.",
+      "LOW_CVR: 4-in-1 Shampoo 9.97% \u2014 lowest active SKU. Listing optimization opportunity."
+    ]
+  },
+  "brand_health": {
+    "total_customers_q2": 20410,
+    "repeat_purchase_rate_pct": 6.17,
+    "repeat_purchase_target": "10-15%",
+    "repeat_purchase_status": "BELOW_TARGET",
+    "female_pct": 44.61,
+    "male_pct": 26.62,
+    "over_150k_income_pct": 39.5,
+    "core_age_35plus_pct": 57.75,
+    "week_of": "Q2 2026",
+    "data_source": "Amazon Brand Analytics quarterly exports \u2014 July 31, 2026"
+  },
+  "flags": [
+    "B0GT1H84JM ZERO CONVERSION: 8,508 sessions, $0 revenue \u2014 confirm no ads running to this ASIN",
+    "REPEAT_RATE_BELOW_TARGET: 6.17% vs 10-15% target \u2014 cross-sell strategy needed",
+    "SHAMPOO_EMERGING_REPEAT: 4-in-1 Shampoo has highest repeat share (2.27%) \u2014 S&S opportunity"
+  ]
 }
