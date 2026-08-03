@@ -143,9 +143,10 @@
       },
       {
         "date": "2026-07-31",
-        "sales": 0.0,
+        "sales": 262.9,
         "net_sales": 0.0,
-        "orders": 0
+        "orders": 10,
+        "note": "gross $262.90 / net $0 \u2014 heavy discounts applied Jul 31"
       },
       {
         "date": "2026-08-01",
@@ -165,43 +166,57 @@
         "product_title": "Detangling Treatment",
         "gross_sales": 293.06,
         "net_sales": 65.28,
-        "orders": 16
+        "orders": 16,
+        "revenue": 293.06,
+        "units_sold": 16
       },
       {
         "product_title": "4-IN-1 Rosemary Mint Shampoo",
         "gross_sales": 250.91,
         "net_sales": 105.39,
-        "orders": 20
+        "orders": 20,
+        "revenue": 250.91,
+        "units_sold": 20
       },
       {
         "product_title": "Emergency Dematter Cream",
         "gross_sales": 228.41,
         "net_sales": 164.91,
-        "orders": 11
+        "orders": 11,
+        "revenue": 228.41,
+        "units_sold": 11
       },
       {
         "product_title": "Slicker Brush",
         "gross_sales": 204.11,
         "net_sales": 35.97,
-        "orders": 19
+        "orders": 19,
+        "revenue": 204.11,
+        "units_sold": 19
       },
       {
         "product_title": "Rake Brush",
         "gross_sales": 133.92,
         "net_sales": 92.52,
-        "orders": 10
+        "orders": 10,
+        "revenue": 133.92,
+        "units_sold": 10
       },
       {
         "product_title": "Pin Brush",
         "gross_sales": 125.6,
         "net_sales": 48.75,
-        "orders": 7
+        "orders": 7,
+        "revenue": 125.6,
+        "units_sold": 7
       },
       {
         "product_title": "Soft & Tangle Free Dog Grooming Kit",
         "gross_sales": 71.98,
         "net_sales": 0,
-        "orders": 2
+        "orders": 2,
+        "revenue": 71.98,
+        "units_sold": 2
       }
     ],
     "top_products_period": "2026-07-01 to 2026-07-31",
