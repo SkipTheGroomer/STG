@@ -1,11 +1,14 @@
 {
+  "as_of": "2026-08-04",
   "generated_at": "2026-08-04",
   "source": "Amazon Seller Central FBA Inventory",
   "available": true,
   "skus": [
     {
       "asin": "B0FQL56V99",
+      "sku": "Emergency Dematter",
       "name": "Skip the Groomer Dematting Cream for Dogs - Mat & Tangle Remover, 8 oz",
+      "on_hand": 21112,
       "units_available": 21112,
       "units_inbound": 0,
       "units_reserved": 110,
@@ -13,7 +16,9 @@
     },
     {
       "asin": "B0FQF2VTMJ",
+      "sku": "Rake Brush",
       "name": "Skip the Groomer Rake Brush for Dogs, Doodles & Poodles - Mat Remover",
+      "on_hand": 229,
       "units_available": 229,
       "units_inbound": 4200,
       "units_reserved": 22,
@@ -21,7 +26,9 @@
     },
     {
       "asin": "B0GV5ZFLC2",
+      "sku": "Detangling Treatment",
       "name": "Detangling Treatment for Dogs, Leave-in Conditioner Detangler for Matted Hair, Knots & Tangles | Goldendoodles, Poodles, Doodles & Long-Haired Breeds | No Mist, Squeeze Bottle, 12 oz",
+      "on_hand": 8312,
       "units_available": 8312,
       "units_inbound": 0,
       "units_reserved": 19,
@@ -29,7 +36,9 @@
     },
     {
       "asin": "B0FQL16GH4",
+      "sku": "4-in-1 Shampoo",
       "name": "Dog Shampoo & Conditioner for All Breeds – Goldendoodles, Poodles & Doodles – 4-in-1 Reset for Bath Days – Deep Clean, Condition, Detangle & Moisturize Curly Coats – 16 oz",
+      "on_hand": 3969,
       "units_available": 3969,
       "units_inbound": 0,
       "units_reserved": 24,
@@ -37,7 +46,9 @@
     },
     {
       "asin": "B0FQDHXSZ5",
+      "sku": "Pin Brush",
       "name": "Pin Brush for Dogs, Gentle Dog Brush for Long Haired Dogs – Routine Essential for Goldendoodles, Poodles & Doodles, No-Scratch Rounded Pins for Sensitive Skin, Flexible Cushion Base – Skip the Groomer",
+      "on_hand": 1977,
       "units_available": 1977,
       "units_inbound": 0,
       "units_reserved": 9,
@@ -45,7 +56,9 @@
     },
     {
       "asin": "B0FQ628KCH",
+      "sku": "Slicker Brush",
       "name": "Slicker Brush for Dogs, Goldendoodle Brush for Fluff – Routine Essential for Poodles, Bernedoodles & Long Haired Breeds, Gentle Dematting & Easy-Clean Bristles – Skip the Groomer",
+      "on_hand": 2555,
       "units_available": 2555,
       "units_inbound": 0,
       "units_reserved": 6,
