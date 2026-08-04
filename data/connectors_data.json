@@ -1,39 +1,41 @@
 {
-  "last_updated": "2026-08-03",
-  "routine_version": "v10.32",
-  "run_date": "2026-08-03",
+  "last_updated": "2026-08-04",
+  "routine_version": "v10.33",
+  "run_date": "2026-08-04",
   "quickbooks": {
     "available": true,
-    "data_source": "QuickBooks MCP \u2014 carried from 2026-08-02 (August sync lag)",
+    "data_source": "QuickBooks MCP — live pull 2026-08-04",
     "period": "2026-07-01 to 2026-07-31",
-    "cash_balance": 472368.54,
-    "checking_balance": 13317.99,
-    "money_market_balance": 459050.55,
+    "cash_balance": 477229.58,
+    "checking_balance": 16933.40,
+    "money_market_balance": 460296.18,
     "checking_status": "RED",
-    "total_assets": 832334.89,
-    "total_liabilities": 936908.08,
-    "total_equity": -104573.19,
-    "accounts_payable": 49253.4,
+    "total_assets": 829226.89,
+    "total_liabilities": 930610.15,
+    "total_equity": -101383.26,
+    "accounts_payable": 44491.90,
     "accounts_receivable": 0.0,
-    "working_capital": -103825.11,
-    "inventory_value": 194200.59,
+    "credit_card_debt": 15458.90,
+    "working_capital": -100635.18,
+    "inventory_value": 186291.44,
+    "inventory_deposits": 104022.98,
     "mtd": {
-      "period": "2026-08-01 to 2026-08-03",
+      "period": "2026-08-01 to 2026-08-04",
       "revenue": 0.0,
       "gross_profit": 0.0,
       "gross_margin_pct": 0.0,
-      "operating_expenses": 0.0,
-      "net_income": 0.0,
+      "operating_expenses": 2652.94,
+      "net_income": -2652.94,
       "net_margin_pct": 0.0,
-      "note": "August MTD sync lag \u2014 QB not yet reflecting August transactions. July final: revenue $24,726.68 / net -$60,742.90"
+      "note": "August MTD sync lag — QB not yet reflecting August revenue. Expenses $2,652.94. July final: revenue $24,726.68 / net -$60,742.90"
     },
     "status": "RED",
     "flags": [
-      "CHECKING_BELOW_25K: $13,317.99 \u2014 0.78 weeks runway",
+      "CHECKING_BELOW_25K: $16,933.40 — 0.99 weeks runway",
       "MTD_NET_NEGATIVE: July final net -$60,742.90",
-      "NEGATIVE_EQUITY: Total equity -$104,573.19"
+      "NEGATIVE_EQUITY: Total equity -$101,383.26"
     ],
-    "weeks_runway": 0.78,
+    "weeks_runway": 0.99,
     "sync_lag_flag": true,
     "stale": false,
     "july_final": {
@@ -44,20 +46,20 @@
       "operating_expenses": 74237.16,
       "net_income": -60742.9,
       "net_margin_pct": -245.6,
-      "note": "July final confirmed from morning routine v10.32 Aug 2 run"
+      "note": "July final confirmed from morning routine v10.32 Aug 3 run"
     }
   },
   "klaviyo": {
     "available": true,
-    "data_source": "Klaviyo MCP \u2014 live pull 2026-08-03",
+    "data_source": "Klaviyo MCP — live pull 2026-08-04",
     "period": "last_7_days",
     "total_email_revenue_7d": 0.0,
-    "avg_open_rate": 66.7,
+    "avg_open_rate": 75.0,
     "avg_click_rate": 0.0,
-    "total_recipients_7d": 9,
+    "total_recipients_7d": 8,
     "flows_flagged": [
-      "Cart Abandonment: 0 recipients L7D \u2014 flow not triggering",
-      "All flows: $0 revenue L7D \u2014 conversion attribution at zero"
+      "Cart Abandonment: 0 recipients L7D — flow not triggering",
+      "All flows: $0 revenue L7D — conversion attribution at zero"
     ],
     "cart_abandonment_flow_name": "Abandoned Cart",
     "cart_abandonment_recipients_7d": 0,
@@ -70,8 +72,8 @@
         "status": "live",
         "trigger_type": "Added to List",
         "send_channel": "email",
-        "recipients_7d": 6,
-        "open_rate": 66.7,
+        "recipients_7d": 7,
+        "open_rate": 71.4,
         "click_rate": 0.0,
         "conversion_rate": 0.0,
         "conversions": 0,
@@ -86,8 +88,8 @@
         "status": "live",
         "trigger_type": "Added to List",
         "send_channel": "email",
-        "recipients_7d": 3,
-        "open_rate": 66.7,
+        "recipients_7d": 1,
+        "open_rate": 100.0,
         "click_rate": 0.0,
         "conversion_rate": 0.0,
         "conversions": 0,
@@ -101,28 +103,22 @@
   },
   "shopify": {
     "available": true,
-    "report_date": "2026-08-02",
-    "data_source": "Shopify MCP \u2014 live pull 2026-08-03",
+    "report_date": "2026-08-03",
+    "data_source": "Shopify MCP — live pull 2026-08-04",
     "yesterday": {
-      "date": "2026-08-02",
-      "sales": 0.0,
+      "date": "2026-08-03",
+      "sales": 194.88,
       "net_sales": 0.0,
-      "orders": 0,
-      "aov": 0.0
+      "orders": 9,
+      "aov": 21.65
     },
-    "yesterday_sales": 0.0,
-    "aov": 0.0,
-    "aov_status": "RED",
-    "aov_note": "3 consecutive $0 days (Jul 31, Aug 1, Aug 2). Last sale Jul 30: $36.97 / 3 orders.",
-    "vs_7day_avg_pct": 0.0,
-    "seven_day_avg": 30.29,
+    "yesterday_sales": 194.88,
+    "aov": 21.65,
+    "aov_status": "YELLOW",
+    "aov_note": "Aug 3: 9 orders / $194.88 gross / $0 net (heavy discounts). AOV $21.65 YELLOW — below $30 threshold.",
+    "vs_7day_avg_pct": 159.9,
+    "seven_day_avg": 74.96,
     "daily_7d": [
-      {
-        "date": "2026-07-27",
-        "sales": 107.13,
-        "net_sales": 0,
-        "orders": 2
-      },
       {
         "date": "2026-07-28",
         "sales": 47.96,
@@ -146,19 +142,27 @@
         "sales": 262.9,
         "net_sales": 0.0,
         "orders": 10,
-        "note": "gross $262.90 / net $0 \u2014 heavy discounts applied Jul 31"
+        "note": "gross $262.90 / net $0 — heavy discounts applied Jul 31"
       },
       {
         "date": "2026-08-01",
-        "sales": 0.0,
-        "net_sales": 0.0,
-        "orders": 0
+        "sales": 9.99,
+        "net_sales": 9.99,
+        "orders": 1,
+        "note": "v10.33 self-heal: corrected from $0 — 1 order confirmed"
       },
       {
         "date": "2026-08-02",
         "sales": 0.0,
         "net_sales": 0.0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-03",
+        "sales": 194.88,
+        "net_sales": 0.0,
+        "orders": 9,
+        "note": "gross $194.88 / net $0 — heavy discounts"
       }
     ],
     "top_products": [
@@ -221,16 +225,17 @@
     ],
     "top_products_period": "2026-07-01 to 2026-07-31",
     "order_breakdown": {
-      "date": "2026-08-02",
-      "total_orders": 0,
-      "note": "Aug 2: 0 orders. Last activity Jul 30."
+      "date": "2026-08-03",
+      "total_orders": 9,
+      "note": "Aug 3: 9 orders $194.88 gross."
     },
     "refunds": {
       "available": true,
       "refund_rate_30d": 0.0,
       "total_refunds_30d": 0.0,
       "refund_count_30d": 0,
-      "flags": []
+      "flags": [],
+      "note": "ShopifyQL sales_reversals column unavailable — carrying prior data. No refund flags observed."
     }
   },
   "helium10": {
@@ -239,19 +244,19 @@
     "data_readable": true,
     "report_date": "2026-08-03",
     "flags": [
-      "SLICKER_BRUSH_RANKING_RECOVERY: B0FQ628KCH \u2014 doodle brush now rank 101 (+163 recovery from unranked)",
-      "DEMATTER_RANK_IMPROVING: B0FQL56V99 \u2014 dematting tool for dogs rank 5 (+1), dematting comb rank 12 (+8)"
+      "DEMATTER_STRONG: B0FQL56V99 — 2 top-10 organic keywords (SV 5,067 combined), ranked #5 dematting tool for dogs",
+      "SLICKER_BRUSH_RECOVERY: B0FQ628KCH — recovering in ranks, doodle brush at rank 101 (entry from unranked)"
     ],
     "products": [
       {
         "asin": "B0FQL56V99",
         "name": "Emergency Dematter",
         "summary": {
-          "organic_top10": 1,
+          "organic_top10": 2,
           "organic_top50": 3,
           "sponsored_top10": 2,
           "sponsored_top50": 2,
-          "sv_top10": 3150,
+          "sv_top10": 5067,
           "sv_top50": 12027
         },
         "keywords": [
@@ -352,7 +357,7 @@
       "vs_prior_day_pct": null,
       "stale": false,
       "products": [],
-      "note": "Product-level breakdown not captured in today\u2019s summary; aggregate from H10 Profits live pull."
+      "note": "Most recent H10 Profits daily. Aug 3+ not yet in H10 dashboard."
     },
     "weekly": {
       "period": "2026-07-27 to 2026-08-02",
@@ -363,7 +368,8 @@
       "units": 676,
       "vs_prior_week_pct": 361.1,
       "products": [],
-      "note": "vs prior week (Jul 20\u201326): net $233.24 \u2192 $1,075.25 (+361%). Product breakdown not captured."
+      "stale": true,
+      "note": "vs prior week (Jul 20–26): net $233.24 → $1,075.25 (+361%). Stale — H10 Profits weekly email not found in 3d lookback."
     },
     "monthly": null
   },
@@ -373,7 +379,7 @@
     "report_date": "2026-07-28",
     "stale": true,
     "listings": [],
-    "note": "Email thread too large to parse (191,036 chars). Prior data preserved with stale=true."
+    "note": "Email thread too large to parse (190,778 chars). Prior data preserved with stale=true."
   },
   "helium10_market_tracker": {
     "available": true,
@@ -381,33 +387,33 @@
     "report_date": "2026-07-28",
     "competitors": [
       {
-        "name": "We Love Doodles \u2014 B0CXDL42B4",
+        "name": "We Love Doodles — B0CXDL42B4",
         "asin": "B0CXDL42B4",
         "review_change": 4,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B0BFZ4C4Z9",
+        "name": "We Love Doodles — B0BFZ4C4Z9",
         "asin": "B0BFZ4C4Z9",
         "review_change": 18,
         "review_change_direction": "increase"
       },
       {
-        "name": "We Love Doodles \u2014 B09Q837KK1",
+        "name": "We Love Doodles — B09Q837KK1",
         "asin": "B09Q837KK1",
         "review_change": 19,
         "review_change_direction": "increase"
       }
     ],
-    "note": "Carried forward from 2026-07-29 run \u2014 no fresh Market Tracker email parsed today."
+    "note": "Carried forward from 2026-07-29 run — no fresh Market Tracker email parsed today."
   },
   "helium10_inventory": {
     "available": true,
     "report_date": "2026-07-29",
     "flags": [
-      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) \u2014 LIF <= 0 days, FBA OUT OF STOCK",
-      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) \u2014 LIF <= 0 days, FBA OUT OF STOCK",
-      "LTSF_RISK: All tracked ASINs showing LTSF >= 181 Days \u2014 long-term storage fee risk"
+      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) — LIF <= 0 days, FBA OUT OF STOCK",
+      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) — LIF <= 0 days, FBA OUT OF STOCK",
+      "LTSF_RISK: All tracked ASINs showing LTSF >= 181 Days — long-term storage fee risk"
     ],
     "skus": [
       {
@@ -455,10 +461,10 @@
   "supermetrics": {
     "available": true,
     "status": "YELLOW",
-    "cache_generated": "2026-08-03",
+    "cache_generated": "2026-08-04",
     "cache_age_hours": 0,
     "stale": false,
-    "stale_note": "Amazon Ads queries A/B/C still running as of 7:00 AM PT \u2014 using Jul 28 stale data for AA section",
+    "stale_note": "Amazon Ads queries A/B/I resubmitted 2026-08-04 with corrected report_type=SponsoredProduct — still running at push time. AA section carries Jul 28 data.",
     "amazon_ads": {
       "available": true,
       "data_date": "2026-07-28",
@@ -466,7 +472,7 @@
       "roas": 1.1003,
       "tacos": 90.88,
       "stale": true,
-      "stale_reason": "Queries A/B/C still running \u2014 Amazon API slowness. Data reflects Jul 28.",
+      "stale_reason": "Queries A/B/I resubmitted with correct fields but Amazon API did not return within polling window. Data reflects Jul 28.",
       "skus": [
         {
           "asin": "B0FQL56V99",
@@ -561,7 +567,7 @@
       ],
       "flagged_skus": [
         "ATTRIBUTION_CRISIS: B0GT1H84JM $57.16 spend $0 sales",
-        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 \u2014 NO_ADS rule"
+        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 — NO_ADS rule"
       ],
       "total_spend": 417.84,
       "total_sales": 459.76
@@ -572,7 +578,7 @@
       "sessions": null,
       "conversion_rate": null,
       "units_sold": 120,
-      "units_sold_source": "Helium 10 proxy \u2014 ASELL sync lag for Aug 2",
+      "units_sold_source": "Helium 10 proxy — ASELL sync lag for Aug 2",
       "stale": false,
       "by_asin_7d": [
         {
@@ -773,35 +779,31 @@
       ]
     },
     "schedule_ids": {
-      "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
-      "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
-      "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-      "D": "c588b98b14ec59c3d915242488ab5624ea7b79019cc13323d05ae843c89b9d00",
-      "E": "fb11f10055d5af2f72a454ef82c26ec101ba55a7a37729e81effb747f799856b",
-      "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de",
-      "G": "20d963a7b103ba67ba874f59c4be4f6d5f791db9eb0ea1c3c7f8808c41021ee9"
+      "A_v1033": "a700b337c1a5ed1a911fdac423a56978283eddcaef7ad5e82863d9f1d052717e",
+      "B_v1033": "cbc52e63035d1ea04b1ac3437e29630fecc3ea927efb17cd20e0c32eb40799bd",
+      "I_v1033": "5ec729a4243bbc90eedce386fdc0215d54ddce6d49d3499b0302bb13078c4b55",
+      "note": "All v10.33 queries submitted with report_type=SponsoredProduct. Still running at push time. H (search_term) dropped — field not available in AA data source."
     }
   },
   "amazon_ads_browser": {
     "available": false,
-    "note": "Cloud environment \u2014 permanent unavailable (L-2026-07-15-001)"
+    "note": "Cloud environment — permanent unavailable (L-2026-07-15-001)"
   },
   "meta_ads": {
     "available": true,
     "account_id": "2158768751536031",
     "period": "Last 30 days (trailing)",
-    "stale": true,
-    "stale_reason": "Meta async report tool not yet available for account 2158768751536031 (gradual rollout). Carrying Aug 2 data.",
+    "stale": false,
     "l30d": {
-      "spend": 567.42,
-      "roas": 0.6,
-      "purchase_value": 339.35,
+      "spend": 544.87,
+      "roas": 0.587,
+      "purchase_value": 319.55,
       "reach": 7777,
       "impressions": 11701,
       "purchases": 14
     },
     "yesterday": {
-      "date": "2026-08-02",
+      "date": "2026-08-03",
       "spend": 0.0,
       "purchases": 0,
       "purchase_value": 0.0
@@ -815,7 +817,7 @@
         "results": "12 purchases"
       },
       {
-        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC",
+        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC",
         "status": "OFF",
         "spend": 86.17,
         "roas": 0.232,
@@ -833,7 +835,7 @@
       "META_ALL_PAUSED: 8 campaigns paused, $0 active spend"
     ],
     "campaigns_active_count": 0,
-    "campaigns_active_note": "All campaigns PAUSED or OFF as of 2026-07-30.",
+    "campaigns_active_note": "All campaigns PAUSED or OFF. $0 active spend as of Aug 4.",
     "daily_7d": [
       {
         "date": "2026-07-29",
@@ -845,7 +847,8 @@
       },
       {
         "date": "2026-08-01",
-        "spend": 0.0
+        "spend": 0.0,
+        "roas": 0.0
       },
       {
         "date": "2026-08-02",
@@ -854,34 +857,38 @@
       {
         "date": "2026-08-03",
         "spend": 0.0
+      },
+      {
+        "date": "2026-08-04",
+        "spend": 0.0
       }
     ],
     "all_campaigns_paused": true,
     "active_campaign_count": 0,
     "total_campaigns": 8,
-    "data_source": "Meta MCP \u2014 carried from 2026-08-02 (async report unavailable for this account)"
+    "data_source": "Meta MCP — live pull 2026-08-04 (corrected field IDs: amount_spent, purchase_roas, offsite_conversion_fb_pixel_purchase)"
   },
   "reviews": {
     "available": true,
     "status": "YELLOW",
-    "data_source": "Google Drive \u2014 STG Weekly Review Update \u2014 live pull 2026-08-03",
-    "last_reviews_check": "2026-08-03",
+    "data_source": "Google Drive — STG Weekly Review Update — live pull 2026-08-04",
+    "last_reviews_check": "2026-08-04",
     "sheet_last_modified": "2026-07-30",
-    "new_review_count": 13,
-    "review_period": "2026-07-04 to 2026-08-03",
-    "avg_rating_new_batch": 4.31,
-    "days_since_last_review": 8,
+    "new_review_count": 12,
+    "review_period": "2026-07-05 to 2026-08-04",
+    "avg_rating_new_batch": 4.33,
+    "days_since_last_review": 9,
     "low_star_count_recent": 1,
     "flags": [
-      "SAFETY_INCIDENT: Customer cut finger on Emergency Dematter comb blade (2026-07-25) \u2014 URGENT: add blade warning to packaging and listing images",
-      "LOW_STAR: 1 low-star review in L30D (7/6 Dematter 2\u2605)"
+      "SAFETY_INCIDENT: Customer cut finger on Emergency Dematter comb blade (2026-07-25) — URGENT: add blade warning to packaging and listing images",
+      "LOW_STAR: 1 low-star review in L30D (7/6 Dematter 2★)"
     ],
     "recent": [
       {
         "date": "2026-07-26",
         "product": "Rake Brush",
         "stars": 4,
-        "note": "Most recent review"
+        "note": "Most recent review. Left-handed usability request."
       },
       {
         "date": "2026-07-25",
@@ -917,26 +924,26 @@
   },
   "business_health": {
     "available": true,
-    "data_source": "QuickBooks MCP + supply_chain.json \u2014 2026-08-03",
-    "cash_in_inventory": 194093.0,
-    "checking_balance": 13317.99,
+    "data_source": "QuickBooks MCP + supply_chain.json — 2026-08-04",
+    "cash_in_inventory": 186291.44,
+    "checking_balance": 16933.40,
     "checking_status": "RED",
-    "total_assets": 832334.89,
-    "total_liabilities": 936908.08,
+    "total_assets": 829226.89,
+    "total_liabilities": 930610.15,
     "net_income_july_final": -60742.9,
     "gross_margin_pct": 54.6,
-    "weeks_runway_checking": 0.78,
+    "weeks_runway_checking": 0.99,
     "august_factory_payments_total": 95694.5,
     "august_factory_payments_balance_due": 38651.0,
     "skus": [],
     "flags": [
-      "CHECKING_BELOW_25K: $13,317.99 \u2014 0.78 weeks runway CRITICAL",
+      "CHECKING_BELOW_25K: $16,933.40 — 0.99 weeks runway (improved from $13,317.99 prior run)",
       "MTD_NET_NEGATIVE: July final net -$60,742.90",
-      "NEGATIVE_EQUITY: Total equity -$104,573.19",
-      "NEGATIVE_WORKING_CAPITAL: -$103,825.11",
+      "NEGATIVE_EQUITY: Total equity -$101,383.26",
+      "NEGATIVE_WORKING_CAPITAL: approx -$100,635",
       "FACTORY_PAYMENTS_AUG: $95,694.50 total due this month; $38,651 balance-due only",
-      "RAKE_PO2_DEPOSIT_PENDING: $21,613 deposit for Rake PO2 \u2014 confirm payment immediately",
-      "DEMATTER_PRODUCTION_BLOCKED: Accelerated run blocked \u2014 Craig missing ingredient",
+      "RAKE_PO2_DEPOSIT_PENDING: $21,613 deposit for Rake PO2 — confirm payment immediately",
+      "DEMATTER_PRODUCTION_BLOCKED: Accelerated run blocked — Craig missing ingredient",
       "SLICKER_LIQUIDATE: 8.67% return rate approaching 10.2% Amazon fee threshold"
     ]
   },
@@ -946,7 +953,7 @@
     "funnel_extracted": false,
     "repeat_purchase_extracted": false,
     "brand_search_extracted": false,
-    "note": "Monday \u2014 would run but Chrome unavailable in cloud environment (L-2026-07-15-001)"
+    "note": "Tuesday — Brand Analytics only runs on Mondays. Next run: 2026-08-10."
   },
   "inventory": {
     "available": false,
@@ -958,7 +965,7 @@
     "scrape_date": "2026-07-29",
     "scrape_time_pt": "08:25 PT",
     "scrape_method": "chrome_browser",
-    "scrape_note": "5 days stale as of 2026-08-03. Chrome unavailable in cloud environment. Last fresh scrape 2026-07-29.",
+    "scrape_note": "6 days stale as of 2026-08-04. Chrome unavailable in cloud environment. Last fresh scrape 2026-07-29.",
     "stale": true,
     "shop_id": "7494104359187547577",
     "probation": {
@@ -1100,15 +1107,15 @@
         "items_sold": null,
         "creator_attributed_gmv": null,
         "top_source": null,
-        "note": "1 SKU out of stock \u2014 data incomplete"
+        "note": "1 SKU out of stock — data incomplete"
       }
     ],
     "out_of_stock_count": 1,
     "flags": [
-      "orders_to_ship: 3 orders pending \u2014 ship within 24h",
-      "response_rate_zero: 24h response rate 0% \u2014 probation risk. Reply to support tickets.",
-      "sku_out_of_stock: 1 SKU out of stock \u2014 restock now",
-      "probation_active: Shop on probation \u2014 daily order limit 2/50"
+      "orders_to_ship: 3 orders pending — ship within 24h",
+      "response_rate_zero: 24h response rate 0% — probation risk. Reply to support tickets.",
+      "sku_out_of_stock: 1 SKU out of stock — restock now",
+      "probation_active: Shop on probation — daily order limit 2/50"
     ],
     "daily_7d": [
       {
@@ -1122,7 +1129,7 @@
         "orders": null
       },
       {
-        "date": "2026-08-03",
+        "date": "2026-08-04",
         "gmv": null,
         "orders": null,
         "stale": true
@@ -1131,27 +1138,27 @@
   },
   "social_media": {
     "available": true,
-    "scrape_date": "2026-08-03",
-    "data_source": "Meta MCP (instagram_basic) \u2014 ads_get_ig_media \u00b7 followers/reach pending instagram_manage_insights re-auth",
+    "scrape_date": "2026-08-04",
+    "data_source": "Meta MCP (instagram_basic) — ads_get_ig_media · followers/reach pending instagram_manage_insights re-auth",
     "ig": {
       "username": "skipthegroomer",
       "ig_user_id": "17841465880821401",
       "followers_count": null,
       "following_count": null,
       "media_count": null,
-      "note": "followers_count unavailable \u2014 requires instagram_manage_insights scope re-auth on business.facebook.com"
+      "note": "followers_count unavailable — requires instagram_manage_insights scope re-auth on business.facebook.com"
     },
     "ig_insights": {
       "impressions_7d": null,
       "reach_7d": null,
       "profile_views_7d": null,
       "follower_delta_7d": null,
-      "note": "insights unavailable \u2014 requires instagram_manage_insights scope"
+      "note": "insights unavailable — requires instagram_manage_insights scope"
     },
     "posts_7d_count": 3,
     "posts_target_per_week": 5,
     "posting_consistency_pct": 60,
-    "posting_gap": 2,
+    "posting_gap": 6,
     "total_engagements_7d": 29,
     "total_likes_7d": 25,
     "total_comments_7d": 4,
@@ -1159,7 +1166,7 @@
     "attributed_revenue_7d": null,
     "top_post": {
       "id": "18216774637340914",
-      "caption": "Best day of his life. He had no idea what was coming. \ud83d\udc3e\n\nMuddy yard. Piles of leaves...\n\nDemat. Deta...",
+      "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Deta...",
       "engagement_total": 14,
       "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/",
       "date": "2026-07-29"
@@ -1167,7 +1174,7 @@
     "posts": [
       {
         "id": "18216774637340914",
-        "caption": "Best day of his life. He had no idea what was coming. \ud83d\udc3e\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
+        "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
         "media_type": "VIDEO",
         "media_product_type": "REELS",
         "timestamp": "2026-07-29T14:56:22-0700",
@@ -1179,7 +1186,7 @@
       },
       {
         "id": "17982886299022472",
-        "caption": "The groomer said the S-word.\n\nShave.\n\nAnd just like that\u2026 months of coat, gone...",
+        "caption": "The groomer said the S-word.\n\nShave.\n\nAnd just like that… months of coat, gone...",
         "media_type": "VIDEO",
         "media_product_type": "REELS",
         "timestamp": "2026-07-29T04:40:54-0700",
@@ -1191,7 +1198,7 @@
       },
       {
         "id": "18109956343966502",
-        "caption": "Skipper is always there for you \ud83e\udd70\ud83d\udc36 #dog #doggos #doglife",
+        "caption": "Skipper is always there for you 🥰🐶 #dog #doggos #doglife",
         "media_type": "VIDEO",
         "media_product_type": "REELS",
         "timestamp": "2026-07-27T10:01:01-0700",
@@ -1200,90 +1207,6 @@
         "comments_count": 2,
         "engagement_total": 11,
         "permalink": "https://www.instagram.com/reel/DbTc66hFK3c/"
-      },
-      {
-        "id": "18414596140197289",
-        "caption": "She is such a princess \ud83d\udc78\ud83d\udc51 #princesses #dogs",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-27T17:31:23-0700",
-        "date": "2026-06-28",
-        "like_count": 12,
-        "comments_count": 1,
-        "engagement_total": 13,
-        "permalink": "https://www.instagram.com/reel/DaHAnzFDUUc/"
-      },
-      {
-        "id": "18006212678933351",
-        "caption": "Mine! Mine! Mine! #MammaMia",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-26T14:31:26-0700",
-        "date": "2026-06-26",
-        "like_count": 11,
-        "comments_count": 0,
-        "engagement_total": 11,
-        "permalink": "https://www.instagram.com/reel/DaEHPIhlnEj/"
-      },
-      {
-        "id": "17955880071154507",
-        "caption": "She is just our little baby \ud83d\udc36\ud83d\udc95",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-25T16:21:24-0700",
-        "date": "2026-06-25",
-        "like_count": 12,
-        "comments_count": 0,
-        "engagement_total": 12,
-        "permalink": "https://www.instagram.com/reel/DaBvBXcj_Au/"
-      },
-      {
-        "id": "17859196473659090",
-        "caption": "We had a talk about boundaries after this \ud83e\udd23\ud83e\udd23",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-24T07:30:40-0700",
-        "date": "2026-06-24",
-        "like_count": 16,
-        "comments_count": 1,
-        "engagement_total": 17,
-        "permalink": "https://www.instagram.com/reel/DZ-NfZ6iawF/"
-      },
-      {
-        "id": "18204075637361995",
-        "caption": "A dog treat goes a long way #doodles",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-23T06:16:22-0700",
-        "date": "2026-06-23",
-        "like_count": 6,
-        "comments_count": 0,
-        "engagement_total": 6,
-        "permalink": "https://www.instagram.com/reel/DZ7gMKUEpZm/"
-      },
-      {
-        "id": "18066161072441820",
-        "caption": "Personally I think she is both \ud83e\udd70\ud83d\udc36 #summertrends #golf",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-22T09:40:55-0700",
-        "date": "2026-06-22",
-        "like_count": 14,
-        "comments_count": 1,
-        "engagement_total": 15,
-        "permalink": "https://www.instagram.com/reel/DZ5Sz0YDvm9/"
-      },
-      {
-        "id": "17989576553817610",
-        "caption": "Happy Father's Day from our family to yours! #dogdad",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-06-21T07:55:36-0700",
-        "date": "2026-06-21",
-        "like_count": 8,
-        "comments_count": 3,
-        "engagement_total": 11,
-        "permalink": "https://www.instagram.com/reel/DZ2h9cNjmiG/"
       }
     ],
     "fb": {
@@ -1291,12 +1214,13 @@
       "page_name": "Skipthegroomer",
       "fan_count": null,
       "followers_count": null,
-      "note": "FB insights require pages_read_engagement \u2014 re-auth needed"
+      "note": "FB insights require pages_read_engagement — re-auth needed"
     },
     "fb_insights": {},
     "flags": [
-      "PARTIAL_DATA: instagram_basic only \u2014 followers/reach/impressions require instagram_manage_insights scope",
-      "ACTION_NEEDED: Will re-auth at business.facebook.com \u2192 Connected Apps \u2192 add instagram_manage_insights"
+      "POSTING_GAP: 6 days since last post (Jul 29) — below 5x/week target",
+      "PARTIAL_DATA: instagram_basic only — followers/reach/impressions require instagram_manage_insights scope",
+      "ACTION_NEEDED: Will re-auth at business.facebook.com → Connected Apps → add instagram_manage_insights"
     ],
     "daily_7d": [
       {
@@ -1325,7 +1249,7 @@
     "reauth_scope": "instagram_manage_insights"
   },
   "rolling_trends": {
-    "last_updated": "2026-08-03",
+    "last_updated": "2026-08-04",
     "amzads_7d": [
       {
         "date": "2026-07-28",
@@ -1344,7 +1268,7 @@
         "stale": true
       },
       {
-        "date": "2026-08-03",
+        "date": "2026-08-04",
         "spend": 417.84,
         "roas": 1.1003,
         "stale": true
@@ -1368,17 +1292,13 @@
         "stale": true
       },
       {
-        "date": "2026-08-03",
+        "date": "2026-08-02",
         "units_sold": 120,
         "sessions": null,
         "source": "H10_proxy"
       }
     ],
     "meta_7d": [
-      {
-        "date": "2026-07-29",
-        "spend": 0.0
-      },
       {
         "date": "2026-07-30",
         "spend": 0.0
@@ -1395,6 +1315,10 @@
       {
         "date": "2026-08-03",
         "spend": 0.0
+      },
+      {
+        "date": "2026-08-04",
+        "spend": 0.0
       }
     ],
     "tiktok_7d": [
@@ -1409,18 +1333,13 @@
         "orders": null
       },
       {
-        "date": "2026-08-03",
+        "date": "2026-08-04",
         "gmv": null,
         "orders": null,
         "stale": true
       }
     ],
     "shopify_7d": [
-      {
-        "date": "2026-07-27",
-        "sales": 107.13,
-        "orders": 2
-      },
       {
         "date": "2026-07-28",
         "sales": 47.96,
@@ -1445,15 +1364,22 @@
       },
       {
         "date": "2026-08-01",
-        "sales": 0.0,
-        "net_sales": 0.0,
-        "orders": 0
+        "sales": 9.99,
+        "net_sales": 9.99,
+        "orders": 1,
+        "note": "v10.33 self-heal: corrected from $0"
       },
       {
         "date": "2026-08-02",
         "sales": 0.0,
         "net_sales": 0.0,
         "orders": 0
+      },
+      {
+        "date": "2026-08-03",
+        "sales": 194.88,
+        "net_sales": 0.0,
+        "orders": 9
       }
     ],
     "sm_ig_7d": [
@@ -1462,7 +1388,7 @@
         "available": false
       },
       {
-        "date": "2026-08-03",
+        "date": "2026-08-04",
         "available": false
       }
     ],
@@ -1472,8 +1398,8 @@
     "available": false,
     "account_id": "7574135215329869825",
     "account_name": "Skip The Groomer",
-    "data_source": "TikTok MCP \u2014 attempted 2026-07-31",
-    "error": "MCP access token not authorized for advertiser 7574135215329869825 \u2014 MCP connector must be re-authenticated with Will's TikTok Ads credentials",
+    "data_source": "TikTok MCP — attempted 2026-07-31",
+    "error": "MCP access token not authorized for advertiser 7574135215329869825 — MCP connector must be re-authenticated with Will's TikTok Ads credentials",
     "error_code": 40001,
     "action_required": "Reconnect TikTok MCP connector in Claude using the login that owns advertiser ID 7574135215329869825",
     "stale": true,
@@ -1488,13 +1414,13 @@
   "supply_chain": {
     "available": true,
     "as_of": "2026-07-27",
-    "data_source": "supply_chain.json \u2014 pulled 2026-08-03",
+    "data_source": "supply_chain.json — pulled 2026-08-04",
     "total_cogs_in_inventory": 194093.0,
     "total_units": 55702,
     "august_factory_payments": {
       "total": 95694.5,
       "balance_due_only": 38651.0,
-      "note": "Rake PO2 deposit $21,613 pending \u2014 confirm immediately"
+      "note": "Rake PO2 deposit $21,613 pending — confirm immediately"
     },
     "skus": [
       {
@@ -1507,13 +1433,13 @@
         "name": "Emergency Dematter",
         "status": "BLOCKED",
         "cogs_per_unit": 3.36,
-        "flag": "Accelerated run blocked \u2014 Craig missing ingredient"
+        "flag": "Accelerated run blocked — Craig missing ingredient"
       },
       {
         "name": "Detangling Treatment",
         "status": "BLOCKED",
         "cogs_per_unit": 3.3,
-        "flag": "Accelerated run blocked \u2014 Craig missing ingredient"
+        "flag": "Accelerated run blocked — Craig missing ingredient"
       },
       {
         "name": "Shampoo",
@@ -1552,7 +1478,7 @@
       }
     ],
     "flags": [
-      "RAKE_PO2_DEPOSIT_PENDING: $21,613 deposit awaited \u2014 confirm payment immediately",
+      "RAKE_PO2_DEPOSIT_PENDING: $21,613 deposit awaited — confirm payment immediately",
       "DEMATTER_PRODUCTION_BLOCKED: Accelerated run blocked, Craig missing ingredient",
       "DETANGLING_PRODUCTION_BLOCKED: Accelerated run blocked, Craig missing ingredient",
       "SLICKER_LIQUIDATE: 8.67% return rate, near 10.2% Amazon fee threshold"
