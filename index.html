@@ -1846,9 +1846,16 @@ function render(d){
   const ga  = sm.google_ads || {};
   statusTag($('amz-tag'), aa.spend==null && sm.status==='RED' ? 'RED' : aa.spend==null ? null : sm.status);
   dot('dot-amazon', sm.status);
+  // v10.34 fix: account-level TACoS = spend / H10 weekly gross revenue (NOT spend / attributed_sales)
+  const _h10wk      = ((d.helium10_profits||{}).weekly)||{};
+  const _totalGross = +(_h10wk.gross_revenue)||0;
+  const _tacosAcct  = (aa.spend > 0 && _totalGross > 0) ? (aa.spend / _totalGross * 100) : null;
+  const _tacosColor = _tacosAcct == null ? 'bdr-grey' : _tacosAcct > 35 ? 'bdr-red' : _tacosAcct > 30 ? 'bdr-amber' : 'bdr-green';
+  const _tacosCls   = _tacosAcct != null && _tacosAcct > 35 ? 'down' : _tacosAcct != null && _tacosAcct <= 30 ? 'up' : '';
   $('amz-ads-cards').innerHTML =
-    card('Ad Spend', fmtDollar(aa.spend), 'Account level, yesterday', 'bdr-orange') +
+    card('Ad Spend', fmtDollar(aa.spend), 'Account level, 7d', 'bdr-orange') +
     card('ROAS', fmtNum(aa.roas), 'Per-SKU bands in STG_MASTER doc', 'bdr-teal') +
+    card('TACoS (7d)', _tacosAcct != null ? _tacosAcct.toFixed(1)+'%' : null, 'Spend ÷ H10 weekly gross · target <35%', _tacosColor, _tacosCls) +
     card('SKUs Flagged', aa.flagged_skus ? String((aa.flagged_skus||[]).length) : null, 'Outside locked ROAS band', (aa.flagged_skus||[]).length?'bdr-red':'bdr-green');
   flagList($('amz-flags'), aa.flagged_skus, 'All SKUs inside their bands');
   const lowConv = asl.conversion_rate != null && asl.conversion_rate > 0 && asl.conversion_rate < 10;
@@ -1930,10 +1937,14 @@ function render(d){
     (row.asin && b.asin && row.asin === b.asin) ||
     (row.sku && b.sku && String(row.sku).toLowerCase().includes(String(b.sku).toLowerCase().split(' ')[0])));
   const classify = (roas, b) => {
+    // v10.34 fix: use ?? fallback math when thresholds missing from roas_bands.json
     if (roas == null || !b || !b.amazon || b.amazon.breakeven == null) return null;
-    if (roas >= b.amazon.breakeven) return 'GREEN';
-    if (roas >= b.amazon.yellow_min) return 'YELLOW';
-    if (roas >= b.amazon.red_min) return 'RED';
+    const be         = b.amazon.breakeven;
+    const yellow_min = b.amazon.yellow_min ?? (be * 0.80);
+    const kill_floor = b.amazon.red_min    ?? Math.max(be * 0.55, 1.0);
+    if (roas >= be)         return 'GREEN';
+    if (roas >= yellow_min) return 'YELLOW';
+    if (roas >= kill_floor) return 'RED';
     return 'KILL';
   };
   const bandPill = band => {
@@ -1944,7 +1955,7 @@ function render(d){
   if (liveSkus.length){
     const rows = liveSkus.map(row => {
       const b = findBand(row);
-      const band = row.band || classify(row.roas, b);
+      const band = classify(row.roas, b); // v10.34 fix: always recompute — never trust pre-baked row.band
       const target = row.tacos_target != null ? row.tacos_target : (b ? b.tacos_target : null);
       const liq = b && b.liquidate;
       const tacosNum = row.tacos_7d != null ? Number(row.tacos_7d) : null;
