@@ -28,75 +28,355 @@
         "roas"
       ],
       "rows": [
-        ["B0FQL56V99","3I-97VO-78X4",479.2,659.56,69.4956,1.4389],
-        ["B0FQF2VTMJ","W2-VFJG-FADR",61.99,29.98,82.7085,1.2091],
-        ["B0GY9WZWKH","STG-FULL-COAT-CARE-SYSTEM",45.32,0.0,23.9168,4.1812],
-        ["B0FQL16GH4","6U-XVW9-2WBJ",15.65,19.99,78.2891,1.2773],
-        ["B0FQDHXSZ5","7C-8EUF-79AF",9.39,0.0,null,0.0],
-        ["B0FQ628KCH","6H-JCY0-JARS",8.01,0.0,null,0.0],
-        ["B0GV5ZFLC2","8O-J63E-NJBR",2.4,0.0,null,0.0],
-        ["B0GFGDTJ39","99-8KLV-TU5S",0.0,0.0,null,null],
-        ["B0GT1H84JM","C8-VG2F-6714",0.0,0.0,null,null],
-        ["B0GT1MFCY5","73-EY5E-UIBV",0.0,0.0,null,null],
-        ["B0GT1V7V8R","HG-EGAG-1HO5",0.0,0.0,null,null],
-        ["B0GT5YFVB8","YH-4KUE-9WQH",0.0,0.0,null,null],
-        ["B0GXH3JTK4","STG-WASH-WEAR-BUNDLE-V2",0.0,0.0,null,null],
-        ["B0GXLPJS4C","STG-TANGLE-MAT-BUNDLE-V1",0.0,0.0,null,null],
-        ["B0GXLTZ495","STG-EASY-BRUSH-DAYS-V1",0.0,0.0,null,null]
+        [
+          "B0FQL56V99",
+          "3I-97VO-78X4",
+          479.2,
+          659.56,
+          69.4956,
+          1.4389
+        ],
+        [
+          "B0FQF2VTMJ",
+          "W2-VFJG-FADR",
+          61.99,
+          29.98,
+          82.7085,
+          1.2091
+        ],
+        [
+          "B0GY9WZWKH",
+          "STG-FULL-COAT-CARE-SYSTEM",
+          45.32,
+          0.0,
+          23.9168,
+          4.1812
+        ],
+        [
+          "B0FQL16GH4",
+          "6U-XVW9-2WBJ",
+          15.65,
+          19.99,
+          78.2891,
+          1.2773
+        ],
+        [
+          "B0FQDHXSZ5",
+          "7C-8EUF-79AF",
+          9.39,
+          0.0,
+          null,
+          0.0
+        ],
+        [
+          "B0FQ628KCH",
+          "6H-JCY0-JARS",
+          8.01,
+          0.0,
+          null,
+          0.0
+        ],
+        [
+          "B0GV5ZFLC2",
+          "8O-J63E-NJBR",
+          2.4,
+          0.0,
+          null,
+          0.0
+        ],
+        [
+          "B0GFGDTJ39",
+          "99-8KLV-TU5S",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GT1H84JM",
+          "C8-VG2F-6714",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GT1MFCY5",
+          "73-EY5E-UIBV",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GT1V7V8R",
+          "HG-EGAG-1HO5",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GT5YFVB8",
+          "YH-4KUE-9WQH",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GXH3JTK4",
+          "STG-WASH-WEAR-BUNDLE-V2",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GXLPJS4C",
+          "STG-TANGLE-MAT-BUNDLE-V1",
+          0.0,
+          0.0,
+          null,
+          null
+        ],
+        [
+          "B0GXLTZ495",
+          "STG-EASY-BRUSH-DAYS-V1",
+          0.0,
+          0.0,
+          null,
+          null
+        ]
       ],
       "error": null
     },
     "C": {
       "status": "completed",
-      "requested_field_ids": ["asin","cost"],
+      "requested_field_ids": [
+        "asin",
+        "cost"
+      ],
       "rows": [
-        ["B0FQL56V99",2235.3],["B0GT1H84JM",1077.95],["B0FQF2VTMJ",428.49],
-        ["B0GY9WZWKH",215.81],["B0FQ628KCH",99.38],["B0FQL16GH4",71.98],
-        ["B0GXLPJS4C",55.46],["B0FQDHXSZ5",54.97],["B0GT5YFVB8",40.7],
-        ["B0GV5ZFLC2",13.0],["B0GFGDTJ39",8.48],["B0GT1MFCY5",3.54],
-        ["B0GRJ1366C",0.0],["B0GT1V7V8R",0.0],["B0GXH3JTK4",0.0],["B0GXLTZ495",0.0]
+        [
+          "B0FQL56V99",
+          2235.3
+        ],
+        [
+          "B0GT1H84JM",
+          1077.95
+        ],
+        [
+          "B0FQF2VTMJ",
+          428.49
+        ],
+        [
+          "B0GY9WZWKH",
+          215.81
+        ],
+        [
+          "B0FQ628KCH",
+          99.38
+        ],
+        [
+          "B0FQL16GH4",
+          71.98
+        ],
+        [
+          "B0GXLPJS4C",
+          55.46
+        ],
+        [
+          "B0FQDHXSZ5",
+          54.97
+        ],
+        [
+          "B0GT5YFVB8",
+          40.7
+        ],
+        [
+          "B0GV5ZFLC2",
+          13.0
+        ],
+        [
+          "B0GFGDTJ39",
+          8.48
+        ],
+        [
+          "B0GT1MFCY5",
+          3.54
+        ],
+        [
+          "B0GRJ1366C",
+          0.0
+        ],
+        [
+          "B0GT1V7V8R",
+          0.0
+        ],
+        [
+          "B0GXH3JTK4",
+          0.0
+        ],
+        [
+          "B0GXLTZ495",
+          0.0
+        ]
       ],
       "error": null
     },
     "D": {
       "status": "completed",
-      "requested_field_ids": ["asin","ordered_product_sales"],
+      "requested_field_ids": [
+        "asin",
+        "ordered_product_sales"
+      ],
       "rows": [
-        ["B0FQL56V99",1170.15],["B0FQF2VTMJ",344.73],["B0GV5ZFLC2",36.08],
-        ["B0FQDHXSZ5",19.99],["B0FQL16GH4",19.99]
+        [
+          "B0FQL56V99",
+          1170.15
+        ],
+        [
+          "B0FQF2VTMJ",
+          344.73
+        ],
+        [
+          "B0GV5ZFLC2",
+          36.08
+        ],
+        [
+          "B0FQDHXSZ5",
+          19.99
+        ],
+        [
+          "B0FQL16GH4",
+          19.99
+        ]
       ],
       "error": null
     },
     "E": {
       "status": "completed",
-      "requested_field_ids": ["sessions","unit_session_percentage","units_ordered"],
-      "rows": [[484,17.77,86]],
+      "requested_field_ids": [
+        "sessions",
+        "unit_session_percentage",
+        "units_ordered"
+      ],
+      "rows": [
+        [
+          484,
+          17.77,
+          86
+        ]
+      ],
       "error": null
     },
     "F": {
       "status": "completed",
-      "requested_field_ids": ["campaign_name","cost","conversions_value","roas"],
+      "requested_field_ids": [
+        "campaign_name",
+        "cost",
+        "conversions_value",
+        "roas"
+      ],
       "rows": [],
       "error": null
     },
     "G": {
       "status": "completed",
-      "requested_field_ids": ["asin","ordered_product_sales","units_ordered","sessions","unit_session_percentage","buy_box_percentage"],
+      "requested_field_ids": [
+        "asin",
+        "ordered_product_sales",
+        "units_ordered",
+        "sessions",
+        "unit_session_percentage",
+        "buy_box_percentage"
+      ],
       "rows": [
-        ["B0FQL56V99",253289.89,11371,59550,19.09,99.55],
-        ["B0FQF2VTMJ",33961.67,2476,7780,31.83,99.46],
-        ["B0GV5ZFLC2",12814.82,723,4754,15.21,99.26],
-        ["",10835.92,379,3668,20.63,190.35],
-        ["B0FQDHXSZ5",10487.41,558,4148,13.45,99.47],
-        ["B0FQL16GH4",9514.57,491,4900,10.02,99.33],
-        ["B0FQ4PY573",7303.78,368,3308,11.12,79.51],
-        ["B0FQ628KCH",3999.23,234,2505,9.34,99.08]
+        [
+          "B0FQL56V99",
+          253289.89,
+          11371,
+          59550,
+          19.09,
+          99.55
+        ],
+        [
+          "B0FQF2VTMJ",
+          33961.67,
+          2476,
+          7780,
+          31.83,
+          99.46
+        ],
+        [
+          "B0GV5ZFLC2",
+          12814.82,
+          723,
+          4754,
+          15.21,
+          99.26
+        ],
+        [
+          "",
+          10835.92,
+          379,
+          3668,
+          20.63,
+          190.35
+        ],
+        [
+          "B0FQDHXSZ5",
+          10487.41,
+          558,
+          4148,
+          13.45,
+          99.47
+        ],
+        [
+          "B0FQL16GH4",
+          9514.57,
+          491,
+          4900,
+          10.02,
+          99.33
+        ],
+        [
+          "B0FQ4PY573",
+          7303.78,
+          368,
+          3308,
+          11.12,
+          79.51
+        ],
+        [
+          "B0FQ628KCH",
+          3999.23,
+          234,
+          2505,
+          9.34,
+          99.08
+        ]
       ],
       "error": null
     },
     "H": {
       "status": "completed",
-      "requested_field_ids": ["query","keywordText","matchType","campaignName","adGroupName","cost","attributedSales14dSameSKU","roas","impressions","clicks","ctr","acos","orders"],
+      "requested_field_ids": [
+        "query",
+        "keywordText",
+        "matchType",
+        "campaignName",
+        "adGroupName",
+        "cost",
+        "attributedSales14dSameSKU",
+        "roas",
+        "impressions",
+        "clicks",
+        "ctr",
+        "acos",
+        "orders"
+      ],
       "rows_total": 535,
       "rows_note": "Top 100 of 535 rows by cost desc",
       "rows": [
@@ -128,13 +408,13 @@
         ["magic coat mat remover","magic coat mat remover","exact","STG | SP SQP | magic coat mat remover | Exact | 072726 | AC","STG | SP SQP | magic coat mat remover | Exact | 072726 | AC",23.33,37.98,2.9301,569,12,2.109,34.1281,4],
         ["dog grooming kit","poodle grooming kit","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",21.29,0.0,0.0,1127,12,1.0648,null,0],
         ["dematting rake for dogs","dematting rake for dogs","exact","STG | SP SQP | dematting rake for dogs | Exact | 072726 | AC","STG | SP SQP | dematting rake for dogs | Exact | 072726 | AC",18.94,0.0,0.0,775,9,1.1613,null,0],
-        ["detangler for dogs","detangler for dogs","exact","Skip The Groomer | SP SKC | \"detangler for dogs\" | Exact | 070926 | AC","Skip The Groomer | SP SKC | \"detangler for dogs\" | Exact | 070926 | AC",16.36,0.0,1.857,96,6,6.25,53.8512,2],
+        ["detangler for dogs","detangler for dogs","exact","Skip The Groomer | SP SKC | \\detangler for dogs\\\" | Exact | 070926 | AC\"","Skip The Groomer | SP SKC | \\detangler for dogs\\\" | Exact | 070926 | AC\"",16.36,0.0,1.857,96,6,6.25,53.8512,2],
         ["b092dff7b9",null,null,null,null,16.32,0.0,0.0,664,9,1.3554,null,0],
         ["dog dematting","dematting dog","broad","SP_Generic_Dematter_Shampoo_ TOS","Dematter - Ad Group 1",15.5,37.98,2.4503,28,6,21.4286,40.811,2],
         ["b0cmqcmqw4",null,null,null,null,14.96,22.99,1.5368,616,8,1.2987,65.0718,1],
         ["dog grooming kit","doodle grooming","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",14.49,0.0,9.6632,718,8,1.1142,10.3485,8],
         ["slicker brush for dogs",null,null,null,null,13.09,0.0,0.0,727,7,0.9629,null,0],
-        ["dematting tool for dogs","dematting tool for dogs","exact","Skip The Groomer | SP SKC | \"dematting tool for dogs\" | Exact | 070926 | AC","Skip The Groomer | SP SKC | \"dematting tool for dogs\" | Exact | 070926 | AC",12.0,0.0,0.0,62,4,6.4516,null,0],
+        ["dematting tool for dogs","dematting tool for dogs","exact","Skip The Groomer | SP SKC | \\dematting tool for dogs\\\" | Exact | 070926 | AC\"","Skip The Groomer | SP SKC | \\dematting tool for dogs\\\" | Exact | 070926 | AC\"",12.0,0.0,0.0,62,4,6.4516,null,0],
         ["golden doodle must haves","golden doodle","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",11.84,0.0,7.6478,514,7,1.3619,13.0756,5],
         ["dog matting detangler","dog matting detangler","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",10.88,0.0,5.5846,28,4,14.2857,17.9065,4],
         ["dematting comb","dematting comb","exact","STG | SP SQP | dematting comb | Exact | 072726 | AC","STG | SP SQP | dematting comb | Exact | 072726 | AC",10.84,0.0,0.0,476,5,1.0504,null,0],
@@ -142,14 +422,14 @@
         ["severe matted dog hair removal","severe matted dog hair removal","exact","STG | SP SQP | severe matted dog hair removal | Exact | 072726 | AC","STG | SP SQP | severe matted dog hair removal | Exact | 072726 | AC",10.74,56.37,6.365,149,6,4.0268,15.7109,4],
         ["cat dematting tool","dematting","phrase","Save The Shave | SP KW V1 | Phrase | 042926 | AC","Save The Shave | SP KW V1 | Phrase | 042926 | AC",10.56,0.0,2.8769,108,6,5.5556,34.7597,2],
         ["dog grooming","dog dematting tools","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",10.31,0.0,0.0,869,5,0.5754,null,0],
-        ["dematting shampoo for dogs","dematting shampoo for dogs","exact","Skip The Groomer | SP SKC | \"dematting shampoo for dogs\" | Exact | 070926 | AC","Skip The Groomer | SP SKC | \"dematting shampoo for dogs\" | Exact | 070926 | AC",9.55,0.0,3.1812,39,4,10.2564,31.4352,2],
+        ["dematting shampoo for dogs","dematting shampoo for dogs","exact","Skip The Groomer | SP SKC | \\dematting shampoo for dogs\\\" | Exact | 070926 | AC\"","Skip The Groomer | SP SKC | \\dematting shampoo for dogs\\\" | Exact | 070926 | AC\"",9.55,0.0,3.1812,39,4,10.2564,31.4352,2],
         ["dematting comb for dogs","dog dematting tools","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",9.25,0.0,0.0,352,5,1.4205,null,0],
         ["dematting shampoo for dogs","dematting shampoo for dogs","exact","STG | SP SQP | High BS Under 800 | Exact | 072726 | AC","STG | SP SQP | High BS Under 800 | Exact | 072726 | AC",8.82,14.99,3.3991,747,6,0.8032,29.4196,2],
         ["dog detangler","dematting comb for doodles","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",8.44,0.0,0.0,574,4,0.6969,null,0],
         ["dog detangler spray","poodle hair care","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",8.28,0.0,4.5628,1174,5,0.4259,21.9164,2],
         ["mat detangler for dogs","dog matting detangler","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",8.12,0.0,0.0,3,3,100.0,null,0],
         ["dog dematting shampoo and conditioner","dematting dog","broad","SP_Generic_Dematter_Shampoo_ TOS","Dematter - Ad Group 1",7.98,0.0,0.0,10,3,30.0,null,0],
-        ["severely matted dog hair","severely matted dog hair","exact","Skip The Groomer | SP SKC | \"severely matted dog hair\" | Exact | 070926 | AC","Skip The Groomer | SP SKC | \"severely matted dog hair\" | Exact | 070926 | AC",7.57,0.0,4.0132,16,3,18.75,24.9177,2],
+        ["severely matted dog hair","severely matted dog hair","exact","Skip The Groomer | SP SKC | \\severely matted dog hair\\\" | Exact | 070926 | AC\"","Skip The Groomer | SP SKC | \\severely matted dog hair\\\" | Exact | 070926 | AC\"",7.57,0.0,4.0132,16,3,18.75,24.9177,2],
         ["dog detangler","doodle grooming","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",7.2,0.0,0.0,244,4,1.6393,null,0],
         ["poodle grooming kit","poodle grooming kit","broad","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC","STG | SP SQP | Bundle Test | doodle/poodle KWs | B/P | 072726 | AC",7.2,0.0,0.0,391,4,1.023,null,0],
         ["dog fur detangler spray for matting","dog fur detangler spray for matting","exact","Save The Shave | SP KW V1 | Exact | 042926 | AC","Save The Shave | SP KW V1 | Exact | 042926 | AC",7.11,0.0,0.0,11,3,27.2727,null,0],
@@ -184,7 +464,7 @@
         ["matted dog hair removal","dog dematting tools","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",4.69,0.0,6.4776,61,3,4.918,15.4378,2],
         ["poodle dematting","dematting dog","broad","SP_Generic_Dematter_Shampoo_ TOS","Dematter - Ad Group 1",4.65,22.99,4.9441,3,2,66.6667,20.2262,1],
         ["dematting powder for dogs","dematting dog","broad","SP_Generic_Dematter_Shampoo_ TOS","Dematter - Ad Group 1",4.5,0.0,0.0,9,2,22.2222,null,0],
-        ["dog grooming supplies","dog grooming supplies","exact","Skip The Groomer | SP SKC | \"dog grooming supplies\" | Exact | 070926 | AC","Skip The Groomer | SP SKC | \"dog grooming supplies\" | Exact | 070926 | AC",4.5,0.0,0.0,205,2,0.9756,null,0],
+        ["dog grooming supplies","dog grooming supplies","exact","Skip The Groomer | SP SKC | \\dog grooming supplies\\\" | Exact | 070926 | AC\"","Skip The Groomer | SP SKC | \\dog grooming supplies\\\" | Exact | 070926 | AC\"",4.5,0.0,0.0,205,2,0.9756,null,0],
         ["professional dog dematting spray","dematting dog","broad","SP_Generic_Dematter_Shampoo_ TOS","Dematter - Ad Group 1",4.42,0.0,0.0,4,2,50.0,null,0],
         ["dematting rake for dogs","dog dematting tools","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",4.22,0.0,0.0,31,2,6.4516,null,0],
         ["dog brush","dematting comb for doodles","broad","Save The Shave | SP KW V1 | Broad | 042926 | AC","Save The Shave | SP KW V1 | Broad | 042926 | AC",4.22,0.0,0.0,219,2,0.9132,null,0],
@@ -205,7 +485,17 @@
     },
     "I": {
       "status": "completed",
-      "requested_field_ids": ["campaignName","cost","attributedSales14dSameSKU","roas","impressions","clicks","ctr","acos","orders"],
+      "requested_field_ids": [
+        "campaignName",
+        "cost",
+        "attributedSales14dSameSKU",
+        "roas",
+        "impressions",
+        "clicks",
+        "ctr",
+        "acos",
+        "orders"
+      ],
       "rows": [
         ["SP PT | BA Top Search Terms | B0BZZC5PMF | Exact | 072826 | AC",523.37,516.73,1.3795,79417,307,0.3866,72.4889,40],
         ["SP PT | BA Top Search Terms | B01330IKAA | Exact | 072826 | AC",393.85,642.89,2.5711,28070,238,0.8479,38.8934,55],
@@ -238,30 +528,30 @@
         ["STG | SP SQP | dematting rake for dogs | Exact | 072726 | AC",18.94,0.0,0.0,965,9,0.9326,null,0],
         ["SP PT | BA Top Search Terms | B0CMQCMQW4 | Exact | 072826 | AC",16.57,37.98,2.2921,840,10,1.1905,43.6282,2],
         ["B0FQ628KCH | SP KW | Broad | 042926 | AC",16.39,0.0,0.0,951,12,1.2618,null,0],
-        ["Skip The Groomer | SP SKC | \"detangler for dogs\" | Exact | 070926 | AC",16.36,0.0,1.857,118,6,5.0847,53.8512,2],
+        ["Skip The Groomer | SP SKC | \\detangler for dogs\\\" | Exact | 070926 | AC\"",16.36,0.0,1.857,118,6,5.0847,53.8512,2],
         ["SP PT | BA Top Search Terms | B092DFF7B9 | Exact | 072826 | AC",15.73,0.0,0.0,1144,8,0.6993,null,0],
         ["Emergency Dematter | SP Auto | CM-LM | 040226 | AC | TOS",15.01,45.98,3.0633,1560,23,1.4744,32.6446,2],
         ["B0FQL16GH4 | SP Auto | Shampoo and Conditioner | 040526 | AC",13.67,0.0,0.0,2089,12,0.5744,null,0],
-        ["Skip The Groomer | SP SKC | \"dematting shampoo for dogs\" | Exact | 070926 | AC",12.55,0.0,2.4207,58,5,8.6207,41.3101,2],
-        ["Skip The Groomer | SP SKC | \"dematting tool for dogs\" | Exact | 070926 | AC",12.0,0.0,0.0,95,4,4.2105,null,0],
+        ["Skip The Groomer | SP SKC | \\dematting shampoo for dogs\\\" | Exact | 070926 | AC\"",12.55,0.0,2.4207,58,5,8.6207,41.3101,2],
+        ["Skip The Groomer | SP SKC | \\dematting tool for dogs\\\" | Exact | 070926 | AC\"",12.0,0.0,0.0,95,4,4.2105,null,0],
         ["SP PT Suggested | 7C-8EUF-79AF | Pin Brush | Exact | 051226 | AC",11.31,19.99,1.7675,569,17,2.9877,56.5783,1],
         ["STG | SP SQP | dematting comb | Exact | 072726 | AC",10.84,0.0,0.0,1022,5,0.4892,null,0],
         ["STG | SP SQP | severe matted dog hair removal | Exact | 072726 | AC",10.74,56.37,6.365,245,6,2.449,15.7109,4],
         ["3I-97VO-78X4 | SP Emergency Dematter | PT Harvest | Exact | 042426 | AC",7.79,22.99,2.9512,536,8,1.4925,33.8843,1],
-        ["Skip The Groomer | SP SKC | \"severely matted dog hair\" | Exact | 070926 | AC",7.57,0.0,4.0132,25,3,12.0,24.9177,2],
+        ["Skip The Groomer | SP SKC | \\severely matted dog hair\\\" | Exact | 070926 | AC\"",7.57,0.0,4.0132,25,3,12.0,24.9177,2],
         ["B0GV5ZFLC2 | Detangling Treatment | SP Auto | CL-LM",7.21,18.99,2.6338,365,7,1.9178,37.9674,1],
         ["SP PT | BA Top Search Terms | B0FF54RQJY | Exact | 072826 | AC",7.08,14.99,2.1172,257,5,1.9455,47.2315,1],
         ["STG | SP SQP | dog dematting brush| Exact | 072726 | AC",6.25,0.0,0.0,520,3,0.5769,null,0],
         ["3I-97VO-78X4 | SP Emergency Dematter | Top KWs V2 | Exact | 042426 | AC",4.92,0.0,0.0,169,3,1.7751,null,0],
         ["Save The Shave | SP KW V1 | Exact | 042926 | AC",4.74,0.0,0.0,49,2,4.0816,null,0],
         ["B0FQL16GH4 | SP Suggested | Shampoo and Conditioner | 040526 | AC",4.69,0.0,4.9019,642,3,0.4673,20.4002,1],
-        ["Skip The Groomer | SP SKC | \"dog grooming supplies\" | Exact | 070926 | AC",4.5,0.0,0.0,480,2,0.4167,null,0],
+        ["Skip The Groomer | SP SKC | \\dog grooming supplies\\\" | Exact | 070926 | AC\"",4.5,0.0,0.0,480,2,0.4167,null,0],
         ["B0GV5ZFLC2 | Detangling Treatment | SP Auto | Broad",3.86,0.0,0.0,1517,5,0.3296,null,0],
         ["3I-97VO-78X4 | SP Emergency Dematter | PT Harvest | Expanded | 042426 | AC",3.82,0.0,0.0,1945,5,0.2571,null,0],
         ["B0FQF2VTMJ | SP Auto | Rake Brush | 040526 | AC",3.48,0.0,0.0,2202,4,0.1817,null,0],
         ["W2-VFJG-FADR | SP Rake Brush | PT Harvest | Exact | 042426 | AC",3.39,0.0,0.0,41,3,7.3171,null,0],
-        ["Skip The Groomer | SP SKC | \"dog matted hair detangler\" | Exact | 070926 | AC",3.0,0.0,0.0,17,1,5.8824,null,0],
-        ["Skip The Groomer | SP SKC | \"matted dog hair removal\" | Exact | 070926 | AC",3.0,0.0,10.1267,15,1,6.6667,9.8749,2],
+        ["Skip The Groomer | SP SKC | \\dog matted hair detangler\\\" | Exact | 070926 | AC\"",3.0,0.0,0.0,17,1,5.8824,null,0],
+        ["Skip The Groomer | SP SKC | \\matted dog hair removal\\\" | Exact | 070926 | AC\"",3.0,0.0,10.1267,15,1,6.6667,9.8749,2],
         ["W2-VFJG-FADR | SP Rake Brush | PT Harvest | Expanded | 042426 | AC",3.0,0.0,0.0,713,3,0.4208,null,0],
         ["SP PT | BA Top Search Terms | B0DWTTS8ZK | Exact | 072826 | AC",2.04,0.0,0.0,427,1,0.2342,null,0],
         ["SP Auto | Catch-all | 042926 | AC",1.74,0.0,21.7126,1524,9,0.5906,4.6056,2],
@@ -281,9 +571,9 @@
         ["SP PT | BA Top Search Terms | B0GYWXYZVZ | Exact | 072826 | AC",0.0,0.0,null,6,0,0.0,null,0],
         ["SP PT | BA Top Search Terms | B0H1WPL2QS | Exact | 072826 | AC",0.0,0.0,null,9,0,0.0,null,0],
         ["SP_Generic_Dematter_Shampoo_ TOS Copy 1",0.0,0.0,null,1,0,0.0,null,0],
-        ["Skip The Groomer | SP SKC | \"dog conditioner detangler\" | Exact | 070926 | AC",0.0,0.0,null,11,0,0.0,null,0],
-        ["Skip The Groomer | SP SKC | \"dog detangler spray\" | Exact | 070926 | AC",0.0,0.0,null,21,0,0.0,null,0],
-        ["Skip The Groomer | SP SKC | \"dog grooming\" | Exact | 070926 | AC",0.0,0.0,null,864,0,0.0,null,0],
+        ["Skip The Groomer | SP SKC | \\dog conditioner detangler\\\" | Exact | 070926 | AC\"",0.0,0.0,null,11,0,0.0,null,0],
+        ["Skip The Groomer | SP SKC | \\dog detangler spray\\\" | Exact | 070926 | AC\"",0.0,0.0,null,21,0,0.0,null,0],
+        ["Skip The Groomer | SP SKC | \\dog grooming\\\" | Exact | 070926 | AC\"",0.0,0.0,null,864,0,0.0,null,0],
         ["W2-VFJG-FADR | SP Rake Brush | KW Harvest | Phrase | 042426 | AC",0.0,0.0,null,138,0,0.0,null,0]
       ],
       "error": null
