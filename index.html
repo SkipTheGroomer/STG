@@ -2583,8 +2583,22 @@ function renderBizHealth(bh){
     +'</tr></tfoot>'
     +'</table></div></div>'
     +alertBox('warn','Subscriptions underdeveloped ('+fmtNum(snsP,1)+'% vs 5–10% target). Dematter drives 88% of S&amp;S revenue at only 2.9% penetration — push S&amp;S on Shampoo (9.8% penetration = proof it works) and Detangling (0% coupon dependency = healthiest base).');
-  const maxR=Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0),12);
-  const returnsHtml = '<div style="padding:8px 0;">'+skus.filter(s=>s.return_rate_pct!=null).map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
+  // v10.35 fix: state coverage honestly — do not render 1 of 6 SKUs as the whole picture
+  const _retReporting = skus.filter(s=>s.return_rate_pct!=null);
+  const _retMissing   = skus.filter(s=>s.return_rate_pct==null);
+  const maxR=Math.max(..._retReporting.map(s=>s.return_rate_pct||0),12);
+  const _retCoverage = !skus.length ? '' :
+    (_retMissing.length
+      ? '<div style="background:#fffbeb;border:1px solid #fde68a;border-left:4px solid var(--amber);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:11.5px;line-height:1.6;color:#92400e;">'
+        + '<b>Partial coverage — '+_retReporting.length+' of '+skus.length+' SKUs reporting.</b><br>'
+        + 'No return data for: '+_retMissing.map(s=>esc(s.short||s.name)).join(' · ')+'.<br>'
+        + 'These SKUs are <b>not</b> confirmed healthy — their return rate is unknown. '
+        + 'Full per-ASIN coverage requires JARVIS RETURNS (data/returns_data.json) to be wired up.'
+        + '</div>'
+      : '<div style="font-size:10px;color:var(--muted);padding-bottom:8px;">All '+skus.length+' SKUs reporting.</div>');
+  const returnsHtml = !_retReporting.length
+    ? (_retCoverage || '<div class="na-box">No return data available — JARVIS RETURNS not yet wired.</div>')
+    : '<div style="padding:8px 0;">'+_retCoverage+_retReporting.map(s=>{ const w=Math.round(s.return_rate_pct/maxR*100),cW=s.category_avg_return_pct!=null?Math.round(s.category_avg_return_pct/maxR*100):null,abv=s.return_vs_category==='above',col=abv?'var(--red)':'var(--green)'; return '<div style="margin-bottom:12px;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><b>'+esc(s.name)+'</b><span class="pill '+(abv?'pill-crit':'pill-ok')+'">'+(abv?'AT RISK':'OK')+'</span></div><div style="background:#eef1f4;border-radius:4px;height:8px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:8px;border-radius:4px;"></div>'+(cW!=null?'<div style="position:absolute;left:'+cW+'%;top:-3px;width:2px;height:14px;background:var(--navy);border-radius:1px;"></div>':'')+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px;">'+fmtNum(s.return_rate_pct,2)+'%'+(s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':'')+' — '+esc(s.return_vs_category||'')+' category</div></div>'; }).join('')+'<div style="font-size:10px;color:var(--muted);">Dark line | marks the category average.</div></div>';
   if ($('bh-returns-section')) $('bh-returns-section').innerHTML = returnsHtml;
   if ($('bh-returns-section-cx')) $('bh-returns-section-cx').innerHTML = returnsHtml;
   const tT=brand.top_tier||{},pr=brand.promising||{},aR=brand.at_risk||{},totC=(tT.count||0)+(pr.count||0)+(aR.count||0),ttA=totC>0?(tT.count/totC*226):0,prA=totC>0?(pr.count/totC*226):0,arA=totC>0?(aR.count/totC*226):0;
@@ -3257,12 +3271,22 @@ function renderReports(files){
   const ctCards=$i('ct-cards'); if(ctCards) ctCards.innerHTML=(ct.cards||[]).map(c=>'<div class="card bdr-'+c.border+'"><div class="c-lbl">'+escS(c.label)+'</div><div class="c-val '+(c.vclass||'')+'">'+escS(c.value)+'</div><div class="c-sub">'+escS(c.sub)+'</div></div>').join('');
 
   let redCount=0;
-  const riskWhen=$i('risk-when'); if(riskWhen) riskWhen.textContent=liveOK?'Amazon sellable: LIVE '+invAsOf+' · plan: '+sc.as_of:'All numbers: manual '+sc.as_of;
+  // v10.35 fix: do not claim LIVE in the caption unless the file is actually current
+  const _invFresh = (invAge!=null && invAge<=1.5);
+  const riskWhen=$i('risk-when'); if(riskWhen) riskWhen.textContent =
+    !liveOK ? 'All numbers: manual plan '+sc.as_of
+    : _invFresh ? 'Amazon sellable: LIVE '+invAsOf+' · plan: '+sc.as_of
+    : '⚠ Amazon sellable: STALE '+invAsOf+' ('+Math.floor(invAge)+'d old) · plan: '+sc.as_of;
   const riskTbody=$i('risk-table')?$i('risk-table').querySelector('tbody'):null;
   if(riskTbody) riskTbody.innerHTML=(sc.skus||[]).map(s=>{
     const live=liveMap[s.asin];
     const sellable=live&&live.on_hand!=null?live.on_hand:s.manual_sellable;
-    const isLive=!!(live&&live.on_hand!=null);
+    // v10.35 fix: LIVE requires the data to actually BE live — not just present.
+    // invAge is days since inventory_data.json as_of. Was badging stale data as LIVE.
+    const _hasLive=!!(live&&live.on_hand!=null);
+    const _isFresh=(invAge!=null&&invAge<=1.5);
+    const isLive=_hasLive&&_isFresh;
+    const _staleLive=_hasLive&&!_isFresh;   // has FBA data but it is old
     const rec=(live&&live.amazon_min!=null)?live.amazon_min:s.amazon_recommended;
     const rate=s.fcst_units_day;
     const dtr=(rate>0&&sellable!=null&&rec!=null)?(sellable-rec)/rate:null;
@@ -3271,7 +3295,7 @@ function renderReports(files){
     const statusPill=below?'<span class="pill pill-crit">BELOW REC</span>':'<span class="pill pill-'+(s.pill||'na')+'">'+escS(s.status)+'</span>';
     return '<tr'+(below?' style="background:#fbe6e3;"':'')+'>'
       +'<td><b>'+escS(s.name)+'</b>'+(s.star?' ⭐':'')+'<br><span class="sku-sub">'+(isLive?invAsOf+' live':sc.as_of+' plan')+'</span></td>'
-      +'<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'+(isLive?'<span class="live-badge">LIVE</span>':'<span class="manual-badge">PLAN</span>')+'</td>'
+      +'<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'+(isLive?'<span class="live-badge">LIVE</span>':_staleLive?'<span class="manual-badge" style="background:#fef3c7;color:#b45309;">STALE '+(invAge!=null?Math.floor(invAge)+'d':'')+'</span>':'<span class="manual-badge">PLAN</span>')+'</td>'
       +'<td class="r">'+fmtN(rec)+'</td>'
       +'<td class="r">'+(rate!=null?rate.toFixed(1):'—')+'</td>'
       +'<td class="r">'+(dtr==null?'—':(below?'<b style="color:var(--red);">':'')+(dtr<0?'−':'~')+Math.abs(dtr).toFixed(dtr<0?1:0)+(below?'</b>':''))+'</td>'
@@ -3319,7 +3343,12 @@ function renderReports(files){
   if(skuDetails) skuDetails.innerHTML=(sc.skus||[]).map(s=>{
     const live=liveMap[s.asin];
     const sellable=live&&live.on_hand!=null?live.on_hand:s.manual_sellable;
-    const isLive=!!(live&&live.on_hand!=null);
+    // v10.35 fix: LIVE requires the data to actually BE live — not just present.
+    // invAge is days since inventory_data.json as_of. Was badging stale data as LIVE.
+    const _hasLive=!!(live&&live.on_hand!=null);
+    const _isFresh=(invAge!=null&&invAge<=1.5);
+    const isLive=_hasLive&&_isFresh;
+    const _staleLive=_hasLive&&!_isFresh;   // has FBA data but it is old
     const rec=(live&&live.amazon_min!=null)?live.amazon_min:s.amazon_recommended;
     const below=sellable!=null&&rec!=null&&sellable<rec;
     const hdr=below?'crit':s.header_class;
@@ -3327,7 +3356,7 @@ function renderReports(files){
     const dtr=rate>0?(sellable-rec)/rate:null;
     const dos=rate>0&&sellable!=null?Math.round(sellable/rate):null;
     let stats='';
-    stats+='<div><div class="sku-stat-lbl">Amazon Sellable'+(isLive?'<span class="live-badge">LIVE</span>':'<span class="manual-badge">PLAN</span>')+'</div><div class="sku-stat-val'+(below?' down':'')+'">'+fmtN(sellable)+'</div><div class="sku-stat-sub">Recommended: '+fmtN(rec)+(below?' · '+fmtN(rec-sellable)+' below':'')+'</div></div>';
+    stats+='<div><div class="sku-stat-lbl">Amazon Sellable'+(isLive?'<span class="live-badge">LIVE</span>':_staleLive?'<span class="manual-badge" style="background:#fef3c7;color:#b45309;">STALE '+(invAge!=null?Math.floor(invAge)+'d':'')+'</span>':'<span class="manual-badge">PLAN</span>')+'</div><div class="sku-stat-val'+(below?' down':'')+'">'+fmtN(sellable)+'</div><div class="sku-stat-sub">Recommended: '+fmtN(rec)+(below?' · '+fmtN(rec-sellable)+' below':'')+'</div></div>';
     stats+='<div><div class="sku-stat-lbl">Velocity</div><div class="sku-stat-val">'+(rate!=null?'~'+rate+'/day':'—')+'</div><div class="sku-stat-sub">'+(dos!=null?'on-hand DoS ~'+dos+' days':'')+'</div></div>';
     if(dtr!=null) stats+='<div><div class="sku-stat-lbl">Days to Recommended</div><div class="sku-stat-val'+(below?' down':'')+'">'+(dtr<0?'−'+Math.abs(dtr).toFixed(1):'~'+Math.round(dtr))+'</div></div>';
     stats+='<div><div class="sku-stat-lbl">WSA (3PL)</div><div class="sku-stat-val">'+fmtN(s.wsa_available)+'</div></div>';
