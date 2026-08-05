@@ -1,68 +1,68 @@
 {
-  "as_of": "2026-08-04",
-  "generated_at": "2026-08-04",
-  "source": "Amazon Seller Central FBA Inventory",
+  "as_of": "2026-08-05",
+  "generated_at": "2026-08-05",
+  "source": "Amazon Seller Central Manage All Inventory \u2014 Claude in Chrome scrape 2026-08-05",
   "available": true,
   "skus": [
     {
       "asin": "B0FQL56V99",
       "sku": "Emergency Dematter",
       "name": "Skip the Groomer Dematting Cream for Dogs - Mat & Tangle Remover, 8 oz",
-      "on_hand": 21112,
-      "units_available": 21112,
+      "on_hand": 20987,
+      "units_available": 20987,
       "units_inbound": 0,
-      "units_reserved": 110,
-      "units_total": 21178
+      "units_reserved": 92,
+      "units_total": 21079
     },
     {
       "asin": "B0FQF2VTMJ",
       "sku": "Rake Brush",
       "name": "Skip the Groomer Rake Brush for Dogs, Doodles & Poodles - Mat Remover",
-      "on_hand": 229,
-      "units_available": 229,
+      "on_hand": 237,
+      "units_available": 237,
       "units_inbound": 4200,
-      "units_reserved": 22,
-      "units_total": 507
+      "units_reserved": 250,
+      "units_total": 487
     },
     {
       "asin": "B0GV5ZFLC2",
       "sku": "Detangling Treatment",
       "name": "Detangling Treatment for Dogs, Leave-in Conditioner Detangler for Matted Hair, Knots & Tangles | Goldendoodles, Poodles, Doodles & Long-Haired Breeds | No Mist, Squeeze Bottle, 12 oz",
-      "on_hand": 8312,
-      "units_available": 8312,
+      "on_hand": 8306,
+      "units_available": 8306,
       "units_inbound": 0,
-      "units_reserved": 19,
-      "units_total": 8337
+      "units_reserved": 26,
+      "units_total": 8332
     },
     {
       "asin": "B0FQL16GH4",
       "sku": "4-in-1 Shampoo",
-      "name": "Dog Shampoo & Conditioner for All Breeds – Goldendoodles, Poodles & Doodles – 4-in-1 Reset for Bath Days – Deep Clean, Condition, Detangle & Moisturize Curly Coats – 16 oz",
-      "on_hand": 3969,
-      "units_available": 3969,
+      "name": "Dog Shampoo & Conditioner for All Breeds \u2013 Goldendoodles, Poodles & Doodles \u2013 4-in-1 Reset for Bath Days \u2013 Deep Clean, Condition, Detangle & Moisturize Curly Coats \u2013 16 oz",
+      "on_hand": 3954,
+      "units_available": 3954,
       "units_inbound": 0,
-      "units_reserved": 24,
-      "units_total": 3972
+      "units_reserved": 1,
+      "units_total": 3955
     },
     {
       "asin": "B0FQDHXSZ5",
       "sku": "Pin Brush",
-      "name": "Pin Brush for Dogs, Gentle Dog Brush for Long Haired Dogs – Routine Essential for Goldendoodles, Poodles & Doodles, No-Scratch Rounded Pins for Sensitive Skin, Flexible Cushion Base – Skip the Groomer",
-      "on_hand": 1977,
-      "units_available": 1977,
+      "name": "Pin Brush for Dogs, Gentle Dog Brush for Long Haired Dogs \u2013 Routine Essential for Goldendoodles, Poodles & Doodles, No-Scratch Rounded Pins for Sensitive Skin, Flexible Cushion Base \u2013 Skip the Groomer",
+      "on_hand": 1971,
+      "units_available": 1971,
       "units_inbound": 0,
-      "units_reserved": 9,
-      "units_total": 1980
+      "units_reserved": 0,
+      "units_total": 1971
     },
     {
       "asin": "B0FQ628KCH",
       "sku": "Slicker Brush",
-      "name": "Slicker Brush for Dogs, Goldendoodle Brush for Fluff – Routine Essential for Poodles, Bernedoodles & Long Haired Breeds, Gentle Dematting & Easy-Clean Bristles – Skip the Groomer",
-      "on_hand": 2555,
-      "units_available": 2555,
+      "name": "Slicker Brush for Dogs, Goldendoodle Brush for Fluff \u2013 Routine Essential for Poodles, Bernedoodles & Long Haired Breeds, Gentle Dematting & Easy-Clean Bristles \u2013 Skip the Groomer",
+      "on_hand": 2551,
+      "units_available": 2551,
       "units_inbound": 0,
-      "units_reserved": 6,
-      "units_total": 2556
+      "units_reserved": 1,
+      "units_total": 2552
     }
   ]
 }
