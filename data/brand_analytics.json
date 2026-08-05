@@ -13,7 +13,8 @@
       "ADDED: education demographics, funnel_q2_detail, funnel_week30_detail, declining_product_signals.",
       "ADDED: explicit nulls + loyalty_tiers_available:false for the four Customer Loyalty tiers.",
       "CORRECTED: income over_150k_pct_of_known was 39.5% — recomputes to 38.83% from the raw counts (4,849 / 12,486). Both the count basis and the percent basis give 38.83%. Prior value retained below as over_150k_pct_of_known_PRIOR_FIGURE for traceability.",
-      "PRESERVED UNCHANGED: business_report{}, repeat_purchase{} asin_level_q2, demographics key_insights, flags[]."
+      "PRESERVED UNCHANGED: business_report{}, repeat_purchase{} asin_level_q2, demographics key_insights, flags[].",
+      "LOYALTY TIERS ADDED: Customer Loyalty Analytics Q2 2026 pulled via Claude in Chrome 2026-08-05. Top-tier 1,542 (13.11%), Promising 9,155 (77.86%), At-risk 1,061 (9.02%), Hibernating 0. Total 11,758. loyalty_tiers_available set to true. Note: 11,758 (loyalty) ≠ 20,410 (demographics) ≠ 5,285 (repeat purchase) — three different Amazon reports with different populations."
     ],
     "NOT_AVAILABLE": [
       "Customer Loyalty tiers (Top-tier / Promising / At Risk / Hibernating) — the Customer Loyalty Analytics dashboard has never been exported to Drive, only its glossary definition. Section 7 tier cards stay empty until someone exports it from Seller Central > Brand Analytics > Customer Loyalty Analytics.",
@@ -421,9 +422,9 @@
   "brand_health": {
     "week_of": "Week 30 · 2026-07-19 to 2026-07-25",
     "period_quarterly": "Q2 2026",
-    "total_customers": 20410,
+    "total_customers": 11758,
     "total_customers_q2": 20410,
-    "total_customers_basis": "Demographics report population, Q2 2026. See _meta.METRIC_WARNINGS — this is NOT the same as the 5,285 Repeat Purchase population or the 13,284 Customer Loyalty figure.",
+    "total_customers_basis": "Customer Loyalty Analytics, Q2 2026 (11,758). Demographics report population is 20,410 — different metric, see _meta.METRIC_WARNINGS.",
     "repeat_purchase_rate_pct": 6.17,
     "repeat_purchase_rate_prior_pct": 3.24,
     "repeat_purchase_rate_change_pp": 2.93,
@@ -441,24 +442,24 @@
     "sns_total_penetration_pct": null,
     "sns_note": "Comes from business_health.json subscribe_and_save block, not this file.",
     "top_tier": {
-      "count": null,
-      "pct": null
+      "count": 1542,
+      "pct": 13.11
     },
     "promising": {
-      "count": null,
-      "pct": null
+      "count": 9155,
+      "pct": 77.86
     },
     "at_risk": {
-      "count": null,
-      "pct": null,
+      "count": 1061,
+      "pct": 9.02,
       "wow_change_pct": null
     },
     "hibernating": {
-      "count": null,
-      "pct": null
+      "count": 0,
+      "pct": 0.0
     },
-    "loyalty_tiers_available": false,
-    "loyalty_tiers_note": "Customer Loyalty Analytics dashboard not exported to Drive. Counts are null rather than 0 — a 0 would read as 'no top-tier customers', which the data does not say.",
+    "loyalty_tiers_available": true,
+    "loyalty_tiers_note": "Customer Loyalty Analytics Q2 2026 — exported via Claude in Chrome 2026-08-05. 1,542 + 9,155 + 1,061 + 0 = 11,758 total. Sums verified.",
     "funnel": {
       "_period": "Week 30 · 2026-07-19 to 2026-07-25",
       "awareness": {
@@ -478,7 +479,10 @@
         "wow_pct": null
       }
     },
-    "data_source": "Amazon Brand Analytics quarterly exports + Customer Journey Analytics — built 2026-08-05"
+    "data_source": "Amazon Brand Analytics quarterly exports + Customer Journey Analytics — built 2026-08-05",
+    "total_customers_loyalty": 11758,
+    "total_customers_demos": 20410,
+    "loyalty_period": "Q2 2026 (quarter ending 2026-06-30)"
   },
   "return_rates": {
     "_available": false,
@@ -491,12 +495,12 @@
     }
   },
   "flags": [
+    "LOYALTY_TIERS: 9,155 of 11,758 customers (77.9%) are PROMISING — one-time buyers who haven't repeated yet. This is the primary retention lever. Top-tier only 13.1%.",
     "B0GT1H84JM ZERO CONVERSION: 8,508 sessions, $0 revenue — confirm no ads running to this ASIN",
     "REPEAT_RATE_BELOW_TARGET: 6.17% vs 10-15% target — cross-sell strategy needed",
     "SHAMPOO_EMERGING_REPEAT: 4-in-1 Shampoo has highest repeat share (2.27%) — S&S opportunity",
     "CART_ABANDONMENT: 4,032 customers added to cart/wishlist/saved without purchasing in trailing 60 days — no recovery flow currently converting (Klaviyo cart flow at $0 revenue)",
     "BROAD_INTENT_DECLINE: 4 of 6 SKUs show declining page views AND declining purchase interest in Week 30 — Detangling Treatment -33.5% intent, Rake -27.3%. Not one bad SKU.",
-    "LOYALTY_TIERS_MISSING: Customer Loyalty Analytics never exported — Section 7 tier cards cannot render. Needs a Seller Central export.",
     "RETURN_RATES_MISSING: 1 of 6 SKUs has return data. Needs FBA Customer Returns export."
   ]
 }
