@@ -14,7 +14,8 @@
       "ADDED: explicit nulls + loyalty_tiers_available:false for the four Customer Loyalty tiers.",
       "CORRECTED: income over_150k_pct_of_known was 39.5% — recomputes to 38.83% from the raw counts (4,849 / 12,486). Both the count basis and the percent basis give 38.83%. Prior value retained below as over_150k_pct_of_known_PRIOR_FIGURE for traceability.",
       "PRESERVED UNCHANGED: business_report{}, repeat_purchase{} asin_level_q2, demographics key_insights, flags[].",
-      "LOYALTY TIERS ADDED: Customer Loyalty Analytics Q2 2026 pulled via Claude in Chrome 2026-08-05. Top-tier 1,542 (13.11%), Promising 9,155 (77.86%), At-risk 1,061 (9.02%), Hibernating 0. Total 11,758. loyalty_tiers_available set to true. Note: 11,758 (loyalty) ≠ 20,410 (demographics) ≠ 5,285 (repeat purchase) — three different Amazon reports with different populations."
+      "LOYALTY TIERS ADDED: Customer Loyalty Analytics Q2 2026 pulled via Claude in Chrome 2026-08-05. Top-tier 1,542 (13.11%), Promising 9,155 (77.86%), At-risk 1,061 (9.02%), Hibernating 0. Total 11,758. loyalty_tiers_available set to true. Note: 11,758 (loyalty) ≠ 20,410 (demographics) ≠ 5,285 (repeat purchase) — three different Amazon reports with different populations.",
+      "RETURN RATES ADDED: FBA Customer Returns 2025-08-05 to 2026-08-05, all 6 SKUs. 5 of 6 below 4% category avg. Only Slicker AT RISK at 6.87%. Prior Slicker manual entry 8.67% superseded by 6.87% from actual report. Section 6 partial-coverage banner clears."
     ],
     "NOT_AVAILABLE": [
       "Customer Loyalty tiers (Top-tier / Promising / At Risk / Hibernating) — the Customer Loyalty Analytics dashboard has never been exported to Drive, only its glossary definition. Section 7 tier cards stay empty until someone exports it from Seller Central > Brand Analytics > Customer Loyalty Analytics.",
@@ -485,13 +486,69 @@
     "loyalty_period": "Q2 2026 (quarter ending 2026-06-30)"
   },
   "return_rates": {
-    "_available": false,
-    "_note": "No FBA Customer Returns export exists in Drive. Only Slicker Brush has a return rate anywhere in the system. Export Seller Central > Reports > Fulfillment > Customer Returns (365 days) to populate all six SKUs.",
+    "_available": true,
+    "_source": "Amazon FBA Customer Returns report 2025-08-05 to 2026-08-05 — 488 line items total. Downloaded via Claude in Chrome 2026-08-05.",
+    "_units_basis": "Units ordered from business_report (cumulative since launch ~Oct 2025). Period roughly matches the 365-day return window. Best available denominator — exact period match not possible from this report alone.",
+    "_category_avg_note": "4.0% used as category avg for all SKUs (Pet Grooming). Slicker prior manual entry was 8.67%; recomputed from this report gives 6.87%. Using 6.87%.",
+    "B0FQL56V99": {
+      "name": "Emergency Dematter Cream",
+      "units_returned": 332,
+      "units_ordered_basis": 11120,
+      "return_rate_pct": 2.99,
+      "category_avg_return_pct": 4.0,
+      "return_vs_category": "below",
+      "top_reason": "UNWANTED_ITEM",
+      "top_reason_units": 112
+    },
+    "B0FQF2VTMJ": {
+      "name": "Rake Brush",
+      "units_returned": 63,
+      "units_ordered_basis": 2354,
+      "return_rate_pct": 2.68,
+      "category_avg_return_pct": 4.0,
+      "return_vs_category": "below",
+      "top_reason": "NOT_AS_DESCRIBED",
+      "top_reason_units": 19
+    },
+    "B0GV5ZFLC2": {
+      "name": "Detangling Treatment",
+      "units_returned": 17,
+      "units_ordered_basis": 727,
+      "return_rate_pct": 2.34,
+      "category_avg_return_pct": 4.0,
+      "return_vs_category": "below",
+      "top_reason": "UNWANTED_ITEM / NOT_AS_DESCRIBED (tie)",
+      "top_reason_units": 5
+    },
+    "B0FQL16GH4": {
+      "name": "4-in-1 Shampoo",
+      "units_returned": 6,
+      "units_ordered_basis": 485,
+      "return_rate_pct": 1.24,
+      "category_avg_return_pct": 4.0,
+      "return_vs_category": "below",
+      "top_reason": "DAMAGED_BY_FC",
+      "top_reason_units": 3
+    },
+    "B0FQDHXSZ5": {
+      "name": "Pin Brush",
+      "units_returned": 19,
+      "units_ordered_basis": 552,
+      "return_rate_pct": 3.44,
+      "category_avg_return_pct": 4.0,
+      "return_vs_category": "below",
+      "top_reason": "NOT_AS_DESCRIBED",
+      "top_reason_units": 5
+    },
     "B0FQ628KCH": {
       "name": "Slicker Brush",
-      "return_rate_pct": 8.67,
+      "units_returned": 16,
+      "units_ordered_basis": 233,
+      "return_rate_pct": 6.87,
       "category_avg_return_pct": 4.0,
-      "source": "prior manual entry — origin date unconfirmed"
+      "return_vs_category": "above",
+      "top_reason": "ORDERED_WRONG_ITEM",
+      "top_reason_units": 5
     }
   },
   "flags": [
@@ -501,6 +558,8 @@
     "SHAMPOO_EMERGING_REPEAT: 4-in-1 Shampoo has highest repeat share (2.27%) — S&S opportunity",
     "CART_ABANDONMENT: 4,032 customers added to cart/wishlist/saved without purchasing in trailing 60 days — no recovery flow currently converting (Klaviyo cart flow at $0 revenue)",
     "BROAD_INTENT_DECLINE: 4 of 6 SKUs show declining page views AND declining purchase interest in Week 30 — Detangling Treatment -33.5% intent, Rake -27.3%. Not one bad SKU.",
-    "RETURN_RATES_MISSING: 1 of 6 SKUs has return data. Needs FBA Customer Returns export."
+    "RETURNS OK (5 of 6): Dematter 2.99%, Rake 2.68%, Detangling 2.34%, Shampoo 1.24%, Pin 3.44% — all below 4% category avg.",
+    "SLICKER RETURNS AT RISK: 6.87% vs 4% category avg. Top reason ORDERED_WRONG_ITEM — buyers may be confused about what they're getting. Aligns with low-margin liquidation status.",
+    "DEMATTER RETURN VOLUME: 332 units returned in 365d (2.99% rate). High absolute volume because it's the highest-volume SKU. UNWANTED_ITEM top reason (112 units) — expectation gap between listing and product. Worth reviewing main image and title."
   ]
 }
