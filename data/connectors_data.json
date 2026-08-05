@@ -1,41 +1,44 @@
 {
-  "last_updated": "2026-08-04",
-  "routine_version": "v10.33",
-  "run_date": "2026-08-04",
+  "last_updated": "2026-08-05",
+  "routine_version": "v10.35",
+  "run_date": "2026-08-05",
   "quickbooks": {
     "available": true,
-    "data_source": "QuickBooks MCP — live pull 2026-08-04",
-    "period": "2026-07-01 to 2026-07-31",
-    "cash_balance": 477229.58,
-    "checking_balance": 16933.40,
+    "data_source": "QuickBooks MCP — live pull 2026-08-05",
+    "period": "2026-08-01 to 2026-08-05",
+    "cash_balance": 472504.58,
+    "checking_balance": 12208.40,
     "money_market_balance": 460296.18,
     "checking_status": "RED",
     "total_assets": 829226.89,
-    "total_liabilities": 930610.15,
-    "total_equity": -101383.26,
-    "accounts_payable": 44491.90,
+    "total_liabilities": 953830.66,
+    "total_equity": -124926.01,
+    "accounts_payable": 61440.35,
     "accounts_receivable": 0.0,
-    "credit_card_debt": 15458.90,
-    "working_capital": -100635.18,
-    "inventory_value": 186291.44,
+    "credit_card_debt": 17260.73,
+    "working_capital": -124053.25,
+    "inventory_value": 186223.97,
     "inventory_deposits": 104022.98,
     "mtd": {
-      "period": "2026-08-01 to 2026-08-04",
+      "period": "2026-08-01 to 2026-08-05",
       "revenue": 0.0,
       "gross_profit": 0.0,
       "gross_margin_pct": 0.0,
-      "operating_expenses": 2652.94,
-      "net_income": -2652.94,
+      "operating_expenses": 4454.77,
+      "net_income": -4454.77,
       "net_margin_pct": 0.0,
-      "note": "August MTD sync lag — QB not yet reflecting August revenue. Expenses $2,652.94. July final: revenue $24,726.68 / net -$60,742.90"
+      "note": "August MTD sync lag — QB not yet reflecting August revenue. Expenses $4,454.77 through Aug 5."
     },
     "status": "RED",
     "flags": [
-      "CHECKING_BELOW_25K: $16,933.40 — 0.99 weeks runway",
+      "CHECKING_BELOW_25K: $12,208.40 — 0.71 weeks runway",
+      "CHECKING_DROP_24H: Dropped $4,724.50 in 24h ($16,933.40 → $12,208.40)",
+      "AP_INCREASE: A/P jumped $16,948 in 24h ($44,491.90 → $61,440.35)",
       "MTD_NET_NEGATIVE: July final net -$60,742.90",
-      "NEGATIVE_EQUITY: Total equity -$101,383.26"
+      "NEGATIVE_EQUITY: Total equity -$124,926.01",
+      "NEGATIVE_WORKING_CAPITAL: -$124,053.25"
     ],
-    "weeks_runway": 0.99,
+    "weeks_runway": 0.71,
     "sync_lag_flag": true,
     "stale": false,
     "july_final": {
@@ -51,14 +54,15 @@
   },
   "klaviyo": {
     "available": true,
-    "data_source": "Klaviyo MCP — live pull 2026-08-04",
+    "data_source": "Klaviyo MCP — live pull 2026-08-05",
     "period": "last_7_days",
     "total_email_revenue_7d": 0.0,
-    "avg_open_rate": 75.0,
+    "avg_open_rate": 85.7,
     "avg_click_rate": 0.0,
-    "total_recipients_7d": 8,
+    "total_recipients_7d": 7,
     "flows_flagged": [
-      "Cart Abandonment: 0 recipients L7D — flow not triggering",
+      "Cart Abandonment (T5cHUL): 0 recipients L7D — flow not triggering",
+      "Registration (XmCaLP): 0 recipients L7D",
       "All flows: $0 revenue L7D — conversion attribution at zero"
     ],
     "cart_abandonment_flow_name": "Abandoned Cart",
@@ -72,8 +76,8 @@
         "status": "live",
         "trigger_type": "Added to List",
         "send_channel": "email",
-        "recipients_7d": 7,
-        "open_rate": 71.4,
+        "recipients_7d": 6,
+        "open_rate": 83.3,
         "click_rate": 0.0,
         "conversion_rate": 0.0,
         "conversions": 0,
@@ -97,34 +101,60 @@
         "delivery_rate": 100.0,
         "unsubscribe_rate": 0.0,
         "zero_revenue_flag": true
+      },
+      {
+        "flow_id": "T5cHUL",
+        "name": "Abandoned Cart",
+        "status": "live",
+        "trigger_type": "Added to List",
+        "send_channel": "email",
+        "recipients_7d": 0,
+        "open_rate": null,
+        "click_rate": null,
+        "conversion_rate": null,
+        "conversions": 0,
+        "revenue_7d": 0.0,
+        "delivery_rate": null,
+        "zero_revenue_flag": true,
+        "flag": "0 recipients — flow not triggering"
+      },
+      {
+        "flow_id": "XmCaLP",
+        "name": "Registration",
+        "status": "live",
+        "trigger_type": "Added to List",
+        "send_channel": "email",
+        "recipients_7d": 0,
+        "open_rate": null,
+        "click_rate": null,
+        "conversion_rate": null,
+        "conversions": 0,
+        "revenue_7d": 0.0,
+        "delivery_rate": null,
+        "zero_revenue_flag": true,
+        "flag": "0 recipients — flow not triggering"
       }
     ],
     "stale": false
   },
   "shopify": {
     "available": true,
-    "report_date": "2026-08-03",
-    "data_source": "Shopify MCP — live pull 2026-08-04",
+    "report_date": "2026-08-04",
+    "data_source": "Shopify MCP — live pull 2026-08-05",
     "yesterday": {
-      "date": "2026-08-03",
-      "sales": 194.88,
+      "date": "2026-08-04",
+      "sales": 139.91,
       "net_sales": 0.0,
-      "orders": 9,
-      "aov": 21.65
+      "orders": 7,
+      "aov": 19.99
     },
-    "yesterday_sales": 194.88,
-    "aov": 21.65,
+    "yesterday_sales": 139.91,
+    "aov": 19.99,
     "aov_status": "YELLOW",
-    "aov_note": "Aug 3: 9 orders / $194.88 gross / $0 net (heavy discounts). AOV $21.65 YELLOW — below $30 threshold.",
-    "vs_7day_avg_pct": 159.9,
-    "seven_day_avg": 74.96,
+    "aov_note": "Aug 4: 7 orders / $139.91 gross / $0 net. AOV $19.99 YELLOW — below $30 threshold.",
+    "vs_7day_avg_pct": 47.3,
+    "seven_day_avg": 94.95,
     "daily_7d": [
-      {
-        "date": "2026-07-28",
-        "sales": 47.96,
-        "net_sales": 19.98,
-        "orders": 4
-      },
       {
         "date": "2026-07-29",
         "sales": 19.98,
@@ -163,71 +193,78 @@
         "net_sales": 0.0,
         "orders": 9,
         "note": "gross $194.88 / net $0 — heavy discounts"
+      },
+      {
+        "date": "2026-08-04",
+        "sales": 139.91,
+        "net_sales": 0.0,
+        "orders": 7,
+        "note": "gross $139.91 / net $0 — heavy discounts"
       }
     ],
     "top_products": [
       {
+        "product_title": "Soft & Tangle Free Dog Grooming Kit",
+        "gross_sales": 467.87,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 467.87,
+        "units_sold": null
+      },
+      {
         "product_title": "Detangling Treatment",
-        "gross_sales": 293.06,
-        "net_sales": 65.28,
-        "orders": 16,
-        "revenue": 293.06,
-        "units_sold": 16
+        "gross_sales": 312.05,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 312.05,
+        "units_sold": null
       },
       {
         "product_title": "4-IN-1 Rosemary Mint Shampoo",
-        "gross_sales": 250.91,
-        "net_sales": 105.39,
-        "orders": 20,
-        "revenue": 250.91,
-        "units_sold": 20
-      },
-      {
-        "product_title": "Emergency Dematter Cream",
-        "gross_sales": 228.41,
-        "net_sales": 164.91,
-        "orders": 11,
-        "revenue": 228.41,
-        "units_sold": 11
+        "gross_sales": 303.82,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 303.82,
+        "units_sold": null
       },
       {
         "product_title": "Slicker Brush",
-        "gross_sales": 204.11,
-        "net_sales": 35.97,
-        "orders": 19,
-        "revenue": 204.11,
-        "units_sold": 19
+        "gross_sales": 215.77,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 215.77,
+        "units_sold": null
       },
       {
-        "product_title": "Rake Brush",
-        "gross_sales": 133.92,
-        "net_sales": 92.52,
-        "orders": 10,
-        "revenue": 133.92,
-        "units_sold": 10
+        "product_title": "Emergency Dematter Cream",
+        "gross_sales": 164.04,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 164.04,
+        "units_sold": null
       },
       {
         "product_title": "Pin Brush",
-        "gross_sales": 125.6,
-        "net_sales": 48.75,
-        "orders": 7,
-        "revenue": 125.6,
-        "units_sold": 7
+        "gross_sales": 108.61,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 108.61,
+        "units_sold": null
       },
       {
-        "product_title": "Soft & Tangle Free Dog Grooming Kit",
-        "gross_sales": 71.98,
-        "net_sales": 0,
-        "orders": 2,
-        "revenue": 71.98,
-        "units_sold": 2
+        "product_title": "Rake Brush",
+        "gross_sales": 91.95,
+        "net_sales": null,
+        "orders": null,
+        "revenue": 91.95,
+        "units_sold": null
       }
     ],
-    "top_products_period": "2026-07-01 to 2026-07-31",
+    "top_products_period": "2026-07-06 to 2026-08-05",
     "order_breakdown": {
-      "date": "2026-08-03",
-      "total_orders": 9,
-      "note": "Aug 3: 9 orders $194.88 gross."
+      "date": "2026-08-04",
+      "total_orders": 7,
+      "note": "Aug 4: 7 orders $139.91 gross / $0 net."
     },
     "refunds": {
       "available": true,
@@ -235,7 +272,7 @@
       "total_refunds_30d": 0.0,
       "refund_count_30d": 0,
       "flags": [],
-      "note": "ShopifyQL sales_reversals column unavailable — carrying prior data. No refund flags observed."
+      "note": "Shopify GraphQL refund query returned 0 refunded orders L30d."
     }
   },
   "helium10": {
@@ -243,6 +280,8 @@
     "report_found": true,
     "data_readable": true,
     "report_date": "2026-08-03",
+    "stale": true,
+    "stale_note": "Keyword data from Aug 3 report — carried forward. Keyword Tracker email found (Aug 4) but not parsed this run.",
     "flags": [
       "DEMATTER_STRONG: B0FQL56V99 — 2 top-10 organic keywords (SV 5,067 combined), ranked #5 dematting tool for dogs",
       "SLICKER_BRUSH_RECOVERY: B0FQ628KCH — recovering in ranks, doodle brush at rank 101 (entry from unranked)"
@@ -348,16 +387,16 @@
   "helium10_profits": {
     "available": true,
     "daily": {
-      "date": "2026-08-02",
-      "gross_revenue": 2269.0,
-      "expenses": -1061.28,
-      "net_profit": 1207.72,
-      "net_margin_pct": 53.22,
-      "units": 120,
+      "date": "2026-08-04",
+      "gross_revenue": 2104.76,
+      "expenses": -1199.52,
+      "net_profit": 734.29,
+      "net_margin_pct": 34.89,
+      "units": 131,
       "vs_prior_day_pct": null,
       "stale": false,
       "products": [],
-      "note": "Most recent H10 Profits daily. Aug 3+ not yet in H10 dashboard."
+      "note": "H10 Daily Profit email Aug 4 parsed. Gross $2,104.76 / Net $734.29 / 131 units."
     },
     "weekly": {
       "period": "2026-07-27 to 2026-08-02",
@@ -367,9 +406,46 @@
       "net_margin_pct": 8.21,
       "units": 676,
       "vs_prior_week_pct": 361.1,
-      "products": [],
-      "stale": true,
-      "note": "vs prior week (Jul 20–26): net $233.24 → $1,075.25 (+361%). Stale — H10 Profits weekly email not found in 3d lookback."
+      "products": [
+        {
+          "name": "Emergency Dematter",
+          "gross_revenue": 9717.91,
+          "net_profit": 1782.24,
+          "units": 441
+        },
+        {
+          "name": "Rake Brush",
+          "gross_revenue": 2413.77,
+          "net_profit": 428.68,
+          "units": 180
+        },
+        {
+          "name": "Detangling Treatment",
+          "gross_revenue": 304.97,
+          "net_profit": 103.18,
+          "units": 16
+        },
+        {
+          "name": "Pin Brush",
+          "gross_revenue": 330.56,
+          "net_profit": 60.98,
+          "units": 16
+        },
+        {
+          "name": "4-in-1 Shampoo",
+          "gross_revenue": 248.66,
+          "net_profit": -125.31,
+          "units": 16
+        },
+        {
+          "name": "Slicker Brush",
+          "gross_revenue": 85.94,
+          "net_profit": -140.07,
+          "units": 7
+        }
+      ],
+      "stale": false,
+      "note": "H10 Weekly Profits email Jul 27-Aug 2 confirmed this run. vs prior week (Jul 20-26): net $233.24 → $1,075.25 (+361%)."
     },
     "monthly": null
   },
@@ -405,7 +481,7 @@
         "review_change_direction": "increase"
       }
     ],
-    "note": "Carried forward from 2026-07-29 run — no fresh Market Tracker email parsed today."
+    "note": "Market Tracker email found Aug 4 — data from Jul 28 report."
   },
   "helium10_inventory": {
     "available": true,
@@ -461,18 +537,19 @@
   "supermetrics": {
     "available": true,
     "status": "YELLOW",
-    "cache_generated": "2026-08-04",
-    "cache_age_hours": 0,
-    "stale": false,
-    "stale_note": "Amazon Ads queries A/B/I resubmitted 2026-08-04 with corrected report_type=SponsoredProduct — still running at push time. AA section carries Jul 28 data.",
+    "cache_generated": "2026-07-29",
+    "cache_age_hours": 144,
+    "stale": true,
+    "stale_note": "SUPERMETRICS_STALE: supermetrics_data.json generated 2026-07-29T23:25:00-07:00 — 6 days old (>24h). All supermetrics fields carry forward from prior connectors_data.json with stale=true. Do not resubmit queries — that is the Evening Pre-Run's job.",
     "amazon_ads": {
       "available": true,
       "data_date": "2026-07-28",
       "spend": 417.84,
       "roas": 1.1003,
-      "tacos": 90.88,
+      "tacos": 3.19,
+      "tacos_note": "TACoS corrected: 417.84 / 13101.81 (H10 weekly) = 3.19%. Prior run reported 90.88% which was ACoS (spend/attributed_sales), not TACoS. TACOS_MISCOMPUTED flag resolved.",
       "stale": true,
-      "stale_reason": "Queries A/B/I resubmitted with correct fields but Amazon API did not return within polling window. Data reflects Jul 28.",
+      "stale_reason": "SUPERMETRICS_STALE — supermetrics_data.json is 6 days old. Carry forward from prior run.",
       "skus": [
         {
           "asin": "B0FQL56V99",
@@ -481,7 +558,8 @@
           "sales_7d": 321.86,
           "roas": 1.2662,
           "acos": 78.9784,
-          "band": "KILL",
+          "band": "RED",
+          "band_note": "Fresh compute: be=2.07, yellow_min=1.66, red_min=1.14. roas 1.2662 in [1.14, 1.66) → RED. Prior KILL was BAND_CLASSIFIER_BUG.",
           "name": "Emergency Dematter Cream"
         },
         {
@@ -491,8 +569,9 @@
           "sales_7d": 0,
           "roas": 0.0,
           "acos": 39.5544,
-          "band": "ATTRIBUTION_CRISIS",
-          "name": "Unknown"
+          "band": "KILL",
+          "band_note": "roas=0.0 — ATTRIBUTION_CRISIS. $57.16 spend, $0 sales.",
+          "name": "Save the Shave Bundle"
         },
         {
           "asin": "B0FQF2VTMJ",
@@ -501,7 +580,8 @@
           "sales_7d": 74.95,
           "roas": 1.7258,
           "acos": 30.1765,
-          "band": "YELLOW",
+          "band": "RED",
+          "band_note": "Fresh compute: be=3.12, yellow_min=2.49, red_min=1.71. roas 1.7258 in [1.71, 2.49) → RED (barely above kill floor). Prior YELLOW was BAND_CLASSIFIER_BUG.",
           "name": "Rake Brush"
         },
         {
@@ -511,7 +591,8 @@
           "sales_7d": 9.99,
           "roas": 0.4229,
           "acos": 236.4364,
-          "band": "RED",
+          "band": "KILL",
+          "band_note": "Fresh compute: be=6.92, red_min=3.81. roas 0.4229 < 3.81 → KILL. liquidate=true. SLICKER_VIOLATION: any spend triggers RED. Prior RED was BAND_CLASSIFIER_BUG (should have been KILL).",
           "name": "Slicker Brush"
         },
         {
@@ -522,7 +603,8 @@
           "roas": 0.0,
           "acos": 18.5673,
           "band": "KILL",
-          "name": "Unknown"
+          "band_note": "roas=0.0, bundle be≈2.45 (estimate). → KILL.",
+          "name": "Full Coat Care System"
         },
         {
           "asin": "B0FQL16GH4",
@@ -531,7 +613,8 @@
           "sales_7d": 32.97,
           "roas": 3.1641,
           "acos": 31.6045,
-          "band": "GREEN",
+          "band": "YELLOW",
+          "band_note": "Fresh compute: be=3.75, yellow_min=3.0, red_min=2.06. roas 3.1641 in [3.0, 3.75) → YELLOW. Prior GREEN was BAND_CLASSIFIER_BUG.",
           "name": "4-in-1 Shampoo"
         },
         {
@@ -542,6 +625,7 @@
           "roas": 3.0196,
           "acos": 33.1166,
           "band": "GREEN",
+          "band_note": "Fresh compute: be=2.61, yellow_min=2.09. roas 3.0196 ≥ 2.61 → GREEN.",
           "name": "Pin Brush"
         },
         {
@@ -552,7 +636,8 @@
           "roas": 0.0,
           "acos": null,
           "band": "KILL",
-          "name": "Unknown"
+          "band_note": "roas=0.0, bundle be≈2.42 (estimate). → KILL.",
+          "name": "Tangle+Mat Bundle"
         },
         {
           "asin": "B0GV5ZFLC2",
@@ -562,12 +647,14 @@
           "roas": 0.0,
           "acos": null,
           "band": "KILL",
+          "band_note": "Fresh compute: be=2.74, red_min=1.51. roas 0.0 < 1.51 → KILL.",
           "name": "Detangling Treatment"
         }
       ],
       "flagged_skus": [
         "ATTRIBUTION_CRISIS: B0GT1H84JM $57.16 spend $0 sales",
-        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 — NO_ADS rule"
+        "SLICKER_VIOLATION: B0FQ628KCH spent $23.62 — NO_ADS rule (liquidate=true)",
+        "BAND_CLASSIFIER_BUGS_CORRECTED: Dematter KILL→RED, Rake YELLOW→RED, Shampoo GREEN→YELLOW, Slicker RED→KILL"
       ],
       "total_spend": 417.84,
       "total_sales": 459.76
@@ -579,7 +666,7 @@
       "conversion_rate": null,
       "units_sold": 120,
       "units_sold_source": "Helium 10 proxy — ASELL sync lag for Aug 2",
-      "stale": false,
+      "stale": true,
       "by_asin_7d": [
         {
           "asin": "B0FQL56V99",
@@ -782,7 +869,7 @@
       "A_v1033": "a700b337c1a5ed1a911fdac423a56978283eddcaef7ad5e82863d9f1d052717e",
       "B_v1033": "cbc52e63035d1ea04b1ac3437e29630fecc3ea927efb17cd20e0c32eb40799bd",
       "I_v1033": "5ec729a4243bbc90eedce386fdc0215d54ddce6d49d3499b0302bb13078c4b55",
-      "note": "All v10.33 queries submitted with report_type=SponsoredProduct. Still running at push time. H (search_term) dropped — field not available in AA data source."
+      "note": "Supermetrics stale — pre-run schedule IDs from v5.6 (2026-07-29). Evening pre-run must resubmit."
     }
   },
   "amazon_ads_browser": {
@@ -803,7 +890,7 @@
       "purchases": 14
     },
     "yesterday": {
-      "date": "2026-08-03",
+      "date": "2026-08-04",
       "spend": 0.0,
       "purchases": 0,
       "purchase_value": 0.0
@@ -832,56 +919,30 @@
       }
     ],
     "flags": [
-      "META_ALL_PAUSED: 8 campaigns paused, $0 active spend"
+      "META_ALL_PAUSED: 8 campaigns paused/off, $0 active spend — Day 2"
     ],
     "campaigns_active_count": 0,
-    "campaigns_active_note": "All campaigns PAUSED or OFF. $0 active spend as of Aug 4.",
-    "daily_7d": [
-      {
-        "date": "2026-07-29",
-        "spend": 0.0
-      },
-      {
-        "date": "2026-07-30",
-        "spend": 0.0
-      },
-      {
-        "date": "2026-08-01",
-        "spend": 0.0,
-        "roas": 0.0
-      },
-      {
-        "date": "2026-08-02",
-        "spend": 0.0
-      },
-      {
-        "date": "2026-08-03",
-        "spend": 0.0
-      },
-      {
-        "date": "2026-08-04",
-        "spend": 0.0
-      }
-    ],
+    "campaigns_active_note": "All 8 campaigns PAUSED or OFF. $0 active spend as of Aug 4-5.",
     "all_campaigns_paused": true,
     "active_campaign_count": 0,
     "total_campaigns": 8,
-    "data_source": "Meta MCP — live pull 2026-08-04 (corrected field IDs: amount_spent, purchase_roas, offsite_conversion_fb_pixel_purchase)"
+    "data_source": "Meta MCP — live pull 2026-08-05 (field IDs: amount_spent, purchase_roas, offsite_conversion_fb_pixel_purchase)"
   },
   "reviews": {
     "available": true,
     "status": "YELLOW",
-    "data_source": "Google Drive — STG Weekly Review Update — live pull 2026-08-04",
-    "last_reviews_check": "2026-08-04",
+    "data_source": "Google Drive — STG Weekly Review Update — live pull 2026-08-05",
+    "last_reviews_check": "2026-08-05",
     "sheet_last_modified": "2026-07-30",
     "new_review_count": 12,
-    "review_period": "2026-07-05 to 2026-08-04",
+    "review_period": "2026-07-05 to 2026-08-05",
     "avg_rating_new_batch": 4.33,
-    "days_since_last_review": 9,
+    "days_since_last_review": 10,
     "low_star_count_recent": 1,
     "flags": [
       "SAFETY_INCIDENT: Customer cut finger on Emergency Dematter comb blade (2026-07-25) — URGENT: add blade warning to packaging and listing images",
-      "LOW_STAR: 1 low-star review in L30D (7/6 Dematter 2★)"
+      "LOW_STAR: 1 low-star review in L30D (7/6 Dematter 2★)",
+      "SHEET_STALE: Last sheet update 2026-07-30 (6 days). No new reviews entered since 7/26."
     ],
     "recent": [
       {
@@ -924,23 +985,25 @@
   },
   "business_health": {
     "available": true,
-    "data_source": "QuickBooks MCP + supply_chain.json — 2026-08-04",
-    "cash_in_inventory": 186291.44,
-    "checking_balance": 16933.40,
+    "data_source": "QuickBooks MCP + supply_chain.json — 2026-08-05",
+    "cash_in_inventory": 186223.97,
+    "checking_balance": 12208.40,
     "checking_status": "RED",
     "total_assets": 829226.89,
-    "total_liabilities": 930610.15,
+    "total_liabilities": 953830.66,
     "net_income_july_final": -60742.9,
     "gross_margin_pct": 54.6,
-    "weeks_runway_checking": 0.99,
+    "weeks_runway_checking": 0.71,
     "august_factory_payments_total": 95694.5,
     "august_factory_payments_balance_due": 38651.0,
     "skus": [],
     "flags": [
-      "CHECKING_BELOW_25K: $16,933.40 — 0.99 weeks runway (improved from $13,317.99 prior run)",
+      "CHECKING_BELOW_25K: $12,208.40 — 0.71 weeks runway (DOWN from $16,933.40 yesterday)",
+      "CHECKING_DROP_24H: $4,724.50 single-day drawdown — urgent investigation needed",
+      "AP_SURGE: A/P $61,440.35 (+$16,948 in 24h from $44,491.90) — new bills posted overnight",
       "MTD_NET_NEGATIVE: July final net -$60,742.90",
-      "NEGATIVE_EQUITY: Total equity -$101,383.26",
-      "NEGATIVE_WORKING_CAPITAL: approx -$100,635",
+      "NEGATIVE_EQUITY: Total equity -$124,926.01",
+      "NEGATIVE_WORKING_CAPITAL: -$124,053.25",
       "FACTORY_PAYMENTS_AUG: $95,694.50 total due this month; $38,651 balance-due only",
       "RAKE_PO2_DEPOSIT_PENDING: $21,613 deposit for Rake PO2 — confirm payment immediately",
       "DEMATTER_PRODUCTION_BLOCKED: Accelerated run blocked — Craig missing ingredient",
@@ -953,7 +1016,7 @@
     "funnel_extracted": false,
     "repeat_purchase_extracted": false,
     "brand_search_extracted": false,
-    "note": "Tuesday — Brand Analytics only runs on Mondays. Next run: 2026-08-10."
+    "note": "Wednesday — Brand Analytics only runs on Mondays. Next run: 2026-08-10."
   },
   "inventory": {
     "available": false,
@@ -965,7 +1028,7 @@
     "scrape_date": "2026-07-29",
     "scrape_time_pt": "08:25 PT",
     "scrape_method": "chrome_browser",
-    "scrape_note": "6 days stale as of 2026-08-04. Chrome unavailable in cloud environment. Last fresh scrape 2026-07-29.",
+    "scrape_note": "7 days stale as of 2026-08-05. Chrome unavailable in cloud environment. Last fresh scrape 2026-07-29.",
     "stale": true,
     "shop_id": "7494104359187547577",
     "probation": {
@@ -1112,10 +1175,10 @@
     ],
     "out_of_stock_count": 1,
     "flags": [
-      "orders_to_ship: 3 orders pending — ship within 24h",
-      "response_rate_zero: 24h response rate 0% — probation risk. Reply to support tickets.",
-      "sku_out_of_stock: 1 SKU out of stock — restock now",
-      "probation_active: Shop on probation — daily order limit 2/50"
+      "orders_to_ship: 3 orders pending — ship within 24h (stale — data 7 days old)",
+      "response_rate_zero: 24h response rate 0% — probation risk (stale)",
+      "sku_out_of_stock: 1 SKU out of stock — restock now (stale)",
+      "probation_active: Shop on probation — daily order limit 2/50 (stale)"
     ],
     "daily_7d": [
       {
@@ -1129,7 +1192,7 @@
         "orders": null
       },
       {
-        "date": "2026-08-04",
+        "date": "2026-08-05",
         "gmv": null,
         "orders": null,
         "stale": true
@@ -1138,8 +1201,8 @@
   },
   "social_media": {
     "available": true,
-    "scrape_date": "2026-08-04",
-    "data_source": "Meta MCP (instagram_basic) — ads_get_ig_media · followers/reach pending instagram_manage_insights re-auth",
+    "scrape_date": "2026-08-05",
+    "data_source": "Meta MCP (instagram_basic) — live pull 2026-08-05 · followers/reach pending instagram_manage_insights re-auth",
     "ig": {
       "username": "skipthegroomer",
       "ig_user_id": "17841465880821401",
@@ -1155,18 +1218,18 @@
       "follower_delta_7d": null,
       "note": "insights unavailable — requires instagram_manage_insights scope"
     },
-    "posts_7d_count": 3,
+    "posts_7d_count": 2,
     "posts_target_per_week": 5,
-    "posting_consistency_pct": 60,
-    "posting_gap": 6,
-    "total_engagements_7d": 29,
-    "total_likes_7d": 25,
-    "total_comments_7d": 4,
+    "posting_consistency_pct": 40,
+    "posting_gap": 7,
+    "total_engagements_7d": 16,
+    "total_likes_7d": 12,
+    "total_comments_7d": 2,
     "avg_engagement_rate_7d": null,
     "attributed_revenue_7d": null,
     "top_post": {
       "id": "18216774637340914",
-      "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Deta...",
+      "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
       "engagement_total": 14,
       "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/",
       "date": "2026-07-29"
@@ -1195,18 +1258,6 @@
         "comments_count": 0,
         "engagement_total": 4,
         "permalink": "https://www.instagram.com/reel/DbYB35TCsau/"
-      },
-      {
-        "id": "18109956343966502",
-        "caption": "Skipper is always there for you 🥰🐶 #dog #doggos #doglife",
-        "media_type": "VIDEO",
-        "media_product_type": "REELS",
-        "timestamp": "2026-07-27T10:01:01-0700",
-        "date": "2026-07-27",
-        "like_count": 9,
-        "comments_count": 2,
-        "engagement_total": 11,
-        "permalink": "https://www.instagram.com/reel/DbTc66hFK3c/"
       }
     ],
     "fb": {
@@ -1218,7 +1269,7 @@
     },
     "fb_insights": {},
     "flags": [
-      "POSTING_GAP: 6 days since last post (Jul 29) — below 5x/week target",
+      "POSTING_GAP: 7 days since last post (Jul 29) — below 5x/week target. No posts in L7D window.",
       "PARTIAL_DATA: instagram_basic only — followers/reach/impressions require instagram_manage_insights scope",
       "ACTION_NEEDED: Will re-auth at business.facebook.com → Connected Apps → add instagram_manage_insights"
     ],
@@ -1236,20 +1287,13 @@
         "posts": 1,
         "likes": 4,
         "comments": 0
-      },
-      {
-        "date": "2026-07-27",
-        "available": true,
-        "posts": 1,
-        "likes": 9,
-        "comments": 2
       }
     ],
     "reauth_needed": true,
     "reauth_scope": "instagram_manage_insights"
   },
   "rolling_trends": {
-    "last_updated": "2026-08-04",
+    "last_updated": "2026-08-05",
     "amzads_7d": [
       {
         "date": "2026-07-28",
@@ -1272,6 +1316,13 @@
         "spend": 417.84,
         "roas": 1.1003,
         "stale": true
+      },
+      {
+        "date": "2026-08-05",
+        "spend": 417.84,
+        "roas": 1.1003,
+        "stale": true,
+        "note": "SUPERMETRICS_STALE — carry forward"
       }
     ],
     "amzsales_7d": [
@@ -1296,6 +1347,13 @@
         "units_sold": 120,
         "sessions": null,
         "source": "H10_proxy"
+      },
+      {
+        "date": "2026-08-05",
+        "units_sold": 120,
+        "sessions": null,
+        "stale": true,
+        "note": "SUPERMETRICS_STALE — carry forward"
       }
     ],
     "meta_7d": [
@@ -1319,6 +1377,11 @@
       {
         "date": "2026-08-04",
         "spend": 0.0
+      },
+      {
+        "date": "2026-08-05",
+        "spend": 0.0,
+        "roas": 0.0
       }
     ],
     "tiktok_7d": [
@@ -1337,14 +1400,15 @@
         "gmv": null,
         "orders": null,
         "stale": true
+      },
+      {
+        "date": "2026-08-05",
+        "gmv": null,
+        "orders": null,
+        "stale": true
       }
     ],
     "shopify_7d": [
-      {
-        "date": "2026-07-28",
-        "sales": 47.96,
-        "orders": 4
-      },
       {
         "date": "2026-07-29",
         "sales": 19.98,
@@ -1380,6 +1444,12 @@
         "sales": 194.88,
         "net_sales": 0.0,
         "orders": 9
+      },
+      {
+        "date": "2026-08-04",
+        "sales": 139.91,
+        "net_sales": 0.0,
+        "orders": 7
       }
     ],
     "sm_ig_7d": [
@@ -1390,6 +1460,11 @@
       {
         "date": "2026-08-04",
         "available": false
+      },
+      {
+        "date": "2026-08-05",
+        "available": false,
+        "note": "instagram_manage_insights re-auth still pending"
       }
     ],
     "tiktok_ads_7d": []
