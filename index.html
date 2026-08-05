@@ -3323,12 +3323,14 @@ function renderReports(files){
         const _netDiff = (_tot != null && sellable != null && _tot - sellable > 50) ? (_tot - sellable) : null;
         const _inb = live ? (live.units_inbound || 0) : 0;
         const _networkNote = _netDiff
-          ? '<div style="font-size:9.5px;color:var(--muted);margin-top:2px;">+'
-            + fmtN(_netDiff) + ' in network (FC transfer/reserved) · '
-            + fmtN(_tot + _inb) + ' total incl. inbound</div>'
+          ? '<div style="font-size:10px;color:#5a6a7a;margin-top:3px;white-space:nowrap;">'
+            + '<span style="color:var(--navy);font-weight:600;">+' + fmtN(_netDiff) + '</span>'
+            + ' FC transfer'
+            + (_inb > 0 ? ' &nbsp;·&nbsp; <span style="color:var(--navy);font-weight:600;">' + fmtN(_inb) + '</span> inbound' : '')
+            + '</div>'
           : (_inb > 0
-            ? '<div style="font-size:9.5px;color:var(--muted);margin-top:2px;">'
-              + fmtN(_inb) + ' inbound</div>'
+            ? '<div style="font-size:10px;color:#5a6a7a;margin-top:3px;white-space:nowrap;">'
+              + '<span style="color:var(--navy);font-weight:600;">' + fmtN(_inb) + '</span> inbound</div>'
             : '');
         return '<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'
           +(isLive?'<span class="live-badge">LIVE</span>':_staleLive?'<span class="manual-badge" style="background:#fef3c7;color:#b45309;">STALE '+(invAge!=null?Math.floor(invAge)+'d':'')+'</span>':'<span class="manual-badge">PLAN</span>')
