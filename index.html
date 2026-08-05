@@ -2615,7 +2615,19 @@ function renderBizHealth(bh){
   $('bh-brand-section').innerHTML = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;padding:8px 0;"><div style="text-align:center;min-width:120px;"><svg viewBox="0 0 100 100" width="110" height="110"><circle cx="50" cy="50" r="36" fill="none" stroke="#2faa6a" stroke-width="16" stroke-dasharray="'+ttA+' '+(226-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#15212E" stroke-width="16" stroke-dasharray="'+prA+' '+(226-prA)+'" stroke-dashoffset="'+(-ttA)+'" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="36" fill="none" stroke="#e6a417" stroke-width="16" stroke-dasharray="'+arA+' '+(226-arA)+'" stroke-dashoffset="'+(-ttA-prA)+'" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" font-size="12" font-weight="800" fill="#1c2733">'+(_tiersMissing?'—':fmtInt(totC))+'</text><text x="50" y="59" text-anchor="middle" font-size="8" fill="#6b7886">'+(_tiersMissing?'NOT MEASURED':'CUSTOMERS')+'</text></svg></div><div style="flex:1;min-width:220px;">'+_tierBanner+tierCard('Top-Tier',tT.count,tT.pct,'Bought recently AND spend most — champions.','→ Cross-sell maintenance. Enroll S&S first.','bdr-green')+tierCard('Promising',pr.count,pr.pct,'Recent buyers, lower frequency — grow pool.','→ Win the 2nd purchase. Bundle Dematter + Rake.','bdr-grey')+tierCard('At-Risk',aR.count,aR.pct,'Haven\'t bought in a while — cooling off.'+(aR.wow_change_pct?' +'+aR.wow_change_pct+'% WoW ⚠️':''),'→ Win-back coupon. Replenishment reminder.',(aR.wow_change_pct||0)>100?'bdr-red':'bdr-amber')+'</div></div>'+
     '<div class="tbl-wrap" style="margin-top:10px;"><div class="tbl-title">Key metrics vs targets</div><table><thead><tr><th>Metric</th><th class="r">Current</th><th class="r">Target</th><th class="r">Status</th></tr></thead><tbody>'+
     '<tr><td>Repeat purchase rate</td><td class="r"><b>'+safePct(brand.repeat_purchase_rate_pct)+'</b></td><td class="r">10–15%</td><td class="r">'+(brand.repeat_purchase_rate_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-crit">Low</span>')+'</td></tr>'+
-    '<tr><td>Subscribe &amp; Save %</td><td class="r"><b>'+safePct(brand.sns_total_penetration_pct)+'</b></td><td class="r">5–10%</td><td class="r">'+(brand.sns_total_penetration_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-warn">Underdeveloped</span>')+'</td></tr>'+
+    // v10.35 fix: S&S lives in business_health.json (kpis.sns_total_pct), not brand_analytics.
+    // This row was reading only brand_analytics and showing "No data" while Section 5 above
+    // rendered the same metric correctly from bh. Fall back to the real source.
+    (function(){
+      const _sns = brand.sns_total_penetration_pct != null
+        ? brand.sns_total_penetration_pct
+        : ((bh.kpis||{}).sns_total_pct != null ? bh.kpis.sns_total_pct : null);
+      return '<tr><td>Subscribe &amp; Save %</td><td class="r"><b>'+safePct(_sns)+'</b></td><td class="r">5–10%</td><td class="r">'
+        + (_sns==null ? '<span class="pill pill-na">No data</span>'
+           : _sns >= 5 ? '<span class="pill pill-ok">On target</span>'
+           : '<span class="pill pill-warn">Underdeveloped</span>')
+        + '</td></tr>';
+    })()+
     '<tr><td>Top-tier customer share</td><td class="r"><b>'+safePct(tT.pct)+'</b></td><td class="r">12–18%</td><td class="r">'+(tT.pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-ok">Ahead of pace ✓</span>')+'</td></tr>'+
     '<tr><td>At-risk customer share</td><td class="r"><b>'+safePct(aR.pct)+'</b></td><td class="r">&lt;5%</td><td class="r">'+(aR.pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill '+(aR.pct<5?'pill-ok':'pill-crit')+'">'+(aR.pct<5?'Healthy':'Over target')+'</span>')+'</td></tr>'+
     '<tr><td>Brand search share</td><td class="r"><b>'+safePct(brand.brand_search_share_pct)+'</b></td><td class="r">8–12%</td><td class="r">'+(brand.brand_search_share_pct==null?'<span class="pill pill-na">No data</span>':'<span class="pill pill-warn">Under target</span>')+'</td></tr>'+
