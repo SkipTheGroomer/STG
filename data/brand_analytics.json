@@ -1,10 +1,33 @@
 {
-  "generated_at": "2026-08-03",
-  "source": "Amazon Brand Analytics + Business Report \u2014 processed from STG_JARVIS_Data Google Drive",
-  "data_as_of": "2026-07-31",
+  "_meta": {
+    "generated_at": "2026-08-05",
+    "supersedes": "brand_analytics.json generated 2026-08-03",
+    "source": "Amazon Brand Analytics + Business Report + Customer Journey Analytics — Drive folder STG_JARVIS (1q1FQZKJ2YRFL0ngSBEDSoSIA6O1uPB63)",
+    "data_as_of": "2026-07-31 (Business Report) · 2026-06-30 (Q2 quarterly) · Week 30 2026-07-19→07-25 (journey)",
+    "changes_from_2026_08_03": [
+      "FIELD NAME FIX: brand_health.total_customers added. The prior file only had total_customers_q2, which the dashboard does not read — that is why Section 7 rendered empty.",
+      "ADDED: brand_health.funnel{} — Customer Journey Analytics awareness/consideration/intent/purchase with WoW change. Dashboard Section 7 funnel cards were blank because this key did not exist.",
+      "ADDED: cart_abandoners (4,032 trailing 60 days) — dashboard reads brand_health.cart_abandoners.",
+      "ADDED: brand_search_share_pct — see METRIC_WARNINGS, conflicts with a prior 51.2% figure.",
+      "ADDED: prior_quarter Q1 2026 comparison block.",
+      "ADDED: education demographics, funnel_q2_detail, funnel_week30_detail, declining_product_signals.",
+      "ADDED: explicit nulls + loyalty_tiers_available:false for the four Customer Loyalty tiers.",
+      "CORRECTED: income over_150k_pct_of_known was 39.5% — recomputes to 38.83% from the raw counts (4,849 / 12,486). Both the count basis and the percent basis give 38.83%. Prior value retained below as over_150k_pct_of_known_PRIOR_FIGURE for traceability.",
+      "PRESERVED UNCHANGED: business_report{}, repeat_purchase{} asin_level_q2, demographics key_insights, flags[]."
+    ],
+    "NOT_AVAILABLE": [
+      "Customer Loyalty tiers (Top-tier / Promising / At Risk / Hibernating) — the Customer Loyalty Analytics dashboard has never been exported to Drive, only its glossary definition. Section 7 tier cards stay empty until someone exports it from Seller Central > Brand Analytics > Customer Loyalty Analytics.",
+      "Per-ASIN return rates — no FBA Customer Returns export in Drive. Section 6 stays at 1-of-6 SKU coverage."
+    ],
+    "METRIC_WARNINGS": [
+      "THREE DIFFERENT CUSTOMER COUNTS EXIST — do not mix them. (1) Repeat Purchase Behavior report: 5,285 unique customers Q2. (2) Demographics report population: 20,410 customers / 24,800 ordered units Q2. (3) Customer Loyalty Analytics: 13,284 current customers wk ending Jul 25. The Agency Handbook warns explicitly against treating these as one number. brand_health.total_customers uses 20,410 to stay consistent with the prior file and the demographic percentages; repeat_purchase_rate_pct is derived from the 5,285 population and is reported on its own basis.",
+      "brand_search_share_pct computed per Amazon's Branded Search Ratio definition = brand search / awareness = 237 / 117,993 = 0.20% for Q2 (Week 30: 32 / 10,532 = 0.30%). An earlier manual pull recorded 51.2%; that cannot be reproduced from these exports and is likely a different metric. Re-verify in Seller Central before acting on either.",
+      "Business Report figures have no date range in the source file and appear to be cumulative/lifetime, not a period. Do not compare them to the Q2 quarterly numbers."
+    ]
+  },
   "repeat_purchase": {
     "brand_level_q2": {
-      "period": "Q2 2026 (Apr 1 \u2013 Jun 30)",
+      "period": "Q2 2026 (Apr 1 – Jun 30)",
       "reporting_date": "2026-06-30",
       "total_orders": 5633,
       "unique_customers": 5285,
@@ -17,6 +40,20 @@
       "repeat_customer_count": 326,
       "repeat_customer_share_pct": 6.17,
       "repeat_customer_share_change_vs_prior": 2.93
+    },
+    "brand_level_q1": {
+      "period": "Q1 2026 (Jan 1 – Mar 31)",
+      "reporting_date": "2026-03-31",
+      "total_orders": 5566,
+      "unique_customers": 5376,
+      "repeat_sales": 4742.64,
+      "repeat_sales_pct_of_total": 3.59,
+      "repeat_sales_change_vs_prior": 373.58,
+      "repeat_units": 266,
+      "repeat_units_pct_of_total": 4.42,
+      "repeat_customer_count": 174,
+      "repeat_customer_share_pct": 3.24,
+      "repeat_customer_share_change_vs_prior": 0.26
     },
     "asin_level_q2": [
       {
@@ -31,7 +68,7 @@
         "repeat_customers": 58,
         "repeat_customer_share_pct": 1.39,
         "change_vs_prior_pct": -0.07,
-        "note": "Highest volume, low repeat % \u2014 mostly first-time buyers"
+        "note": "Highest volume, low repeat % — mostly first-time buyers"
       },
       {
         "asin": "B0GV5ZFLC2",
@@ -45,7 +82,7 @@
         "repeat_customers": 9,
         "repeat_customer_share_pct": 1.47,
         "change_vs_prior_pct": null,
-        "note": "First period of data \u2014 baseline"
+        "note": "First period of data — baseline"
       },
       {
         "asin": "B0FQL16GH4",
@@ -59,7 +96,7 @@
         "repeat_customers": 3,
         "repeat_customer_share_pct": 2.27,
         "change_vs_prior_pct": 0.06,
-        "note": "Highest repeat share of active SKUs \u2014 consumable behavior emerging"
+        "note": "Highest repeat share of active SKUs — consumable behavior emerging"
       },
       {
         "asin": "B0FQF2VTMJ",
@@ -73,7 +110,7 @@
         "repeat_customers": 13,
         "repeat_customer_share_pct": 1.24,
         "change_vs_prior_pct": -0.85,
-        "note": "Durable good \u2014 low repeat expected"
+        "note": "Durable good — low repeat expected"
       },
       {
         "asin": "B0FQDHXSZ5",
@@ -87,7 +124,7 @@
         "repeat_customers": 3,
         "repeat_customer_share_pct": 1.23,
         "change_vs_prior_pct": -0.42,
-        "note": "Durable good \u2014 low repeat expected"
+        "note": "Durable good — low repeat expected"
       },
       {
         "asin": "B0FQ628KCH",
@@ -101,17 +138,128 @@
         "repeat_customers": 0,
         "repeat_customer_share_pct": 0.0,
         "change_vs_prior_pct": -2.46,
-        "note": "Liquidation \u2014 zero repeat buyers, down 100% vs Q1"
+        "note": "Liquidation — zero repeat buyers, down 100% vs Q1"
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "Detangling Spray (Unscented)",
+        "orders": null,
+        "customers": null,
+        "repeat_sales": null,
+        "repeat_sales_pct": null,
+        "repeat_units": null,
+        "repeat_units_pct": null,
+        "repeat_customers": null,
+        "repeat_customer_share_pct": null,
+        "change_vs_prior_pct": null,
+        "note": "Row present in export but all metric fields blank — Amazon reported no data for this ASIN in Q2"
       }
     ],
-    "key_insight": "Brand repeat rate 6.17% (Q2) \u2014 doubled from 3.24% in Q1. Cross-SKU purchases driving growth, not same-SKU repeats. Shampoo has highest repeat rate (2.27%) \u2014 consumable behavior emerging.",
+    "key_insight": "Brand repeat rate 6.17% (Q2) — nearly doubled from 3.24% in Q1; repeat customers 174 → 326. Cross-SKU purchases driving growth, not same-SKU repeats. Shampoo has highest repeat rate (2.27%) — consumable behavior emerging.",
     "target": "10-15%",
     "status": "BELOW_TARGET",
     "trend": "IMPROVING"
   },
+  "customer_journey": {
+    "_source": "Amazon Customer Journey Analytics — screenshot exports 2026-07-31",
+    "week30": {
+      "period": "Week 30 · 2026-07-19 to 2026-07-25",
+      "category_search": 10500,
+      "brand_search": 32,
+      "awareness_total": 10532,
+      "viewed_detail_page": 1388,
+      "visited_brand_store": 48,
+      "viewed_review_page": 8,
+      "consideration_customers": 1410,
+      "consideration_change_pct": 14.82,
+      "high_potential_customers": 3300,
+      "high_potential_change_pct": -1.14,
+      "added_to_cart": 217,
+      "added_to_cart_change_pct": 51.75,
+      "added_to_wish_list": 24,
+      "saved_for_later": 26,
+      "intent_customers": 252,
+      "intent_change_pct": 45.66,
+      "purchase_total": 238,
+      "purchase_repeat": 10,
+      "purchase_one_time": 228,
+      "drop_off_after_awareness": 10078,
+      "drop_off_after_consideration": 1215,
+      "drop_off_before_purchase": 176
+    },
+    "q2_2026": {
+      "period": "Q2 2026",
+      "_note": "Journey-diagram values. The Intent KPI cards on that screen were stale and matched the weekly numbers exactly; these background funnel values are the real quarterly figures.",
+      "category_search": 117756,
+      "brand_search": 237,
+      "awareness_total": 117993,
+      "viewed_detail_page": 14675,
+      "visited_brand_store": 442,
+      "viewed_review_page": 150,
+      "added_to_cart": 3241,
+      "added_to_wish_list": 365,
+      "saved_for_later": 573,
+      "purchase_total": 1948,
+      "purchase_repeat": 49,
+      "purchase_one_time": 1899,
+      "drop_off_after_awareness": 111598,
+      "drop_off_after_consideration": 12181,
+      "drop_off_before_purchase": 2152
+    },
+    "cart_abandoners_60d": 4032,
+    "cart_abandoners_note": "Added to cart, wish list, or saved for later without purchasing — trailing 60 days, per Amazon Recommended Actions panel."
+  },
+  "declining_product_signals": {
+    "_period": "Week 30 · 2026-07-19 to 2026-07-25",
+    "_source": "Customer Journey Analytics product trend cards",
+    "declining_page_views": [
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "change_pct": -11.54
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "change_pct": -4.8
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "change_pct": -3.17
+      },
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "change_pct": -1.9
+      }
+    ],
+    "declining_purchase_interest": [
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "change_pct": -33.53
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "change_pct": -27.27
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "change_pct": -18.75
+      },
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "change_pct": -5.6
+      }
+    ]
+  },
   "demographics": {
     "q2_2026": {
-      "period": "Q2 2026 (Apr 1 \u2013 Jun 30)",
+      "period": "Q2 2026 (Apr 1 – Jun 30)",
       "reporting_date": "2026-06-30",
       "total_customers": 20410,
       "total_units": 24800,
@@ -122,7 +270,9 @@
         "male_customers": 5433,
         "unknown_pct": 28.77,
         "unknown_customers": 5872,
-        "note": "Male share growing \u2014 'Pet Dad' angle landing"
+        "female_pct_of_known": 62.63,
+        "male_pct_of_known": 37.37,
+        "note": "Male share growing — 'Pet Dad' angle landing. Among customers with disclosed gender: 62.6% female / 37.4% male."
       },
       "age": {
         "18_24_pct": 5.23,
@@ -133,7 +283,9 @@
         "65plus_pct": 15.27,
         "unknown_pct": 25.58,
         "core_35plus_pct": 57.75,
-        "note": "25-34 underindexed vs 21% category benchmark \u2014 opportunity gap"
+        "core_35plus_pct_of_known": 77.6,
+        "largest_known_segment": "35-44",
+        "note": "25-34 underindexed vs 21% category benchmark — opportunity gap. Among disclosed ages, 77.6% are 35+."
       },
       "income": {
         "over_250k_pct": 9.07,
@@ -145,29 +297,41 @@
         "75_99k_pct": 11.2,
         "50_74k_pct": 10.43,
         "unknown_pct": 38.82,
-        "over_150k_pct_of_known": 39.5,
         "over_150k_pct_of_total": 23.76,
-        "note": "39.5% of known-income buyers earn $150K+ \u2014 premium customer base"
+        "over_150k_pct_of_known": 38.83,
+        "over_150k_pct_of_known_PRIOR_FIGURE": 39.5,
+        "over_150k_count": 4849,
+        "known_income_base": 12486,
+        "note": "38.83% of known-income buyers earn $150K+ (4,849 of 12,486). The prior file said 39.5%; recomputing from both counts and percentages gives 38.83%. Premium base either way."
       },
       "marital": {
         "married_pct": 35.59,
         "single_pct": 3.84,
         "unknown_pct": 60.57,
-        "note": "Married growing +2.18 pts vs Q1"
+        "married_pct_of_known": 90.26,
+        "note": "Married growing +2.18 pts vs Q1. Among disclosed marital status, 90.3% married — but only 39.4% disclosed."
+      },
+      "education": {
+        "less_than_high_school_pct": 5.45,
+        "high_school_graduate_pct": 17.58,
+        "some_college_pct": 22.79,
+        "bachelors_degree_pct": 18.81,
+        "graduate_degree_pct": 9.78,
+        "unknown_pct": 25.58
       }
     },
     "key_insights": [
-      "20,410 unique Q2 customers \u2014 +140% vs 8,521 in Q1. Massive growth quarter.",
-      "39.5% of known-income buyers earn $150K+ \u2014 premium customer base holding.",
-      "Male share at 26.62% \u2014 Pet Dad angle growing (up +8.8 pts from Q4 2025 baseline).",
-      "25-34 age bracket: 11.45% vs 21% category benchmark \u2014 biggest demographic gap.",
-      "65+ at 15.27% \u2014 significant older demographic, keep UX and messaging accessible."
+      "20,410 unique Q2 customers — +140% vs 8,521 in Q1. Massive growth quarter.",
+      "38.83% of known-income buyers earn $150K+ — premium customer base holding.",
+      "Male share at 26.62% of all customers / 37.4% of disclosed — Pet Dad angle growing.",
+      "25-34 age bracket: 11.45% vs 21% category benchmark — biggest demographic gap.",
+      "65+ at 15.27% — significant older demographic, keep UX and messaging accessible."
     ]
   },
   "business_report": {
     "report_date": "2026-07-31",
     "source": "Amazon Seller Central Business Report",
-    "note": "Appears to be cumulative/lifetime data \u2014 no date range in file (per README)",
+    "note": "Appears to be cumulative/lifetime data — no date range in file. Do not compare to Q2 quarterly figures.",
     "skus": [
       {
         "asin": "B0FQL56V99",
@@ -245,30 +409,94 @@
         "units": 0,
         "cvr_pct": 0.0,
         "revenue": 0.0,
-        "flag": "ZERO_CONVERSION: 8,508 sessions, 97.93% buy box, $0 revenue, 0 units \u2014 confirmed active traffic to dead listing. Any ad spend here is pure waste."
+        "flag": "ZERO_CONVERSION: 8,508 sessions, 97.93% buy box, $0 revenue, 0 units — confirmed active traffic to dead listing. Any ad spend here is pure waste."
       }
     ],
     "flags": [
       "ZERO_CONVERSION_ALERT: B0GT1H84JM (Save the Shave Bundle) has 8,508 sessions + 97.93% buy box but ZERO units sold. If ads are running to this ASIN they are burning money with no attribution.",
-      "HIGH_CVR: Rake Brush 31.17% CVR \u2014 highest in catalog, likely review-driven. Protect ranking.",
-      "LOW_CVR: 4-in-1 Shampoo 9.97% \u2014 lowest active SKU. Listing optimization opportunity."
+      "HIGH_CVR: Rake Brush 31.17% CVR — highest in catalog, likely review-driven. Protect ranking.",
+      "LOW_CVR: 4-in-1 Shampoo 9.97% — lowest active SKU. Listing optimization opportunity."
     ]
   },
   "brand_health": {
+    "week_of": "Week 30 · 2026-07-19 to 2026-07-25",
+    "period_quarterly": "Q2 2026",
+    "total_customers": 20410,
     "total_customers_q2": 20410,
+    "total_customers_basis": "Demographics report population, Q2 2026. See _meta.METRIC_WARNINGS — this is NOT the same as the 5,285 Repeat Purchase population or the 13,284 Customer Loyalty figure.",
     "repeat_purchase_rate_pct": 6.17,
+    "repeat_purchase_rate_prior_pct": 3.24,
+    "repeat_purchase_rate_change_pp": 2.93,
     "repeat_purchase_target": "10-15%",
     "repeat_purchase_status": "BELOW_TARGET",
+    "repeat_purchase_basis": "Repeat Customer Share, Repeat Purchase Behavior report, Q2 2026 (326 of 5,285 customers)",
+    "brand_search_share_pct": 0.2,
+    "brand_search_share_week30_pct": 0.3,
+    "brand_search_share_basis": "Q2 2026: brand search 237 / awareness 117,993. See _meta.METRIC_WARNINGS — conflicts with a prior 51.2% figure.",
+    "cart_abandoners": 4032,
     "female_pct": 44.61,
     "male_pct": 26.62,
-    "over_150k_income_pct": 39.5,
+    "over_150k_income_pct": 38.83,
     "core_age_35plus_pct": 57.75,
-    "week_of": "Q2 2026",
-    "data_source": "Amazon Brand Analytics quarterly exports \u2014 July 31, 2026"
+    "sns_total_penetration_pct": null,
+    "sns_note": "Comes from business_health.json subscribe_and_save block, not this file.",
+    "top_tier": {
+      "count": null,
+      "pct": null
+    },
+    "promising": {
+      "count": null,
+      "pct": null
+    },
+    "at_risk": {
+      "count": null,
+      "pct": null,
+      "wow_change_pct": null
+    },
+    "hibernating": {
+      "count": null,
+      "pct": null
+    },
+    "loyalty_tiers_available": false,
+    "loyalty_tiers_note": "Customer Loyalty Analytics dashboard not exported to Drive. Counts are null rather than 0 — a 0 would read as 'no top-tier customers', which the data does not say.",
+    "funnel": {
+      "_period": "Week 30 · 2026-07-19 to 2026-07-25",
+      "awareness": {
+        "count": 10532,
+        "wow_pct": null
+      },
+      "consideration": {
+        "count": 1410,
+        "wow_pct": 14.82
+      },
+      "intent_carted": {
+        "count": 217,
+        "wow_pct": 51.75
+      },
+      "purchase_new": {
+        "count": 228,
+        "wow_pct": null
+      }
+    },
+    "data_source": "Amazon Brand Analytics quarterly exports + Customer Journey Analytics — built 2026-08-05"
+  },
+  "return_rates": {
+    "_available": false,
+    "_note": "No FBA Customer Returns export exists in Drive. Only Slicker Brush has a return rate anywhere in the system. Export Seller Central > Reports > Fulfillment > Customer Returns (365 days) to populate all six SKUs.",
+    "B0FQ628KCH": {
+      "name": "Slicker Brush",
+      "return_rate_pct": 8.67,
+      "category_avg_return_pct": 4.0,
+      "source": "prior manual entry — origin date unconfirmed"
+    }
   },
   "flags": [
-    "B0GT1H84JM ZERO CONVERSION: 8,508 sessions, $0 revenue \u2014 confirm no ads running to this ASIN",
-    "REPEAT_RATE_BELOW_TARGET: 6.17% vs 10-15% target \u2014 cross-sell strategy needed",
-    "SHAMPOO_EMERGING_REPEAT: 4-in-1 Shampoo has highest repeat share (2.27%) \u2014 S&S opportunity"
+    "B0GT1H84JM ZERO CONVERSION: 8,508 sessions, $0 revenue — confirm no ads running to this ASIN",
+    "REPEAT_RATE_BELOW_TARGET: 6.17% vs 10-15% target — cross-sell strategy needed",
+    "SHAMPOO_EMERGING_REPEAT: 4-in-1 Shampoo has highest repeat share (2.27%) — S&S opportunity",
+    "CART_ABANDONMENT: 4,032 customers added to cart/wishlist/saved without purchasing in trailing 60 days — no recovery flow currently converting (Klaviyo cart flow at $0 revenue)",
+    "BROAD_INTENT_DECLINE: 4 of 6 SKUs show declining page views AND declining purchase interest in Week 30 — Detangling Treatment -33.5% intent, Rake -27.3%. Not one bad SKU.",
+    "LOYALTY_TIERS_MISSING: Customer Loyalty Analytics never exported — Section 7 tier cards cannot render. Needs a Seller Central export.",
+    "RETURN_RATES_MISSING: 1 of 6 SKUs has return data. Needs FBA Customer Returns export."
   ]
 }
