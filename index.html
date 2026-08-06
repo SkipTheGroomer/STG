@@ -226,6 +226,24 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 .alert-strip.warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;}
 .alert-strip.ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
 .alert-strip.info{background:#eff6ff;border:1px solid #cadcf8;color:#1e40af;}
+.ivv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;padding:4px 0;}
+.ivv-find{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--muted);border-radius:12px;padding:14px 17px;box-shadow:var(--shadow);}
+.ivv-find.t-red{border-left-color:var(--red);}
+.ivv-find.t-amber{border-left-color:var(--amber);}
+.ivv-find.t-blue{border-left-color:var(--blue);}
+.ivv-find h4{margin:0 0 6px;font-size:12.5px;font-weight:800;color:var(--text-primary);line-height:1.4;}
+.ivv-find p{margin:0;font-size:11.5px;line-height:1.65;color:var(--text-secondary);}
+.ivv-flag{display:inline-block;margin-left:7px;padding:1px 6px;border-radius:5px;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;vertical-align:middle;}
+.ivv-flag.f-stop{background:#fde8e6;color:var(--red);}
+.ivv-flag.f-hold{background:#fdf0dc;color:#9a6c0a;}
+.ivv-flag.f-rec{background:#fdf0dc;color:#9a6c0a;}
+.ivv-flag.f-inbound{background:#e3f2ec;color:var(--green);}
+.ivv-flag.f-plug{background:#eef1f6;color:var(--muted);}
+.ivv-split{font-size:10.5px;color:var(--muted);line-height:1.5;}
+#ivv-table tbody tr.ivv-sub{background:var(--card2);font-weight:800;}
+#ivv-table tbody tr.ivv-total{background:var(--chrome);color:#fff;font-weight:800;}
+#ivv-table tbody tr.ivv-total td{color:#fff;border-color:rgba(255,255,255,.12);}
+#ivv-table tbody tr.ivv-plug td{color:var(--muted);font-style:italic;}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;padding:14px 0 6px;}
 .kpi-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 17px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
 .kpi-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
@@ -883,14 +901,30 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offse
     </table>
   </div>
 
-  <!-- 6: Forecasted Retail Value -->
-  <div class="sec-head" style="padding-top:14px;"><h2>6 — Forecasted Retail Value</h2><span class="tag tag-info">POTENTIAL</span></div>
+  <!-- 6: Inventory COGS & Value -->
+  <div class="sec-head" style="padding-top:14px;">
+    <h2>6 — Inventory COGS &amp; Value</h2>
+    <span class="tag tag-info" id="ivv-tag">ALL INBOUND OWNED</span>
+    <span class="when" id="ivv-when"></span>
+  </div>
+  <div class="sec-desc" id="ivv-basis"></div>
+  <div class="kpi-grid" id="ivv-kpis"></div>
   <div class="tbl-wrap">
-    <table id="rv-table">
-      <thead><tr><th>SKU</th><th class="r">Total Units</th><th class="r">MSRP</th><th class="r">COGS/Unit</th><th class="r">COGS in Inventory</th><th class="r">Retail Value at MSRP</th><th class="r">Gross Profit Potential</th></tr></thead>
+    <div class="tbl-title">Inventory value by SKU · all inbound counted as sellable</div>
+    <table id="ivv-table">
+      <thead><tr>
+        <th>Product</th><th>Location Split</th>
+        <th class="r">Units</th><th class="r">Landed COGS</th><th class="r">Ext. COGS</th>
+        <th class="r">MSRP</th><th class="r">Ext. MSRP</th>
+        <th class="r">NP/Unit</th><th class="r">Ext. Net Profit</th><th class="r">Supply</th>
+      </tr></thead>
       <tbody></tbody>
     </table>
   </div>
+  <div class="sec-head" style="padding-top:14px;"><h2>What Changed &amp; What It Means</h2><span class="tag tag-info">READ-THROUGH</span></div>
+  <div class="ivv-grid" id="ivv-findings"></div>
+  <div class="ivv-grid" id="ivv-dataproblems" style="margin-top:12px;"></div>
+  <div class="sc-foot" id="ivv-foot"></div>
 
   <div class="sec-head"><h2>SKU Detail — Chews (Sep 1 Launch)</h2><span class="tag tag-warn">IN PRODUCTION</span></div>
   <div class="three" id="chews"></div>
@@ -3369,13 +3403,69 @@ function renderReports(files){
   const posWhen=$i('pos-when'); if(posWhen) posWhen.textContent='Amazon (Seller Central'+(liveOK?' + daily FBA feed':'')+') + WSA (warehouse export)';
   const posCards=$i('pos-cards'); if(posCards) posCards.innerHTML=(ps.cards||[]).map(c=>'<div class="card bdr-'+c.border+'"><div class="c-lbl">'+escS(c.label)+'</div><div class="c-val '+(c.vclass||'')+'">'+escS(c.value)+'</div><div class="c-sub">'+escS(c.sub)+'</div></div>').join('');
 
-  const rvTbody=$i('rv-table')?$i('rv-table').querySelector('tbody'):null;
-  if(rvTbody) rvTbody.innerHTML=(sc.skus||[]).map(s=>{
-    const live=liveMap[s.asin];const sell=live&&live.on_hand!=null?live.on_hand:s.manual_sellable;
-    const rec=(live&&live.amazon_min!=null)?live.amazon_min:s.amazon_recommended;
-    const below=sell!=null&&rec!=null&&sell<rec;
-    return '<tr'+(below?' style="background:#fbe6e3;"':'')+'><td>'+(below?'<b>':'')+escS(s.name)+(below?'</b>':'')+'</td><td class="r">'+fmtN(s.total_all_locations)+'</td><td class="r">$'+s.msrp.toFixed(2)+'</td><td class="r">$'+s.cogs.toFixed(2)+'</td><td class="r">'+fmtDl(Math.round(s.total_all_locations*s.cogs))+'</td><td class="r">'+fmtDl(s.retail_value)+'</td><td class="r">'+fmtDl(s.gross_profit_potential)+'</td></tr>';
-  }).join('');
+  // Section 6 rv-table retired Aug 6 - replaced by inventory_valuation renderer above
+
+  // --- Section 6: Inventory COGS & Value (data/supply_chain.json -> inventory_valuation) ---
+  (function renderInvValuation(){
+    const iv = sc.inventory_valuation || {};
+    const tb = $i('ivv-table') ? $i('ivv-table').querySelector('tbody') : null;
+    if(!tb) return;
+    if(iv.available !== true){
+      tb.innerHTML = '<tr><td colspan="10" style="color:var(--muted);font-style:italic;">No valuation data \u2014 add inventory_valuation to data/supply_chain.json (requires available:true).</td></tr>';
+      return;
+    }
+    const dl = v => fmtDl(v);
+    const setHTML = (id, h) => { const el = $i(id); if(el) el.innerHTML = h; };
+
+    setHTML('ivv-basis', iv.subtitle ? '<b>' + iv.subtitle + '.</b> ' + (iv.basis||'') : (iv.basis||''));
+    const w = $i('ivv-when'); if(w) w.textContent = 'Basis ' + (iv.as_of || sc.as_of || '');
+
+    setHTML('ivv-kpis', (iv.kpis||[]).map(k =>
+      '<div class="kpi-card kpi-' + (k.border==='orange'?'amber':(k.border||'blue')) + '">' +
+        '<div class="c-lbl">' + (k.label||'') + '</div>' +
+        '<div class="c-val ' + (k.vclass||'') + '">' + (k.value||'') + '</div>' +
+        '<div class="c-sub">' + (k.sub||'') + '</div>' +
+      '</div>').join(''));
+
+    const flagCls = f => 'f-' + String(f||'').toLowerCase().replace(/[^a-z]/g,'').slice(0,7);
+    const dataRow = r =>
+      '<tr' + (r.flag==='PLUG' ? ' class="ivv-plug"' : '') + '>' +
+        '<td><b>' + r.name + '</b>' + (r.flag ? '<span class="ivv-flag ' + flagCls(r.flag) + '">' + r.flag + '</span>' : '') +
+          (r.note ? '<div class="ivv-split">' + r.note + '</div>' : '') + '</td>' +
+        '<td><span class="ivv-split">' + (r.split||'') + '</span></td>' +
+        '<td class="r">' + fmtN(r.units) + '</td>' +
+        '<td class="r">$' + Number(r.cogs).toFixed(2) + '</td>' +
+        '<td class="r">' + dl(r.ext_cogs) + '</td>' +
+        '<td class="r">$' + Number(r.msrp).toFixed(2) + '</td>' +
+        '<td class="r">' + dl(r.ext_msrp) + '</td>' +
+        '<td class="r">$' + Number(r.np_unit).toFixed(2) + '</td>' +
+        '<td class="r">' + dl(r.ext_np) + '</td>' +
+        '<td class="r">' + (r.supply||'') + '</td>' +
+      '</tr>';
+    const subRow = (s, cls) =>
+      '<tr class="' + cls + '"><td colspan="2">' + s.label + '</td>' +
+        '<td class="r">' + fmtN(s.units) + '</td><td class="r">\u2014</td>' +
+        '<td class="r">' + dl(s.ext_cogs) + '</td><td class="r">\u2014</td>' +
+        '<td class="r">' + dl(s.ext_msrp) + '</td><td class="r">\u2014</td>' +
+        '<td class="r">' + dl(s.ext_np) + '</td><td class="r">\u2014</td></tr>';
+
+    tb.innerHTML =
+      (iv.core||[]).map(dataRow).join('') +
+      (iv.subtotal_core ? subRow(iv.subtotal_core,'ivv-sub') : '') +
+      (iv.chews||[]).map(dataRow).join('') +
+      (iv.subtotal_chews ? subRow(iv.subtotal_chews,'ivv-sub') : '') +
+      (iv.total ? subRow(iv.total,'ivv-total') : '');
+
+    setHTML('ivv-findings', (iv.findings||[]).map(f =>
+      '<div class="ivv-find t-' + (f.tone||'blue') + '"><h4>' + (f.head||'') + '</h4><p>' + (f.body||'') + '</p></div>').join(''));
+
+    setHTML('ivv-dataproblems', (iv.data_problems||[]).map(p =>
+      '<div class="ivv-find t-red"><h4>\u26a0 ' + (p.head||'') + '</h4><p>' + (p.body||'') + '</p></div>').join(''));
+
+    setHTML('ivv-foot', '<strong>Basis &amp; assumptions:</strong> ' + (iv.footnotes||'') +
+      ' Edit <b>data/supply_chain.json \u2192 inventory_valuation</b> to update this section.');
+  })();
+
   const stt=ps.subtotal||{};
 
   const sdWhen=$i('sd-when'); if(sdWhen) sdWhen.textContent=(liveOK?'Amazon sellable LIVE '+invAsOf+' · ':'')+'plan '+sc.as_of;
