@@ -30,11 +30,13 @@
       "daily_budget": null,
       "roas_target": null,
       "kill_threshold": 75,
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "approved_by": "Will Dryden",
       "approved_ts": null,
       "launched_by": "Blaze",
-      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22. Monitoring — approaching $75 kill threshold."
+      "paused_at": "2026-08-06",
+      "paused_by": "Blaze registry correction (confirmed PAUSED via live Meta pull 2026-08-06 — was incorrectly recorded as ACTIVE)",
+      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $86.17 / ROAS 0.232 / 2 purchases / $0.20 purchase value as of 2026-08-06 live pull. Pixel anomaly confirmed: $0.10/purchase is impossible for Shampoo at $9.99+ — purchase_value not passing correctly. Campaign has < 50 lifetime purchases — OUTCOME_SALES learning phase starved. Status corrected ACTIVE → PAUSED on 2026-08-06 Blaze run. Fix pixel before any restart — see P-2026-08-06-004 in blaze.json."
     }
   ]
 }
