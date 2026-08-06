@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-08-03T10:31:00-07:00",
+  "last_updated": "2026-08-06T08:10:00-07:00",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -12,20 +12,20 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-08: ROAS 1.43 on $318.18 spend (Supermetrics Query B)",
-        "2026-07-14: ROAS 1.33 on $325.03 7d spend \u2014 still RED vs 2.07 breakeven",
-        "2026-07-23: 7d ROAS 0.69 on $1,329.22 spend \u2014 RED band persists",
+        "2026-07-14: ROAS 1.33 on $325.03 7d spend — still RED vs 2.07 breakeven",
+        "2026-07-23: 7d ROAS 0.69 on $1,329.22 spend — RED band persists",
         "2026-07-26: 7d ROAS 0.69. TACOS 145.3% vs 15% target",
         "2026-07-27: ROAS 1.29 (RED, spend $214.14, sales $275.88). TACOS 172.2%",
         "2026-07-28: ROAS 1.503 (RED, spend $214.80, sales $322.79). TACOS 118.0%",
-        "2026-07-29: ROAS 2.182 on $196.01 spend / $427.61 sales \u2014 BAND CHANGE: RED \u2192 GREEN (first day above breakeven 2.07). 7d TACOS 126.8% vs 15% target \u2014 still RED on TACOS.",
-        "2026-08-03: Amazon Ads Supermetrics stale (data_date: 2026-07-28 \u2014 6 days old, Evening Pre-Run not confirmed running). ROAS and TACOS unverifiable. Last confirmed GREEN band: 2026-07-29. TACOS trend direction unknown. Monitor when fresh data resumes."
+        "2026-07-29: ROAS 2.182 on $196.01 spend / $427.61 sales — BAND CHANGE: RED → GREEN (first day above breakeven 2.07). 7d TACOS 126.8% vs 15% target — still RED on TACOS.",
+        "2026-08-03: Amazon Ads Supermetrics stale (data_date: 2026-07-28 — 6 days old, Evening Pre-Run not confirmed running). ROAS and TACOS unverifiable. Last confirmed GREEN band: 2026-07-29. TACOS trend direction unknown. Monitor when fresh data resumes."
       ],
       "status": "DOCTRINE",
       "confirmations": 12,
       "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-08_red",
-      "action_implication": "Last confirmed GREEN band 2026-07-29. Supermetrics data stale \u2014 cannot confirm sustained GREEN. Do not scale spend until 3-5 days of confirmed GREEN ROAS + TACOS trend improvement.",
+      "action_implication": "Last confirmed GREEN band 2026-07-29. Supermetrics data stale — cannot confirm sustained GREEN. Do not scale spend until 3-5 days of confirmed GREEN ROAS + TACOS trend improvement.",
       "retired_reason": null
     },
     {
@@ -34,18 +34,19 @@
       "subject": "Meta Ads Save the Shave UGC Bill campaign",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Save the Shave UGC Bill campaign paused with $447.17 L30D spend and ROAS 0.714 \u2014 no action taken for 35+ days despite underperformance.",
+      "learning": "Save the Shave UGC Bill campaign paused with $447.17 L30D spend and ROAS 0.714 — no action taken for 35+ days despite underperformance.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+. All 8 Meta campaigns PAUSED \u2014 $0 active Meta acquisition.",
-        "2026-08-03: All 8 Meta campaigns confirmed PAUSED per morning routine Aug 3 run (meta_ads.all_campaigns_paused=true). $567.42 L30D spend / 0.60 ROAS. Day 24+ since all campaigns paused. No active Meta acquisition. Day 52+ since UGC Bill paused with no resolution."
+        "2026-07-29: Campaign still PAUSED. L30D spend $447.17 / ROAS 0.714. Day 38+. All 8 Meta campaigns PAUSED — $0 active Meta acquisition.",
+        "2026-08-03: All 8 Meta campaigns confirmed PAUSED per morning routine Aug 3 run (meta_ads.all_campaigns_paused=true). $567.42 L30D spend / 0.60 ROAS. Day 24+ since all campaigns paused. No active Meta acquisition. Day 52+ since UGC Bill paused with no resolution.",
+        "2026-08-06: All 8 Meta campaigns confirmed PAUSED per Blaze 2026-08-06 live Meta pull. L30D spend $494.44 / ROAS 0.548 / 12 purchases / $270.99 purchase value. Day 3 since most recent pause (all campaigns). Day 55+ since UGC Bill first paused. $0 active Meta acquisition on any platform."
       ],
       "status": "DOCTRINE",
-      "confirmations": 11,
-      "last_confirmed": "2026-08-03",
+      "confirmations": 12,
+      "last_confirmed": "2026-08-06",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-10",
-      "action_implication": "@will: All 8 Meta campaigns PAUSED \u2014 Day 52+ with zero active Meta acquisition. Decide on UGC Bill campaign: revise creative or archive. Broader decision needed on Meta restart timing given cash position.",
+      "action_implication": "@will: All 8 Meta campaigns PAUSED — Day 55+ with zero active Meta acquisition. Decide on UGC Bill campaign: revise creative or archive. Broader decision needed on Meta restart timing given cash position.",
       "retired_reason": null
     },
     {
@@ -78,16 +79,16 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-29: 7d spend $92.30 / ROAS 0.914. 7d TACOS 462%. Day 43+. Spend increasing week-over-week.",
-        "2026-08-01: DAAS Aug 1 report \u2014 Slicker Brush shows $19.99 revenue / $1.14 net profit (1 unit sold). No confirmed ad spend breakdown by SKU available (Amazon Ads Supermetrics stale). Organic sale on liquidation SKU.",
-        "2026-08-02: DAAS Aug 2 report \u2014 Slicker Brush $0 revenue / ($6.56) net loss. FBA fees accruing on zero-revenue day.",
-        "2026-08-03: Amazon Ads Supermetrics data stale at 2026-07-28. Cannot confirm current ad spend on Slicker. Last known: $92.30/week (Day 43). Day 50+ since violation first detected. No action confirmed in any data source. VIOLATION CONTINUES \u2014 A-2 alert active."
+        "2026-08-01: DAAS Aug 1 report — Slicker Brush shows $19.99 revenue / $1.14 net profit (1 unit sold). No confirmed ad spend breakdown by SKU available (Amazon Ads Supermetrics stale). Organic sale on liquidation SKU.",
+        "2026-08-02: DAAS Aug 2 report — Slicker Brush $0 revenue / ($6.56) net loss. FBA fees accruing on zero-revenue day.",
+        "2026-08-03: Amazon Ads Supermetrics data stale at 2026-07-28. Cannot confirm current ad spend on Slicker. Last known: $92.30/week (Day 43). Day 50+ since violation first detected. No action confirmed in any data source. VIOLATION CONTINUES — A-2 alert active."
       ],
       "status": "DOCTRINE",
       "confirmations": 12,
       "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "@will: PAUSE ALL campaigns targeting B0FQ628KCH in Amazon Ads console \u2014 Day 50+. Last confirmed spend $92.30/week (July 29). Supermetrics stale \u2014 actual current spend unknown. No confirmed action in 50 days. This is the single highest-priority unresolved violation in the system.",
+      "action_implication": "@will: PAUSE ALL campaigns targeting B0FQ628KCH in Amazon Ads console — Day 50+. Last confirmed spend $92.30/week (July 29). Supermetrics stale — actual current spend unknown. No confirmed action in 50 days. This is the single highest-priority unresolved violation in the system.",
       "retired_reason": null
     },
     {
@@ -96,11 +97,11 @@
       "subject": "QuickBooks MTD revenue sync lag",
       "asin": null,
       "scope": "quickbooks",
-      "learning": "QuickBooks MTD revenue sync lag \u2014 use H10 Daily Profit for Amazon revenue cross-check.",
+      "learning": "QuickBooks MTD revenue sync lag — use H10 Daily Profit for Amazon revenue cross-check.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-29: MTD revenue $24,706.68 \u2014 partial update. Sync lag partially resolving.",
-        "2026-08-03: August MTD shows $0 (sync lag \u2014 only 2 days in, normal for new month). July final confirmed: $24,726.68 revenue / -$60,742.90 net income. QB sync lag resolved for July. August lag expected \u2014 use DAAS for Amazon revenue cross-check during first week of month."
+        "2026-07-29: MTD revenue $24,706.68 — partial update. Sync lag partially resolving.",
+        "2026-08-03: August MTD shows $0 (sync lag — only 2 days in, normal for new month). July final confirmed: $24,726.68 revenue / -$60,742.90 net income. QB sync lag resolved for July. August lag expected — use DAAS for Amazon revenue cross-check during first week of month."
       ],
       "status": "DOCTRINE",
       "confirmations": 16,
@@ -127,13 +128,13 @@
       "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-07-15",
-      "action_implication": "No action \u2014 permanent infrastructure limitation.",
+      "action_implication": "No action — permanent infrastructure limitation.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-27-001",
       "date_observed": "2026-07-27",
-      "subject": "Bundle B0GT1H84JM attribution crisis \u2014 spend with $0 attributed sales",
+      "subject": "Bundle B0GT1H84JM attribution crisis — spend with $0 attributed sales",
       "asin": "B0GT1H84JM",
       "scope": "amazon_ads",
       "learning": "Bundle B0GT1H84JM spending ~$895/week with $0 attributed ordered_product_sales. Attribution-window guard triggered. Breakeven ROAS=2.40, actual=0. Campaign structure or attribution window misconfigured.",
@@ -142,40 +143,41 @@
         "2026-07-27: 7d spend $1,029.07 / $0 ordered sales. Attribution flag triggered.",
         "2026-07-28: 7d spend $870.25 / $0 ordered sales. Day 2.",
         "2026-07-29: 7d spend $895.71 / $0 ordered sales. Yesterday spend $155.05/$0. Day 3. No action confirmed.",
-        "2026-07-31: Amazon Business Report confirms B0GT1H84JM \u2014 8,508 sessions, 97.93% buy box, $0 revenue, 0 units ordered (lifetime/period total). Zero conversion confirmed from independent source.",
-        "2026-08-03: Amazon Ads Supermetrics stale at 2026-07-28 \u2014 cannot confirm current spend. Last known: $895.71/week. Day 8 with no confirmed action. Business Report independently confirms $0 revenue on this ASIN. CRITICAL: ~$155/day burning with zero return. Estimated burn since Day 1: ~$1,200+."
+        "2026-07-31: Amazon Business Report confirms B0GT1H84JM — 8,508 sessions, 97.93% buy box, $0 revenue, 0 units ordered (lifetime/period total). Zero conversion confirmed from independent source.",
+        "2026-08-03: Amazon Ads Supermetrics stale at 2026-07-28 — cannot confirm current spend. Last known: $895.71/week. Day 8 with no confirmed action. Business Report independently confirms $0 revenue on this ASIN. CRITICAL: ~$155/day burning with zero return. Estimated burn since Day 1: ~$1,200+."
       ],
       "status": "DOCTRINE",
       "confirmations": 4,
       "last_confirmed": "2026-08-03",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-27_new",
-      "action_implication": "@will/@marcelo: PAUSE ALL B0GT1H84JM campaigns \u2014 Day 8, no action confirmed. Est. $1,200+ burned since flag opened with $0 attributed sales. Business Report confirms zero conversion independently. Check attribution window settings in Amazon Ads console. This is the second highest-priority unresolved violation after Slicker Brush.",
+      "action_implication": "@will/@marcelo: PAUSE ALL B0GT1H84JM campaigns — Day 8, no action confirmed. Est. $1,200+ burned since flag opened with $0 attributed sales. Business Report confirms zero conversion independently. Check attribution window settings in Amazon Ads console. This is the second highest-priority unresolved violation after Slicker Brush.",
       "retired_reason": null
     },
     {
       "id": "L-2026-08-03-001",
       "date_observed": "2026-08-03",
-      "subject": "Amazon Ads Supermetrics stale \u2014 Evening Pre-Run not confirmed running",
+      "subject": "Amazon Ads Supermetrics stale — Evening Pre-Run not confirmed running",
       "asin": null,
       "scope": "amazon_ads",
       "learning": "Amazon Ads data consistently stale at 2026-07-28 across multiple morning runs. Evening Pre-Run (11 PM cron) likely not running or queries timing out before completion. Per-ASIN ROAS, TACOS, and spend data unavailable for 6+ days.",
       "driver_type": "INFRASTRUCTURE",
       "evidence": [
-        "2026-08-03: connectors_data.supermetrics.amazon_ads.data_date = 2026-07-28 \u2014 6 days stale. Morning routine v10.32 ran but could not collect fresh data. Per-ASIN spend/ROAS unknown for Slicker (L-2026-07-14-001) and Bundle (L-2026-07-27-001)."
+        "2026-08-03: connectors_data.supermetrics.amazon_ads.data_date = 2026-07-28 — 6 days stale. Morning routine v10.32 ran but could not collect fresh data. Per-ASIN spend/ROAS unknown for Slicker (L-2026-07-14-001) and Bundle (L-2026-07-27-001).",
+        "2026-08-06: Supermetrics data still stale — generated 2026-08-05 08:26 PT (~24h old, >12h threshold). Evening Pre-Run still not confirmed running. Amazon PPC monitoring blind for second consecutive Blaze run."
       ],
       "status": "OPEN",
-      "confirmations": 1,
-      "last_confirmed": "2026-08-03",
+      "confirmations": 2,
+      "last_confirmed": "2026-08-06",
       "contradictions": 0,
       "source_brief_id": "jarvis_infrastructure_2026-08-03",
-      "action_implication": "@josh: Confirm 11 PM Evening Pre-Run cron is running on JARVIS machine (`crontab -l`). If not running, start it. If running, check logs for timeout errors. Amazon Ads data has been stale 6+ days \u2014 highest-priority infrastructure fix.",
+      "action_implication": "@josh: Confirm 11 PM Evening Pre-Run cron is running on JARVIS machine (`crontab -l`). If not running, start it. If running, check logs for timeout errors. Amazon Ads data has been stale across multiple consecutive runs — highest-priority infrastructure fix.",
       "retired_reason": null
     },
     {
       "id": "blaze_write_path_verified",
       "date_observed": "2026-08-03",
-      "subject": "Meta Ads write path verification \u2014 A-1 prerequisite",
+      "subject": "Meta Ads write path verification — A-1 prerequisite",
       "asin": null,
       "scope": "meta_ads",
       "learning": "Required by STANDING_AUTHORITY_v1.1 before A-1 auto-kill can fire. Josh must test: pause any already-paused Meta campaign via Meta MCP connector, confirm success, update this learning to VALIDATED.",
@@ -188,7 +190,7 @@
       "last_confirmed": null,
       "contradictions": 0,
       "source_brief_id": "standing_authority_v1.1_prerequisite",
-      "action_implication": "@josh: Test Meta MCP write path \u2014 run `ads_update_entity` to pause any already-paused campaign, confirm it worked, then update this learning status to VALIDATED. Until done, A-1 auto-kill cannot fire even though Will signed the authority.",
+      "action_implication": "@josh: Test Meta MCP write path — run `ads_update_entity` to pause any already-paused campaign, confirm it worked, then update this learning status to VALIDATED. Until done, A-1 auto-kill cannot fire even though Will signed the authority.",
       "retired_reason": null
     }
   ]
