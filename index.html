@@ -3316,7 +3316,26 @@ function renderReports(files){
     const statusPill=below?'<span class="pill pill-crit">BELOW REC</span>':'<span class="pill pill-'+(s.pill||'na')+'">'+escS(s.status)+'</span>';
     return '<tr'+(below?' style="background:#fbe6e3;"':'')+'>'
       +'<td><b>'+escS(s.name)+'</b>'+(s.star?' ⭐':'')+'<br><span class="sku-sub">'+(isLive?invAsOf+' live':sc.as_of+' plan')+'</span></td>'
-      +'<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'+(isLive?'<span class="live-badge">LIVE</span>':_staleLive?'<span class="manual-badge" style="background:#fef3c7;color:#b45309;">STALE '+(invAge!=null?Math.floor(invAge)+'d':'')+'</span>':'<span class="manual-badge">PLAN</span>')+'</td>'
+      // v10.35: show network context when units_total meaningfully exceeds available
+      // (difference = FC transfer / working / reserved units not yet sellable)
+      +(function(){
+        const _tot = live ? live.units_total : null;
+        const _netDiff = (_tot != null && sellable != null && _tot - sellable > 50) ? (_tot - sellable) : null;
+        const _inb = live ? (live.units_inbound || 0) : 0;
+        const _networkNote = _netDiff
+          ? '<div style="font-size:10px;color:#5a6a7a;margin-top:3px;white-space:nowrap;">'
+            + '<span style="color:var(--navy);font-weight:600;">+' + fmtN(_netDiff) + '</span>'
+            + ' FC transfer'
+            + (_inb > 0 ? ' &nbsp;·&nbsp; <span style="color:var(--navy);font-weight:600;">' + fmtN(_inb) + '</span> inbound' : '')
+            + '</div>'
+          : (_inb > 0
+            ? '<div style="font-size:10px;color:#5a6a7a;margin-top:3px;white-space:nowrap;">'
+              + '<span style="color:var(--navy);font-weight:600;">' + fmtN(_inb) + '</span> inbound</div>'
+            : '');
+        return '<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'
+          +(isLive?'<span class="live-badge">LIVE</span>':_staleLive?'<span class="manual-badge" style="background:#fef3c7;color:#b45309;">STALE '+(invAge!=null?Math.floor(invAge)+'d':'')+'</span>':'<span class="manual-badge">PLAN</span>')
+          +_networkNote+'</td>';
+      })()
       +'<td class="r">'+fmtN(rec)+'</td>'
       +'<td class="r">'+(rate!=null?rate.toFixed(1):'—')+'</td>'
       +'<td class="r">'+(dtr==null?'—':(below?'<b style="color:var(--red);">':'')+(dtr<0?'−':'~')+Math.abs(dtr).toFixed(dtr<0?1:0)+(below?'</b>':''))+'</td>'

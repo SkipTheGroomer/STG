@@ -1,1 +1,248 @@
-eyJhZ2VudCI6ICIwMzMgQW1hem9uIiwgInJ1biI6IDM0LCAiZGF0ZSI6ICIyMDI2LTA3LTI5IiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTA3LTI5VDA4OjIwOjAwLTA3OjAwIiwgIm1vZGUiOiAiREVHUkFERUQiLCAic3VtbWFyeSI6IHsic3RhdHVzIjogIlJFRCIsICJuZWdhdGl2ZXNfc3RhZ2VkIjogMCwgImJpZF9yZWNzIjogNSwgInJhbmtfZGVmZW5zZSI6IDAsICJsaXN0aW5nX2ZpeGVzIjogNiwgInNvbHV0aW9ucyI6IDExLCAiYmxvY2tlZCI6IDMsICJmbGFnc190b3RhbCI6IDEyLCAiZmxhZ3NfcmVkIjogNCwgImZsYWdzX3llbGxvdyI6IDh9LCAidGFjb3NfZ3VhcmQiOiB7IndpbmRvd19kYXlzIjogNywgInRvdGFsX3NwZW5kXzdkIjogMjU3NC40OCwgInRvdGFsX29yZGVyZWRfc2FsZXNfN2QiOiAxNDc3LjM5LCAidGFjb3NfcGN0IjogMTc0LjMsICJ0YXJnZXRfcGN0IjogMzUuMCwgInN0YXR1cyI6ICJSRUQiLCAibm90ZSI6ICJCdW5kbGUgQjBHVDFIODRKTSBhdHRyaWJ1dGlvbiBjcmlzaXMgaW5mbGF0aW5nIHNwZW5kIHZzIHNhbGVzOyBTaGFtcG9vIDE4Mi40JSBzaW5nbGUgd29yc3QgY29udHJpYnV0b3IifSwgImxlYXJuaW5nc19hY3RpdmUiOiBbIkwtMjAyNi0wNy0wOC0wMDEiLCAiTC0yMDI2LTA3LTEzLTAwMSIsICJMLTIwMjYtMDctMTQtMDAxIiwgIkwtMjAyNi0wNy0xNC0wMDIiLCAiTC0yMDI2LTA3LTE1LTAwMSIsICJMLTIwMjYtMDctMjctMDAxIl0sICJ1Z2NfZ2FwIjogeyJza3VzX3dpdGhfZ2FwIjogNiwgImFjdGl2ZV9icmllZnMiOiAwLCAidWdjX2RhdGFfc3RhbGVuZXNzX2RheXMiOiAxNywgImFjdGlvbiI6ICJFenJhIHVwZGF0ZSByZXF1aXJlZCJ9LCAiZmxhZ3MiOiBbeyJpZCI6ICIwMzNfZmxhZ18yMDI2MDcyOV8wMDEiLCAic2V2ZXJpdHkiOiAiUkVEIiwgInBoYXNlIjogIjEiLCAiZG9jdHJpbmUiOiAiTC0yMDI2LTA3LTE0LTAwMSIsICJhc2luIjogIkIwRlE2MjhLQ0giLCAic2t1IjogIlNsaWNrZXIiLCAidGl0bGUiOiAiU2xpY2tlciBzcGVuZCB2aW9sYXRpb24gLSBEYXkgNDMrIERPQ1RSSU5FIiwgImRldGFpbCI6ICI3ZCBzcGVuZCAkOTIuMzAsIDdkIG9yZGVyZWQgc2FsZXMgJDE5Ljk4LiBTbGlja2VyPUxJUVVJREFUSU9OOiB6ZXJvIGFkIGZ1bmRpbmcgZXZlciBwZXIgQlJBTkRfUlVMRVMuIiwgImFjdGlvbiI6ICJTVEFHRUQ6IFBhdXNlIGFsbCBTbGlja2VyIGFkIGNhbXBhaWducyBpbW1lZGlhdGVseS4iLCAic3RhdHVzIjogIlNUQUdFRCJ9LCB7ImlkIjogIjAzM19mbGFnXzIwMjYwNzI5XzAwMiIsICJzZXZlcml0eSI6ICJSRUQiLCAicGhhc2UiOiAiMSIsICJkb2N0cmluZSI6ICJMLTIwMjYtMDctMjctMDAxIiwgImFzaW4iOiAiQjBHVDFIODRKTSIsICJza3UiOiAiU2F2ZSB0aGUgU2hhdmUgQnVuZGxlIiwgInRpdGxlIjogIkJ1bmRsZSBhdHRyaWJ1dGlvbiBjcmlzaXMgLSAkODk1LjcxIHNwZW5kIC8gJDAgc2FsZXMgKDdkKSIsICJkZXRhaWwiOiAiQ29uZmlybWF0aW9uICMyLiA3ZCBzcGVuZCAkODk1LjcxLCA3ZCBvcmRlcmVkIHNhbGVzICQwLiBBdHRyaWJ1dGlvbiB3aW5kb3cgbWlzY29uZmlndXJhdGlvbi4iLCAiYWN0aW9uIjogIlNUQUdFRDogUGF1c2UgQnVuZGxlIGNhbXBhaWducy4gQXVkaXQgYXR0cmlidXRpb24gd2luZG93IGZvciBhbGwgYnVuZGxlIEFTSU5zLiIsICJzdGF0dXMiOiAiU1RBR0VEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDAzIiwgInNldmVyaXR5IjogIlJFRCIsICJwaGFzZSI6ICIxIiwgImFzaW4iOiAiQjBGUUwxNkdINCIsICJza3UiOiAiU2hhbXBvbyIsICJ0aXRsZSI6ICJTaGFtcG9vIFRBQ09TIDE4Mi40JSAtIGVzY2FsYXRlZCBmcm9tIHllc3RlcmRheSIsICJkZXRhaWwiOiAiMWQgc3BlbmQgJDkuMzMgLyAkMCBzYWxlcy4gN2Qgc3BlbmQgJDgwLjE5IC8gJDQzLjk2IHNhbGVzLiBUQUNPUyAxODIuNCUgKHdhcyAxMjQuNCUpLiBFc2NhbGF0ZWQgZnJvbSAxMC0xNSUgdG8gMjAtMjUlLiIsICJhY3Rpb24iOiAiU1RBR0VEOiAyMC0yNSUgYmlkIHJlZHVjZSBhY3Jvc3MgYWxsIFNoYW1wb28gYWQgZ3JvdXBzLiIsICJzdGF0dXMiOiAiU1RBR0VEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDA0IiwgInNldmVyaXR5IjogIlJFRCIsICJwaGFzZSI6ICIyIiwgImRvY3RyaW5lIjogIkwtMjAyNi0wNy0xMy0wMDEiLCAiYXNpbiI6ICJCMEZRRlAyUzlGIiwgInNrdSI6ICJGdXJGaXgiLCAidGl0bGUiOiAiRnVyRml4IFNUUkFOREVEIC0gRGF5IDE3KyBET0NUUklORSIsICJkZXRhaWwiOiAiNjAgdW5pdHMgc3RyYW5kZWQsICQxLjMxL3VuaXQgYWdlZCBzdXJjaGFyZ2UgYWNjcnVpbmcuIiwgImFjdGlvbiI6ICJTVEFHRUQ6IFJlc29sdmUgc3RyYW5kZWQgbGlzdGluZyAtIGNoZWNrIHN1cHByZXNzaW9uIHJlYXNvbiBpbiBTQy4iLCAic3RhdHVzIjogIlNUQUdFRCJ9LCB7ImlkIjogIjAzM19mbGFnXzIwMjYwNzI5XzAwNSIsICJzZXZlcml0eSI6ICJZRUxMT1ciLCAicGhhc2UiOiAiMSIsICJhc2luIjogIkJVTkRMRV9GVUxMQ09BVCIsICJza3UiOiAiRnVsbCBDb2F0IDVwYyBCdW5kbGUiLCAidGl0bGUiOiAiRnVsbCBDb2F0IDVwYyBCdW5kbGUgLSAkMCBhdHRyaWJ1dGVkIHNhbGVzIHdpdGggYWN0aXZlIHNwZW5kIiwgImRldGFpbCI6ICIxZCBhbmQgN2Qgb3JkZXJlZCBzYWxlcyAkMCB3aXRoIGNvbmZpcm1lZCBhY3RpdmUgc3BlbmQuIFNhbWUgcGF0dGVybiBhcyBCMEdUMUg4NEpNLiIsICJhY3Rpb24iOiAiU1RBR0VEOiBBdWRpdCBhdHRyaWJ1dGlvbiB3aW5kb3cuIFBhdXNlIGFuZCBlc2NhbGF0ZSBpZiBzYW1lIGlzc3VlIGNvbmZpcm1lZC4iLCAic3RhdHVzIjogIlNUQUdFRCJ9LCB7ImlkIjogIjAzM19mbGFnXzIwMjYwNzI5XzAwNiIsICJzZXZlcml0eSI6ICJZRUxMT1ciLCAicGhhc2UiOiAiMSIsICJhc2luIjogIkJVTkRMRV9UQU5HTEVNQVQiLCAic2t1IjogIlRhbmdsZSAmIE1hdCBCdW5kbGUiLCAidGl0bGUiOiAiVGFuZ2xlICYgTWF0IEJ1bmRsZSAtICQwIGF0dHJpYnV0ZWQgc2FsZXMgd2l0aCBhY3RpdmUgc3BlbmQiLCAiZGV0YWlsIjogIjFkIGFuZCA3ZCBvcmRlcmVkIHNhbGVzICQwIHdpdGggY29uZmlybWVkIGFjdGl2ZSBzcGVuZC4gU2FtZSBwYXR0ZXJuIGFzIEIwR1QxSDg0Sk0uIiwgImFjdGlvbiI6ICJTVEFHRUQ6IEF1ZGl0IGF0dHJpYnV0aW9uIHdpbmRvdy4gUGF1c2UgYW5kIGVzY2FsYXRlIGlmIHNhbWUgaXNzdWUgY29uZmlybWVkLiIsICJzdGF0dXMiOiAiU1RBR0VEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDA3IiwgInNldmVyaXR5IjogIllFTExPVyIsICJwaGFzZSI6ICIxIiwgImFzaW4iOiAiQjBGUUYyVlRNSiIsICJza3UiOiAiUmFrZSIsICJ0aXRsZSI6ICJSYWtlIExPV19TVE9DSyAtIDQxMyB1bml0cyAvIDIwIERvUywgNDUwMCBpbmJvdW5kIiwgImRldGFpbCI6ICIyMCBkYXlzIG9mIHN0b2NrIHJlbWFpbmluZy4gNDUwMCB1bml0cyBpbmJvdW5kIC0gbW9uaXRvciBFVEEuIDdkIHNhbGVzICQyMDEuNjUuIiwgImFjdGlvbiI6ICJIT0xEIDcyaDogTW9uaXRvciBpbmJvdW5kIEVUQS4gUmUtZXZhbHVhdGUgQXVnIDEuIiwgInN0YXR1cyI6ICJIT0xEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDA4IiwgInNldmVyaXR5IjogIllFTExPVyIsICJwaGFzZSI6ICIyIiwgImFzaW4iOiAiQjBGUUwxNkdINCIsICJza3UiOiAiU2hhbXBvbyIsICJ0aXRsZSI6ICJTaGFtcG9vIEVYQ0VTUyAtIDQwMTQgdW5pdHMgLyAkODQ5LjMyIHN0b3JhZ2UgZmVlIHJpc2siLCAiZGV0YWlsIjogIjQwMTQgdW5pdHMgZXhjZXNzLiBUQUNPUyAxODIuNCUgbWFrZXMgYWQtZHJpdmVuIHNlbGwtZG93biBleHBlbnNpdmUuIiwgImFjdGlvbiI6ICJTVEFHRUQ6IFJldmlldyBTaGFtcG9vIHByaWNpbmcgZm9yIHNlbGwtZG93bi4gTm8gYWQgYnVkZ2V0IGluY3JlYXNlIHVudGlsIFRBQ09TIDwzNSUuIiwgInN0YXR1cyI6ICJTVEFHRUQifSwgeyJpZCI6ICIwMzNfZmxhZ18yMDI2MDcyOV8wMDkiLCAic2V2ZXJpdHkiOiAiWUVMTE9XIiwgInBoYXNlIjogIjIiLCAiYXNpbiI6ICJCMEZRREhYU1o1IiwgInNrdSI6ICJQaW4gQnJ1c2giLCAidGl0bGUiOiAiUGluIEJydXNoIEVYQ0VTUyAtIDIwMDcgdW5pdHMgLyAkNDA2LjI4IHN0b3JhZ2UgZmVlIHJpc2siLCAiZGV0YWlsIjogIjIwMDcgdW5pdHMgZXhjZXNzLiBDb25mbGljdGluZyBhZCBzaWduYWw6IDdkIFJPQVMgMC42ODYgdnMgMWQgUk9BUyAzLjY4LiIsICJhY3Rpb24iOiAiSE9MRCA3Mmg6IE1vbml0b3IgMWQgUk9BUyB0cmVuZC4gUmUtZXZhbHVhdGUgQXVnIDEuIiwgInN0YXR1cyI6ICJIT0xEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDEwIiwgInNldmVyaXR5IjogIllFTExPVyIsICJwaGFzZSI6ICIyIiwgImFzaW4iOiAiQjBHVjVaRkxDMiIsICJza3UiOiAiVHJlYXRtZW50IiwgInRpdGxlIjogIlRyZWF0bWVudCBFWENFU1MgLSA4MzM0IHVuaXRzIiwgImRldGFpbCI6ICI4MzM0IHVuaXRzIGV4Y2Vzcy4gN2Qgc2FsZXMgJDkzLjA1LiBUcmVhdG1lbnQ9Uk9VVElORSBwZXIgQlJBTkRfUlVMRVMgKG5vIHNwcmF5L21pc3QpLiIsICJhY3Rpb24iOiAiU1RBR0VEOiBSZXZpZXcgVHJlYXRtZW50IGxpc3RpbmcgY29tcGxpYW5jZS4gTm8gYWQgaW5jcmVhc2UgdW50aWwgVEFDT1MgaW1wcm92ZXMuIiwgInN0YXR1cyI6ICJTVEFHRUQifSwgeyJpZCI6ICIwMzNfZmxhZ18yMDI2MDcyOV8wMTEiLCAic2V2ZXJpdHkiOiAiWUVMTE9XIiwgInBoYXNlIjogIjIiLCAiYXNpbiI6ICJBTExfU0tVUyIsICJza3UiOiAiVUdDIC0gYWxsIDYgYWN0aXZlIFNLVXMiLCAidGl0bGUiOiAiVUdDIGdhcCAtIDYgU0tVcyAvIDAgYWN0aXZlIGJyaWVmcyAvIHVnY19kYXRhIDE3IGRheXMgc3RhbGUiLCAiZGV0YWlsIjogIkFsbCA2IGFjdGl2ZSBTS1VzIGdhcF9mbGFnPXRydWUsIDAgYWN0aXZlIGJyaWVmcy4gdWdjX2RhdGEuanNvbiBsYXN0X3VwZGF0ZWQgMjAyNi0wNy0xMi4iLCAiYWN0aW9uIjogIlNUQUdFRDogUmVxdWVzdCBFenJhIHVwZGF0ZSB1Z2NfZGF0YS5qc29uLiBPcGVuIDEgVUdDIGJyaWVmIHBlciB0b3Atc3BlbmQgU0tVLiIsICJzdGF0dXMiOiAiU1RBR0VEIn0sIHsiaWQiOiAiMDMzX2ZsYWdfMjAyNjA3MjlfMDEyIiwgInNldmVyaXR5IjogIllFTExPVyIsICJwaGFzZSI6ICIyIiwgImFzaW4iOiAiQjBIQjdMM0Q5NSxCMEhCNk5EVkhQIiwgInNrdSI6ICJVbmtub3duIENoZXdzIEFTSU5zIiwgInRpdGxlIjogIlVua25vd24gQ2hld3MgQVNJTnMgLSBTQyBhbGVydHMsIG5vdCBpbiByb2FzX2JhbmRzLmpzb24iLCAiZGV0YWlsIjogIkIwSEI3TDNEOTUgKERvZyBBbGxlcmd5IENoZXdzLCAwIG9uLWhhbmQpIGFuZCBCMEhCNk5EVkhQIChTa2luICYgQ29hdCwgMCBvbi1oYW5kKSBpbiBpbnZlbnRvcnlfZGF0YSBidXQgbm90IGluIHJvYXNfYmFuZHMuanNvbi4gTm90IFNlcCAxIGxhdW5jaCBBU0lOcy4iLCAiYWN0aW9uIjogIlNUQUdFRDogV2lsbCB0byBjbGFyaWZ5IGlkZW50aXR5IGFuZCBzdGF0dXMuIFNDIGFsZXJ0cyBuZWVkIHJlc29sdXRpb24gcmVnYXJkbGVzcy4iLCAic3RhdHVzIjogIlNUQUdFRCJ9XSwgImJpZF9yZWNzIjogW3siYXNpbiI6ICJCMEZRTDE2R0g0IiwgInNrdSI6ICJTaGFtcG9vIiwgImRpcmVjdGlvbiI6ICJSRURVQ0UiLCAicGN0IjogIjIwLTI1IiwgImJhc2lzIjogIlRBQ09TIDE4Mi40JSwgZXNjYWxhdGVkIGZyb20gMTAtMTUlIiwgInN0YXR1cyI6ICJTVEFHRUQifSwgeyJhc2luIjogIkIwRlE2MjhLQ0giLCAic2t1IjogIlNsaWNrZXIiLCAiZGlyZWN0aW9uIjogIlBBVVNFIiwgInBjdCI6ICIxMDAiLCAiYmFzaXMiOiAiTElRVUlEQVRJT04gLSB6ZXJvIGFkIGZ1bmRpbmcgZXZlciBwZXIgQlJBTkRfUlVMRVMgKyBET0NUUklORSBMLTIwMjYtMDctMTQtMDAxIiwgInN0YXR1cyI6ICJTVEFHRUQifSwgeyJhc2luIjogIkIwR1QxSDg0Sk0iLCAic2t1IjogIlNhdmUgdGhlIFNoYXZlIEJ1bmRsZSIsICJkaXJlY3Rpb24iOiAiUEFVU0UiLCAicGN0IjogIjEwMCIsICJiYXNpcyI6ICJBdHRyaWJ1dGlvbiBjcmlzaXMgJDg5NS43MS83ZCBzcGVuZCAkMCBzYWxlcyArIERPQ1RSSU5FIEwtMjAyNi0wNy0yNy0wMDEiLCAic3RhdHVzIjogIlNUQUdFRCJ9LCB7ImFzaW4iOiAiQjBER0ZRTVZRTCIsICJza3UiOiAiRGVtYXR0ZXIiLCAiZGlyZWN0aW9uIjogIkhPTEQiLCAicGN0IjogIjAiLCAiYmFzaXMiOiAiMWQgUk9BUyAyLjE4ID4gYnJlYWtldmVuIDIuMDc7IG9yZ2FuaWNzIHIxOSs1OyBzdXBlcnNlZGVzIHllc3RlcmRheSBiaWQgcmVkdWNlIHBlciBMLTIwMjYtMDctMDgtMDAxLiBIT0xEIDcyaC4iLCAic3RhdHVzIjogIkhPTEQifSwgeyJhc2luIjogIkIwRlFESFhTWjUiLCAic2t1IjogIlBpbiBCcnVzaCIsICJkaXJlY3Rpb24iOiAiSE9MRCIsICJwY3QiOiAiMCIsICJiYXNpcyI6ICJDb25mbGljdGluZyBzaWduYWxzOiA3ZCBST0FTIDAuNjg2IHZzIDFkIFJPQVMgMy42OCBHUkVFTi4gSE9MRCA3MmgsIHJlLWV2YWx1YXRlIEF1ZyAxLiIsICJzdGF0dXMiOiAiSE9MRCJ9XSwgImJsb2NrZWQiOiBbeyJzdGVwIjogIjFBIiwgIml0ZW0iOiAiTmVnYXRpdmUga2V5d29yZCBzdGFnaW5nIiwgInJlYXNvbiI6ICJERUdSQURFRCBNT0RFIC0gTC0yMDI2LTA3LTE1LTAwMTogYnJvd3NlciBzY3JhcGUgcGVybWFuZW50bHkgdW5hdmFpbGFibGUifSwgeyJzdGVwIjogIjJBIiwgIml0ZW0iOiAiTGlzdGluZyBhbmFseXplciAvIGxpc3Rpbmcgc2NvcmUgdHJpYWdlIiwgInJlYXNvbiI6ICJERUdSQURFRCBNT0RFIC0gTC0yMDI2LTA3LTE1LTAwMTogYnJvd3NlciBzY3JhcGUgcGVybWFuZW50bHkgdW5hdmFpbGFibGUifSwgeyJzdGVwIjogIjJCIiwgIml0ZW0iOiAiQ29tcGxpYW5jZSBzd2VlcCAvIGNyZWF0aXZlIENUUiBkYXRhIiwgInJlYXNvbiI6ICJERUdSQURFRCBNT0RFIC0gTC0yMDI2LTA3LTE1LTAwMTogYnJvd3NlciBzY3JhcGUgcGVybWFuZW50bHkgdW5hdmFpbGFibGUifV0sICJwb3N0cyI6IFt7ImNoYW5uZWwiOiAiQzBCRFU1Mk5WNjEiLCAicGhhc2UiOiAicGhhc2UxIiwgInRzIjogIjE3ODUzMzgxODEuMTE1NzU5IiwgInR5cGUiOiAibWFpbiJ9LCB7ImNoYW5uZWwiOiAiQzBCRFU1Mk5WNjEiLCAicGhhc2UiOiAicGhhc2UyIiwgInRzIjogIjE3ODUzMzgyNzIuMDU1NDc5IiwgInR5cGUiOiAibWFpbiJ9LCB7ImNoYW5uZWwiOiAiQzBCRFU1Mk5WNjEiLCAicGhhc2UiOiAiY2xvc2VvdXQiLCAidHMiOiAiMTc4NTMzODMzNy4xNTEyNzkiLCAidHlwZSI6ICJjbG9zZW91dCJ9XSwgInNsYWNrX3RocmVhZF90cyI6IHsicGhhc2UxIjogIjE3ODUzMzgxODEuMTE1NzU5IiwgInBoYXNlMiI6ICIxNzg1MzM4MjcyLjA1NTQ3OSIsICJjbG9zZW91dCI6ICIxNzg1MzM4MzM3LjE1MTI3OSJ9fQ==
+{
+  "run_date": "2026-08-06",
+  "run_time_pt": "08:20",
+  "routine": "STG 033 Amazon v1.1",
+  "mode": "DEGRADED",
+  "data_quality": {
+    "supermetrics_age_hours": 24,
+    "supermetrics_stale": true,
+    "supermetrics_generated": "2026-08-05T08:26:49-07:00",
+    "inventory_date": "2026-08-05",
+    "helium10_rank_date": "2026-08-03",
+    "connectors_data_date": "2026-08-05"
+  },
+  "phase1": {
+    "mode": "DEGRADED — Supermetrics ~24h stale; bid/rank recs advisory only",
+    "tacos": {
+      "estimated": 0.329,
+      "target": 0.35,
+      "status": "YELLOW",
+      "note": "~32.9% from stale data; below 35% target; no hot-SKU action"
+    },
+    "violations": [
+      {
+        "id": "V-1",
+        "asin": "B0GT1H84JM",
+        "product": "Bundle",
+        "type": "attribution_crisis",
+        "status": "BLOCKED",
+        "day": 12,
+        "spend_7d": 1077.95,
+        "sales_yesterday": 0,
+        "est_cumulative_burn": 1860,
+        "doctrine": "L-2026-07-27-001",
+        "doctrine_confidence": 4,
+        "action": "PAUSE all B0GT1H84JM campaigns in Campaign Manager",
+        "data_freshness": "FRESH — Query C Aug 4"
+      },
+      {
+        "id": "V-2",
+        "asin": "B0FQ628KCH",
+        "product": "Slicker",
+        "type": "liquidation_violation",
+        "status": "BLOCKED",
+        "day": 52,
+        "spend_7d": 99.38,
+        "sales_yesterday": 0,
+        "est_cumulative_burn": 1200,
+        "doctrine": "L-2026-07-14-001",
+        "doctrine_confidence": 12,
+        "action": "PAUSE ALL campaigns B0FQ628KCH — liquidation SKU, ad_eligible=false",
+        "data_freshness": "FRESH — Query C Aug 4"
+      },
+      {
+        "id": "V-3",
+        "asins": ["B0GT1H84JM", "B0GY9WZWKH", "B0GXLPJS4C"],
+        "type": "zero_sales_bundles",
+        "status": "BLOCKED",
+        "day": 8,
+        "action": "PAUSE pending attribution audit; verify B0GY9WZWKH and B0GXLPJS4C spend in Ad Console",
+        "data_freshness": "FRESH for B0GT1H84JM only; B0GY9WZWKH and B0GXLPJS4C stale"
+      }
+    ],
+    "bid_recs": [
+      {
+        "asin": "B0FQFF1DRT",
+        "product": "Dematter",
+        "roas_yesterday": 1.4389,
+        "band": "YELLOW",
+        "action": "HOLD — do not scale per L-2026-07-08-001 DOCTRINE",
+        "stale_flag": true
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "product": "Rake",
+        "roas_yesterday": 1.2091,
+        "band": "KILL",
+        "action": "Reduce bids 20-30% on underperforming keyword groups",
+        "stale_flag": true
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "product": "Shampoo",
+        "roas_yesterday": 1.2773,
+        "band": "KILL",
+        "action": "Reduce bids 20-30%; pause KILL-band ad groups",
+        "stale_flag": true
+      }
+    ],
+    "margin_source_conflict_flag": true,
+    "margin_source_conflict_note": "roas_bands.json vs stg-cogs skill disagree on breakevens — Will must rule before acting on bands",
+    "rank_defense": {
+      "id": "RD-1",
+      "asin": "B0FQFF1DRT",
+      "product": "Dematter",
+      "keyword": "dog detangler",
+      "rank": 20,
+      "rank_change": -3,
+      "status": "HOLD",
+      "day": 7,
+      "reason": "ROAS YELLOW; cannot confirm GREEN on stale data; do not scale"
+    },
+    "negatives_staged": {
+      "count": 15,
+      "source": "Query H — 535 search terms, 7-day ending Aug 4",
+      "criteria": "$5+ spend, 0 orders, 0 attributed sales",
+      "action": "Add as negative exact match in Campaign Manager"
+    },
+    "creative_brief_signals": [
+      {
+        "signal": "Dematter UGC gap — zero active briefs, dog detangler rank slip",
+        "brief": "UGC: before/after mat removal action. RESCUE framing. No banned words."
+      },
+      {
+        "signal": "Rake and Shampoo KILL ROAS — possible creative root cause",
+        "brief": "Audit CTR for Rake and Shampoo ads; if CTR <0.3%, refresh creative before increasing spend"
+      }
+    ]
+  },
+  "phase2": {
+    "safety_incidents": [
+      {
+        "id": "SAFETY-001",
+        "asin": "B0FQFF1DRT",
+        "product": "Dematter",
+        "type": "blade_injury",
+        "status": "NEW",
+        "day": 1,
+        "review_date": "2026-07-25",
+        "detail": "Customer cut finger on comb blade — no listing safety disclosure exists",
+        "action": "Add blade safety bullet to listing in Seller Central",
+        "priority": "CRITICAL"
+      }
+    ],
+    "inventory_flags": [
+      {
+        "id": "I-1",
+        "type": "ltsf",
+        "status": "CRITICAL",
+        "day": 9,
+        "assessment_date": "2026-08-15",
+        "window_status": "AT_OR_PAST_CLOSURE",
+        "business_days_remaining": 7,
+        "est_surcharge": 2155.45,
+        "at_risk_units": [
+          {"asin": "B0GV5ZFLC2", "product": "Detangling Treatment", "units": 8306, "status": "excess"},
+          {"asin": "B0FQL16GH4", "product": "4-in-1 Shampoo", "units": 3954, "status": "excess_ltsf"},
+          {"asin": "B0FQ628KCH", "product": "Slicker", "units": 2551, "status": "liquidation_ltsf"},
+          {"asin": "B0FQDHXSZ5", "product": "Pin Brush", "units": 1971, "status": "ltsf_risk"}
+        ],
+        "action": "Submit removal orders immediately in Seller Central FBA Inventory",
+        "note": "Slicker removal also executes L-2026-07-14-001 kill mandate"
+      },
+      {
+        "id": "I-2",
+        "asin": "B0FQFP2S9F",
+        "product": "FurFix De-Shed",
+        "type": "stranded",
+        "status": "BLOCKED",
+        "day": 25,
+        "units_stranded": 60,
+        "lif": 0,
+        "impressions": 0,
+        "doctrine": "L-2026-07-13-001",
+        "doctrine_confidence": 8,
+        "action": "Fix Stranded Inventory in Seller Central; open support case if unresolvable"
+      },
+      {
+        "id": "I-3",
+        "asin": "B0FQF2VTMJ",
+        "product": "Rake Brush",
+        "type": "low_stock",
+        "status": "NEW",
+        "units_on_hand": 237,
+        "units_inbound": 4200,
+        "inbound_eta": "UNKNOWN",
+        "days_of_stock_estimated": 9,
+        "velocity_units_per_day": 20,
+        "action": "Confirm inbound ETA; throttle ads if ETA > 9 days from Aug 4"
+      },
+      {
+        "id": "I-4",
+        "type": "chew_listings_missing",
+        "status": "NEW",
+        "day": 2,
+        "deadline": "2026-09-01",
+        "days_remaining": 26,
+        "latest_safe_start": "2026-08-18",
+        "action": "Create Chew product listings with full copy and images before Aug 18"
+      }
+    ],
+    "compliance_flags": [
+      {
+        "id": "COMPLY-001",
+        "asin": "B0GV5ZFLC2",
+        "product": "Detangling Treatment",
+        "type": "banned_language_audit",
+        "status": "NEW",
+        "detail": "Audit listing for spray/mist/spritz — Treatment is ROUTINE product moment; these words are banned",
+        "action": "Review title, bullets, description, A+ content; edit if found"
+      }
+    ]
+  },
+  "approval_sweep": {
+    "date": "2026-08-06",
+    "will_approvals_yesterday": 0,
+    "re_tagged_items": ["V-1", "V-2", "V-3", "I-1", "I-2"],
+    "cumulative_costs": {
+      "V-1_est_burned": 1860,
+      "V-2_est_burned": 1200,
+      "I-1_ltsf_exposure": 2155.45
+    }
+  },
+  "slack_references": {
+    "channel_id": "C0BDU52NV61",
+    "phase1_main_ts": "1786029567.757109",
+    "phase2_main_ts": "1786029774.824089",
+    "approval_sweep_ts": "1786030027.161199",
+    "closeout_ts": "1786030047.221499"
+  },
+  "active_doctrines": [
+    {
+      "id": "L-2026-07-08-001",
+      "summary": "Dematter ROAS monitoring — do not scale until GREEN",
+      "status": "OPEN"
+    },
+    {
+      "id": "L-2026-07-13-001",
+      "summary": "FurFix De-Shed stranded — fix listing before any ad spend",
+      "status": "OPEN"
+    },
+    {
+      "id": "L-2026-07-14-001",
+      "summary": "Slicker ad spend violation — Day 52, highest-priority unresolved",
+      "status": "OPEN"
+    },
+    {
+      "id": "L-2026-07-27-001",
+      "summary": "Bundle attribution crisis — Day 12, est. $1,860+ burned",
+      "status": "OPEN"
+    },
+    {
+      "id": "L-2026-08-03-001",
+      "summary": "Supermetrics Evening Pre-Run not running",
+      "status": "OPEN"
+    }
+  ],
+  "posture": "STAGED_ONLY — nothing executed; Will approves and executes all items"
+}
