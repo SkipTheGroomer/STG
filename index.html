@@ -4223,22 +4223,46 @@ function kpiCard(label, val, sub, accent, cls){
 
 function barChart7d(arr, key, color){
   if(!arr||!arr.length) return '<div style="padding:12px;font-size:11px;color:var(--muted);font-style:italic;">Trend builds after 2+ morning runs — 1 bar added each run.</div>';
-  const max = Math.max(...arr.map(x=>Number(x[key]||0)),1);
+
+  // null/undefined means "not reported yet" — NOT zero. Coercing to 0 renders
+  // a pending day as a confirmed no-sales day, which reads as alarming and is false.
+  const has = x => x[key] !== null && x[key] !== undefined && x[key] !== '';
+  const vals = arr.filter(has).map(x=>Number(x[key]));
+  const max  = Math.max(...(vals.length?vals:[0]), 1);
+
+  // Tag the most recent bar that actually has data, not the last array slot.
+  let lastData = -1;
+  arr.forEach((x,i)=>{ if(has(x)) lastData = i; });
+
+  const yd = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+
   const bars = arr.map((x,i)=>{
-    const pct = Math.round(Number(x[key]||0)/max*100);
-    const isLast = i===arr.length-1;
-    const dayLbl = new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'});
-    const col = isLast ? 'var(--orange)' : color||'var(--teal)';
-    const v = Number(x[key]||0);
+    const pending = !has(x);
+    const v   = pending ? null : Number(x[key]);
+    const pct = pending ? 0 : Math.round(v/max*100);
+    const tag = (i===lastData) ? (x.date===yd ? 'yesterday' : 'latest') : '';
+    const col = (i===lastData) ? 'var(--orange)' : (color||'var(--teal)');
+    let dayLbl = '—';
+    try { dayLbl = new Date(x.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'short'}); } catch(e){}
+
+    const barInner = pending
+      ? '<div style="width:100%;height:100%;border:1px dashed var(--border-strong);border-bottom:none;border-radius:4px 4px 0 0;'
+        + 'background:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(148,163,184,.18) 3px,rgba(148,163,184,.18) 6px);"></div>'
+      : '<div style="width:100%;background:'+col+';height:'+Math.max(pct, v>0?3:0)+'%;'
+        + 'border-radius:4px 4px 0 0;min-height:'+(v>0?3:0)+'px;"></div>';
+
     return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">'
-      +'<div style="font-size:9px;font-weight:'+(isLast?700:400)+';color:var(--navy);">'+(v>0?'$'+v.toFixed(2):'$0')+'</div>'
-      +'<div style="width:100%;background:#eef1f4;border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">'
-      +'<div style="width:100%;background:'+col+';height:'+Math.max(pct,v>0?3:0)+'%;border-radius:4px 4px 0 0;min-height:'+(v>0?3:0)+'px;"></div></div>'
-      +'<div style="font-size:10px;color:var(--muted);font-weight:'+(isLast?700:400)+';">'+dayLbl+'</div>'
-      +(isLast?'<div style="font-size:9px;color:var(--orange);font-weight:700;">yesterday</div>':'')
+      +'<div style="font-size:9px;font-weight:'+(i===lastData?700:400)+';color:'+(pending?'var(--sub)':'var(--navy)')+';">'
+      +(pending ? '—' : '$'+v.toFixed(2))+'</div>'
+      +'<div style="width:100%;background:'+(pending?'transparent':'#eef1f4')+';border-radius:4px 4px 0 0;height:60px;display:flex;align-items:flex-end;">'
+      +barInner+'</div>'
+      +'<div style="font-size:10px;color:var(--muted);font-weight:'+(i===lastData?700:400)+';">'+dayLbl+'</div>'
+      +(tag ? '<div style="font-size:9px;color:var(--orange);font-weight:700;">'+tag+'</div>' : '')
+      +(pending ? '<div style="font-size:9px;color:var(--sub);font-style:italic;">pending</div>' : '')
       +'</div>';
   }).join('');
-  return '<div style="display:flex;gap:4px;align-items:flex-end;height:90px;">'+bars+'</div>';
+
+  return '<div style="display:flex;gap:4px;align-items:flex-end;height:100px;">'+bars+'</div>';
 }
 
 /* ── main render function ─────────────────────────────────────────────────── */
@@ -4344,10 +4368,13 @@ function renderTikTok(d){
   const trendHtml = '<div class="tbl-wrap" style="margin-bottom:14px;padding:14px 16px;">'
     +'<div class="tbl-title" style="margin-bottom:10px;">TikTok Shop GMV — last '+d7.length+' day'+(d7.length!==1?'s':'')+' (builds daily)</div>'
     +barChart7d(d7,'gmv','#10b981')
-    +'<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);">'
+    +'<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--muted);flex-wrap:wrap;">'
     +'<span><span style="display:inline-block;width:8px;height:8px;background:#10b981;border-radius:2px;margin-right:3px;"></span>GMV</span>'
-    +'<span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>yesterday</span>'
-    +'</div></div>';
+    +'<span><span style="display:inline-block;width:8px;height:8px;background:var(--orange);border-radius:2px;margin-right:3px;"></span>latest reported</span>'
+    +'<span><span style="display:inline-block;width:8px;height:8px;border:1px dashed var(--border-strong);border-radius:2px;margin-right:3px;"></span>pending \u2014 not yet reported</span>'
+    +'</div>'
+    +'<div style="margin-top:6px;font-size:10px;color:var(--sub);font-style:italic;">TikTok Shop analytics run ~2 days behind. The two most recent days are normally pending, not $0.</div>'
+    +'</div>';
 
   /* 3-col top row: shop insights / analytics / to-do */
   const todoRows = [
