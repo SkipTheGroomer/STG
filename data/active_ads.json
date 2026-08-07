@@ -30,11 +30,13 @@
       "daily_budget": null,
       "roas_target": null,
       "kill_threshold": 75,
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "approved_by": "Will Dryden",
       "approved_ts": null,
       "launched_by": "Blaze",
-      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22. Monitoring — approaching $75 kill threshold."
+      "paused_at": "2026-08-07",
+      "paused_by": "Blaze (status corrected from ACTIVE — confirmed PAUSED in live Meta pull, 4th correction attempt)",
+      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22. Monitoring — approaching $75 kill threshold. Confirmed PAUSED in Meta live pull 2026-08-07; registry corrected."
     }
   ]
 }
