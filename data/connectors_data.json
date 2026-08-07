@@ -273,7 +273,7 @@
     "data_readable": true,
     "report_date": "2026-08-03",
     "stale": true,
-    "stale_note": "Keyword data from Aug 3 report — carried forward.",
+    "stale_note": "Keyword data from Aug 3 report — carried forward. No new Keyword Tracker email parsed this run.",
     "flags": [
       "DEMATTER_STRONG: B0FQL56V99 — 2 top-10 organic keywords (SV 5,067 combined), ranked #5 dematting tool for dogs",
       "SLICKER_BRUSH_RECOVERY: B0FQ628KCH — recovering in ranks, doodle brush at rank 101 (entry from unranked)"
@@ -388,7 +388,7 @@
       "vs_prior_day_pct": -0.94,
       "stale": false,
       "products": [],
-      "note": "H10 Daily Profit email Aug 6 parsed. Gross $2,170.61 / Net $735.88 / 132 units."
+      "note": "H10 Daily Profit email Aug 6 parsed. Gross $2,170.61 / Net $735.88 / 132 units. Product breakdown not available in this run."
     },
     "weekly": {
       "period": "2026-07-27 to 2026-08-02",
@@ -437,8 +437,8 @@
         }
       ],
       "stale": true,
-      "stale_note": "Carrying forward Jul 27-Aug 2.",
-      "note": "H10 Weekly Profits Jul 27-Aug 2."
+      "stale_note": "No fresh weekly H10 email found. Carrying forward Jul 27-Aug 2 data.",
+      "note": "H10 Weekly Profits Jul 27-Aug 2. vs prior week (Jul 20-26): net $233.24 → $1,075.25 (+361%)."
     },
     "monthly": null
   },
@@ -448,7 +448,7 @@
     "report_date": "2026-07-28",
     "stale": true,
     "listings": [],
-    "note": "Email thread too large to parse."
+    "note": "Email thread too large to parse (190,778 chars). Prior data preserved with stale=true."
   },
   "helium10_market_tracker": {
     "available": true,
@@ -480,11 +480,11 @@
     "available": true,
     "report_date": "2026-07-29",
     "stale": true,
-    "stale_note": "Inventory data from Jul 29 — carried forward.",
+    "stale_note": "Inventory data from Jul 29 report — carried forward. No new H10 inventory email parsed this run.",
     "flags": [
-      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) — FBA OUT OF STOCK",
-      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) — FBA OUT OF STOCK",
-      "LTSF_RISK: All tracked ASINs LTSF >= 181 Days"
+      "STOCKOUT_CRITICAL: B0FQ4PY573 (Detangling Spray) — LIF <= 0 days, FBA OUT OF STOCK",
+      "STOCKOUT_CRITICAL: B0FQFP2S9F (FurFix De-Shed Brush) — LIF <= 0 days, FBA OUT OF STOCK",
+      "LTSF_RISK: All tracked ASINs showing LTSF >= 181 Days — long-term storage fee risk"
     ],
     "skus": [
       {
@@ -542,7 +542,7 @@
       "spend": 545.63,
       "roas": 1.6303,
       "tacos": 27.3,
-      "tacos_note": "TACoS = total_spend ($545.63) / SC ordered_product_sales Q-D ($1,998.90 for 5 ASINs, 2026-08-04).",
+      "tacos_note": "TACoS = total_spend ($545.63) / SC ordered_product_sales Q-D ($1,998.90 for 5 ASINs with SC data, 2026-08-04). B0GY9WZWKH, B0GFGDTJ39, B0FQ628KCH, B0GT5YFVB8, B0GXLPJS4C excluded (no SC data).",
       "stale": false,
       "skus": [
         {
@@ -555,7 +555,7 @@
           "sc_ordered_sales": 1584.87,
           "tacos": 17.06,
           "band": "YELLOW",
-          "band_note": "FRESH COMPUTE: be=2.07, yellow_min=1.66, kill_floor=1.14. roas 1.7278 → YELLOW.",
+          "band_note": "FRESH COMPUTE: be=2.07, yellow_min=1.66, kill_floor=1.14. roas 1.7278 in [1.66, 2.07) → YELLOW.",
           "name": "Emergency Dematter Cream"
         },
         {
@@ -568,9 +568,9 @@
           "sc_ordered_sales": null,
           "tacos": null,
           "band": "RED",
-          "band_note": "FRESH COMPUTE: be=2.40, yellow_min=1.92, kill_floor=1.32. roas 1.784 → RED.",
+          "band_note": "FRESH COMPUTE: be=2.40, yellow_min=1.92, kill_floor=1.32. roas 1.784 in [1.32, 1.92) → RED.",
           "name": "Save the Shave Bundle",
-          "flag": "ATTRIBUTION_CRISIS: $166.15 spend, $0 SC ordered_product_sales. roas=1.784 likely cross-attributed."
+          "flag": "ATTRIBUTION_CRISIS: $166.15 spend, $0 SC ordered_product_sales (Aug 4). roas=1.784 likely cross-attributed. Investigate attribution window."
         },
         {
           "asin": "B0FQF2VTMJ",
@@ -582,7 +582,7 @@
           "sc_ordered_sales": 230.83,
           "tacos": 14.72,
           "band": "YELLOW",
-          "band_note": "FRESH COMPUTE: be=3.12, yellow_min=2.49, kill_floor=1.716. roas 3.1186 → YELLOW. Barely under breakeven.",
+          "band_note": "FRESH COMPUTE: be=3.12, yellow_min=2.49, kill_floor=1.716. roas 3.1186 in [2.49, 3.12) → YELLOW. Barely under breakeven.",
           "name": "Rake Brush"
         },
         {
@@ -595,9 +595,9 @@
           "sc_ordered_sales": null,
           "tacos": null,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: roas 0.0 → KILL. UNAPPROVED_ADS running.",
+          "band_note": "FRESH COMPUTE: be=2.15, yellow_min=1.72, kill_floor=1.18. roas 0.0 < 1.18 → KILL. UNAPPROVED_ADS running.",
           "name": "Full Coat Care System 5pc",
-          "flag": "UNAPPROVED_ADS: $30.59 spend on ad-ineligible ASIN"
+          "flag": "UNAPPROVED_ADS: $30.59 spend on ad-ineligible ASIN — halt immediately"
         },
         {
           "asin": "B0GFGDTJ39",
@@ -609,9 +609,9 @@
           "sc_ordered_sales": null,
           "tacos": null,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: roas 0.0 → KILL.",
+          "band_note": "FRESH COMPUTE: roas 0.0 → KILL. UNAPPROVED_ADS running.",
           "name": null,
-          "flag": "UNAPPROVED_ADS: $14.07 spend on unapproved ASIN"
+          "flag": "UNAPPROVED_ADS: $14.07 spend on unapproved ASIN — halt immediately"
         },
         {
           "asin": "B0FQDHXSZ5",
@@ -623,7 +623,7 @@
           "sc_ordered_sales": 75.96,
           "tacos": 12.59,
           "band": "YELLOW",
-          "band_note": "FRESH COMPUTE: be=2.61, yellow_min=2.09, kill_floor=1.436. roas 2.091 → YELLOW. Barely above yellow_min.",
+          "band_note": "FRESH COMPUTE: be=2.61, yellow_min=2.09, kill_floor=1.436. roas 2.091 in [2.09, 2.61) → YELLOW. Barely above yellow_min.",
           "name": "Pin Brush"
         },
         {
@@ -636,9 +636,9 @@
           "sc_ordered_sales": null,
           "tacos": null,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: be=6.92. roas 0.0 → KILL. liquidate=true.",
+          "band_note": "FRESH COMPUTE: be=6.92, yellow_min=5.54, kill_floor=3.806. roas 0.0 → KILL. liquidate=true.",
           "name": "Slicker Brush",
-          "flag": "SLICKER_SPEND: $7.00 spend on liquidate=true ASIN"
+          "flag": "SLICKER_SPEND: $7.00 spend on liquidate=true ASIN — halt ads immediately"
         },
         {
           "asin": "B0GT5YFVB8",
@@ -650,9 +650,9 @@
           "sc_ordered_sales": null,
           "tacos": null,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: roas 0.0 → KILL.",
+          "band_note": "FRESH COMPUTE: roas 0.0 → KILL. UNAPPROVED_ADS running.",
           "name": null,
-          "flag": "UNAPPROVED_ADS: $5.76 spend on unapproved ASIN"
+          "flag": "UNAPPROVED_ADS: $5.76 spend on unapproved ASIN — halt immediately"
         },
         {
           "asin": "B0GXLPJS4C",
@@ -677,7 +677,7 @@
           "sc_ordered_sales": 55.97,
           "tacos": 3.0,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: be=3.75, kill_floor=2.0625. roas 0.0 → KILL.",
+          "band_note": "FRESH COMPUTE: be=3.75, yellow_min=3.0, kill_floor=2.0625. roas 0.0 → KILL.",
           "name": "4-in-1 Shampoo"
         },
         {
@@ -690,17 +690,17 @@
           "sc_ordered_sales": 51.27,
           "tacos": 2.01,
           "band": "KILL",
-          "band_note": "FRESH COMPUTE: be=2.74, kill_floor=1.507. roas 0.0 → KILL.",
+          "band_note": "FRESH COMPUTE: be=2.74, yellow_min=2.20, kill_floor=1.507. roas 0.0 → KILL.",
           "name": "Detangling Treatment"
         }
       ],
       "flagged_skus": [
-        "ATTRIBUTION_CRISIS: B0GT1H84JM $166.15 spend, $0 SC attributed",
-        "UNAPPROVED_ADS: B0GY9WZWKH $30.59, B0GFGDTJ39 $14.07, B0GT5YFVB8 $5.76",
-        "SLICKER_SPEND: B0FQ628KCH $7.00 — liquidate=true, halt ads immediately",
+        "ATTRIBUTION_CRISIS: B0GT1H84JM $166.15 spend, $0 SC attributed — investigate attribution window",
+        "UNAPPROVED_ADS: B0GY9WZWKH $30.59, B0GFGDTJ39 $14.07, B0GT5YFVB8 $5.76 — ad-ineligible ASINs spending",
+        "SLICKER_SPEND: B0FQ628KCH $7.00 spend — liquidate=true, halt ads immediately",
         "YELLOW_BAND: B0FQL56V99 (Dematter roas=1.73), B0FQF2VTMJ (Rake roas=3.12), B0FQDHXSZ5 (Pin Brush roas=2.09)",
         "RED_BAND: B0GT1H84JM (Save Shave roas=1.784)",
-        "KILL_BAND_MULTI: B0GY9WZWKH, B0GFGDTJ39, B0FQ628KCH, B0GT5YFVB8, B0GXLPJS4C, B0FQL16GH4, B0GV5ZFLC2"
+        "KILL_BAND_MULTI: B0GY9WZWKH, B0GFGDTJ39, B0FQ628KCH, B0GT5YFVB8, B0GXLPJS4C, B0FQL16GH4, B0GV5ZFLC2 all in KILL band"
       ],
       "total_spend": 545.63,
       "total_roas": 1.6303
@@ -803,7 +803,7 @@
       "data_period": "all_time",
       "stale": false,
       "rows_skipped": 1,
-      "skip_note": "1 blank-ASIN row skipped",
+      "skip_note": "1 blank-ASIN row skipped (malformed Amazon-side data)",
       "by_asin": [
         {
           "asin": "B0FQL56V99",
@@ -850,6 +850,8 @@
       "top_by_spend": [
         {
           "query": "b0bzzc5pmf",
+          "keywordText": "b0bzzc5pmf",
+          "matchType": null,
           "spend": 480.14,
           "roas": 1.4879,
           "impressions": 71495,
@@ -858,6 +860,8 @@
         },
         {
           "query": "b01330ikaa",
+          "keywordText": "b01330ikaa",
+          "matchType": null,
           "spend": 466.94,
           "roas": 2.6113,
           "impressions": 23742,
@@ -866,7 +870,9 @@
         },
         {
           "query": "dematting comb for dogs",
+          "keywordText": "dematting comb for dogs",
           "matchType": "exact",
+          "campaignName": "STG | SP SQP | dematting comb for dogs | Exact | 072726 | AC",
           "spend": 361.65,
           "roas": 1.868,
           "impressions": 53805,
@@ -875,7 +881,9 @@
         },
         {
           "query": "dematting tool for dogs",
+          "keywordText": "dematting tool for dogs",
           "matchType": "exact",
+          "campaignName": "STG | SP SQP | dematting tool for dogs | Exact | 072726 | AC",
           "spend": 322.32,
           "roas": 1.7718,
           "impressions": 62092,
@@ -884,7 +892,9 @@
         },
         {
           "query": "dematting spray for dogs",
+          "keywordText": "dematting spray for dogs",
           "matchType": "exact",
+          "campaignName": "STG | SP SQP | dematting spray for dogs | Exact | 072726 | AC",
           "spend": 222.65,
           "roas": 1.9483,
           "impressions": 6861,
@@ -893,13 +903,14 @@
         },
         {
           "query": "detangler spray for dogs",
+          "keywordText": "detangler spray for dogs",
           "matchType": "exact",
           "spend": 41.96,
           "roas": 0.7145,
           "impressions": 10183,
           "clicks": 21,
           "orders": 2,
-          "flag": "WASTEFUL: roas 0.71 < 1.0"
+          "flag": "WASTEFUL: roas 0.71 < 1.0 — losing money on every click"
         }
       ]
     },
@@ -943,7 +954,7 @@
       "G": "46919152",
       "H": "da027ffb",
       "I": "3d60fa0c",
-      "note": "Evening Pre-Run v5.7 — generated 2026-08-06T16:08:56-07:00. Fresh (15h old)."
+      "note": "Evening Pre-Run v5.7 — generated 2026-08-06T16:08:56-07:00. Fresh (15h old, within 24h threshold)."
     }
   },
   "amazon_ads_browser": {
@@ -1005,7 +1016,7 @@
   "reviews": {
     "available": true,
     "status": "YELLOW",
-    "data_source": "Google Drive — carried forward 2026-08-06",
+    "data_source": "Google Drive — STG Weekly Review Update — carried forward 2026-08-06",
     "last_reviews_check": "2026-08-06",
     "sheet_last_modified": "2026-07-30",
     "new_review_count": 12,
@@ -1016,8 +1027,8 @@
     "flags": [
       "SAFETY_INCIDENT: Customer cut finger on Emergency Dematter comb blade (2026-07-25) — URGENT: add blade warning to packaging and listing images",
       "LOW_STAR: 1 low-star review in L30D (7/6 Dematter 2★)",
-      "SHEET_STALE: Last sheet update 2026-07-30 (8 days).",
-      "REVIEW_GAP: 12 days since last review (Jul 26)"
+      "SHEET_STALE: Last sheet update 2026-07-30 (8 days). No new reviews entered since 7/26.",
+      "REVIEW_GAP: 12 days since last review (Jul 26) — unusual gap, check for suppressed reviews"
     ],
     "recent": [
       {
@@ -1057,7 +1068,7 @@
       }
     ],
     "stale": true,
-    "stale_note": "Carried forward from 2026-08-06."
+    "stale_note": "Carried forward from 2026-08-06. No new Google Drive check this run."
   },
   "business_health": {
     "available": true,
@@ -1076,7 +1087,7 @@
     "august_factory_payments_balance_due": 38651.0,
     "skus": [],
     "flags": [
-      "CHECKING_CRITICAL: $12,448.20 — 0.72 weeks runway (5.0 days)",
+      "CHECKING_CRITICAL: $12,448.20 — 0.72 weeks runway (5.0 days) — BELOW 1-WEEK THRESHOLD",
       "CHECKING_RISE_24H: +$2,739.80 in 24h ($9,708.40 → $12,448.20)",
       "TOTAL_CASH_DRAIN: Cash fell $470K → $447K (-$22,260 money market draw-down)",
       "CC_INCREASE: Credit card $22,614.68 → $23,982.31 (+$1,368)",
@@ -1271,7 +1282,7 @@
         "items_sold": null,
         "creator_attributed_gmv": null,
         "top_source": null,
-        "note": "1 SKU out of stock"
+        "note": "1 SKU out of stock — data incomplete"
       }
     ],
     "products_7d_stale": true,
@@ -1317,14 +1328,14 @@
   "social_media": {
     "available": true,
     "scrape_date": "2026-08-06",
-    "data_source": "Meta MCP (instagram_basic) — carried forward 2026-08-06",
+    "data_source": "Meta MCP (instagram_basic) — carried forward 2026-08-06 · followers/reach pending instagram_manage_insights re-auth",
     "ig": {
       "username": "skipthegroomer",
       "ig_user_id": "17841465880821401",
       "followers_count": null,
       "following_count": null,
       "media_count": null,
-      "note": "followers_count unavailable — requires instagram_manage_insights re-auth"
+      "note": "followers_count unavailable — requires instagram_manage_insights scope re-auth on business.facebook.com"
     },
     "ig_insights": {
       "impressions_7d": null,
@@ -1344,7 +1355,7 @@
     "attributed_revenue_7d": null,
     "top_post": {
       "id": "18216774637340914",
-      "caption": "Best day of his life.",
+      "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
       "engagement_total": 14,
       "permalink": "https://www.instagram.com/reel/DbZIQewgXi2/",
       "date": "2026-07-29"
@@ -1352,7 +1363,7 @@
     "posts": [
       {
         "id": "18216774637340914",
-        "caption": "Best day of his life. He had no idea what was coming.\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
+        "caption": "Best day of his life. He had no idea what was coming. 🐾\n\nMuddy yard. Piles of leaves...\n\nDemat. Detangle. Clean. Save the Shave.",
         "media_type": "VIDEO",
         "media_product_type": "REELS",
         "timestamp": "2026-07-29T14:56:22-0700",
@@ -1384,9 +1395,9 @@
     },
     "fb_insights": {},
     "flags": [
-      "POSTING_GAP: 9 days since last post (Jul 29)",
-      "PARTIAL_DATA: instagram_basic only — followers/reach/impressions require instagram_manage_insights",
-      "ACTION_NEEDED: Re-auth at business.facebook.com → add instagram_manage_insights"
+      "POSTING_GAP: 9 days since last post (Jul 29) — below 5x/week target. No posts in L7D window.",
+      "PARTIAL_DATA: instagram_basic only — followers/reach/impressions require instagram_manage_insights scope",
+      "ACTION_NEEDED: Will re-auth at business.facebook.com → Connected Apps → add instagram_manage_insights"
     ],
     "daily_7d": [
       {
@@ -1585,12 +1596,12 @@
       {
         "date": "2026-08-06",
         "available": false,
-        "note": "re-auth pending"
+        "note": "instagram_manage_insights re-auth still pending"
       },
       {
         "date": "2026-08-07",
         "available": false,
-        "note": "re-auth pending"
+        "note": "instagram_manage_insights re-auth still pending"
       }
     ],
     "tiktok_ads_7d": []
