@@ -1,415 +1,289 @@
 {
   "agent": "033 Amazon",
-  "date": "2026-08-07",
-  "generated_at": "2026-08-07T08:22:00-07:00",
+  "date": "2026-08-08",
+  "generated_at": "2026-08-08T08:30:00-07:00",
   "summary": {
     "status": "RED",
-    "negatives_staged": 0,
-    "bid_recs": 0,
+    "mode": "FULL",
+    "negatives_staged": 24,
+    "bid_recs": 4,
     "rank_defense": 1,
     "listing_fixes": 2,
+    "compliance_flags": 2,
+    "inventory_flags": 4,
     "solutions": 10,
-    "blocked": 5
+    "blocked": 6,
+    "tacos_account": "27.3%",
+    "tacos_status": "GREEN"
   },
   "degraded_mode": {
-    "active": true,
-    "reason": "supermetrics_data.json generated 2026-08-06T16:08:56-07:00 — 16h old at run time, exceeds 12h threshold",
-    "phase1_scope": "rank-defense and violation alerts only; bid recs, negative recs, creative brief routing NOT STAGED",
-    "phase2_scope": "FULL — uses H10, reviews, inventory data (all within threshold)"
+    "active": false,
+    "reason": "Supermetrics generated 2026-08-07T23:17:12-07:00 — 9h old at run time, within 12h threshold",
+    "note": "First FULL run since approximately 2026-07-30. Full negatives, bid recs, and creative signal staged."
   },
   "slack_status": {
-    "available": false,
-    "error": "MCP Internal Server Error on all send attempts — all channels including C0BDU52NV61 and C0BFSJHTGHX",
-    "note": "Slack write unavailable this run. Dashboard mirror is the only output. @will: review this JSON directly until Slack is restored."
+    "available": true,
+    "channel": "C0BDU52NV61",
+    "phase1_ts": "1786202030.454259",
+    "phase2_ts": "1786202057.121509",
+    "phase1_solutions_ts": "1786202106.171969",
+    "phase2_solutions_ts": "1786202127.288369",
+    "approval_sweep_ts": "1786202210.482709",
+    "closeout_ts": "1786202222.032039",
+    "creative_pipeline_ts": "1786202075.539359"
   },
   "duplicate_guard": {
     "checked": true,
-    "method": "slack_search_public_and_private for '033 Amazon' — no 2026-08-07 close-out message found",
+    "method": "slack_read_channel C0BDU52NV61 limit=15 — no 033 close-out from 2026-08-08 found before run",
     "result": "CLEAR — first run today"
   },
   "brand_rules": {
     "fetched": true,
+    "sha": "32eb443e67a3562e08bd49135a3508fac89bc5a3",
     "header_verified": true,
     "banned_words_section": true,
     "slicker_liquidation_rule": true,
     "detangling_treatment_no_spray": true
   },
   "data_quality": {
-    "supermetrics_data_json_generated": "2026-08-06T16:08:56-07:00",
-    "supermetrics_age_hours": 16.2,
-    "supermetrics_stale": true,
-    "connectors_data_json_date": "2026-08-06",
-    "connectors_amazon_ads_data_date": "2026-08-04",
+    "supermetrics_data_json_generated": "2026-08-07T23:17:12-07:00",
+    "supermetrics_age_hours": 9.2,
+    "supermetrics_stale": false,
+    "supermetrics_sha": "f6945bb0fe1318ca6084d0931e1d058bdf276278",
+    "connectors_data_json_date": "2026-08-07",
+    "connectors_data_sha": "b624fab4c123c975abb258739f9778f36d79c46b",
     "helium10_rank_date": "2026-08-03",
     "inventory_data_date": "2026-08-05",
-    "reviews_last_check": "2026-08-06",
+    "reviews_last_check": "2026-08-07",
     "roas_bands_version": "2026-08-03",
-    "learnings_last_updated": "2026-08-03"
+    "roas_bands_sha": "3ccf00dce2da97ad1dec8ec8c9f6b208a2a5478b",
+    "learnings_last_updated": "2026-08-03",
+    "learnings_sha": "8e8207f52b45a2f5941284bcaa93b1c57b1c77fb"
   },
-  "prior_run_reference": {
-    "date": "2026-08-06",
-    "slack_closeout_ts": "1786030047.221499",
-    "channel": "C0BDU52NV61",
-    "blocked_carry": ["V-1 Bundle attribution crisis", "V-2 Slicker violation", "V-3 Unapproved bundles", "I-1 LTSF", "I-2 FurFix stranded"],
-    "will_approvals_on_record": 0
+  "tacos": {
+    "account_tacos_pct": 27.3,
+    "target_pct": 35.0,
+    "status": "GREEN",
+    "note": "Below 35% August target. Previous run showed 39.09% — correction likely reflects updated SC data window."
+  },
+  "roas_bands": {
+    "B0FQL56V99": {"name": "Emergency Dematter", "breakeven": 2.07, "band": "YELLOW", "roas_7d": 1.73, "tacos_pct": 17.06},
+    "B0FQF2VTMJ": {"name": "Rake Brush", "breakeven": 3.12, "band": "YELLOW", "roas_7d": 3.12, "tacos_pct": 14.72},
+    "B0FQDHXSZ5": {"name": "Pin Brush", "breakeven": 2.61, "band": "YELLOW", "roas_7d": 2.09, "tacos_pct": 12.59},
+    "B0GT1H84JM": {"name": "Save the Shave Bundle", "breakeven": null, "band": "RED", "roas_7d": 0.0, "flag": "ATTRIBUTION_CRISIS", "doctrine": "L-2026-07-27-001"},
+    "B0FQ628KCH": {"name": "Slicker Brush", "breakeven": 6.92, "band": "KILL", "roas_7d": 0.0, "ad_eligible": false, "doctrine": "L-2026-07-14-001"},
+    "B0GY9WZWKH": {"name": "Full Coat Care System", "band": "KILL", "roas_7d": 0.0, "flag": "UNAPPROVED_ADS"},
+    "B0GFGDTJ39": {"name": "Fresh Start Bundle", "band": "KILL", "roas_7d": 0.0, "flag": "UNAPPROVED_ADS"},
+    "B0GT5YFVB8": {"name": "Unknown", "band": "KILL", "roas_7d": 0.0, "flag": "UNAPPROVED_ADS"},
+    "B0FQL16GH4": {"name": "4-in-1 Shampoo", "band": "KILL", "roas_7d": 0.0},
+    "B0GV5ZFLC2": {"name": "Detangling Treatment", "band": "KILL", "roas_7d": 0.0}
+  },
+  "negatives_staged": {
+    "count": 24,
+    "source": "Query H (7-day, $5+ spend, 0 orders) + connectors_data search_terms",
+    "terms": [
+      {"term": "detangler spray for dogs", "spend": 41.96, "roas": 0.71, "flag": "WASTEFUL"},
+      {"term": "de matting dog brush", "spend": 35.46, "clicks": 14},
+      {"term": "b092dff7b9", "type": "ASIN", "spend": 33.12, "clicks": 16},
+      {"term": "dog dematting spray", "spend": 17.90, "clicks": 7},
+      {"term": "dematting rake for dogs", "spend": 15.97, "clicks": 8},
+      {"term": "dematting comb", "spend": 11.88, "clicks": 6},
+      {"term": "dog grooming", "spend": 11.04, "clicks": 6},
+      {"term": "dog detangler", "spend": 10.55, "clicks": 5},
+      {"term": "dog grooming kit", "spend": 10.49, "clicks": 6},
+      {"term": "dog detangler spray", "spend": 10.44, "clicks": 6},
+      {"term": "golden doodle must haves", "spend": 10.28, "clicks": 6},
+      {"term": "dog dematting tools", "spend": 9.14, "clicks": 5},
+      {"term": "dog conditioner detangler", "spend": 9.00, "clicks": 5},
+      {"term": "mat detangler for dogs", "spend": 8.12, "clicks": 3},
+      {"term": "dog fur detangler spray for matting", "spend": 7.11, "clicks": 3},
+      {"term": "dematting", "spend": 7.11, "clicks": 3},
+      {"term": "dog brush", "match_type": "auto", "spend": 7.10, "clicks": 4},
+      {"term": "grooming tools for dogs", "spend": 5.69, "clicks": 3},
+      {"term": "doodle shampoo and conditioner", "match_type": "auto", "spend": 5.68, "clicks": 8},
+      {"term": "cat dematting tool", "spend": 5.76, "clicks": 3},
+      {"term": "dematting spray for cats", "spend": 5.61, "clicks": 3},
+      {"term": "dematting tool for cats", "spend": 5.50, "clicks": 3},
+      {"term": "dematting comb for cats", "spend": 5.39, "clicks": 3},
+      {"term": "pin brush for small dogs", "spend": 5.14, "clicks": 7}
+    ]
+  },
+  "bid_recs": [
+    {"sku": "B0FQL56V99", "name": "Emergency Dematter", "action": "HOLD", "reason": "YELLOW band, doctrine L-2026-07-08-001 — no scale until 3-5 days confirmed GREEN"},
+    {"sku": "B0FQF2VTMJ", "name": "Rake Brush", "action": "HOLD", "reason": "Borderline GREEN/YELLOW (ROAS 3.12 = breakeven exactly)"},
+    {"sku": "B0FQDHXSZ5", "name": "Pin Brush", "action": "LOWER_10PCT", "reason": "YELLOW band, ROAS 2.09 vs breakeven 2.61"},
+    {"sku": "B0FQ628KCH", "name": "Slicker Brush", "action": "PAUSE", "reason": "KILL band, doctrine L-2026-07-14-001, ad_eligible=false"},
+    {"sku": "B0GY9WZWKH", "name": "Full Coat Care System", "action": "PAUSE", "reason": "UNAPPROVED_ADS"},
+    {"sku": "B0GFGDTJ39", "name": "Fresh Start Bundle", "action": "PAUSE", "reason": "UNAPPROVED_ADS"},
+    {"sku": "B0GT5YFVB8", "name": "Unknown", "action": "PAUSE", "reason": "UNAPPROVED_ADS"},
+    {"sku": "B0GT1H84JM", "name": "Save the Shave Bundle", "action": "HOLD_PENDING_ATTRIBUTION_REVIEW", "reason": "Doctrine L-2026-07-27-001 Day 13"}
+  ],
+  "rank_defense": [
+    {
+      "keyword": "dog detangler",
+      "sku": "B0FQL56V99",
+      "organic_rank": 20,
+      "prior_rank": 17,
+      "change": -3,
+      "search_volume": 1890,
+      "h10_date": "2026-08-03",
+      "action": "STAGED: Increase impression share on detangler SP campaigns; add exact match if not present",
+      "status": "OPEN"
+    }
+  ],
+  "creative_signal": {
+    "term": "severe matted dog hair removal",
+    "match_type": "exact",
+    "ctr_pct": 4.50,
+    "ctr_vs_avg": "~4.5x account average",
+    "roas": 7.6465,
+    "spend_7d": 8.94,
+    "recommendation": "Sponsored Brands video candidate — Emergency Dematter RESCUE moment",
+    "route_to": "Blaze",
+    "status": "STAGED signal only — Will approves creative brief"
   },
   "flags": [
     {
-      "id": "033_flag_20260807_001",
+      "id": "033_flag_20260808_001",
       "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Slicker Brush Ad Spend Violation — Day 54+",
-      "problem": "B0FQ628KCH (Slicker Brush) recorded $8.01 spend on 2026-08-04 and $80.54 over 7 days — liquidate=true ASIN with absolute no-ad policy.",
-      "solution": "Pause all 5 Slicker campaigns in Ad Console immediately.",
-      "action": "Ad Console → Campaigns → filter 'B0FQ628KCH' → pause: SP KW Broad 042926, SP Auto CM-LM 042926, SP Auto Subs-Comps 042926, SP KW Phrase 042926, SP PT Exact 042926",
-      "deadline": "2026-08-08",
-      "deadline_cost": "~$11.50/day burned + 8.67% return rate approaching 10.2% Amazon high-return fee penalty",
+      "phase": "Phase 1",
+      "title": "Slicker Spend Violation — Day 55+ (L-2026-07-14-001)",
+      "sku": "B0FQ628KCH",
+      "spend_recent": 7.00,
+      "cumulative_burn_usd": 1207,
+      "action": "STAGED: Pause all Slicker campaigns in Ad Console",
       "approver": "@will",
-      "brief_id": "033_rec_slicker-spend_2026-08-07",
-      "slack_status": "BLOCKED — Day 54+; Slack unavailable this run",
-      "doctrine": "L-2026-07-14-001",
-      "data_source": "supermetrics_data.json Query C 7d ($80.54) + connectors_data.json single-day Aug 4 ($8.01)"
+      "doctrine": "L-2026-07-14-001"
     },
     {
-      "id": "033_flag_20260807_002",
+      "id": "033_flag_20260808_002",
       "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Bundle Attribution Crisis — B0GT1H84JM Day 13+",
-      "problem": "B0GT1H84JM (Save the Shave Bundle) spent $1,182.32 over 7 days ending 2026-08-05 with $0 attributed bundle sales — est. $2,197+ cumulative burn since Jul 27.",
-      "solution": "Pause ALL B0GT1H84JM campaigns and audit attribution window settings.",
-      "action": "Ad Console → Campaigns → search 'C8-VG2F-6714' or 'B0GT1H84JM' → pause all; then Advertising Attribution → verify bundle ASIN attribution window is set to 14-day (not 1-day)",
-      "deadline": "2026-08-08",
-      "deadline_cost": "~$169/day burning with $0 bundle conversions confirmed — cumulative est. $2,197+",
-      "approver": "@will",
-      "brief_id": "033_rec_bundle-attribution-crisis_2026-08-07",
-      "slack_status": "BLOCKED — Day 13+; Slack unavailable this run",
-      "doctrine": "L-2026-07-27-001",
-      "data_source": "supermetrics_data.json Query C: B0GT1H84JM $1,182.32 7d; Query B: $166.15 daily, 0 attributed sales"
+      "phase": "Phase 1",
+      "title": "Unapproved ASINs Spending — $50.42 total",
+      "asins": ["B0GY9WZWKH ($30.59)", "B0GFGDTJ39 ($14.07)", "B0GT5YFVB8 ($5.76)"],
+      "total_spend": 50.42,
+      "action": "STAGED: Pause all three ASINs in Ad Console",
+      "approver": "@will"
     },
     {
-      "id": "033_flag_20260807_003",
+      "id": "033_flag_20260808_003",
       "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Unapproved Ads Running — Full Coat Care System 5pc",
-      "problem": "B0GY9WZWKH (Full Coat Care System) has ad_eligible=false and needs_approval=true in roas_bands.json, yet recorded $45.32 on 2026-08-04 and $226.60 over 7 days.",
-      "solution": "Either approve this bundle for ads (update roas_bands.json) or pause all its campaigns today.",
-      "action": "Option A — Approve: update roas_bands.json B0GY9WZWKH ad_eligible:true, needs_approval:false (ROAS 4.18 is strong). Option B — Pause: Ad Console → Campaigns → search 'STG-FULL-COAT-CARE-SYSTEM' → pause.",
-      "deadline": "2026-08-08",
-      "deadline_cost": "~$32/day unauthorized spend; ROAS 4.18 is GREEN but operating without authorization",
+      "phase": "Phase 1",
+      "title": "Bundle Attribution Crisis — Day 13 (L-2026-07-27-001)",
+      "sku": "B0GT1H84JM",
+      "spend_7d": 166.15,
+      "sc_ordered_sales": 0,
+      "cumulative_burn_usd": 1906,
+      "action": "STAGED: HOLD — Will must choose (A) pause or (B) attribution audit",
       "approver": "@will",
-      "brief_id": "033_rec_unapproved-ads-B0GY9WZWKH_2026-08-07",
-      "slack_status": "OPEN — first flag this run; Slack unavailable",
-      "data_source": "connectors_data.json supermetrics.amazon_ads.skus B0GY9WZWKH flag; roas_bands.json ad_eligible:false"
+      "doctrine": "L-2026-07-27-001"
     },
     {
-      "id": "033_flag_20260807_004",
+      "id": "033_flag_20260808_004",
       "status": "RED",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Safety Incident — Emergency Dematter Blade Warning Missing",
-      "problem": "Review 2026-07-25 on B0FQL56V99 documents a customer cutting their finger on the dematting comb blade with no prior listing warning — no blade safety language exists in current listing copy.",
-      "solution": "Add blade safety warning to listing bullet and A+ content; add safety callout image slide.",
-      "action": "Structural (Will): Seller Central → Inventory → B0FQL56V99 → Edit → add bullet: '⚠️ Handle blades with care — sharp edges. Clean by brushing away from blade direction. Keep out of reach of children.' Copy (Anchor — Brief ID 033_pdp_EmergencyDematter-blade_2026-08-07). Image (Tailwind — Brief ID 033_asset_EmergencyDematter-blade_2026-08-07).",
-      "deadline": "2026-08-08",
-      "deadline_cost": "Documented unaddressed product liability risk — each day without warning increases exposure",
+      "phase": "Phase 2",
+      "title": "SAFETY-001 — Dematter Blade Warning Missing (Day 14+)",
+      "sku": "B0FQL56V99",
+      "trigger": "2026-07-25 review: customer cut finger on blade, no safety warning",
+      "action": "STAGED: Add safety bullet to listing; copy anchored to #stg-creative-pipeline",
       "approver": "@will",
-      "brief_id": "033_rec_dematter-blade-warning_2026-08-07",
-      "slack_status": "OPEN — first flag this run; Slack unavailable",
-      "anchor_directive": {
-        "brief_id": "033_pdp_EmergencyDematter-blade_2026-08-07",
-        "platform": "Amazon",
-        "sku": "Emergency Dematter Cream",
-        "asin": "B0FQL56V99",
-        "product_moment": "RESCUE",
-        "target_keyword": "dematting tool for dogs",
-        "issue": "No blade safety warning in listing. Review 2026-07-25 documents customer finger cut. Need: (1) new warning bullet copy, (2) A+ safety callout copy.",
-        "status": "STAGED awaiting @will approval"
-      },
-      "tailwind_directive": {
-        "brief_id": "033_asset_EmergencyDematter-blade_2026-08-07",
-        "deliverable": "product slide 5 with blade safety warning overlay",
-        "sku": "Emergency Dematter Cream",
-        "asin": "B0FQL56V99",
-        "dimensions": "2000x2000px (Amazon listing image spec)",
-        "brand_hex": "#FF5E00 orange (accent) · #58919E teal",
-        "issue": "Safety warning callout needed. Text: 'Handle with care — sharp blades. Clean by brushing away from blade direction. Keep away from children.'",
-        "status": "STAGED awaiting @will approval"
-      },
-      "data_source": "connectors_data.json reviews.recent 2026-07-25 — SAFETY_INCIDENT flag"
+      "creative_pipeline_ts": "1786202075.539359"
     },
     {
-      "id": "033_flag_20260807_005",
-      "status": "RED",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Stranded Inventory — Detangling Spray 322 Units",
-      "problem": "B0FQ4PY573 (Detangling Spray): listing CLOSED since Feb 2026, FBA stockout (LIF=0), 322 units stranded with LTSF ≥181 days — storage fees accruing with no path to sales.",
-      "solution": "Initiate FBA removal order for all 322 stranded Detangling Spray units.",
-      "action": "Seller Central → Inventory → Manage FBA Inventory → filter B0FQ4PY573 → Create Removal Order → select 'Return to me' or 'Dispose' (Will's choice) for all 322 units.",
-      "deadline": "2026-08-15",
-      "deadline_cost": "LTSF charges assessed monthly on 322 units; delay = continued fee accrual on zero-revenue inventory",
-      "approver": "@will",
-      "brief_id": "033_rec_stranded-detangling-spray_2026-08-07",
-      "slack_status": "OPEN — first flag from 033 this run; Slack unavailable",
-      "data_source": "helium10_inventory STOCKOUT flag; roas_bands.json listing_status:CLOSED; inventory_data.json (no B0FQ4PY573 entry = confirmed not in active SC inventory)"
-    },
-    {
-      "id": "033_flag_20260807_006",
+      "id": "033_flag_20260808_005",
       "status": "YELLOW",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Rank Defense — Emergency Dematter 'dog detangler' -3 Spots",
-      "problem": "Emergency Dematter (B0FQL56V99) organic rank for 'dog detangler' (SV 1,890) dropped from 17 to 20 as of 2026-08-03 — currently defended only via broad match at ~$33 spend, no exact match targeting.",
-      "solution": "Add 'dog detangler' as exact match keyword to an existing Dematter SP campaign to defend rank.",
-      "action": "Ad Console → Save The Shave | SP KW V1 | Broad → ad group → Add Keyword → 'dog detangler' → Exact → bid $1.50–$2.00 (current sponsored rank is #10, target top 5). Alternatively create new exact match ad group.",
-      "deadline": "2026-08-09",
-      "deadline_cost": "Organic rank recovery slows for every day below page 1 threshold at SV 1,890; risk of full page-2 drop",
-      "approver": "@will",
-      "brief_id": "033_rec_rank-defense-dog-detangler_2026-08-07",
-      "slack_status": "OPEN — this run; Slack unavailable",
-      "data_source": "connectors_data.json helium10 keywords B0FQL56V99 'dog detangler' rank 20 vs prior 17, change -3"
-    },
-    {
-      "id": "033_flag_20260807_007",
-      "status": "YELLOW",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "TACoS Above Target — Account 39.09% vs 35% Target",
-      "problem": "Account-level TACoS 39.09% (Aug 4 data) exceeds the August 35% target — Emergency Dematter driving 40.95% SKU-level TACoS on $2,253.79 in 7-day spend.",
-      "solution": "Review Dematter campaign bids — hold or reduce on RED/YELLOW band keywords to bring TACoS toward 35% target. Cannot stage bid changes this run (degraded mode).",
-      "action": "ADVISORY ONLY (degraded mode — bid recs require fresh supermetrics data). When fresh data available: Ad Console → Emergency Dematter campaigns → reduce bids 5-10% on any keywords with ROAS below 1.66 (yellow_min). Do not touch until fresh supermetrics confirmed.",
-      "deadline": "2026-08-10",
-      "deadline_cost": "TACoS at 39.09% = ~$0.04/dollar of revenue above target — meaningful margin drain while goal is sub-35% by August",
-      "approver": "@will",
-      "brief_id": "033_rec_tacos-above-target_2026-08-07",
-      "slack_status": "ADVISORY — degraded mode; Slack unavailable",
-      "data_source": "connectors_data.json supermetrics.amazon_ads.tacos: 39.09; target: 35%"
-    },
-    {
-      "id": "033_flag_20260807_008",
-      "status": "YELLOW",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "FurFix De-Shed Brush Stranded — Day 26+",
-      "problem": "B0FQFP2S9F (FurFix De-Shed Brush): LIF=0, LTSF ≥181 days, ~60 units stranded in FBA per last confirmed data — storage fees accruing with no active listing or ad spend.",
-      "solution": "Resolve stranded inventory root cause in Seller Central; open support case if auto-fix fails.",
-      "action": "Seller Central → Inventory → Stranded Inventory tab → find B0FQFP2S9F → click 'Fix Listing' or 'Edit Listing'; if still stranded, open case: 'FBA stranded inventory — ASIN B0FQFP2S9F, 60 units, LIF 0 days.' If listing discontinued permanently: submit removal order for all units.",
-      "deadline": "2026-08-10",
-      "deadline_cost": "LTSF charges continue monthly; ~$2.45/day estimated storage on 60 units ($44.71+ cumulative from Day 1)",
-      "approver": "@will",
-      "brief_id": "033_rec_furfix-stranded_2026-08-07",
-      "slack_status": "BLOCKED — Day 26+; Slack unavailable",
-      "doctrine": "L-2026-07-13-001",
-      "data_source": "connectors_data.json helium10_inventory STOCKOUT_CRITICAL flag; learnings.json L-2026-07-13-001"
-    },
-    {
-      "id": "033_flag_20260807_009",
-      "status": "YELLOW",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Listing Title Compliance — 'Skip the Groomer' Prefix Violation",
-      "problem": "BRAND_RULES Rule 1 prohibits 'Skip The Groomer' as a product name prefix. Two listing titles violate this: B0FQL56V99 ('Skip the Groomer Dematting Cream for Dogs...') and B0FQF2VTMJ ('Skip the Groomer Rake Brush for Dogs...').",
-      "solution": "Update both listing titles to remove the leading 'Skip the Groomer' prefix; route SEO-optimized replacements through Anchor.",
-      "action": "Structural: Seller Central → Catalog → Edit ASIN B0FQL56V99 title → remove 'Skip the Groomer ' prefix → save. Same for B0FQF2VTMJ. Anchor briefs for SEO-optimized replacement copy: 033_pdp_EmergencyDematter-title_2026-08-07 and 033_pdp_RakeBrush-title_2026-08-07.",
-      "deadline": "2026-08-14",
-      "deadline_cost": "Brand compliance issue — no active spend risk but violates documented brand standard on two top-revenue ASINs",
-      "approver": "@will",
-      "brief_id": "033_rec_listing-prefix-compliance_2026-08-07",
-      "slack_status": "OPEN — first flag this run; Slack unavailable",
-      "anchor_directives": [
-        {
-          "brief_id": "033_pdp_EmergencyDematter-title_2026-08-07",
-          "platform": "Amazon",
-          "sku": "Emergency Dematter Cream",
-          "asin": "B0FQL56V99",
-          "product_moment": "RESCUE",
-          "target_keyword": "dematting tool for dogs",
-          "issue": "Title starts 'Skip the Groomer Dematting Cream...' — Brand Rule 1 violation. Need SEO-optimized title starting with 'Emergency Dematter Cream for Dogs...' without brand prefix.",
-          "status": "STAGED awaiting @will approval"
-        },
-        {
-          "brief_id": "033_pdp_RakeBrush-title_2026-08-07",
-          "platform": "Amazon",
-          "sku": "Rake Brush",
-          "asin": "B0FQF2VTMJ",
-          "product_moment": "COMPANION TOOL",
-          "target_keyword": "dematting rake for dogs",
-          "issue": "Title starts 'Skip the Groomer Rake Brush for Dogs...' — Brand Rule 1 violation. Need replacement title without brand prefix.",
-          "status": "STAGED awaiting @will approval"
-        }
+      "phase": "Phase 2",
+      "title": "Brand Rules §1 Violation — Title Prefix on 2 ASINs",
+      "asins": [
+        {"asin": "B0FQL56V99", "current_title_start": "Skip the Groomer Dematting Cream for Dogs..."},
+        {"asin": "B0FQF2VTMJ", "current_title_start": "Skip the Groomer Rake Brush for Dogs..."}
       ],
-      "data_source": "inventory_data.json listing names; BRAND_RULES.md Rule 1"
+      "action": "STAGED: Remove 'Skip the Groomer' prefix from both titles in Seller Central",
+      "approver": "@will"
     },
     {
-      "id": "033_flag_20260807_010",
+      "id": "033_flag_20260808_006",
       "status": "YELLOW",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Rake Brush Low Stock — 237 Units On-Hand",
-      "problem": "Rake Brush (B0FQF2VTMJ): 237 units on-hand with 4,200 inbound (ETA unknown) — at July velocity (~20 units/day from weekly data) this is ~12 days of stock before current FBA runs out.",
-      "solution": "Confirm inbound shipment ETA from Graham; if ETA > 12 days from Aug 7, throttle ad spend to preserve available days-of-stock.",
-      "action": "1. Confirm Rake PO2 inbound ETA with Graham (deposit $21,613 pending per supply_chain.json). 2. If ETA > Aug 19: Ad Console → Rake Brush campaigns → reduce bids 20% to throttle daily velocity. 3. If ETA confirmed < Aug 19: hold current bids.",
-      "deadline": "2026-08-09",
-      "deadline_cost": "Potential stockout Aug 19 if inbound delayed; stockout = zero sales + rank loss during out-of-stock period",
+      "phase": "Phase 1",
+      "title": "Rank Defense — 'dog detangler' r20 (↓3 from r17)",
+      "sku": "B0FQL56V99",
+      "action": "STAGED: Defend with STG detangler SP campaigns; verify SQP then bid up",
+      "approver": "@will"
+    },
+    {
+      "id": "033_flag_20260808_007",
+      "status": "YELLOW",
+      "phase": "Phase 2",
+      "title": "Pin Brush LTSF Risk — Aug 15 Assessment Window (7 days)",
+      "sku": "B0FQDHXSZ5",
+      "units_on_hand": 1971,
+      "lif_days": 629,
+      "ltsf_window": "2026-08-15",
+      "action": "STAGED: Decide removal/liquidation/accept-fee path before Aug 15",
+      "approver": "@will"
+    },
+    {
+      "id": "033_flag_20260808_008",
+      "status": "YELLOW",
+      "phase": "Phase 2",
+      "title": "Slicker Liquidation — 2,878 Days LIF",
+      "sku": "B0FQ628KCH",
+      "units_on_hand": 2551,
+      "lif_days": 2878,
+      "action": "STAGED: Create FBA removal/liquidation order",
+      "approver": "@will"
+    },
+    {
+      "id": "033_flag_20260808_009",
+      "status": "YELLOW",
+      "phase": "Phase 2",
+      "title": "FurFix Stranded — Day 26+ (L-2026-07-13-001)",
+      "action": "STAGED: Will must rule — relist or removal order",
       "approver": "@will",
-      "brief_id": "033_rec_rake-low-stock_2026-08-07",
-      "slack_status": "OPEN — this run; Slack unavailable",
-      "data_source": "inventory_data.json Rake 237 on_hand + 4200 inbound; supply_chain.json DEPOSIT_PENDING flag; helium10_profits weekly 180 units sold Jul 27–Aug 2"
+      "doctrine": "L-2026-07-13-001"
+    },
+    {
+      "id": "033_flag_20260808_010",
+      "status": "YELLOW",
+      "phase": "Phase 2",
+      "title": "Rake PO2 Deposit $21,613 Unconfirmed — 4,200 Inbound at Risk",
+      "sku": "B0FQF2VTMJ",
+      "units_on_hand": 237,
+      "inbound_units": 4200,
+      "deposit_usd": 21613,
+      "action": "STAGED: Confirm PO2 deposit status with supplier before inbound ships",
+      "approver": "@will"
     }
   ],
   "approval_sweep": {
-    "date": "2026-08-07",
-    "note": "Cannot read #stg-ads-watchdog — Slack read/write unavailable this run. Prior run items remain BLOCKED. No @will approval confirmed via any available channel.",
+    "date": "2026-08-08",
+    "will_approvals_received": 0,
     "carry_over_blocked": [
-      {
-        "item": "V-1 Bundle B0GT1H84JM attribution crisis",
-        "first_flagged": "2026-07-27",
-        "day": 13,
-        "est_cumulative_burn_usd": 2197,
-        "doctrine": "L-2026-07-27-001"
-      },
-      {
-        "item": "V-2 Slicker B0FQ628KCH spend violation",
-        "first_flagged": "2026-07-14",
-        "day": 54,
-        "est_cumulative_burn_usd": 1212,
-        "doctrine": "L-2026-07-14-001"
-      },
-      {
-        "item": "I-1 LTSF exposure",
-        "first_flagged": "2026-07-28",
-        "day": 10,
-        "est_surcharge_usd": 2155
-      },
-      {
-        "item": "I-2 FurFix stranded",
-        "first_flagged": "2026-07-13",
-        "day": 26,
-        "est_fees_usd": 65,
-        "doctrine": "L-2026-07-13-001"
-      }
-    ],
-    "total_estimated_burned_usd": 5629
+      {"item": "V-1 Slicker spend violation", "doctrine": "L-2026-07-14-001", "day": 55, "est_cumulative_burn_usd": 1207},
+      {"item": "V-2 Bundle attribution crisis", "doctrine": "L-2026-07-27-001", "day": 13, "est_cumulative_burn_usd": 1906},
+      {"item": "V-3 Unapproved ASINs spending", "day": null, "est_spend_usd": 50.42},
+      {"item": "SAFETY-001 Dematter blade warning", "day": 14, "risk": "product liability"},
+      {"item": "I-1 Pin Brush LTSF", "ltsf_window": "2026-08-15", "days_remaining": 7},
+      {"item": "I-2 FurFix stranded", "doctrine": "L-2026-07-13-001", "day": 26}
+    ]
   },
-  "phase1_summary": {
+  "prior_run_reference": {
+    "date": "2026-08-07",
     "mode": "DEGRADED",
-    "negatives_staged": 0,
-    "bid_recs": 0,
-    "rank_defense_plans": 1,
-    "creative_signals": 0,
-    "safety_violations": 3,
-    "tacos_status": "YELLOW — 39.09% vs 35% target; advisory only (degraded mode)"
+    "slack_closeout_ts": null,
+    "note": "2026-08-07 run was DEGRADED (Supermetrics 16h stale) and Slack was unavailable — dashboard-only. Today is first FULL run with Slack restored since ~2026-07-30."
   },
-  "phase2_summary": {
-    "listing_fixes": 2,
-    "anchor_directives": 3,
-    "tailwind_directives": 1,
-    "compliance_flags": 2,
-    "inventory_flags": 3
-  },
-  "closeout_text": "033 Amazon v1.1 pass complete: Phase 1: 0 negatives staged (degraded) · 0 bid recs (degraded) · 1 rank-defense plan · 0 creative signals · 3 safety violations re-flagged. Phase 2: 2 listing fix items · 3 Anchor directives staged · 1 Tailwind directive staged · 2 compliance flags. Solutions: 10 posted · 0 approved+logged (Slack unavailable) · 5 blocked (carry-over). DEGRADED MODE: supermetrics_data.json 16h old — bid/negative recs NOT STAGED; violations and rank defense only. SLACK WRITE UNAVAILABLE: MCP Internal Server Error on all send attempts to all channels — dashboard mirror is source of truth this run.",
-  "posts": [
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:22 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "Slicker Spend Violation — Day 54+",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "RED — SLICKER SPEND VIOLATION (Day 54+) · 033 Amazon v1.1 · 2026-08-07\n\nSlicker Brush (B0FQ628KCH): $8.01 spend recorded 2026-08-04; $80.54 over 7 days. liquidate=true. All campaigns must be paused. Violation persists per Learning L-2026-07-14-001, Day 54+.\n\nRECOMMENDATION: Pause ALL 5 Slicker campaigns in Ad Console now.\nWHY: Amazon Ads · $80.54 7d spend on liquidation ASIN · 8.67% return rate → 10.2% Amazon penalty threshold · L-2026-07-14-001 Day 54+\nACTION: Ad Console → Campaigns → search 'B0FQ628KCH' → pause: SP KW Broad, SP Auto CM-LM, SP Auto Subs-Comps, SP KW Phrase, SP PT Exact\nDEADLINE: 2026-08-08 — ~$11.50/day burning + return rate penalty risk\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_slicker-spend_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:22 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "Bundle Attribution Crisis — Day 13+",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "RED — BUNDLE ATTRIBUTION CRISIS Day 13+ · 033 Amazon v1.1 · 2026-08-07\n\nB0GT1H84JM (Save the Shave Bundle): $1,182.32 spend over 7 days ending Aug 5. $0 attributed bundle sales. Estimated cumulative burn since Jul 27: $2,197+.\n\nRECOMMENDATION: Pause ALL B0GT1H84JM campaigns; audit attribution window.\nWHY: supermetrics Query C · $1,182.32 7d on B0GT1H84JM · $0 attributed sales · L-2026-07-27-001 Day 13+\nACTION: Ad Console → Campaigns → search 'C8-VG2F-6714' → pause all; then check attribution window (should be 14-day)\nDEADLINE: 2026-08-08 — ~$169/day burning; cumulative $2,197+ with $0 return\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_bundle-attribution-crisis_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:23 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "Unapproved Ads Running — Full Coat Care System",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "RED — UNAPPROVED ADS RUNNING · 033 Amazon v1.1 · 2026-08-07\n\nFull Coat Care System 5pc (B0GY9WZWKH): ad_eligible=false in roas_bands.json yet $226.60 over 7 days. ROAS 4.18 (GREEN) — performing but unauthorized.\n\nRECOMMENDATION: Decide today — approve or pause.\nWHY: roas_bands.json ad_eligible:false · $226.60 7d spend · ROAS 4.18 above 2.15 breakeven\nACTION: Option A (approve): update roas_bands.json B0GY9WZWKH ad_eligible:true. Option B (pause): Ad Console → search 'STG-FULL-COAT-CARE-SYSTEM' → pause.\nDEADLINE: 2026-08-08 — $32/day unauthorized\n@will — reply 'approved to run' or 'pause it'\nBrief ID: 033_rec_unapproved-ads-B0GY9WZWKH_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:23 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "PHASE 2 — Safety: Dematter Blade Warning Missing",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "RED — SAFETY INCIDENT · PHASE 2 · 033 Amazon v1.1 · 2026-08-07\n\nEmergency Dematter (B0FQL56V99): Review 2026-07-25 — customer cut finger on comb blade. No blade warning in current listing copy or images. Product liability exposure grows each day without disclosure.\n\nRECOMMENDATION: Add blade safety warning to listing bullet + image slide immediately.\nWHY: reviews.recent 2026-07-25 · 4-star · 'comb came with no instructions or warnings about the razor blade sharpness. I cut my finger while removing hair from comb.'\nACTION: Seller Central → B0FQL56V99 → Edit → add warning bullet. Anchor brief: 033_pdp_EmergencyDematter-blade_2026-08-07. Tailwind: 033_asset_EmergencyDematter-blade_2026-08-07.\nDEADLINE: 2026-08-08 — documented unaddressed liability\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_dematter-blade-warning_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-creative-pipeline (C0BFSJHTGHX)",
-      "time": "8:24 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "Anchor: PDP copy — Dematter blade safety warning",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "Anchor: PDP copy needed\nPlatform: Amazon\nSKU: Emergency Dematter Cream · ASIN: B0FQL56V99\nProduct moment: RESCUE\nTarget keyword: dematting tool for dogs\nIssue: No blade safety warning in listing. Review 2026-07-25 documents customer finger cut on blade. Need: (1) new warning bullet — safety disclosure for sharp blade, safe handling instructions; (2) A+ safety callout copy. No banned words. Kathy voice.\nBrief ID: 033_pdp_EmergencyDematter-blade_2026-08-07\nSTATUS: STAGED (awaiting @will approval)"
-    },
-    {
-      "channel": "#stg-creative-pipeline (C0BFSJHTGHX)",
-      "time": "8:24 AM PT",
-      "type": "main",
-      "status": null,
-      "title": "Tailwind: Dematter safety image slide",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "Tailwind: Amazon asset needed\nDeliverable: product slide 5 with blade safety warning callout\nSKU: Emergency Dematter Cream · ASIN: B0FQL56V99\nDimensions: 2000x2000px (Amazon listing image spec)\nBrand hex: #FF5E00 orange (accent) · #58919E teal\nContext: Safety warning needed after 2026-07-25 review documents blade injury. Warning text: 'Handle with care — sharp blades. Clean by brushing away from blade direction. Keep away from children.'\nBrief ID: 033_asset_EmergencyDematter-blade_2026-08-07\nSTATUS: STAGED (awaiting @will approval)"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:25 AM PT",
-      "type": "main",
-      "status": "RED",
-      "title": "PHASE 2 — Stranded Inventory: Detangling Spray 322 Units",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "RED — STRANDED INVENTORY · PHASE 2 · 033 Amazon v1.1 · 2026-08-07\n\nDetangling Spray (B0FQ4PY573): listing CLOSED since Feb 2026, LIF=0 days (FBA stockout), 322 units stranded, LTSF 181+ days. Storage fees accruing with zero sales path.\n\nRECOMMENDATION: Initiate FBA removal order for all 322 units.\nWHY: H10 Inventory · LIF=0 · LTSF=181+ days · listing CLOSED per roas_bands.json · no COGS on file\nACTION: Seller Central → Inventory → Manage FBA Inventory → filter B0FQ4PY573 → Create Removal Order → all 322 units (Return or Dispose)\nDEADLINE: 2026-08-15 — monthly LTSF charges on 322 zero-revenue units\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_stranded-detangling-spray_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:25 AM PT",
-      "type": "main",
-      "status": "YELLOW",
-      "title": "PHASE 1 — Rank Defense: Dematter 'dog detangler' -3 spots",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "YELLOW — RANK DEFENSE · PHASE 1 · 033 Amazon v1.1 · 2026-08-07\n\nEmergency Dematter (B0FQL56V99): 'dog detangler' organic rank 17→20 (-3 spots, Aug 3 H10 data). SV 1,890/month. Sponsored rank currently #10. No exact match defense in place.\n\nRECOMMENDATION: Add 'dog detangler' as exact match keyword to a Dematter campaign.\nWHY: H10 Aug 3 · rank 17→20 · SV 1,890 · sponsored #10 via broad only\nACTION: Ad Console → Save The Shave | SP KW V1 | Broad → Add Keyword → 'dog detangler' Exact → bid $1.50–$2.00\nDEADLINE: 2026-08-09 — organic rank recovery risk at SV 1,890\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_rank-defense-dog-detangler_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:26 AM PT",
-      "type": "main",
-      "status": "YELLOW",
-      "title": "PHASE 2 — Compliance: Listing Title Prefix Violation",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "YELLOW — COMPLIANCE · PHASE 2 · 033 Amazon v1.1 · 2026-08-07\n\nBrand Rule 1 violation — 'Skip the Groomer' prefix in listing titles:\n· B0FQL56V99: 'Skip the Groomer Dematting Cream for Dogs...'\n· B0FQF2VTMJ: 'Skip the Groomer Rake Brush for Dogs...'\n\nAnchor briefs staged for both. Structural fix in Seller Central is the fast path.\n\nRECOMMENDATION: Remove 'Skip the Groomer' prefix from both titles in Seller Central today; Anchor to follow with SEO-optimized replacements.\nWHY: BRAND_RULES.md Rule 1 · inventory_data.json listing names confirmed\nACTION: Seller Central → Catalog → Edit B0FQL56V99 and B0FQF2VTMJ titles → remove leading 'Skip the Groomer '\nDEADLINE: 2026-08-14 — brand compliance\n@will — reply 'approved' or 'revise'\nBrief ID: 033_rec_listing-prefix-compliance_2026-08-07\nSTATUS: OPEN"
-    },
-    {
-      "channel": "#stg-creative-pipeline (C0BFSJHTGHX)",
-      "time": "8:26 AM PT",
-      "type": "main",
-      "status": null,
-      "title": "Anchor: 2x PDP title copy — Dematter + Rake compliance",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "Anchor: PDP copy needed\nPlatform: Amazon\nSKU: Emergency Dematter Cream · ASIN: B0FQL56V99\nProduct moment: RESCUE\nTarget keyword: dematting tool for dogs\nIssue: Listing title begins 'Skip the Groomer Dematting Cream...' violating Brand Rule 1. Need SEO-optimized replacement title starting with 'Emergency Dematter Cream for Dogs' without brand prefix. Must maintain keyword density for 'dematting tool for dogs' and 'dematting comb'.\nBrief ID: 033_pdp_EmergencyDematter-title_2026-08-07\nSTATUS: STAGED (awaiting @will approval)\n\n---\n\nAnchor: PDP copy needed\nPlatform: Amazon\nSKU: Rake Brush · ASIN: B0FQF2VTMJ\nProduct moment: COMPANION TOOL\nTarget keyword: dematting rake for dogs\nIssue: Listing title begins 'Skip the Groomer Rake Brush...' violating Brand Rule 1. Need replacement title without brand prefix.\nBrief ID: 033_pdp_RakeBrush-title_2026-08-07\nSTATUS: STAGED (awaiting @will approval)"
-    },
-    {
-      "channel": "#stg-ads-watchdog (C0BDU52NV61)",
-      "time": "8:27 AM PT",
-      "type": "close-out",
-      "status": "YELLOW",
-      "title": "CLOSE-OUT — 033 Amazon v1.1",
-      "delivery": "FAILED — Slack write unavailable",
-      "text": "033 Amazon v1.1 pass complete — 2026-08-07:\nPhase 1: 0 negatives staged (degraded) · 0 bid recs (degraded) · 1 rank-defense plan · 0 creative signals · 3 safety violations re-flagged\nPhase 2: 2 listing fix items · 3 Anchor directives staged · 1 Tailwind directive staged · 2 compliance flags · 3 inventory flags\nSolutions: 10 posted · 0 approved+logged · 5 blocked (carry-over)\nDEGRADED: supermetrics_data.json 16h old — bid/negative recs NOT STAGED\nSLACK WRITE UNAVAILABLE: MCP Internal Server Error — all posts failed. Dashboard mirror only. @will: check data/reports/amazon_033.json directly for full staged recommendations."
-    }
-  ]
+  "closeout": {
+    "slack_ts": "1786202222.032039",
+    "mode": "FULL",
+    "negatives_staged": 24,
+    "bid_recs": 8,
+    "rank_defense": 1,
+    "creative_signal": 1,
+    "listing_flags": 10,
+    "solutions_posted": 4,
+    "approvals_received": 0,
+    "open_doctrines": ["L-2026-07-14-001", "L-2026-07-27-001", "L-2026-07-13-001", "L-2026-07-08-001"],
+    "tacos_account": "27.3% GREEN"
+  }
 }
